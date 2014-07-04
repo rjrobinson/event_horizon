@@ -1,14 +1,13 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
+gem "rails", "4.1.4"
 
-gem 'rails', '4.1.4'
+gem "pg"
 
-gem 'pg'
-
-gem 'sass-rails', '~> 4.0.3'
-gem 'uglifier', '>= 1.3.0'
-gem 'jquery-rails'
+gem "sass-rails", "~> 4.0.3"
+gem "uglifier", ">= 1.3.0"
+gem "jquery-rails"
 
 group :development do
-  gem 'spring'
+  gem "spring"
 end
