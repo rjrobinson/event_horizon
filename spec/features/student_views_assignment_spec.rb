@@ -12,4 +12,13 @@ feature "student views assignment" do
     end
   end
 
+  scenario "view an individual assignment" do
+    assignment = FactoryGirl.create(:assignment)
+
+    visit assignment_path(assignment)
+
+    expect(page).to have_content(assignment.title)
+    expect(page).to have_content(assignment.body)
+  end
+
 end
