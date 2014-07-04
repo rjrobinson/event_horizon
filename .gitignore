@@ -17,3 +17,6 @@
 
 # Test coverage results.
 /coverage
+
+# Sass-output.
+.sass-cache
