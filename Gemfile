@@ -11,3 +11,8 @@ gem "jquery-rails"
 group :development do
   gem "spring"
 end
+
+group :development, :test do
+  gem "rspec-rails"
+  gem "capybara"
+end
