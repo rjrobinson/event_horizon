@@ -12,6 +12,7 @@ gem "jquery-rails"
 gem "haml-rails"
 gem "foundation-rails"
 gem "omniauth-github"
+gem "redcarpet"
 
 group :development do
   gem "spring"
