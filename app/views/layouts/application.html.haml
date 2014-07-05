@@ -27,12 +27,17 @@
         %ul.left
           %li= link_to "Assignments", assignments_path
 
-    #content.row
-      - if flash.any?
-        #notifications
-          - flash.each do |type, message|
-            .notification(type=type)= message
+    - if flash.any?
+      #notifications.row
+        - flash.each do |type, message|
+          .alert-box(class=type data-alert)
+            = message
+            %a.close(href="#") &times;
 
+
+
+
+    #content.row
       = yield
 
     = javascript_include_tag "application"
