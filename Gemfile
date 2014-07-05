@@ -15,6 +15,7 @@ gem "foundation-rails"
 group :development do
   gem "spring"
   gem "quiet_assets"
+  gem "dotenv-rails"
 end
 
 group :development, :test do
