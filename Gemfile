@@ -11,10 +11,12 @@ gem "uglifier", ">= 1.3.0"
 gem "jquery-rails"
 gem "haml-rails"
 gem "foundation-rails"
+gem "omniauth-github"
 
 group :development do
   gem "spring"
   gem "quiet_assets"
+  gem "dotenv-rails"
 end
 
 group :development, :test do

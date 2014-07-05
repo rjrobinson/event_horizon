@@ -14,3 +14,7 @@
  *= require_self
  *= require foundation_and_overrides
  */
+
+#notifications {
+    padding: 1em;
+}

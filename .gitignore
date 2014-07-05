@@ -20,3 +20,6 @@
 
 # Sass-output.
 .sass-cache
+
+# Ignore environment variables containing sensitive info.
+/.env
