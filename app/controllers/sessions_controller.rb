@@ -9,6 +9,10 @@ class SessionsController < ApplicationController
     redirect_to root_path
   end
 
+  def failure
+    redirect_to root_path, notice: "Unable to sign in."
+  end
+
   private
 
   def auth_hash

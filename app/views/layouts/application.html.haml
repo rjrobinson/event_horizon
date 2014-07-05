@@ -28,6 +28,11 @@
           %li= link_to "Assignments", assignments_path
 
     #content.row
+      - if flash.any?
+        #notifications
+          - flash.each do |type, message|
+            .notification(type=type)= message
+
       = yield
 
     = javascript_include_tag "application"
