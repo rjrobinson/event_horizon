@@ -5,7 +5,7 @@ module AssignmentHelper
 
   def renderer
     @renderer ||= Redcarpet::Markdown.new(
-      Redcarpet::Render::HTML,
+      MarkdownRenderer,
       fenced_code_blocks: true,
       disable_indented_code_blocks: true)
   end

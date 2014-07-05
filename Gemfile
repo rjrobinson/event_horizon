@@ -13,6 +13,7 @@ gem "haml-rails"
 gem "foundation-rails"
 gem "omniauth-github"
 gem "redcarpet"
+gem "rouge"
 
 group :development do
   gem "spring"
