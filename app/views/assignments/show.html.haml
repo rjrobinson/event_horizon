@@ -1,4 +1,4 @@
 %h1= @assignment.title
 
 #body
-  = @assignment.body
+  ~ render_markdown(@assignment.body)
