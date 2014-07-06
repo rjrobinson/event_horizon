@@ -14,6 +14,7 @@ gem "foundation-rails"
 gem "omniauth-github"
 gem "redcarpet"
 gem "rouge"
+gem "unicorn"
 
 group :development do
   gem "spring"
@@ -29,4 +30,8 @@ end
 
 group :test do
   gem "coveralls", require: false
+end
+
+group :production do
+  gem "rails_12factor"
 end
