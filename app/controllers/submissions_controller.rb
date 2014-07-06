@@ -3,7 +3,7 @@ class SubmissionsController < ApplicationController
 
   def index
     @assignment = Assignment.find(params[:assignment_id])
-    @submissions = current_user.submissions.where(assignment: @assignment)
+    @submissions = @assignment.submissions_viewable_by(current_user)
   end
 
   def show

@@ -6,6 +6,11 @@ FactoryGirl.define do
     sequence(:username) { |n| "george_michael_#{n}" }
     sequence(:email) { |n| "gm#{n}@example.com" }
     sequence(:name) { |n| "George Michael #{n}" }
+    role "member"
+
+    factory :instructor do
+      role "instructor"
+    end
   end
 
 end

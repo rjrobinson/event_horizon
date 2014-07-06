@@ -28,6 +28,25 @@ feature "view submissions" do
     end
   end
 
+  context "as an instructor" do
+    let(:instructor) { FactoryGirl.create(:instructor) }
+
+    before :each do
+      sign_in_as(instructor)
+    end
+
+    scenario "see all of the submissions for an assignment" do
+      submissions = FactoryGirl.
+        create_list(:submission, 3, assignment: assignment)
+
+      visit assignment_submissions_path(assignment)
+
+      submissions.each do |submission|
+        expect(page).to have_link_href(submission_path(submission))
+      end
+    end
+  end
+
   context "as a guest" do
     scenario "redirect to login" do
       visit assignment_submissions_path(assignment)
