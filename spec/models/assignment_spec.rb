@@ -2,6 +2,8 @@ require "rails_helper"
 
 describe Assignment do
 
+  let(:assignment) { FactoryGirl.create(:assignment) }
+
   describe ".parse" do
     let(:sample_filepath) do
       Rails.root.join("spec/support/data/sample_assignment.md")

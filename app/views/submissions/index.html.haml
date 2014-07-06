@@ -1,0 +1,16 @@
+%h1= "Submissions for #{@assignment.title}"
+
+#submissions
+  %table
+    %thead
+      %tr
+        %th Submitter
+        %th Submission Time
+        %th Status
+
+    %tbody
+      - @submissions.each do |submission|
+        %tr
+          %td= submission.user.username
+          %td= submission.created_at
+          %td= link_to "Submitted", submission_path(submission)
