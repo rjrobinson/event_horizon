@@ -14,6 +14,7 @@ gem "foundation-rails"
 gem "omniauth-github"
 gem "redcarpet"
 gem "rouge"
+gem "unicorn"
 
 group :development do
   gem "spring"
