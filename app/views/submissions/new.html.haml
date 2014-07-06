@@ -9,6 +9,8 @@
           %li= message
 
   = f.label :body, "Solution"
-  = f.text_area :body
+  = f.text_area :body, rows: 30
+  - if @submission.errors[:body].any?
+    %small.error= @submission.errors[:body].first
 
-  = f.submit "Submit"
+  = f.submit "Submit", class: "button"
