@@ -1,6 +1,8 @@
 class SubmissionsController < ApplicationController
+  before_action :authenticate_user!
+
   def show
-    @submission = Submission.find(params[:id])
+    @submission = current_user.submissions.find_by(id: params[:id]) || not_found
   end
 
   def new

@@ -2,30 +2,41 @@ require "rails_helper"
 
 feature "student submits solution" do
 
-  let(:user) { FactoryGirl.create(:user) }
+  let(:assignment) { FactoryGirl.create(:assignment) }
 
-  before :each do
-    sign_in_as(user)
+  context "as a signed in user" do
+    let(:user) { FactoryGirl.create(:user) }
+
+    before :each do
+      sign_in_as(user)
+    end
+
+    scenario "successfully complete submission form" do
+      visit assignment_path(assignment)
+
+      click_link "Submit Solution"
+
+      fill_in "Solution", with: "2 + 2 == 5"
+      click_button "Submit"
+
+      expect(page).to have_content("Solution submitted.")
+      expect(page).to have_content("2 + 2 == 5")
+
+      expect(Submission.count).to eq(1)
+
+      submission = Submission.first
+      expect(submission.user).to eq(user)
+      expect(submission.assignment).to eq(assignment)
+    end
   end
 
-  scenario "successfully complete submission form" do
-    assignment = FactoryGirl.create(:assignment)
+  context "as a guest" do
+    scenario "cannot access the submission form" do
+      visit new_assignment_submission_path(assignment)
 
-    visit assignment_path(assignment)
-
-    click_link "Submit Solution"
-
-    fill_in "Solution", with: "2 + 2 == 5"
-    click_button "Submit"
-
-    expect(page).to have_content("Solution submitted.")
-    expect(page).to have_content("2 + 2 == 5")
-
-    expect(Submission.count).to eq(1)
-
-    submission = Submission.first
-    expect(submission.user).to eq(user)
-    expect(submission.assignment).to eq(assignment)
+      expect(page).to have_content("You need to sign in before continuing.")
+      expect(page).to_not have_content("New Submission")
+    end
   end
 
 end
