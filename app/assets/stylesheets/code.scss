@@ -1,0 +1,16 @@
+$code-bg-color: #f8f8f8;
+
+.code-block {
+    background-color: $code-bg-color;
+    border: 1px solid #ddd;
+    font-size: 0.9em;
+    line-height: 1.2em;
+    overflow: auto;
+    padding: 0.8em;
+    margin: 0.6em;
+    border-radius: 3px;
+
+    .highlight {
+        background-color: $code-bg-color
+    }
+}
