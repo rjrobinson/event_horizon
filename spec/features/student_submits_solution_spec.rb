@@ -28,6 +28,17 @@ feature "student submits solution" do
       expect(submission.user).to eq(user)
       expect(submission.assignment).to eq(assignment)
     end
+
+    scenario "redisplay form with errors on blank submission" do
+      visit assignment_path(assignment)
+
+      click_link "Submit Solution"
+      click_button "Submit"
+
+      expect(page).to have_content("The solution couldn't be submitted.")
+      expect(page).to have_content("can't be blank")
+      expect(Submission.count).to eq(0)
+    end
   end
 
   context "as a guest" do
