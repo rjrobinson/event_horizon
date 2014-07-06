@@ -14,3 +14,22 @@ $code-bg-color: #f8f8f8;
         background-color: $code-bg-color
     }
 }
+
+.comment {
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    margin: 0.6em;
+
+    .user {
+        padding: 0.5em;
+        font-size: 0.9em;
+        padding-top: 0.6em;
+        padding-bottom: 0.6em;
+        background-color: $code-bg-color;
+        border-bottom: 1px solid #eee;
+    }
+
+    .body {
+        padding: 0.8em;
+    }
+}
