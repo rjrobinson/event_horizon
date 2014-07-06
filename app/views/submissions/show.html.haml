@@ -5,3 +5,15 @@
 
 #submission
   = render_code(@submission.body, "ruby")
+
+#comments
+  - @submission.comments.each do |comment|
+    .comment
+      .user= "#{comment.user.username} commented..."
+      .body= comment.body
+
+  = form_for [@submission, @comment] do |f|
+    = f.label :body, "Comment"
+    = f.text_field :body
+
+    = f.submit "Submit"
