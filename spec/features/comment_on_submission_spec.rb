@@ -1,6 +1,8 @@
 require "rails_helper"
 
 feature "comment on submission", focus: true do
+  let(:submission) { FactoryGirl.create(:submission) }
+
   context "as an instructor" do
     let(:instructor) { FactoryGirl.create(:instructor) }
 
@@ -9,8 +11,6 @@ feature "comment on submission", focus: true do
     end
 
     scenario "comment on submission in general" do
-      submission = FactoryGirl.create(:submission)
-
       visit submission_path(submission)
 
       fill_in "Comment", with: "Needs more cow-bell."
@@ -19,6 +19,17 @@ feature "comment on submission", focus: true do
       expect(page).to have_content("Comment saved.")
       expect(page).to have_content("#{instructor.username} commented")
       expect(page).to have_content("Needs more cow-bell.")
+    end
+
+    scenario "redisplay form with error if comment is blank" do
+      visit submission_path(submission)
+
+      fill_in "Comment", with: ""
+      click_button "Submit"
+
+      expect(page).to_not have_content("#{instructor.username} commented")
+      expect(page).to have_content("can't be blank")
+      expect(Comment.count).to eq(0)
     end
   end
 end

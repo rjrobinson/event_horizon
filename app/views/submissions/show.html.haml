@@ -8,12 +8,15 @@
 
 #comments
   - @submission.comments.each do |comment|
-    .comment
-      .user= "#{comment.user.username} commented..."
-      .body= comment.body
+    - if comment.persisted?
+      .comment
+        .user= "#{comment.user.username} commented..."
+        .body= comment.body
 
   = form_for [@submission, @comment] do |f|
     = f.label :body, "Comment"
     = f.text_field :body
+    - if @comment.errors[:body].any?
+      %small.error= @comment.errors[:body].first
 
     = f.submit "Submit"

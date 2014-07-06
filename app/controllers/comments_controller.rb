@@ -4,9 +4,12 @@ class CommentsController < ApplicationController
     @comment = @submission.comments.build(comment_params)
     @comment.user = current_user
 
-    @comment.save
-    flash[:info] = "Comment saved."
-    redirect_to @submission
+    if @comment.save
+      flash[:info] = "Comment saved."
+      redirect_to @submission
+    else
+      render "submissions/show"
+    end
   end
 
   private
