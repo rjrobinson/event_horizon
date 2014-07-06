@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
     end
   end
 
-  def is_instructor?
+  def instructor?
     role == "instructor"
   end
 end

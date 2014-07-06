@@ -1,4 +1,7 @@
 %h1= "Submission for #{@submission.assignment.title}"
 
+#submission-details
+  .user= "Submitted by #{@submission.user.username}"
+
 #submission
   = render_code(@submission.body, "ruby")

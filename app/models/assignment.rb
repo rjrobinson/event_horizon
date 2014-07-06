@@ -11,7 +11,7 @@ class Assignment < ActiveRecord::Base
   end
 
   def submissions_viewable_by(user)
-    if user.is_instructor?
+    if user.instructor?
       submissions
     else
       submissions.where(user: user)

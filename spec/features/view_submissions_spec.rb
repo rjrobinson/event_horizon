@@ -45,6 +45,15 @@ feature "view submissions" do
         expect(page).to have_link_href(submission_path(submission))
       end
     end
+
+    scenario "view submission from student" do
+      submission = FactoryGirl.create(:submission, assignment: assignment)
+
+      visit submission_path(submission)
+
+      expect(page).to have_content("Submission for #{assignment.title}")
+      expect(page).to have_content("Submitted by #{submission.user.username}")
+    end
   end
 
   context "as a guest" do

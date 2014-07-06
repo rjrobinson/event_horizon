@@ -36,6 +36,16 @@ describe SubmissionsController do
       expect(response).to be_success
     end
 
+    it "allows access to instructors" do
+      instructor = FactoryGirl.create(:instructor)
+      session[:user_id] = instructor.id
+
+      submission = FactoryGirl.create(:submission)
+
+      get :show, id: submission.id
+      expect(response).to be_success
+    end
+
     it "avoids showing other user submissions" do
       other_user_submission = FactoryGirl.create(:submission)
       session[:user_id] = user.id
