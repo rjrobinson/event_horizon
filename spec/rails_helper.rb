@@ -45,5 +45,11 @@ RSpec.configure do |config|
     # Short circuit any OAuth authentication requests. Requires a mock
     # authentication hash to be set for login to work.
     OmniAuth.config.test_mode = true
+
+    # This suppresses any warnings from polluting the test output.
+    # http://stackoverflow.com/questions/19483367/rails-omniauth-error-in-rspec-output
+    OmniAuth.config.logger = Logger.new("/dev/null")
   end
+
+  config.include AuthenticationHelper
 end

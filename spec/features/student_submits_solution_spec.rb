@@ -5,18 +5,7 @@ feature "student submits solution" do
   let(:user) { FactoryGirl.create(:user) }
 
   before :each do
-    OmniAuth.config.mock_auth[:github] = {
-      "provider" => user.provider,
-      "uid" => user.uid,
-      "info" => {
-        "nickname" => user.username,
-        "email" => user.email,
-        "name" => user.name
-      }
-    }
-
-    visit root_path
-    click_link "Sign In With GitHub"
+    sign_in_as(user)
   end
 
   scenario "successfully complete submission form" do
