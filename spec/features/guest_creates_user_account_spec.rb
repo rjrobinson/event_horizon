@@ -2,12 +2,6 @@ require "rails_helper"
 
 feature "guest creates account" do
 
-  before :each do
-    # This suppresses any warnings from polluting the test output.
-    # http://stackoverflow.com/questions/19483367/rails-omniauth-error-in-rspec-output
-    OmniAuth.config.logger = Logger.new("/dev/null")
-  end
-
   scenario "successful sign up with valid github credentials" do
     OmniAuth.config.mock_auth[:github] = {
       "provider" => "github",

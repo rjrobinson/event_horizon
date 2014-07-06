@@ -2,3 +2,6 @@
 
 #body
   ~ render_markdown(@assignment.body)
+
+.actions
+  = link_to "Submit Solution", new_assignment_submission_path(@assignment)
