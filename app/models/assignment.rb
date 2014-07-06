@@ -9,12 +9,4 @@ class Assignment < ActiveRecord::Base
     body = contents.gsub(/---(.|\n)*---/, "")
     { title: headers["title"], body: body }
   end
-
-  def submissions_viewable_by(user)
-    if user.instructor?
-      submissions
-    else
-      submissions.where(user: user)
-    end
-  end
 end

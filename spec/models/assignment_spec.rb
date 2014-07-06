@@ -22,30 +22,4 @@ describe Assignment do
     end
   end
 
-  describe "#submissions_viewable_by" do
-    let(:instructor) { FactoryGirl.create(:instructor) }
-
-    it "shows all submissions to instructors" do
-      submissions = FactoryGirl.
-        create_list(:submission, 3, assignment: assignment)
-
-      viewable = assignment.submissions_viewable_by(instructor)
-
-      expect(viewable.length).to eq(submissions.length)
-      submissions.each do |submission|
-        expect(viewable).to include(submission)
-      end
-    end
-
-    it "hides other user submissions from students" do
-      submission_a = FactoryGirl.create(:submission, assignment: assignment)
-      submission_b = FactoryGirl.create(:submission, assignment: assignment)
-
-      expect(assignment.submissions_viewable_by(submission_a.user)).
-        to eq([submission_a])
-      expect(assignment.submissions_viewable_by(submission_b.user)).
-        to eq([submission_b])
-    end
-  end
-
 end
