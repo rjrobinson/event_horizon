@@ -1,6 +1,8 @@
 require "rails_helper"
 
 feature "view submissions" do
+  let(:assignment) { FactoryGirl.create(:assignment) }
+
   context "as a student" do
     let(:student) { FactoryGirl.create(:user) }
 
@@ -9,8 +11,6 @@ feature "view submissions" do
     end
 
     scenario "see only my submissions for an assignment" do
-      assignment = FactoryGirl.create(:assignment)
-
       my_submissions = FactoryGirl.
         create_list(:submission, 2, assignment: assignment, user: student)
       other_submissions = FactoryGirl.
@@ -25,6 +25,15 @@ feature "view submissions" do
       other_submissions.each do |submission|
         expect(page).to_not have_link_href(submission_path(submission))
       end
+    end
+  end
+
+  context "as a guest" do
+    scenario "redirect to login" do
+      visit assignment_submissions_path(assignment)
+
+      expect(page).to have_content("You need to sign in before continuing.")
+      expect(page).to_not have_content("Submissions for #{assignment.title}")
     end
   end
 end
