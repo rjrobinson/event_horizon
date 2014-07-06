@@ -1,6 +1,11 @@
 class SubmissionsController < ApplicationController
   before_action :authenticate_user!
 
+  def index
+    @assignment = Assignment.find(params[:assignment_id])
+    @submissions = current_user.submissions.where(assignment: @assignment)
+  end
+
   def show
     @submission = current_user.submissions.find_by(id: params[:id]) || not_found
   end

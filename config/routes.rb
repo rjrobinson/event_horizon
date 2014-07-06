@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root "assignments#index"
 
   resources :assignments, only: [:index, :show] do
-    resources :submissions, only: [:new, :create]
+    resources :submissions, only: [:index, :new, :create]
   end
 
   resources :submissions, only: [:show]
