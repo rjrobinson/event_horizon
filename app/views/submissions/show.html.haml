@@ -1,4 +1,4 @@
 %h1= "Submission for #{@submission.assignment.title}"
 
 #submission
-  = @submission.body
+  = render_code(@submission.body, "ruby")
