@@ -1,6 +1,6 @@
 require "rails_helper"
 
-feature "comment on submission", focus: true do
+feature "comment on submission" do
   let(:submission) { FactoryGirl.create(:submission) }
 
   context "as an instructor" do

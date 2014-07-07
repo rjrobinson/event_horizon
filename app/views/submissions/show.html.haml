@@ -19,4 +19,4 @@
     - if @comment.errors[:body].any?
       %small.error= @comment.errors[:body].first
 
-    = f.submit "Submit"
+    = f.submit "Submit", class: "button"

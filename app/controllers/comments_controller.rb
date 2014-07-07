@@ -1,6 +1,12 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!
+
   def create
     @submission = Submission.find(params[:submission_id])
+    if @submission.user != current_user && !current_user.instructor?
+      not_found
+    end
+
     @comment = @submission.comments.build(comment_params)
     @comment.user = current_user
 
