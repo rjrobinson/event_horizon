@@ -17,6 +17,8 @@ class SubmissionsController < ApplicationController
       @submission = current_user.submissions.
         find_by(id: params[:id]) || not_found
     end
+
+    @comment = Comment.new
   end
 
   def new

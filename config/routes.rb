@@ -5,7 +5,9 @@ Rails.application.routes.draw do
     resources :submissions, only: [:index, :new, :create]
   end
 
-  resources :submissions, only: [:show]
+  resources :submissions, only: [:show] do
+    resources :comments, only: [:create]
+  end
 
   resource :session, only: [:new, :create, :destroy] do
     get "failure", on: :member
