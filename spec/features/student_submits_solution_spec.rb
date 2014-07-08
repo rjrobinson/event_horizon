@@ -27,6 +27,7 @@ feature "student submits solution" do
       submission = Submission.first
       expect(submission.user).to eq(user)
       expect(submission.assignment).to eq(assignment)
+      expect(submission.files.count).to eq(1)
     end
 
     scenario "redisplay form with errors on blank submission" do
