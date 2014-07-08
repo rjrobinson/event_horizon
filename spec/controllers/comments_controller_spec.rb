@@ -16,9 +16,9 @@ describe CommentsController do
       new_user = FactoryGirl.create(:user)
       session[:user_id] = new_user.id
 
-      expect{
+      expect do
         post :create, submission_id: submission.id, comment: { body: "foo" }
-      }.to raise_error(ActionController::RoutingError)
+      end.to raise_error(ActionController::RoutingError)
 
       expect(Comment.count).to eq(0)
     end

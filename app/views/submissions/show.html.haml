@@ -4,16 +4,24 @@
   .user= "Submitted by #{@submission.user.username}"
 
 #submission
-  = render_code(@submission.body, "ruby")
+  ~ render_code(@submission.body, "ruby")
 
 #comments
   - @submission.comments.each do |comment|
     - if comment.persisted?
       .comment
-        .user= "#{comment.user.username} commented..."
+        .user
+          - if comment.line_number.nil?
+            = "#{comment.user.username} commented"
+          - else
+            = "#{comment.user.username} commented on line #{comment.line_number}"
+
         .body= comment.body
 
   = form_for [@submission, @comment] do |f|
+    = f.label :line_number, "Line Number"
+    = f.text_field :line_number
+
     = f.label :body, "Comment"
     = f.text_field :body
     - if @comment.errors[:body].any?
