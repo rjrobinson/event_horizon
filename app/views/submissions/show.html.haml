@@ -23,7 +23,7 @@
     = f.text_field :line_number
 
     = f.label :body, "Comment"
-    = f.text_field :body
+    = f.text_area :body, rows: 5
     - if @comment.errors[:body].any?
       %small.error= @comment.errors[:body].first
 
