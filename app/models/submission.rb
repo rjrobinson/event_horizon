@@ -6,4 +6,8 @@ class Submission < ActiveRecord::Base
   validates :user, presence: true
   validates :assignment, presence: true
   validates :body, presence: true
+
+  def inline_comments
+    comments.where("line_number IS NOT NULL")
+  end
 end

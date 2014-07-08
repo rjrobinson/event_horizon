@@ -4,7 +4,7 @@
   .user= "Submitted by #{@submission.user.username}"
 
 #submission
-  ~ render_code(@submission.body, "ruby")
+  ~ render_submission(@submission)
 
 #comments
   - @submission.comments.each do |comment|

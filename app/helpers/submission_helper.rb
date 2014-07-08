@@ -1,5 +1,6 @@
 module SubmissionHelper
-  def render_code(code, language)
-    CodeRenderer.render(code, language).html_safe
+  def render_submission(submission)
+    CodeRenderer.new(submission.body, "ruby", submission.inline_comments).
+      to_html.html_safe
   end
 end
