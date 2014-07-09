@@ -30,6 +30,20 @@ feature "student submits solution" do
       expect(submission.files.count).to eq(1)
     end
 
+    let(:sample_archive) do
+      Rails.root.join("spec/support/data/one_file.tar.gz")
+    end
+
+    scenario "upload archive containing solution", focus: true do
+      visit new_assignment_submission_path(assignment)
+
+      attach_file "Archive", sample_archive
+      click_button "Upload"
+
+      expect(page).to have_content("Solution submitted.")
+      expect(page).to have_content("puts \"hello, world\"")
+    end
+
     scenario "redisplay form with errors on blank submission" do
       visit assignment_path(assignment)
 
