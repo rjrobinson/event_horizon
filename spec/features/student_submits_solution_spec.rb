@@ -34,7 +34,7 @@ feature "student submits solution" do
       Rails.root.join("spec/support/data/one_file.tar.gz")
     end
 
-    scenario "upload archive containing solution", focus: true do
+    scenario "upload archive containing solution" do
       visit new_assignment_submission_path(assignment)
 
       attach_file "Archive", sample_archive
@@ -51,7 +51,6 @@ feature "student submits solution" do
       click_button "Submit"
 
       expect(page).to have_content("The solution couldn't be submitted.")
-      expect(page).to have_content("can't be blank")
       expect(Submission.count).to eq(0)
     end
   end
