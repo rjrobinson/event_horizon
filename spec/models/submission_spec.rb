@@ -18,9 +18,6 @@ describe Submission do
 
   describe "#extract_source_files" do
     let(:submission) { FactoryGirl.build(:submission) }
-    let(:source_archive) do
-      Rails.root.join("spec/data/one_file.tar.gz")
-    end
 
     around(:each) do |test|
       Dir.mktmpdir do |tmpdir|
@@ -31,14 +28,33 @@ describe Submission do
       end
     end
 
-    it "extracts a single file" do
-      submission.extract_source_files(@archive)
+    context "for a single file" do
+      let(:source_archive) { Rails.root.join("spec/data/one_file.tar.gz") }
 
-      expect(submission.files.length).to eq(1)
+      it "extracts a single file" do
+        submission.extract_source_files(@archive)
 
-      file = submission.files.first
-      expect(file.body).to eq("puts \"hello, world\"\n")
-      expect(file.filename).to eq("example.rb")
+        expect(submission.files.length).to eq(1)
+
+        file = submission.files.first
+        expect(file.body).to eq("puts \"hello, world\"\n")
+        expect(file.filename).to eq("example.rb")
+      end
+    end
+
+    context "for multiple files" do
+      let(:source_archive) { Rails.root.join("spec/data/two_files.tar.gz") }
+
+      it "extracts a single file" do
+        submission.extract_source_files(@archive)
+
+        expect(submission.files.length).to eq(2)
+
+        filenames = submission.files.map { |file| file.filename }
+
+        expect(filenames).to include("one.rb")
+        expect(filenames).to include("two.rb")
+      end
     end
   end
 
