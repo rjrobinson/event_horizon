@@ -31,7 +31,7 @@ feature "student submits solution" do
     end
 
     let(:sample_archive) do
-      Rails.root.join("spec/support/data/one_file.tar.gz")
+      Rails.root.join("spec/data/one_file.tar.gz")
     end
 
     scenario "upload archive containing solution" do
