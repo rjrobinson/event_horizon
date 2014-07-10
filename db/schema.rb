@@ -55,20 +55,6 @@ ActiveRecord::Schema.define(version: 20140708222338) do
   add_index "submissions", ["assignment_id"], name: "index_submissions_on_assignment_id", using: :btree
   add_index "submissions", ["user_id"], name: "index_submissions_on_user_id", using: :btree
 
-  create_table "track_assignments", force: true do |t|
-    t.integer  "track_id",      null: false
-    t.integer  "assignment_id", null: false
-    t.integer  "position",      null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "tracks", force: true do |t|
-    t.string   "name",       null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "users", force: true do |t|
     t.string   "uid",                           null: false
     t.string   "provider",                      null: false
