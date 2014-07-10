@@ -29,7 +29,7 @@ describe SubmissionsController do
 
   describe "GET show" do
     it "allows access to the submitting user" do
-      submission = FactoryGirl.create(:submission, user: user)
+      submission = FactoryGirl.create(:submission_with_source, user: user)
       session[:user_id] = user.id
 
       get :show, id: submission.id
@@ -47,7 +47,7 @@ describe SubmissionsController do
     end
 
     it "avoids showing other user submissions" do
-      other_user_submission = FactoryGirl.create(:submission)
+      other_user_submission = FactoryGirl.create(:submission_with_source)
       session[:user_id] = user.id
 
       expect { get :show, id: other_user_submission.id }.

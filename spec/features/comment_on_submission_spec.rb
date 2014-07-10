@@ -1,7 +1,7 @@
 require "rails_helper"
 
 feature "comment on submission" do
-  let(:submission) { FactoryGirl.create(:submission) }
+  let(:submission) { FactoryGirl.create(:submission_with_source) }
 
   context "as an instructor" do
     let(:instructor) { FactoryGirl.create(:instructor) }

@@ -24,18 +24,25 @@ class Submission < ActiveRecord::Base
         file.write(uploaded_file.read)
       end
 
-      # Probably need to escape something here.
-      `tar zxf #{archive_path} -C #{tmpdir}`
-      `rm #{archive_path}`
-
-      valid_source_files(tmpdir).each do |filepath|
-        files << SourceFile.new(body: File.read(filepath))
-      end
+      extract_source_files(archive_path)
     end
   end
 
   def inline_comments
     comments.where("line_number IS NOT NULL")
+  end
+
+  def extract_source_files(archive_path)
+    directory = File.dirname(archive_path)
+
+    # Probably need to escape something here.
+    `tar zxf #{archive_path} -C #{directory}`
+    `rm #{archive_path}`
+
+    valid_source_files(directory).each do |filepath|
+      files << SourceFile.new(body: File.read(filepath),
+                              filename: File.basename(filepath))
+    end
   end
 
   private
