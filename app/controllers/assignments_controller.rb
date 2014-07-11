@@ -4,6 +4,6 @@ class AssignmentsController < ApplicationController
   end
 
   def show
-    @assignment = Assignment.find(params[:id])
+    @assignment = Assignment.find_by!(slug: params[:slug])
   end
 end

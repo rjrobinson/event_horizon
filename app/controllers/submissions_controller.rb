@@ -2,7 +2,7 @@ class SubmissionsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @assignment = Assignment.find(params[:assignment_id])
+    @assignment = Assignment.find_by!(slug: params[:assignment_slug])
     if current_user.instructor?
       @submissions = @assignment.submissions
     else
@@ -22,12 +22,12 @@ class SubmissionsController < ApplicationController
   end
 
   def new
-    @assignment = Assignment.find(params[:assignment_id])
+    @assignment = Assignment.find_by!(slug: params[:assignment_slug])
     @submission = Submission.new
   end
 
   def create
-    @assignment = Assignment.find(params[:assignment_id])
+    @assignment = Assignment.find_by!(slug: params[:assignment_slug])
     @submission = @assignment.submissions.build(submission_params)
     @submission.user = current_user
 

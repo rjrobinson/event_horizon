@@ -8,7 +8,7 @@ describe SubmissionsController do
     context "as an authenticated user" do
       it "redirects after successful create" do
         session[:user_id] = user.id
-        post :create, assignment_id: assignment.id,
+        post :create, assignment_slug: assignment.slug,
                       submission: { body: "1 + 2 == 4" }
 
         expect(Submission.count).to eq(1)
@@ -18,7 +18,7 @@ describe SubmissionsController do
 
     context "as a guest" do
       it "redirects without saving" do
-        post :create, assignment_id: assignment.id,
+        post :create, assignment_slug: assignment.slug,
                       submission: { body: "1 + 2 == 4" }
 
         expect(Submission.count).to eq(0)

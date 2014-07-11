@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root "assignments#index"
 
-  resources :assignments, only: [:index, :show] do
+  resources :assignments, only: [:index, :show], param: :slug do
     resources :submissions, only: [:index, :new, :create]
   end
 

@@ -5,6 +5,10 @@ class Assignment < ActiveRecord::Base
 
   has_many :submissions
 
+  def to_param
+    slug
+  end
+
   def self.parse(contents)
     headers = YAML.load(contents)
     body = contents.gsub(/---(.|\n)*---/, "")
