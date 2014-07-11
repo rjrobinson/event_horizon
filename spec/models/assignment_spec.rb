@@ -16,10 +16,15 @@ describe Assignment do
       expect(assignment[:title]).to eq("Sample Assignment")
     end
 
+    it "reads the slug from the header" do
+      expect(assignment[:slug]).to eq("sample-assignment")
+    end
+
     it "removes header from the body" do
       expect(assignment[:body]).
         to eq("\n\n# Blah Blah\n\nSomething goes here.\n")
     end
+
   end
 
 end

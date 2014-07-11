@@ -1,5 +1,6 @@
 ---
 title: Auto-Guesser
+slug: auto-guesser
 type: challenge
 ---
 
