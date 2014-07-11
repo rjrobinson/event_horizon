@@ -6,7 +6,7 @@ Dir.entries(assignments_path).each do |filename|
   filepath = assignments_path.join(filename)
   attr = Assignment.parse(File.read(filepath))
 
-  Assignment.find_or_create_by(title: attr[:title]) do |a|
-    a.body = attr[:body]
-  end
+  assignment = Assignment.find_by(slug: attr[:slug])
+  assignment ||= Assignment.new(slug: attr[:slug])
+  assignment.update!(attr)
 end
