@@ -19,5 +19,4 @@ class AddSlugToAssignments < ActiveRecord::Migration
     remove_index :assignments, :slug
     remove_column :assignments, :slug
   end
-
 end
