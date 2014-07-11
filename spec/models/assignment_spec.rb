@@ -6,7 +6,7 @@ describe Assignment do
 
   describe ".parse" do
     let(:sample_filepath) do
-      Rails.root.join("spec/support/data/sample_assignment.md")
+      Rails.root.join("spec/data/sample_assignment.md")
     end
 
     let(:sample_file) { File.read(sample_filepath) }
