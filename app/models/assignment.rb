@@ -10,7 +10,7 @@ class Assignment < ActiveRecord::Base
   end
 
   def self.search(query)
-    where("to_tsvector(title || ' ' || body) @@ plainto_tsquery(?)", query)
+    where("searchable @@ plainto_tsquery(?)", query)
   end
 
   def self.parse(contents)
