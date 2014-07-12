@@ -1,4 +1,6 @@
 class RatingsController < ApplicationController
+  before_filter :authenticate_user!
+
   def create
     @assignment = Assignment.find_by!(slug: params[:assignment_slug])
     @rating = @assignment.ratings.build(rating_params)
