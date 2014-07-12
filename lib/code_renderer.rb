@@ -54,7 +54,7 @@ class CodeRenderer
 
   def html_code
     @html_code ||= formatter.format(lexer.lex(source)).
-      gsub("<pre><code>", "").
+      gsub("<pre><code class=\"highlight\">", "").
       gsub("</code></pre>", "")
   end
 
