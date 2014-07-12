@@ -4,6 +4,7 @@ class Assignment < ActiveRecord::Base
   validates :slug, presence: true, uniqueness: true
 
   has_many :submissions
+  has_many :ratings
 
   def to_param
     slug

@@ -9,5 +9,6 @@ class AssignmentsController < ApplicationController
 
   def show
     @assignment = Assignment.find_by!(slug: params[:slug])
+    @rating = Rating.new
   end
 end
