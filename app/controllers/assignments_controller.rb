@@ -1,6 +1,10 @@
 class AssignmentsController < ApplicationController
   def index
-    @assignments = Assignment.all
+    if params[:query]
+      @assignments = Assignment.search(params[:query])
+    else
+      @assignments = Assignment.all
+    end
   end
 
   def show

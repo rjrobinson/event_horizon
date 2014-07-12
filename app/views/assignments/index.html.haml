@@ -1,5 +1,12 @@
 %h1 Assignments
 
+- if params[:query]
+  .result-count
+    - if @assignments.empty?
+      No results found.
+    - else
+      = "Found #{@assignments.length} result(s)."
+
 %table
   %thead
     %tr
