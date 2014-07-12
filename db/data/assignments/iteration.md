@@ -51,20 +51,6 @@ end
 
 Think of a while loop like a race track. The interpreter will do a lap around the race track each time the condition is true. Every time it gets back to the starting line, it checks the conditional to see if it must do another lap. The race is over when the condition returns false.
 
-{% quick_challenge %}
-**Quick Challenge**: Ask yourself what the following program will output.
-
-```ruby
-puts "Starting up..."
-
-while false
-  puts "Waiting..."
-end
-```
-{% endquick_challenge %}
-
-This is like a race that never starts. The results of the conditional is always false so the body of the loop is never evaluated.
-
 #### until
 
 Just as the `unless` statement is a complement to `if`, Ruby also provides the `until` statement that is the complement to `while`. The code block of until will keep running as long as the condition is false. We could re-write the above example as:

@@ -77,8 +77,6 @@ trans[:amount]
 trans["amount"]
 ```
 
-{% question 'string-return' %}
-
 Starting in Ruby 1.9, there is slightly more compact (and preferred) way for creating a Hash by removing the `=>` symbol (aka hashrocket) and placing the colon after the symbol name. We can modify the example above to reflect this new syntax.
 
 ```ruby
@@ -142,8 +140,6 @@ word_counts.each do |word, count|
   puts "#{word} appeared #{count} time(s)."
 end
 ```
-
-{% question 'last-line' %}
 
 We pass in two parameters to our code block (`word` and `count`) which will be populated with the key and value for each pair in the hash. The pairs will appear in the order in which they were inserted into the hash.
 

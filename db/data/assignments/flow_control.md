@@ -284,34 +284,6 @@ end
 
 This example is functionally equivalent to the one above it.
 
-### Review
-
-{% quick_challenge %}
-Take the following code example:
-
-```ruby
-user_age = gets.chomp.to_i
-
-MIN_AGE = 17
-SENIOR_MIN_AGE = 55
-
-if user_age >= MIN_AGE
-  if user_age >= SENIOR_MIN_AGE
-    puts "Discount"
-  else
-    puts "Admit"
-  end
-else
-  puts "Prohibited"
-end
-```
-
-{% question 'when-45' %}
-{% question 'when-55' %}
-{% question 'when-7' %}
-{% question 'return-value' %}
-{% endquick_challenge %}
-
 ### Why This Matters
 
 #### Flow Control Is What Makes Software Intelligent

@@ -54,10 +54,6 @@ $ cat hello.txt
 hello, world!
 ```
 
-{% quick_challenge %}
-{% question 'how-many-args' %}
-{% endquick_challenge %}
-
 That is the string that we used in the `File.open` block when we called `f.puts 'hello, world!'`. So even after the Ruby program has ended, our file lives on with whatever we happened to write to it. We say that the file **persists** the information created by our code because it exists beyond the running of the program.
 
 So we can write files, but how about reading it back? In Ruby we can use the same `File.open` method to read in files as long as we pass in the `r` argument instead of `w` (read instead of write). In `irb`, we can read back the file in one line using:
@@ -84,10 +80,6 @@ File.open('hello.txt', 'r') do |f|
   f.read
 end
 ```
-
-{% quick_challenge %}
-{% question 'how-many-ruby-args' %}
-{% endquick_challenge %}
 
 The convention in Ruby is to use the curly braces if you can fit the block on one line, otherwise use `do..end`.
 

@@ -42,7 +42,7 @@ Here we have a single header and a few items in an unordered list. If we want to
 $ open home.html
 ```
 
-{% hal_image '/http-sinatra/unstyled_todo.png' %}
+![Unstyled TODO List](https://s3.amazonaws.com/hal-assets.launchacademy.com/http-sinatra/unstyled_todo.png)
 
 This is a pretty bland looking page so let's add some CSS to change the default styles. If we wanted this to be a ["Matrix"-style][matrix_style] TODO list we can add the following CSS in a file called *home.css*:
 
@@ -79,7 +79,7 @@ Then in the HTML we can add a link back to this stylesheet in the `<head>` secti
 
 After refreshing the page in the browser we should get a flashback to 1999.
 
-{% hal_image '/http-sinatra/styled_todo.png' %}
+![Styled TODO List](https://s3.amazonaws.com/hal-assets.launchacademy.com/http-sinatra/styled_todo.png)
 
 #### Hosting Pages
 

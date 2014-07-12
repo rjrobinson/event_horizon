@@ -37,18 +37,6 @@ end
 
 The `each` method is taking each element of the array and storing it in the `movie` variable. Since each element is actually a hash, we can refer to `movie[:title]` and `movie[:imdb_rating]` to access the value associated with those keys.
 
-{% quick_challenge %}
-Using the array of hashes above, output the titles, along with their year to achieve the following output.
-
-```no-highlight
-1998: The Big Lebowski
-1980: The Shining
-1990: Troll 2
-```
-
-{% question 'sort-gist' %}
-{% endquick_challenge %}
-
 We can take this a step further if we wanted to include more information about our movies. Consider adding a list of actors to a movie:
 
 ```ruby
