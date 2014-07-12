@@ -9,7 +9,7 @@ feature "search assignments" do
     fill_in "query", with: "foo"
     click_button "Search"
 
-    expect(page).to have_content("Found 1 result(s).")
+    expect(page).to have_content("Found 1 result(s) for \"foo\".")
     expect(page).to have_link("Blah", assignment_path(assignment))
     expect(page).to_not have_content("Bloop")
   end
@@ -21,7 +21,7 @@ feature "search assignments" do
     fill_in "query", with: "baz"
     click_button "Search"
 
-    expect(page).to have_content("No results found.")
+    expect(page).to have_content("No results found for \"baz\".")
     expect(page).to_not have_content("Blah")
   end
 end

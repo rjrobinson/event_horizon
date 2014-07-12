@@ -31,7 +31,7 @@
             .row.collapse
               = form_tag assignments_path, method: :get do
                 .large-8.small-9.columns
-                  = text_field_tag :query
+                  = text_field_tag :query, params[:query]
                 .large-4.small-3.columns
                   = submit_tag "Search", class: "alert button expand"
 
