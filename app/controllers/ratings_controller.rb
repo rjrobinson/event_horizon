@@ -13,6 +13,20 @@ class RatingsController < ApplicationController
     end
   end
 
+  def update
+    @assignment = Assignment.find_by!(slug: params[:assignment_slug])
+    @rating = current_user.ratings.
+      find_by!(id: params[:id], assignment: @assignment)
+
+    if @rating.update(rating_params)
+      flash[:success] = "Rating updated."
+      redirect_to assignment_path(@assignment)
+    else
+      flash[:alert] = "Rating could not be updated."
+      render "assignments/show"
+    end
+  end
+
   private
 
   def rating_params

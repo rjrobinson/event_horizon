@@ -9,6 +9,10 @@ class AssignmentsController < ApplicationController
 
   def show
     @assignment = Assignment.find_by!(slug: params[:slug])
-    @rating = Rating.new
+
+    if user_signed_in?
+      @rating = current_user.ratings.
+        find_or_initialize_by(assignment: @assignment)
+    end
   end
 end

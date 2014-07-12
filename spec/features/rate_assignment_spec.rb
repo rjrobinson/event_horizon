@@ -1,6 +1,6 @@
 require "rails_helper"
 
-feature "rate assignment", focus: true do
+feature "rate assignment" do
   let(:assignment) { FactoryGirl.create(:assignment) }
 
   context "as an authenticated user" do
@@ -34,6 +34,46 @@ feature "rate assignment", focus: true do
 
       expect(page).to have_content("Rating could not be saved.")
       expect(assignment.ratings.count).to eq(0)
+    end
+
+    scenario "successfully update existing rating" do
+      FactoryGirl.create(:rating,
+                         assignment: assignment,
+                         user: user,
+                         helpfulness: 3,
+                         clarity: 1,
+                         comment: "So-so.")
+
+      visit assignment_path(assignment)
+      expect(page).to have_content("So-so.")
+
+      fill_in "Additional comments (optional)", with: "Much better."
+      within(:css, "#clarity") { choose("5") }
+      click_button "Rate Assignment"
+
+      expect(page).to have_content("Rating updated.")
+      expect(assignment.ratings.count).to eq(1)
+
+      rating = assignment.ratings.first
+      expect(rating.comment).to eq("Much better.")
+      expect(rating.clarity).to eq(5)
+      expect(rating.helpfulness).to eq(3)
+    end
+
+    scenario "fail to update existing rating" do
+      FactoryGirl.create(:rating,
+                         assignment: assignment,
+                         user: user,
+                         comment: "So-so.")
+
+      visit assignment_path(assignment)
+      long_comment = "a" * 10_000
+
+      fill_in "Additional comments (optional)", with: long_comment
+      click_button "Rate Assignment"
+
+      expect(page).to have_content("Rating could not be updated.")
+      expect(assignment.ratings.first.comment).to eq("So-so.")
     end
   end
 
