@@ -30,5 +30,9 @@ module EventHorizon
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales',
     #                                              '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+
+    # Preserves the trigger for updating the assignments searchable column
+    # as well as any other PostgreSQL-specific settings.
+    config.active_record.schema_format = :sql
   end
 end
