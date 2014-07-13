@@ -14,7 +14,18 @@ feature "view users" do
       visit users_path
 
       users.each do |user|
-        expect(page).to have_content(user.username)
+        expect(page).to have_link(user.username, user_path(user))
+      end
+    end
+
+    scenario "view submissions for a single user" do
+      user = FactoryGirl.create(:user)
+      submissions = FactoryGirl.create_list(:submission, 2, user: user)
+
+      visit user_path(user)
+
+      submissions.each do |submission|
+        expect(page).to have_link_href(submission_path(submission))
       end
     end
   end
