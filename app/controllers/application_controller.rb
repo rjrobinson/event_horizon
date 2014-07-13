@@ -14,6 +14,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def authorize_admin!
+    if !user_signed_in? || !current_user.admin?
+      not_found
+    end
+  end
+
   def not_found
     raise ActionController::RoutingError.new("Not Found")
   end
