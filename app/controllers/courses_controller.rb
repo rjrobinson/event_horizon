@@ -1,4 +1,14 @@
 class CoursesController < ApplicationController
+  before_action :authorize_admin!, except: [:index, :show]
+
+  def index
+    @courses = Course.all
+  end
+
+  def show
+    @course = Course.find(params[:id])
+  end
+
   def new
     @course = Course.new
   end
@@ -13,10 +23,6 @@ class CoursesController < ApplicationController
     else
       render :new
     end
-  end
-
-  def show
-    @course = Course.find(params[:id])
   end
 
   private

@@ -1,0 +1,9 @@
+%h1 Courses
+
+%ul
+  - @courses.each do |course|
+    %li= link_to course.title, course_path(course)
+
+- if user_signed_in? && current_user.admin?
+  #new-course
+    = link_to "New Course", new_course_path

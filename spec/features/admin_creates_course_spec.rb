@@ -30,5 +30,23 @@ feature "admin creates course" do
       expect(page).to have_content("Title can't be blank")
       expect(Course.count).to eq(0)
     end
+
+    scenario "view link to create new course" do
+      visit courses_path
+      expect(page).to have_link("New Course", new_course_path)
+    end
+  end
+
+  context "as a non-admin user" do
+    let(:user) { FactoryGirl.create(:user) }
+
+    before :each do
+      sign_in_as(user)
+    end
+
+    scenario "cannot view link to create new course" do
+      visit courses_path
+      expect(page).to_not have_link("New Course", new_course_path)
+    end
   end
 end

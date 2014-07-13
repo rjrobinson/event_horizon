@@ -6,4 +6,4 @@
   - if @course.errors[:title].any?
     %small.error= @course.errors[:title].first
 
-  = f.submit
+  = f.submit "Create Course", class: "button"
