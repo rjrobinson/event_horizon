@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show]
 
+  resources :courses, only: [:new, :create, :show]
+
   resource :session, only: [:new, :create, :destroy] do
     get "failure", on: :member
   end
