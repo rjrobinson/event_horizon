@@ -1,5 +1,4 @@
 FactoryGirl.define do
-
   factory :user do
     provider "github"
     sequence(:uid) { |n| n.to_s }
@@ -11,6 +10,9 @@ FactoryGirl.define do
     factory :instructor do
       role "instructor"
     end
-  end
 
+    factory :admin do
+      role "admin"
+    end
+  end
 end

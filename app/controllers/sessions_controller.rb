@@ -5,7 +5,22 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_or_create_from_omniauth(auth_hash)
-    session[:user_id] = user.id
+
+    if user.persisted?
+      session[:user_id] = user.id
+      flash[:success] = "Successfully signed in as #{user.username}."
+    else
+      error_message = "Unable to sign up."
+
+      if user.email.nil?
+        # This is a common issue with GitHub OAuth so include a custom message
+        # if a user cannot sign up because their e-mail is missing.
+        error_message += " No public e-mail associated with GitHub account."
+      end
+
+      flash[:alert] = error_message
+    end
+
     redirect_to root_path
   end
 

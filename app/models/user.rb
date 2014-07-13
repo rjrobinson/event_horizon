@@ -6,7 +6,9 @@ class User < ActiveRecord::Base
   validates :email, presence: true, uniqueness: true
   validates :uid, presence: true, uniqueness: { scope: :provider }
   validates :provider, presence: true
-  validates :role, presence: true, inclusion: { in: ["member", "instructor"] }
+  validates :role, presence: true, inclusion: {
+    in: ["member", "instructor", "admin"]
+  }
 
   def self.find_or_create_from_omniauth(auth)
     account_keys = { uid: auth["uid"], provider: auth["provider"] }
@@ -20,5 +22,9 @@ class User < ActiveRecord::Base
 
   def instructor?
     role == "instructor"
+  end
+
+  def admin?
+    role == "admin"
   end
 end
