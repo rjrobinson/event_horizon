@@ -19,7 +19,7 @@ feature "view courses", focus: true do
       sign_in_as(user)
     end
 
-    scenario "view enrolled courses" do
+    scenario "view all enrolled courses" do
       enrollments = FactoryGirl.create_list(:enrollment, 2, user: user)
       other_courses = FactoryGirl.create_list(:course, 2)
 
@@ -34,6 +34,20 @@ feature "view courses", focus: true do
       other_courses.each do |course|
         expect(page).to_not have_link(course.title, course_path(course))
       end
+    end
+
+    scenario "view specific enrolled course" do
+      enrollment = FactoryGirl.create(:enrollment, user: user)
+
+      visit course_path(enrollment.course)
+      expect(page).to have_content(enrollment.course.title)
+    end
+
+    scenario "cannot view courses not enrolled in" do
+      course = FactoryGirl.create(:course)
+
+      expect { visit course_path(course) }.
+        to raise_error(ActionController::RoutingError)
     end
   end
 

@@ -11,7 +11,13 @@ class CoursesController < ApplicationController
   end
 
   def show
-    @course = Course.find(params[:id])
+    if current_user.admin?
+      @course = Course.find_by(id: params[:id])
+    else
+      @course = current_user.courses.find_by(id: params[:id])
+    end
+
+    @course || not_found
   end
 
   def new
