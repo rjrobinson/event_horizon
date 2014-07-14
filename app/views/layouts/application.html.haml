@@ -27,6 +27,8 @@
 
         %ul.left
           %li= link_to "Assignments", assignments_path
+          - if user_signed_in?
+            %li= link_to "Courses", courses_path
           %li.has-form
             .row.collapse
               = form_tag assignments_path, method: :get do

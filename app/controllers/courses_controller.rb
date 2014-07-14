@@ -1,5 +1,6 @@
 class CoursesController < ApplicationController
   before_action :authorize_admin!, except: [:index, :show]
+  before_action :authenticate_user!
 
   def index
     @courses = Course.all
