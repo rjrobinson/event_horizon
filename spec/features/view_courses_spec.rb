@@ -1,6 +1,6 @@
 require "rails_helper"
 
-feature "view courses", focus: true do
+feature "view courses" do
   context "as a guest" do
     scenario "require login to view courses" do
       visit root_path
@@ -34,6 +34,11 @@ feature "view courses", focus: true do
       other_courses.each do |course|
         expect(page).to_not have_link(course.title, course_path(course))
       end
+    end
+
+    scenario "not enrolled in any courses" do
+      visit courses_path
+      expect(page).to have_content("You're not enrolled in any courses.")
     end
 
     scenario "view specific enrolled course" do
