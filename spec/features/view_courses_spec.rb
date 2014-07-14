@@ -12,6 +12,31 @@ feature "view courses", focus: true do
     end
   end
 
+  context "as a member" do
+    let(:user) { FactoryGirl.create(:user) }
+
+    before :each do
+      sign_in_as(user)
+    end
+
+    scenario "view enrolled courses" do
+      enrollments = FactoryGirl.create_list(:enrollment, 2, user: user)
+      other_courses = FactoryGirl.create_list(:course, 2)
+
+      visit root_path
+      click_link "Courses"
+
+      enrollments.each do |enrollment|
+        course = enrollment.course
+        expect(page).to have_link(course.title, course_path(course))
+      end
+
+      other_courses.each do |course|
+        expect(page).to_not have_link(course.title, course_path(course))
+      end
+    end
+  end
+
   context "as an admin" do
     let(:admin) { FactoryGirl.create(:admin) }
 

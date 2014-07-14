@@ -3,7 +3,11 @@ class CoursesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @courses = Course.all
+    if current_user.admin?
+      @courses = Course.all
+    else
+      @courses = current_user.courses
+    end
   end
 
   def show
