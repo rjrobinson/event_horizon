@@ -3,7 +3,6 @@
 --
 
 SET statement_timeout = 0;
-SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
@@ -137,7 +136,6 @@ CREATE TABLE enrollments (
     id integer NOT NULL,
     user_id integer NOT NULL,
     course_id integer NOT NULL,
-    role character varying(255) DEFAULT 'student'::character varying NOT NULL,
     created_at timestamp without time zone,
     updated_at timestamp without time zone
 );
@@ -577,4 +575,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140712191638');
 INSERT INTO schema_migrations (version) VALUES ('20140713160257');
 
 INSERT INTO schema_migrations (version) VALUES ('20140714010254');
+
+INSERT INTO schema_migrations (version) VALUES ('20140715190942');
 

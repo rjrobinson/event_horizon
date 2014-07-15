@@ -4,7 +4,4 @@ class Enrollment < ActiveRecord::Base
 
   validates :user, presence: true, uniqueness: { scope: :course }
   validates :course, presence: true
-  validates :role, presence: true, inclusion: {
-    in: ["instructor", "student"]
-  }
 end
