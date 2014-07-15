@@ -1,0 +1,12 @@
+%h1 Courses
+
+- if @courses.empty?
+  %p You're not enrolled in any courses.
+- else
+  %ul
+    - @courses.each do |course|
+      %li= link_to course.title, course_path(course)
+
+- if user_signed_in? && current_user.admin?
+  #new-course
+    = link_to "New Course", new_course_path
