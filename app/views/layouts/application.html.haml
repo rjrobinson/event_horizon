@@ -32,7 +32,7 @@
             %li= link_to "Courses", courses_path
           %li.has-form
             .row.collapse
-              = form_tag assignments_path, method: :get do
+              = form_tag search_path, method: :get do
                 .large-8.small-9.columns
                   = text_field_tag :query, params[:query]
                 .large-4.small-3.columns

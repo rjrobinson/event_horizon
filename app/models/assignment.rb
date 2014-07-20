@@ -10,10 +10,6 @@ class Assignment < ActiveRecord::Base
     slug
   end
 
-  def self.search(query)
-    where("searchable @@ plainto_tsquery(?)", query)
-  end
-
   def self.parse(contents)
     headers = YAML.load(contents)
     body = contents.gsub(/---(.|\n)*---/, "")
