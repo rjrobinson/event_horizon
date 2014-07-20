@@ -73,7 +73,8 @@ CREATE TABLE challenges (
     slug character varying(255) NOT NULL,
     body text NOT NULL,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    searchable tsvector
 );
 
 
@@ -236,6 +237,24 @@ ALTER SEQUENCE ratings_id_seq OWNED BY ratings.id;
 CREATE TABLE schema_migrations (
     version character varying(255) NOT NULL
 );
+
+
+--
+-- Name: searches; Type: VIEW; Schema: public; Owner: -
+--
+
+CREATE VIEW searches AS
+         SELECT assignments.id AS result_id,
+            'Assignment'::text AS result_type,
+            assignments.title,
+            assignments.searchable
+           FROM assignments
+UNION
+         SELECT challenges.id AS result_id,
+            'Challenge'::text AS result_type,
+            challenges.title,
+            challenges.searchable
+           FROM challenges;
 
 
 --
@@ -489,6 +508,13 @@ CREATE UNIQUE INDEX index_assignments_on_slug ON assignments USING btree (slug);
 
 
 --
+-- Name: index_challenges_on_searchable; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_challenges_on_searchable ON challenges USING gin (searchable);
+
+
+--
 -- Name: index_challenges_on_slug; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -601,6 +627,13 @@ CREATE TRIGGER assignments_searchable_update BEFORE INSERT OR UPDATE ON assignme
 
 
 --
+-- Name: challenges_searchable_update; Type: TRIGGER; Schema: public; Owner: -
+--
+
+CREATE TRIGGER challenges_searchable_update BEFORE INSERT OR UPDATE ON challenges FOR EACH ROW EXECUTE PROCEDURE tsvector_update_trigger('searchable', 'pg_catalog.english', 'title', 'body');
+
+
+--
 -- PostgreSQL database dump complete
 --
 
@@ -637,4 +670,8 @@ INSERT INTO schema_migrations (version) VALUES ('20140715190942');
 INSERT INTO schema_migrations (version) VALUES ('20140720030415');
 
 INSERT INTO schema_migrations (version) VALUES ('20140720030640');
+
+INSERT INTO schema_migrations (version) VALUES ('20140720040146');
+
+INSERT INTO schema_migrations (version) VALUES ('20140720040402');
 
