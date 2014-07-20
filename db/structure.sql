@@ -335,7 +335,8 @@ CREATE TABLE users (
     name character varying(255),
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    role character varying(255) DEFAULT 'member'::character varying NOT NULL
+    role character varying(255) DEFAULT 'member'::character varying NOT NULL,
+    token character varying(255) NOT NULL
 );
 
 
@@ -674,4 +675,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140720030640');
 INSERT INTO schema_migrations (version) VALUES ('20140720040146');
 
 INSERT INTO schema_migrations (version) VALUES ('20140720040402');
+
+INSERT INTO schema_migrations (version) VALUES ('20140720185457');
 
