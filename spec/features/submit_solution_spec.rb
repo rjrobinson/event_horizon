@@ -1,6 +1,6 @@
 require "rails_helper"
 
-feature "student submits solution" do
+feature "submit solution" do
   let(:challenge) { FactoryGirl.create(:challenge) }
 
   context "as a signed in user" do
@@ -62,5 +62,4 @@ feature "student submits solution" do
       expect(page).to_not have_content("New Submission")
     end
   end
-
 end

@@ -1,7 +1,6 @@
 require "rails_helper"
 
-feature "student views assignment" do
-
+feature "views assignments" do
   scenario "view a list of available assignments" do
     assignments = FactoryGirl.create_list(:assignment, 3)
 
@@ -24,5 +23,4 @@ feature "student views assignment" do
     expect(page).to have_selector("li", "item 1")
     expect(page).to have_selector("li", "item 2")
   end
-
 end
