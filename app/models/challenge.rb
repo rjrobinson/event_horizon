@@ -8,4 +8,10 @@ class Challenge < ActiveRecord::Base
   def to_param
     slug
   end
+
+  def self.parse(contents)
+    headers = YAML.load(contents)
+    body = contents.gsub(/---(.|\n)*---/, "")
+    { title: headers["title"], slug: headers["slug"], body: body }
+  end
 end
