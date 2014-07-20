@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     resources :ratings, only: [:create, :update]
   end
 
-  resources :challenges, only: [:show], param: :slug do
+  resources :challenges, only: [:index, :show], param: :slug do
     resources :submissions, only: [:index, :new, :create]
   end
 
