@@ -1,8 +1,7 @@
 require "rails_helper"
 
-feature "student submits solution" do
-
-  let(:assignment) { FactoryGirl.create(:assignment) }
+feature "submit solution" do
+  let(:challenge) { FactoryGirl.create(:challenge) }
 
   context "as a signed in user" do
     let(:user) { FactoryGirl.create(:user) }
@@ -12,7 +11,7 @@ feature "student submits solution" do
     end
 
     scenario "successfully complete submission form" do
-      visit assignment_path(assignment)
+      visit challenge_path(challenge)
 
       click_link "Submit Solution"
 
@@ -26,7 +25,7 @@ feature "student submits solution" do
 
       submission = Submission.first
       expect(submission.user).to eq(user)
-      expect(submission.assignment).to eq(assignment)
+      expect(submission.challenge).to eq(challenge)
       expect(submission.files.count).to eq(1)
     end
 
@@ -35,7 +34,7 @@ feature "student submits solution" do
     end
 
     scenario "upload archive containing solution" do
-      visit new_assignment_submission_path(assignment)
+      visit new_challenge_submission_path(challenge)
 
       attach_file "Archive", sample_archive
       click_button "Upload"
@@ -45,7 +44,7 @@ feature "student submits solution" do
     end
 
     scenario "redisplay form with errors on blank submission" do
-      visit assignment_path(assignment)
+      visit challenge_path(challenge)
 
       click_link "Submit Solution"
       click_button "Submit"
@@ -57,11 +56,10 @@ feature "student submits solution" do
 
   context "as a guest" do
     scenario "cannot access the submission form" do
-      visit new_assignment_submission_path(assignment)
+      visit new_challenge_submission_path(challenge)
 
       expect(page).to have_content("You need to sign in before continuing.")
       expect(page).to_not have_content("New Submission")
     end
   end
-
 end

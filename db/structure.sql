@@ -3,6 +3,7 @@
 --
 
 SET statement_timeout = 0;
+SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
@@ -60,6 +61,39 @@ CREATE SEQUENCE assignments_id_seq
 --
 
 ALTER SEQUENCE assignments_id_seq OWNED BY assignments.id;
+
+
+--
+-- Name: challenges; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE challenges (
+    id integer NOT NULL,
+    title character varying(255) NOT NULL,
+    slug character varying(255) NOT NULL,
+    body text NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: challenges_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE challenges_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: challenges_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE challenges_id_seq OWNED BY challenges.id;
 
 
 --
@@ -244,7 +278,7 @@ ALTER SEQUENCE source_files_id_seq OWNED BY source_files.id;
 CREATE TABLE submissions (
     id integer NOT NULL,
     user_id integer NOT NULL,
-    assignment_id integer NOT NULL,
+    challenge_id integer NOT NULL,
     created_at timestamp without time zone,
     updated_at timestamp without time zone
 );
@@ -316,6 +350,13 @@ ALTER TABLE ONLY assignments ALTER COLUMN id SET DEFAULT nextval('assignments_id
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY challenges ALTER COLUMN id SET DEFAULT nextval('challenges_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY comments ALTER COLUMN id SET DEFAULT nextval('comments_id_seq'::regclass);
 
 
@@ -367,6 +408,14 @@ ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regcl
 
 ALTER TABLE ONLY assignments
     ADD CONSTRAINT assignments_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: challenges_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY challenges
+    ADD CONSTRAINT challenges_pkey PRIMARY KEY (id);
 
 
 --
@@ -440,6 +489,13 @@ CREATE UNIQUE INDEX index_assignments_on_slug ON assignments USING btree (slug);
 
 
 --
+-- Name: index_challenges_on_slug; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_challenges_on_slug ON challenges USING btree (slug);
+
+
+--
 -- Name: index_comments_on_submission_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -496,10 +552,10 @@ CREATE INDEX index_source_files_on_submission_id ON source_files USING btree (su
 
 
 --
--- Name: index_submissions_on_assignment_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_submissions_on_challenge_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE INDEX index_submissions_on_assignment_id ON submissions USING btree (assignment_id);
+CREATE INDEX index_submissions_on_challenge_id ON submissions USING btree (challenge_id);
 
 
 --
@@ -577,4 +633,8 @@ INSERT INTO schema_migrations (version) VALUES ('20140713160257');
 INSERT INTO schema_migrations (version) VALUES ('20140714010254');
 
 INSERT INTO schema_migrations (version) VALUES ('20140715190942');
+
+INSERT INTO schema_migrations (version) VALUES ('20140720030415');
+
+INSERT INTO schema_migrations (version) VALUES ('20140720030640');
 

@@ -1,6 +1,7 @@
 ---
 title: Sample Assignment
 slug: sample-assignment
+type: assignment
 ---
 
 # Blah Blah
