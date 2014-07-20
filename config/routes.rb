@@ -2,8 +2,11 @@ Rails.application.routes.draw do
   root "assignments#index"
 
   resources :assignments, only: [:index, :show], param: :slug do
-    resources :submissions, only: [:index, :new, :create]
     resources :ratings, only: [:create, :update]
+  end
+
+  resources :challenges, only: [:show], param: :slug do
+    resources :submissions, only: [:index, :new, :create]
   end
 
   resources :submissions, only: [:show] do

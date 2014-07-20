@@ -2,13 +2,13 @@ require "rails_helper"
 
 describe SubmissionsController do
   let(:user) { FactoryGirl.create(:user) }
-  let(:assignment) { FactoryGirl.create(:assignment) }
+  let(:challenge) { FactoryGirl.create(:challenge) }
 
   describe "POST create" do
     context "as an authenticated user" do
       it "redirects after successful create" do
         session[:user_id] = user.id
-        post :create, assignment_slug: assignment.slug,
+        post :create, challenge_slug: challenge.slug,
                       submission: { body: "1 + 2 == 4" }
 
         expect(Submission.count).to eq(1)
@@ -18,7 +18,7 @@ describe SubmissionsController do
 
     context "as a guest" do
       it "redirects without saving" do
-        post :create, assignment_slug: assignment.slug,
+        post :create, challenge_slug: challenge.slug,
                       submission: { body: "1 + 2 == 4" }
 
         expect(Submission.count).to eq(0)

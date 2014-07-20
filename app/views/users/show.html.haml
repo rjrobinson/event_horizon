@@ -3,4 +3,4 @@
 #submissions
   %ul
     - @user.submissions.each do |submission|
-      = link_to submission.assignment.title, submission_path(submission)
+      = link_to submission.challenge.title, submission_path(submission)

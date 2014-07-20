@@ -1,0 +1,7 @@
+%h1= @challenge.title
+
+#body
+  ~ render_markdown(@challenge.body)
+
+.actions
+  = link_to "Submit Solution", new_challenge_submission_path(@challenge)
