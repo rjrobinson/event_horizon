@@ -8,10 +8,7 @@ class ApplicationController < ActionController::Base
   include SessionHelper
 
   def authenticate_user!
-    if !session[:user_id]
-      flash[:info] = "You need to sign in before continuing."
-      redirect_to root_path
-    end
+    authenticate_via_headers || authenticate_via_session
   end
 
   def authorize_admin!
@@ -22,5 +19,30 @@ class ApplicationController < ActionController::Base
 
   def not_found
     raise ActionController::RoutingError.new("Not Found")
+  end
+
+  def unauthorized!
+    render status: :unauthorized
+  end
+
+  private
+
+  def authenticate_via_headers
+    authenticate_with_http_basic do |username, token|
+      user = User.find_by(username: username)
+
+      if !user.nil? && token == user.token
+        set_current_user(user)
+      else
+        request_http_basic_authentication
+      end
+    end
+  end
+
+  def authenticate_via_session
+    if !user_signed_in?
+      flash[:info] = "You need to sign in before continuing."
+      redirect_to root_path
+    end
   end
 end
