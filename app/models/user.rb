@@ -8,9 +8,12 @@ class User < ActiveRecord::Base
   validates :email, presence: true, uniqueness: true
   validates :uid, presence: true, uniqueness: { scope: :provider }
   validates :provider, presence: true
+  validates :token, presence: true
   validates :role, presence: true, inclusion: {
     in: ["member", "instructor", "admin"]
   }
+
+  before_validation :ensure_authentication_token
 
   def self.find_or_create_from_omniauth(auth)
     account_keys = { uid: auth["uid"], provider: auth["provider"] }
@@ -19,6 +22,12 @@ class User < ActiveRecord::Base
       user.email = auth["info"]["email"]
       user.username = auth["info"]["nickname"]
       user.name = auth["info"]["name"]
+    end
+  end
+
+  def ensure_authentication_token
+    if token.blank?
+      self.token = SecureRandom.urlsafe_base64
     end
   end
 

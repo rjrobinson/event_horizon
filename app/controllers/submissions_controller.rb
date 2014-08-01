@@ -31,11 +31,19 @@ class SubmissionsController < ApplicationController
     @submission = @challenge.submissions.build(submission_params)
     @submission.user = current_user
 
-    if @submission.save
-      flash[:info] = "Solution submitted."
-      redirect_to submission_path(@submission)
-    else
-      render :new
+    respond_to do |format|
+      if @submission.save
+        format.html do
+          flash[:info] = "Solution submitted."
+          redirect_to submission_path(@submission)
+        end
+
+        format.json do
+          head :no_content
+        end
+      else
+        format.html { render :new }
+      end
     end
   end
 
