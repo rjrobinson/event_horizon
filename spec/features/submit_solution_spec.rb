@@ -24,6 +24,8 @@ feature "submit solution" do
       submission = Submission.first
       expect(submission.user).to eq(user)
       expect(submission.challenge).to eq(challenge)
+
+      expect(SubmissionExtractor.jobs.size).to eq(1)
     end
 
     let(:sample_archive) do
@@ -42,6 +44,8 @@ feature "submit solution" do
       submission = Submission.first
       expect(submission.user).to eq(user)
       expect(submission.challenge).to eq(challenge)
+
+      expect(SubmissionExtractor.jobs.size).to eq(1)
     end
 
     scenario "redisplay form with errors on blank submission" do
@@ -52,6 +56,7 @@ feature "submit solution" do
 
       expect(page).to have_content("The solution couldn't be submitted.")
       expect(Submission.count).to eq(0)
+      expect(SubmissionExtractor.jobs.size).to eq(0)
     end
   end
 

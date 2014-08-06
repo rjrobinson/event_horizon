@@ -3,6 +3,7 @@ ENV["RAILS_ENV"] ||= "test"
 require "spec_helper"
 require File.expand_path("../../config/environment", __FILE__)
 require "rspec/rails"
+require "sidekiq/testing"
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -49,6 +50,10 @@ RSpec.configure do |config|
     # This suppresses any warnings from polluting the test output.
     # http://stackoverflow.com/questions/19483367/rails-omniauth-error-in-rspec-output
     OmniAuth.config.logger = Logger.new("/dev/null")
+
+    # Clear out any jobs.
+    Sidekiq::Worker.clear_all
+    Sidekiq::Testing.fake!
   end
 
   config.include AuthenticationHelper

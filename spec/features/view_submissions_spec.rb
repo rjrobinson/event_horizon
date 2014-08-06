@@ -35,7 +35,7 @@ feature "view submissions" do
       sign_in_as(instructor)
     end
 
-    scenario "see all of the submissions for an challenge" do
+    scenario "see all of the submissions for a challenge" do
       submissions = FactoryGirl.
         create_list(:submission, 3, challenge: challenge)
 
