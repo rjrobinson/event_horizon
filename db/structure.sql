@@ -299,7 +299,8 @@ CREATE TABLE submissions (
     user_id integer NOT NULL,
     challenge_id integer NOT NULL,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    archive character varying(255) NOT NULL
 );
 
 
@@ -677,4 +678,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140720040146');
 INSERT INTO schema_migrations (version) VALUES ('20140720040402');
 
 INSERT INTO schema_migrations (version) VALUES ('20140720185457');
+
+INSERT INTO schema_migrations (version) VALUES ('20140802123039');
 

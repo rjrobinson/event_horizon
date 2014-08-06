@@ -1,8 +1,19 @@
 require "rails_helper"
 
 describe Submission do
+  let(:submission) { FactoryGirl.create(:submission) }
 
-  let(:submission) { FactoryGirl.create(:submission_with_source) }
+  describe "#body=" do
+    it "stores the contents as a single file in an archive" do
+      submission = FactoryGirl.build(:submission)
+      submission.body = "2 + 2 == 5"
+      submission.save!
+
+      contents = read_file_from_gzipped_archive(
+        submission.archive.path, "file001")
+      expect(contents).to eq("2 + 2 == 5")
+    end
+  end
 
   describe "#inline_comments" do
     it "selects comments with line numbers" do
@@ -57,5 +68,4 @@ describe Submission do
       end
     end
   end
-
 end

@@ -15,6 +15,7 @@ gem "redcarpet"
 gem "rouge"
 gem "unicorn"
 gem "jbuilder"
+gem "carrierwave"
 
 group :development do
   gem "spring"

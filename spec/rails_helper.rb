@@ -52,4 +52,5 @@ RSpec.configure do |config|
   end
 
   config.include AuthenticationHelper
+  config.include ArchiveHelper
 end

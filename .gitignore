@@ -23,3 +23,6 @@
 
 # Ignore environment variables containing sensitive info.
 /.env
+
+# Ignore uploaded files
+/public/uploads

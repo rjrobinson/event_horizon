@@ -47,7 +47,7 @@ feature "view submissions" do
     end
 
     scenario "view submission from student" do
-      submission = FactoryGirl.create(:submission_with_source,
+      submission = FactoryGirl.create(:submission_with_file,
                                       challenge: challenge)
 
       visit submission_path(submission)
