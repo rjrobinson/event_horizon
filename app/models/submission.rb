@@ -42,7 +42,7 @@ class Submission < ActiveRecord::Base
         archive_path = File.join(tmpdir, "submission.tar.gz")
         system("tar zcf #{archive_path} -C #{tmpdir} file001")
 
-        File.open(archive_path, "r") { |f| archive.store!(f) }
+        self.archive = File.open(archive_path)
       end
     end
   end
