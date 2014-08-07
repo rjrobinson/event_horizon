@@ -4,27 +4,31 @@
   .user= "Submitted by #{@submission.user.username}"
 
 #submission
-  ~ render_submission(@submission)
+  - @submission.files.each do |file|
+    .source-file
+      .filename
+        = file.filename
+      .body
+        ~ render_source_file(file)
 
 #comments
-  - @submission.comments.each do |comment|
+  - @submission.general_comments.each do |comment|
     - if comment.persisted?
       .comment
-        .user
-          - if comment.line_number.nil?
-            = "#{comment.user.username} commented"
-          - else
-            = "#{comment.user.username} commented on line #{comment.line_number}"
-
+        .user= "#{comment.user.username} commented"
         .body= comment.body
 
   = form_for [@submission, @comment] do |f|
-    = f.label :line_number, "Line Number"
-    = f.text_field :line_number
+    = field_set_tag "Leave a comment" do
+      = f.label :source_file_id, "Filename"
+      = f.select :source_file_id , @submission.files.map { |f| [f.filename, f.id] }, include_blank: true
 
-    = f.label :body, "Comment"
-    = f.text_area :body, rows: 5
-    - if @comment.errors[:body].any?
-      %small.error= @comment.errors[:body].first
+      = f.label :line_number, "Line Number"
+      = f.text_field :line_number
 
-    = f.submit "Submit", class: "button"
+      = f.label :body, "Comment"
+      = f.text_area :body, rows: 5
+      - if @comment.errors[:body].any?
+        %small.error= @comment.errors[:body].first
+
+      = f.submit "Submit", class: "button"

@@ -21,7 +21,7 @@ feature "comment on submission" do
       expect(page).to have_content("Needs more cow-bell.")
     end
 
-    scenario "comment on specific line" do
+    it "comment on specific file and line" do
       file = FactoryGirl.create(:source_file,
                                 body: "foo = 1\nbar = 2\nputs foo + bar")
 
@@ -29,9 +29,10 @@ feature "comment on submission" do
 
       fill_in "Comment", with: "Needs more cow-bell."
       fill_in "Line Number", with: "1"
+      select file.filename, from: "Filename"
       click_button "Submit"
 
-      expect(page).to have_content("#{instructor.username} commented on line 1")
+      expect(page).to have_content("#{instructor.username} commented")
       expect(page).to order_text("foo = 1", "Needs more cow-bell.")
       expect(page).to order_text("Needs more cow-bell.", "bar = 2")
     end

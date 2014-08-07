@@ -26,6 +26,27 @@ feature "view submissions" do
         expect(page).to_not have_link_href(submission_path(submission))
       end
     end
+
+    scenario "submission with multiple files" do
+      submission = FactoryGirl.create(:submission, user: student)
+      FactoryGirl.create(:source_file,
+                         submission: submission,
+                         filename: "bar.rb",
+                         body: "b = 2")
+      FactoryGirl.create(:source_file,
+                         submission: submission,
+                         filename: "foo.rb",
+                         body: "a = 1")
+
+      visit submission_path(submission)
+
+      expect(page).to have_content("foo.rb")
+      expect(page).to have_content("a = 1")
+      expect(page).to have_content("bar.rb")
+      expect(page).to have_content("b = 2")
+
+      expect(page).to order_text("bar.rb", "foo.rb")
+    end
   end
 
   context "as an instructor" do

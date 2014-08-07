@@ -1,33 +1,45 @@
-$code-bg-color: #f8f8f8;
+$code-bg-color-light: #f8f8f8;
+$code-bg-color-dark: #d8d8d8;
+$filename-bg-color: #d8d8d8;
+$comment-bg-color: #add8e6;
+$source-padding: 0.8em;
 
-.code-block {
-    background-color: $code-bg-color;
+.source-file {
     border: 1px solid #ddd;
     font-size: 0.9em;
     line-height: 1.2em;
     overflow: auto;
-    padding: 0.8em;
     margin-top: 0.6em;
     margin-bottom: 0.6em;
     border-radius: 3px;
 
+    .filename {
+        background-color: $filename-bg-color;
+        padding-bottom: 0.5em;
+        border-bottom: 1px solid #ddd;
+        padding: 0.6em;
+    }
+
+    .body {
+        background-color: $code-bg-color-light;
+        padding: $source-padding;
+    }
+
     .highlight {
-        background-color: $code-bg-color
+        background-color: $code-bg-color-light;
     }
 }
 
 .comment {
     border: 1px solid #ddd;
     border-radius: 3px;
-    margin-top: 0.6em;
-    margin-bottom: 0.6em;
 
     .user {
         padding: 0.5em;
         font-size: 0.9em;
         padding-top: 0.6em;
         padding-bottom: 0.6em;
-        background-color: #ddd;
+        background-color: $comment-bg-color;
         border-bottom: 1px solid #eee;
     }
 
@@ -35,4 +47,12 @@ $code-bg-color: #f8f8f8;
         padding: 0.8em;
         background-color: white;
     }
+}
+
+.inline-comment {
+    margin-left: -$source-padding;
+    margin-right: -$source-padding;
+    border-radius: 0px;
+    border-left: 0px;
+    border-right: 0px;
 }

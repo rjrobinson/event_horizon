@@ -108,7 +108,8 @@ CREATE TABLE comments (
     body text NOT NULL,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    line_number integer
+    line_number integer,
+    source_file_id integer
 );
 
 
@@ -524,6 +525,13 @@ CREATE UNIQUE INDEX index_challenges_on_slug ON challenges USING btree (slug);
 
 
 --
+-- Name: index_comments_on_source_file_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_comments_on_source_file_id ON comments USING btree (source_file_id);
+
+
+--
 -- Name: index_comments_on_submission_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -680,4 +688,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140720040402');
 INSERT INTO schema_migrations (version) VALUES ('20140720185457');
 
 INSERT INTO schema_migrations (version) VALUES ('20140802123039');
+
+INSERT INTO schema_migrations (version) VALUES ('20140807181006');
 
