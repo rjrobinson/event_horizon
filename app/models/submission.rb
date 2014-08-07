@@ -16,7 +16,11 @@ class Submission < ActiveRecord::Base
   attr_accessor :body
 
   def inline_comments
-    comments.where("line_number IS NOT NULL")
+    comments.where("line_number IS NOT NULL AND source_file_id IS NOT NULL")
+  end
+
+  def general_comments
+    comments.where("line_number IS NULL OR source_file_id IS NULL")
   end
 
   def extract_source_files(archive_path)

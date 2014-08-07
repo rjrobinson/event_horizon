@@ -32,7 +32,7 @@ feature "comment on submission" do
       select file.filename, from: "Filename"
       click_button "Submit"
 
-      expect(page).to have_content("#{instructor.username} commented on line 1")
+      expect(page).to have_content("#{instructor.username} commented")
       expect(page).to order_text("foo = 1", "Needs more cow-bell.")
       expect(page).to order_text("Needs more cow-bell.", "bar = 2")
     end

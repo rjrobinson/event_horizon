@@ -12,7 +12,7 @@
         ~ render_source_file(file)
 
 #comments
-  - @submission.comments.each do |comment|
+  - @submission.general_comments.each do |comment|
     - if comment.persisted?
       .comment
         .user
