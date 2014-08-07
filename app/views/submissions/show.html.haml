@@ -24,12 +24,16 @@
         .body= comment.body
 
   = form_for [@submission, @comment] do |f|
-    = f.label :line_number, "Line Number"
-    = f.text_field :line_number
+    = field_set_tag "Leave a comment" do
+      = f.label :source_file_id, "Filename"
+      = f.select :source_file_id , @submission.files.map { |f| [f.filename, f.id] }, include_blank: true
 
-    = f.label :body, "Comment"
-    = f.text_area :body, rows: 5
-    - if @comment.errors[:body].any?
-      %small.error= @comment.errors[:body].first
+      = f.label :line_number, "Line Number"
+      = f.text_field :line_number
 
-    = f.submit "Submit", class: "button"
+      = f.label :body, "Comment"
+      = f.text_area :body, rows: 5
+      - if @comment.errors[:body].any?
+        %small.error= @comment.errors[:body].first
+
+      = f.submit "Submit", class: "button"

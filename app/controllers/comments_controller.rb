@@ -21,6 +21,6 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:body, :line_number)
+    params.require(:comment).permit(:body, :line_number, :source_file_id)
   end
 end

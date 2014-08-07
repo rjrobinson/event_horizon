@@ -16,11 +16,18 @@ describe Submission do
   end
 
   describe "#inline_comments" do
+    let(:source_file) do
+      FactoryGirl.create(:source_file, submission: submission)
+    end
+
     it "selects comments with line numbers" do
       general_comment =
         FactoryGirl.create(:comment, submission: submission, line_number: nil)
       inline_comment =
-        FactoryGirl.create(:comment, submission: submission, line_number: 1)
+        FactoryGirl.create(:comment,
+                           submission: submission,
+                           line_number: 1,
+                           source_file: source_file)
 
       expect(submission.inline_comments).to include(inline_comment)
       expect(submission.inline_comments).to_not include(general_comment)
