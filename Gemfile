@@ -16,6 +16,7 @@ gem "rouge"
 gem "unicorn"
 gem "jbuilder"
 gem "carrierwave"
+gem "fog"
 gem "sidekiq"
 
 group :development do
