@@ -35,7 +35,7 @@ feature "view submissions" do
       sign_in_as(instructor)
     end
 
-    scenario "see all of the submissions for an challenge" do
+    scenario "see all of the submissions for a challenge" do
       submissions = FactoryGirl.
         create_list(:submission, 3, challenge: challenge)
 
@@ -47,7 +47,7 @@ feature "view submissions" do
     end
 
     scenario "view submission from student" do
-      submission = FactoryGirl.create(:submission_with_source,
+      submission = FactoryGirl.create(:submission_with_file,
                                       challenge: challenge)
 
       visit submission_path(submission)

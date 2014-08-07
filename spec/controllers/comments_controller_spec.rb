@@ -1,7 +1,7 @@
 require "rails_helper"
 
 describe CommentsController do
-  let(:submission) { FactoryGirl.create(:submission_with_source) }
+  let(:submission) { FactoryGirl.create(:submission) }
 
   describe "POST create" do
     it "allows submission owner to comment" do

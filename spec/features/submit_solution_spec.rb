@@ -19,14 +19,13 @@ feature "submit solution" do
       click_button "Submit"
 
       expect(page).to have_content("Solution submitted.")
-      expect(page).to have_content("2 + 2 == 5")
-
       expect(Submission.count).to eq(1)
 
       submission = Submission.first
       expect(submission.user).to eq(user)
       expect(submission.challenge).to eq(challenge)
-      expect(submission.files.count).to eq(1)
+
+      expect(SubmissionExtractor.jobs.size).to eq(1)
     end
 
     let(:sample_archive) do
@@ -40,7 +39,13 @@ feature "submit solution" do
       click_button "Upload"
 
       expect(page).to have_content("Solution submitted.")
-      expect(page).to have_content("puts \"hello, world\"")
+      expect(Submission.count).to eq(1)
+
+      submission = Submission.first
+      expect(submission.user).to eq(user)
+      expect(submission.challenge).to eq(challenge)
+
+      expect(SubmissionExtractor.jobs.size).to eq(1)
     end
 
     scenario "redisplay form with errors on blank submission" do
@@ -51,6 +56,7 @@ feature "submit solution" do
 
       expect(page).to have_content("The solution couldn't be submitted.")
       expect(Submission.count).to eq(0)
+      expect(SubmissionExtractor.jobs.size).to eq(0)
     end
   end
 

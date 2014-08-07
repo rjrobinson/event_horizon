@@ -39,9 +39,28 @@ FactoryGirl.define do
     challenge
     user
 
-    factory :submission_with_source do
-      body "2 + 2 == 5"
+    archive do
+      Rack::Test::UploadedFile.new(Rails.root.join("spec/data/one_file.tar.gz"))
     end
+
+    factory :submission_with_two_file_archive do
+      archive do
+        Rack::Test::UploadedFile.new(
+          Rails.root.join("spec/data/two_files.tar.gz"))
+      end
+    end
+
+    factory :submission_with_file do
+      after(:create) do |submission|
+        FactoryGirl.create(:source_file, submission: submission)
+      end
+    end
+  end
+
+  factory :source_file do
+    submission
+    filename "foo.rb"
+    body "2 + 2 == 5\n"
   end
 
   factory :user do

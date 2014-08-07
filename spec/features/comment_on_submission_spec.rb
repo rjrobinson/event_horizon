@@ -1,7 +1,7 @@
 require "rails_helper"
 
 feature "comment on submission" do
-  let(:submission) { FactoryGirl.create(:submission_with_source) }
+  let(:submission) { FactoryGirl.create(:submission_with_file) }
 
   context "as an instructor" do
     let(:instructor) { FactoryGirl.create(:instructor) }
@@ -22,11 +22,10 @@ feature "comment on submission" do
     end
 
     scenario "comment on specific line" do
-      submission = FactoryGirl.create(
-        :submission,
-        body: "foo = 1\nbar = 2\nputs foo + bar")
+      file = FactoryGirl.create(:source_file,
+                                body: "foo = 1\nbar = 2\nputs foo + bar")
 
-      visit submission_path(submission)
+      visit submission_path(file.submission)
 
       fill_in "Comment", with: "Needs more cow-bell."
       fill_in "Line Number", with: "1"

@@ -4,29 +4,15 @@ class Submission < ActiveRecord::Base
   has_many :comments
   has_many :files, class_name: "SourceFile"
 
+  mount_uploader :archive, ArchiveUploader
+
   validates :user, presence: true
   validates :challenge, presence: true
+  validates :archive, presence: true
 
-  def body=(value)
-    files << SourceFile.new(body: value)
-  end
+  before_validation :save_body
 
-  def body
-    file = files.first
-    file && file.body
-  end
-
-  def archive=(uploaded_file)
-    Dir.mktmpdir do |tmpdir|
-      filename = uploaded_file.original_filename
-      archive_path = File.join(tmpdir, filename)
-      File.open(archive_path, "wb") do |file|
-        file.write(uploaded_file.read)
-      end
-
-      extract_source_files(archive_path)
-    end
-  end
+  attr_accessor :body
 
   def inline_comments
     comments.where("line_number IS NOT NULL")
@@ -46,6 +32,20 @@ class Submission < ActiveRecord::Base
   end
 
   private
+
+  def save_body
+    if body.present?
+      Dir.mktmpdir do |tmpdir|
+        tmp_file_path = File.join(tmpdir, "file001")
+        File.write(tmp_file_path, body)
+
+        archive_path = File.join(tmpdir, "submission.tar.gz")
+        system("tar zcf #{archive_path} -C #{tmpdir} file001")
+
+        File.open(archive_path, "r") { |f| archive.store!(f) }
+      end
+    end
+  end
 
   def valid_source_files(dir)
     filenames = Dir.entries(dir).reject do |filename|

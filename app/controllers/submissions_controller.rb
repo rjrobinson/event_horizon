@@ -33,6 +33,8 @@ class SubmissionsController < ApplicationController
 
     respond_to do |format|
       if @submission.save
+        SubmissionExtractor.perform_async(@submission.id)
+
         format.html do
           flash[:info] = "Solution submitted."
           redirect_to submission_path(@submission)
