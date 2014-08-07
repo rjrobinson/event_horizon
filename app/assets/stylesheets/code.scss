@@ -1,18 +1,29 @@
-$code-bg-color: #f8f8f8;
+$code-bg-color-light: #f8f8f8;
+$code-bg-color-dark: #d8d8d8;
 
-.code-block {
-    background-color: $code-bg-color;
+.source-file {
     border: 1px solid #ddd;
     font-size: 0.9em;
     line-height: 1.2em;
     overflow: auto;
-    padding: 0.8em;
     margin-top: 0.6em;
     margin-bottom: 0.6em;
     border-radius: 3px;
 
+    .filename {
+        background-color: $code-bg-color-dark;
+        padding-bottom: 0.5em;
+        border-bottom: 1px solid #ddd;
+        padding: 0.6em;
+    }
+
+    .body {
+        background-color: $code-bg-color-light;
+        padding: 0.8em;
+    }
+
     .highlight {
-        background-color: $code-bg-color
+        background-color: $code-bg-color-light;
     }
 }
 

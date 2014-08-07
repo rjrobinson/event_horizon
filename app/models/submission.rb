@@ -2,7 +2,8 @@ class Submission < ActiveRecord::Base
   belongs_to :user
   belongs_to :challenge
   has_many :comments
-  has_many :files, class_name: "SourceFile"
+  has_many :files, -> { order :filename },
+           class_name: "SourceFile"
 
   mount_uploader :archive, ArchiveUploader
 

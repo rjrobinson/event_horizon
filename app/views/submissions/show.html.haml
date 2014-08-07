@@ -4,7 +4,12 @@
   .user= "Submitted by #{@submission.user.username}"
 
 #submission
-  ~ render_submission(@submission)
+  - @submission.files.each do |file|
+    .source-file
+      .filename
+        = file.filename
+      .body
+        ~ render_source_file(file)
 
 #comments
   - @submission.comments.each do |comment|

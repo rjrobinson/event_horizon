@@ -21,7 +21,7 @@ feature "comment on submission" do
       expect(page).to have_content("Needs more cow-bell.")
     end
 
-    scenario "comment on specific line" do
+    pending "comment on specific line" do
       file = FactoryGirl.create(:source_file,
                                 body: "foo = 1\nbar = 2\nputs foo + bar")
 
