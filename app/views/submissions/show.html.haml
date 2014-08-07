@@ -15,12 +15,7 @@
   - @submission.general_comments.each do |comment|
     - if comment.persisted?
       .comment
-        .user
-          - if comment.line_number.nil?
-            = "#{comment.user.username} commented"
-          - else
-            = "#{comment.user.username} commented on line #{comment.line_number}"
-
+        .user= "#{comment.user.username} commented"
         .body= comment.body
 
   = form_for [@submission, @comment] do |f|
