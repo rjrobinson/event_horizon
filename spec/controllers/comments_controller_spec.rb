@@ -44,7 +44,8 @@ describe CommentsController do
 
         expect(response).to be_successful
         body = JSON.parse(response.body)
-        expect(body["body"]).to eq("foo")
+        expect(body["comment"]["body"]).to eq("foo")
+        expect(body["comment"]["user"]).to eq(submission.user.username)
       end
 
       it "returns errors on failure" do
