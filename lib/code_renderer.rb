@@ -35,9 +35,10 @@ class CodeRenderer
   end
 
   def format_comment(comment)
-    "<div class='inline-comment comment'><div class='user'>" +
+    "<div class='inline-comment comment'>" +
+      "<div class='inline-comment-body'><div class='user'>" +
       "#{comment.user.username} commented" +
-      "</div><div class='body'>#{comment.body}</div></div>"
+      "</div><div class='body'>#{comment.body}</div></div></div>"
   end
 
   def inline_comments

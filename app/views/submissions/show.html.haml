@@ -14,7 +14,7 @@
 #comments
   - @submission.general_comments.each do |comment|
     - if comment.persisted?
-      .comment
+      .comment.general-comment
         .user= "#{comment.user.username} commented"
         .body= comment.body
 

@@ -1,12 +1,13 @@
 $code-bg-color-light: #f8f8f8;
 $code-bg-color-dark: #d8d8d8;
 $filename-bg-color: #d8d8d8;
-$comment-bg-color: #add8e6;
+$comment-bg-color: #e3f3f6;
 $line-no-color: #aaaaaa;
 $source-padding: 0.8em;
+$border-color: #ddd;
 
 .source-file {
-    border: 1px solid #ddd;
+    border: 1px solid $border-color;
     font-size: 0.9em;
     line-height: 1.2em;
     overflow: auto;
@@ -17,7 +18,7 @@ $source-padding: 0.8em;
     .filename {
         background-color: $filename-bg-color;
         padding-bottom: 0.5em;
-        border-bottom: 1px solid #ddd;
+        border-bottom: 1px solid $border-color;
         padding: 0.6em;
     }
 
@@ -32,7 +33,7 @@ $source-padding: 0.8em;
 }
 
 .comment {
-    border: 1px solid #ddd;
+    border: 1px solid $border-color;
     border-radius: 3px;
 
     .user {
@@ -41,7 +42,7 @@ $source-padding: 0.8em;
         padding-top: 0.6em;
         padding-bottom: 0.6em;
         background-color: $comment-bg-color;
-        border-bottom: 1px solid #eee;
+        border-bottom: 1px solid $border-color;
     }
 
     .body {
@@ -56,6 +57,16 @@ $source-padding: 0.8em;
     border-radius: 0px;
     border-left: 0px;
     border-right: 0px;
+    padding: 1em;
+    padding-left: 4em;
+
+    .inline-comment-body {
+        border: 1px solid $border-color;
+    }
+}
+
+.general-comment {
+    margin: 1em 0;
 }
 
 .line {
