@@ -6,16 +6,24 @@ $(function() {
     var sourceFileId = line.parents(".source-file").data("sourceFileId");
     var lineNo = line.data("line-no");
     var action = $("form.new_comment").attr("action");
+    var id = "source-" + sourceFileId + "-line-" + lineNo + "-form"
 
-    $(generateForm(action, sourceFileId, lineNo)).insertAfter(line);
+    if (!line.hasClass("generated-form")) {
+      $(generateForm(id, action, sourceFileId, lineNo)).insertAfter(line);
+      line.addClass("generated-form show-form");
+    } else {
+      $("#" + id).toggle();
+      line.toggleClass("show-form");
+    }
   });
 });
 
-function generateForm(action, sourceFileId, lineNo) {
+function generateForm(id, action, sourceFileId, lineNo) {
   var token = $("meta[name=\"csrf-token\"]").attr("content");
 
+
   return '<form accept-charset="UTF-8" action="' + action + '" ' +
-    'class="inline_comment_form" id="new_comment" method="post">' +
+    'class="inline_comment_form" id="' + id + '" method="post">' +
     '  <input name="utf8" type="hidden" value="&#x2713;" />' +
     '  <input name="authenticity_token" type="hidden" value="' + token + '" />' +
     '  <input name="comment[source_file_id]" type="hidden" value="' + sourceFileId + '" />' +
