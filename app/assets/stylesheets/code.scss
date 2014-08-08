@@ -2,6 +2,7 @@ $code-bg-color-light: #f8f8f8;
 $code-bg-color-dark: #d8d8d8;
 $filename-bg-color: #d8d8d8;
 $comment-bg-color: #add8e6;
+$line-no-color: #aaaaaa;
 $source-padding: 0.8em;
 
 .source-file {
@@ -55,4 +56,12 @@ $source-padding: 0.8em;
     border-radius: 0px;
     border-left: 0px;
     border-right: 0px;
+}
+
+.line-no {
+    display: inline-block;
+    width: 3em;
+    color: $line-no-color;
+    border-right: 1px solid $line-no-color;
+    margin-right: 0.6em;
 }
