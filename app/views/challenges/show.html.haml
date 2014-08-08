@@ -3,5 +3,7 @@
 #body
   ~ render_markdown(@challenge.body)
 
-.actions
-  = link_to "Submit Solution", new_challenge_submission_path(@challenge)
+- if user_signed_in?
+  %ul.actions
+    %li= link_to "Your Submissions", challenge_submissions_path(@challenge)
+    %li= link_to "Submit Solution", new_challenge_submission_path(@challenge)
