@@ -5,7 +5,7 @@
 
 #submission
   - @submission.files.each do |file|
-    .source-file
+    .source-file(data-source-file-id="#{file.id}")
       .filename
         = file.filename
       .body
@@ -20,11 +20,12 @@
 
   = form_for [@submission, @comment] do |f|
     = field_set_tag "Leave a comment" do
-      = f.label :source_file_id, "Filename"
-      = f.select :source_file_id , @submission.files.map { |f| [f.filename, f.id] }, include_blank: true
+      .hidden-attributes
+        = f.label :source_file_id, "Filename"
+        = f.select :source_file_id , @submission.files.map { |f| [f.filename, f.id] }, include_blank: true
 
-      = f.label :line_number, "Line Number"
-      = f.text_field :line_number
+        = f.label :line_number, "Line Number"
+        = f.text_field :line_number
 
       = f.label :body, "Comment"
       = f.text_area :body, rows: 5
