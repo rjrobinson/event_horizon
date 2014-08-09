@@ -10,11 +10,22 @@ class CommentsController < ApplicationController
     @comment = @submission.comments.build(comment_params)
     @comment.user = current_user
 
-    if @comment.save
-      flash[:info] = "Comment saved."
-      redirect_to @submission
-    else
-      render "submissions/show"
+    respond_to do |format|
+      if @comment.save
+        format.html do
+          flash[:info] = "Comment saved."
+          redirect_to @submission
+        end
+
+        format.json do
+          render :show
+        end
+      else
+        format.html { render "submissions/show" }
+        format.json do
+          render json: @comment.errors, status: :unprocessable_entity
+        end
+      end
     end
   end
 
