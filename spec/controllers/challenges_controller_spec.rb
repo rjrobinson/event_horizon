@@ -31,6 +31,7 @@ describe ChallengesController do
 
         expect(result["challenge"]["title"]).to eq(challenge.title)
         expect(result["challenge"]["body"]).to eq(challenge.body)
+        expect(result["challenge"]["archive_url"]).to eq(challenge.archive.url)
       end
     end
   end

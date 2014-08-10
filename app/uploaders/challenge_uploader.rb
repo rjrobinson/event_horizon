@@ -5,6 +5,10 @@ class ChallengeUploader < CarrierWave::Uploader::Base
     storage :fog
   end
 
+  def fog_public
+    true
+  end
+
   def store_dir
     "downloads/challenges/#{mounted_as}/#{model.slug}"
   end
