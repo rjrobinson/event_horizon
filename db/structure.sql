@@ -74,7 +74,8 @@ CREATE TABLE challenges (
     body text NOT NULL,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    searchable tsvector
+    searchable tsvector,
+    archive character varying(255) NOT NULL
 );
 
 
@@ -690,4 +691,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140720185457');
 INSERT INTO schema_migrations (version) VALUES ('20140802123039');
 
 INSERT INTO schema_migrations (version) VALUES ('20140807181006');
+
+INSERT INTO schema_migrations (version) VALUES ('20140810001317');
 

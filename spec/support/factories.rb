@@ -9,6 +9,7 @@ FactoryGirl.define do
     sequence(:title) { |n| "Challenge #{n}" }
     sequence(:slug) { |n| "challenge-#{n}" }
     body "# Header\n\nThis is a challenge."
+    archive { "http://localhost:3000/downloads/#{slug}.tar.gz" }
   end
 
   factory :comment do
