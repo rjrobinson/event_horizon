@@ -1,25 +1,30 @@
 require "rails_helper"
 
 describe Challenge do
-  describe ".parse" do
-    let(:sample_filepath) do
-      Rails.root.join("spec/data/sample_challenge.md")
+  describe ".import" do
+    let(:challenge_dir) { Rails.root.join("spec/data/sample-challenge") }
+
+    it "creates a challenge from the given directory" do
+      challenge = Challenge.import!(challenge_dir)
+
+      expect(challenge.title).to eq("Sample Challenge")
+      expect(challenge.slug).to eq("sample-challenge")
+      expect(challenge.body).to include("# Blah Blah")
+      expect(challenge.archive_url).to be_present
     end
 
-    let(:sample_file) { File.read(sample_filepath) }
-    let(:challenge) { Challenge.parse(sample_file) }
+    it "updates a challenge if it already exists" do
+      existing = FactoryGirl.create(:challenge,
+                                    slug: "sample-challenge",
+                                    title: "foo")
 
-    it "reads title from header" do
-      expect(challenge[:title]).to eq("Sample Challenge")
-    end
+      challenge = Challenge.import!(challenge_dir)
 
-    it "reads the slug from the header" do
-      expect(challenge[:slug]).to eq("sample-challenge")
-    end
+      expect(challenge.title).to eq("Sample Challenge")
+      expect(challenge.slug).to eq("sample-challenge")
 
-    it "removes header from the body" do
-      expect(challenge[:body]).
-        to eq("\n\n# Blah Blah\n\nSomething goes here.\n")
+      expect(challenge.id).to eq(existing.id)
+      expect(Challenge.count).to eq(1)
     end
   end
 end

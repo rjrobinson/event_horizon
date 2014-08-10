@@ -9,7 +9,10 @@ FactoryGirl.define do
     sequence(:title) { |n| "Challenge #{n}" }
     sequence(:slug) { |n| "challenge-#{n}" }
     body "# Header\n\nThis is a challenge."
-    archive { "http://localhost:3000/downloads/#{slug}.tar.gz" }
+
+    archive do
+      Rack::Test::UploadedFile.new(Rails.root.join("spec/data/one_file.tar.gz"))
+    end
   end
 
   factory :comment do

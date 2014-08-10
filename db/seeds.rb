@@ -13,13 +13,12 @@ end
 
 challenges_path = Rails.root.join("db/data/challenges")
 
-Dir.entries(challenges_path).each do |filename|
-  next if !filename.ends_with?(".md")
+Dir.entries(challenges_path).each do |entry|
+  next if entry.starts_with?(".")
 
-  filepath = challenges_path.join(filename)
-  attr = Challenge.parse(File.read(filepath))
+  path = File.join(challenges_path, entry)
 
-  challenge = Challenge.find_by(slug: attr[:slug])
-  challenge ||= Challenge.new(slug: attr[:slug])
-  challenge.update!(attr)
+  if File.directory?(path)
+    Challenge.import!(path)
+  end
 end

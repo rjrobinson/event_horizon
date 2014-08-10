@@ -23,6 +23,6 @@ feature "views challenges" do
     expect(page).to have_selector("li", "item 1")
     expect(page).to have_selector("li", "item 2")
 
-    expect(page).to have_link("Download Files", challenge.archive)
+    expect(page).to have_link("Download Files", challenge.archive.url)
   end
 end
