@@ -1,9 +1,3 @@
----
-title: Auto-Guesser
-slug: auto-guesser
-type: challenge
----
-
 Create a program that will guess a randomly picked number between 1 and some max value. Use the following code to test your implementation:
 
 ```ruby

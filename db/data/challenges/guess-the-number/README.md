@@ -1,9 +1,3 @@
----
-title: Guess the Number
-slug: guess-the-number
-type: challenge
----
-
 Create a game that picks a random number between 1 and some max value (e.g. 1000). The user should then be prompted to guess the number. If the user guesses correctly, they win the game and the program ends. If the guess is incorrect, respond with either "Too high" or "Too low" and prompt for input again.
 
 ## Example Usage

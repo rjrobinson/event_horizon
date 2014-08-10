@@ -3,6 +3,9 @@
 #body
   ~ render_markdown(@challenge.body)
 
+.download
+  = link_to "Download Files", @challenge.archive.url
+
 - if user_signed_in?
   %ul.actions
     %li= link_to "Your Submissions", challenge_submissions_path(@challenge)
