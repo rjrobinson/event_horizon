@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
-  root "assignments#index"
-
-  resources :assignments, only: [:index, :show], param: :slug do
-    resources :ratings, only: [:create, :update]
-  end
+  root "challenges#index"
 
   resources :challenges, only: [:index, :show], param: :slug do
     resources :submissions, only: [:index, :new, :create]
@@ -14,8 +10,6 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:index, :show]
-
-  resources :courses, only: [:index, :show, :new, :create]
 
   resource :session, only: [:new, :create, :destroy] do
     get "failure", on: :member

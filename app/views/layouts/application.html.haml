@@ -27,10 +27,7 @@
               %li= link_to "Sign In With GitHub", new_session_path
 
           %ul.left
-            %li= link_to "Assignments", assignments_path
             %li= link_to "Challenges", challenges_path
-            - if user_signed_in?
-              %li= link_to "Courses", courses_path
             %li.has-form
               .row.collapse
                 = form_tag search_path, method: :get do
