@@ -17,15 +17,15 @@ class CodeRenderer
   private
 
   def html_code_with_comments
-    numbered_lines_with_comments.join("\n")
+    lines_with_comments.join("\n")
   end
 
-  def numbered_lines_with_comments
+  def lines_with_comments
     sorted_comments = inline_comments.sort_by do |comment|
       -comment.line_number
     end
 
-    html_lines = numbered_lines
+    html_lines = lines
 
     sorted_comments.each do |comment|
       html_lines.insert(comment.line_number, format_comment(comment))
@@ -49,17 +49,26 @@ class CodeRenderer
     lines.length
   end
 
+  def lines
+    if language == "no-highlight"
+      unnumbered_lines
+    else
+      numbered_lines
+    end
+  end
+
+  def unnumbered_lines
+    html_code.split("\n")
+  end
+
   def numbered_lines
-    lines.each_with_index.map do |line, index|
+    unnumbered_lines.each_with_index.map do |line, index|
       line_no = index + 1
       "<span class=\"line\" data-line-no=\"#{line_no}\">" +
         "<span class=\"line-no\">#{line_no}:</span>#{line}</span>"
     end
   end
 
-  def lines
-    html_code.split("\n")
-  end
 
   def html_code
     @html_code ||= formatter.format(lexer.lex(source)).
