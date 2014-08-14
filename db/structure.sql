@@ -166,73 +166,6 @@ ALTER SEQUENCE courses_id_seq OWNED BY courses.id;
 
 
 --
--- Name: enrollments; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE enrollments (
-    id integer NOT NULL,
-    user_id integer NOT NULL,
-    course_id integer NOT NULL,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
-);
-
-
---
--- Name: enrollments_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE enrollments_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: enrollments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE enrollments_id_seq OWNED BY enrollments.id;
-
-
---
--- Name: ratings; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE ratings (
-    id integer NOT NULL,
-    user_id integer NOT NULL,
-    assignment_id integer NOT NULL,
-    clarity integer NOT NULL,
-    helpfulness integer NOT NULL,
-    comment text,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
-);
-
-
---
--- Name: ratings_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE ratings_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: ratings_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE ratings_id_seq OWNED BY ratings.id;
-
-
---
 -- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -388,20 +321,6 @@ ALTER TABLE ONLY courses ALTER COLUMN id SET DEFAULT nextval('courses_id_seq'::r
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY enrollments ALTER COLUMN id SET DEFAULT nextval('enrollments_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY ratings ALTER COLUMN id SET DEFAULT nextval('ratings_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY source_files ALTER COLUMN id SET DEFAULT nextval('source_files_id_seq'::regclass);
 
 
@@ -449,22 +368,6 @@ ALTER TABLE ONLY comments
 
 ALTER TABLE ONLY courses
     ADD CONSTRAINT courses_pkey PRIMARY KEY (id);
-
-
---
--- Name: enrollments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY enrollments
-    ADD CONSTRAINT enrollments_pkey PRIMARY KEY (id);
-
-
---
--- Name: ratings_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY ratings
-    ADD CONSTRAINT ratings_pkey PRIMARY KEY (id);
 
 
 --
@@ -545,34 +448,6 @@ CREATE INDEX index_comments_on_user_id ON comments USING btree (user_id);
 --
 
 CREATE INDEX index_courses_on_creator_id ON courses USING btree (creator_id);
-
-
---
--- Name: index_enrollments_on_course_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_enrollments_on_course_id ON enrollments USING btree (course_id);
-
-
---
--- Name: index_enrollments_on_user_id_and_course_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE UNIQUE INDEX index_enrollments_on_user_id_and_course_id ON enrollments USING btree (user_id, course_id);
-
-
---
--- Name: index_ratings_on_assignment_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_ratings_on_assignment_id ON ratings USING btree (assignment_id);
-
-
---
--- Name: index_ratings_on_user_id_and_assignment_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE UNIQUE INDEX index_ratings_on_user_id_and_assignment_id ON ratings USING btree (user_id, assignment_id);
 
 
 --
@@ -689,4 +564,8 @@ INSERT INTO schema_migrations (version) VALUES ('20140807181006');
 INSERT INTO schema_migrations (version) VALUES ('20140810001317');
 
 INSERT INTO schema_migrations (version) VALUES ('20140814010454');
+
+INSERT INTO schema_migrations (version) VALUES ('20140814011324');
+
+INSERT INTO schema_migrations (version) VALUES ('20140814011639');
 
