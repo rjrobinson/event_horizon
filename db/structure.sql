@@ -246,17 +246,11 @@ CREATE TABLE schema_migrations (
 --
 
 CREATE VIEW searches AS
-         SELECT assignments.id AS result_id,
-            'Assignment'::text AS result_type,
-            assignments.title,
-            assignments.searchable
-           FROM assignments
-UNION
-         SELECT challenges.id AS result_id,
-            'Challenge'::text AS result_type,
-            challenges.title,
-            challenges.searchable
-           FROM challenges;
+ SELECT challenges.id AS result_id,
+    'Challenge' AS result_type,
+    challenges.title,
+    challenges.searchable
+   FROM challenges;
 
 
 --
@@ -693,4 +687,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140802123039');
 INSERT INTO schema_migrations (version) VALUES ('20140807181006');
 
 INSERT INTO schema_migrations (version) VALUES ('20140810001317');
+
+INSERT INTO schema_migrations (version) VALUES ('20140814010454');
 
