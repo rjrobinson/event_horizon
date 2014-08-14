@@ -9,7 +9,9 @@ feature "view users" do
     end
 
     scenario "view auth settings on own page" do
-      visit user_path(user)
+      visit root_path
+
+      click_link "Signed in as #{user.username}"
       expect(page).to have_content(user.token)
     end
 

@@ -2,8 +2,8 @@
 
 - if @user == current_user
   #settings
-    %ul
-      %li= "Token: #{@user.token}"
+    %button#show-token Show Token
+    %span#token.hidden= @user.token
 
 #submissions
   %ul
