@@ -6,6 +6,17 @@ $line-no-color: #aaaaaa;
 $source-padding: 0.8em;
 $border-color: #ddd;
 
+.code-block {
+    border: 1px solid $border-color;
+    font-size: 0.9em;
+    line-height: 1.2em;
+    overflow: auto;
+    margin-top: 0.6em;
+    margin-bottom: 0.6em;
+    border-radius: 3px;
+    padding: $source-padding;
+}
+
 .source-file {
     border: 1px solid $border-color;
     font-size: 0.9em;
