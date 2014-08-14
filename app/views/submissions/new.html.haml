@@ -1,3 +1,6 @@
+- content_for(:title) do
+  = "New Submission - #{@challenge.title}"
+
 %h1= "New Submission - #{@challenge.title}"
 
 = form_for [@challenge, @submission] do |f|
