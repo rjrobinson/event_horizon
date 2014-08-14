@@ -30,40 +30,6 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: assignments; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE assignments (
-    id integer NOT NULL,
-    title character varying(255) NOT NULL,
-    body text NOT NULL,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone,
-    slug character varying(255) NOT NULL,
-    searchable tsvector
-);
-
-
---
--- Name: assignments_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE assignments_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: assignments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE assignments_id_seq OWNED BY assignments.id;
-
-
---
 -- Name: challenges; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -261,13 +227,6 @@ ALTER SEQUENCE users_id_seq OWNED BY users.id;
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY assignments ALTER COLUMN id SET DEFAULT nextval('assignments_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY challenges ALTER COLUMN id SET DEFAULT nextval('challenges_id_seq'::regclass);
 
 
@@ -297,14 +256,6 @@ ALTER TABLE ONLY submissions ALTER COLUMN id SET DEFAULT nextval('submissions_id
 --
 
 ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
-
-
---
--- Name: assignments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY assignments
-    ADD CONSTRAINT assignments_pkey PRIMARY KEY (id);
 
 
 --
@@ -345,20 +296,6 @@ ALTER TABLE ONLY submissions
 
 ALTER TABLE ONLY users
     ADD CONSTRAINT users_pkey PRIMARY KEY (id);
-
-
---
--- Name: index_assignments_on_searchable; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_assignments_on_searchable ON assignments USING gin (searchable);
-
-
---
--- Name: index_assignments_on_slug; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE UNIQUE INDEX index_assignments_on_slug ON assignments USING btree (slug);
 
 
 --
@@ -446,13 +383,6 @@ CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (v
 
 
 --
--- Name: assignments_searchable_update; Type: TRIGGER; Schema: public; Owner: -
---
-
-CREATE TRIGGER assignments_searchable_update BEFORE INSERT OR UPDATE ON assignments FOR EACH ROW EXECUTE PROCEDURE tsvector_update_trigger('searchable', 'pg_catalog.english', 'title', 'body');
-
-
---
 -- Name: challenges_searchable_update; Type: TRIGGER; Schema: public; Owner: -
 --
 
@@ -516,4 +446,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140814011324');
 INSERT INTO schema_migrations (version) VALUES ('20140814011639');
 
 INSERT INTO schema_migrations (version) VALUES ('20140814011852');
+
+INSERT INTO schema_migrations (version) VALUES ('20140814012512');
 
