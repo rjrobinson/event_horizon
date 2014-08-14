@@ -1,5 +1,10 @@
 %h1= "Profile for #{@user.username}"
 
+- if @user == current_user
+  #settings
+    %button#show-token Show Token
+    %span#token.hidden= @user.token
+
 #submissions
   %ul
     - @user.submissions.each do |submission|

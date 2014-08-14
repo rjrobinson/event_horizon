@@ -1,7 +1,7 @@
 $(function() {
   $(".hidden-attributes").hide();
 
-  $(".line").on("click", function(e) {
+  $("#submission .line").on("click", function(e) {
     var line = $(this);
     var sourceFileId = line.parents(".source-file").data("sourceFileId");
     var lineNo = line.data("line-no");

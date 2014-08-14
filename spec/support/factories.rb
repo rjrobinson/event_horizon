@@ -1,10 +1,4 @@
 FactoryGirl.define do
-  factory :assignment do
-    sequence(:title) { |n| "Assignment #{n}" }
-    sequence(:slug) { |n| "assignment-#{n}" }
-    body "# Header\n\nThis is an assignment."
-  end
-
   factory :challenge do
     sequence(:title) { |n| "Challenge #{n}" }
     sequence(:slug) { |n| "challenge-#{n}" }
@@ -19,24 +13,6 @@ FactoryGirl.define do
     user
     submission
     body "Needs more cow-bell."
-  end
-
-  factory :course do
-    sequence(:title) { |n| "Course #{n}" }
-    association :creator, factory: :admin
-  end
-
-  factory :enrollment do
-    user
-    course
-  end
-
-  factory :rating do
-    user
-    assignment
-    helpfulness 4
-    clarity 2
-    comment "Confusing."
   end
 
   factory :submission do

@@ -3,7 +3,7 @@ require "rails_helper"
 describe Search do
   describe "#results" do
     let!(:foo) do
-      FactoryGirl.create(:assignment,
+      FactoryGirl.create(:challenge,
                          title: "Blah",
                          body: "i like pizza")
     end
@@ -15,7 +15,7 @@ describe Search do
     end
 
     let!(:baz) do
-      FactoryGirl.create(:assignment,
+      FactoryGirl.create(:challenge,
                          title: "Mr. Grumblecat",
                          body: "Ruby gems and fiddle sticks.")
     end

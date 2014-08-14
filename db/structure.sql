@@ -30,40 +30,6 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: assignments; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE assignments (
-    id integer NOT NULL,
-    title character varying(255) NOT NULL,
-    body text NOT NULL,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone,
-    slug character varying(255) NOT NULL,
-    searchable tsvector
-);
-
-
---
--- Name: assignments_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE assignments_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: assignments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE assignments_id_seq OWNED BY assignments.id;
-
-
---
 -- Name: challenges; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -134,105 +100,6 @@ ALTER SEQUENCE comments_id_seq OWNED BY comments.id;
 
 
 --
--- Name: courses; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE courses (
-    id integer NOT NULL,
-    title character varying(255) NOT NULL,
-    creator_id integer NOT NULL,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
-);
-
-
---
--- Name: courses_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE courses_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: courses_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE courses_id_seq OWNED BY courses.id;
-
-
---
--- Name: enrollments; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE enrollments (
-    id integer NOT NULL,
-    user_id integer NOT NULL,
-    course_id integer NOT NULL,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
-);
-
-
---
--- Name: enrollments_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE enrollments_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: enrollments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE enrollments_id_seq OWNED BY enrollments.id;
-
-
---
--- Name: ratings; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE ratings (
-    id integer NOT NULL,
-    user_id integer NOT NULL,
-    assignment_id integer NOT NULL,
-    clarity integer NOT NULL,
-    helpfulness integer NOT NULL,
-    comment text,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
-);
-
-
---
--- Name: ratings_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE ratings_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: ratings_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE ratings_id_seq OWNED BY ratings.id;
-
-
---
 -- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -246,17 +113,11 @@ CREATE TABLE schema_migrations (
 --
 
 CREATE VIEW searches AS
-         SELECT assignments.id AS result_id,
-            'Assignment'::text AS result_type,
-            assignments.title,
-            assignments.searchable
-           FROM assignments
-UNION
-         SELECT challenges.id AS result_id,
-            'Challenge'::text AS result_type,
-            challenges.title,
-            challenges.searchable
-           FROM challenges;
+ SELECT challenges.id AS result_id,
+    'Challenge' AS result_type,
+    challenges.title,
+    challenges.searchable
+   FROM challenges;
 
 
 --
@@ -366,13 +227,6 @@ ALTER SEQUENCE users_id_seq OWNED BY users.id;
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY assignments ALTER COLUMN id SET DEFAULT nextval('assignments_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY challenges ALTER COLUMN id SET DEFAULT nextval('challenges_id_seq'::regclass);
 
 
@@ -381,27 +235,6 @@ ALTER TABLE ONLY challenges ALTER COLUMN id SET DEFAULT nextval('challenges_id_s
 --
 
 ALTER TABLE ONLY comments ALTER COLUMN id SET DEFAULT nextval('comments_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY courses ALTER COLUMN id SET DEFAULT nextval('courses_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY enrollments ALTER COLUMN id SET DEFAULT nextval('enrollments_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY ratings ALTER COLUMN id SET DEFAULT nextval('ratings_id_seq'::regclass);
 
 
 --
@@ -426,14 +259,6 @@ ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regcl
 
 
 --
--- Name: assignments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY assignments
-    ADD CONSTRAINT assignments_pkey PRIMARY KEY (id);
-
-
---
 -- Name: challenges_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -447,30 +272,6 @@ ALTER TABLE ONLY challenges
 
 ALTER TABLE ONLY comments
     ADD CONSTRAINT comments_pkey PRIMARY KEY (id);
-
-
---
--- Name: courses_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY courses
-    ADD CONSTRAINT courses_pkey PRIMARY KEY (id);
-
-
---
--- Name: enrollments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY enrollments
-    ADD CONSTRAINT enrollments_pkey PRIMARY KEY (id);
-
-
---
--- Name: ratings_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY ratings
-    ADD CONSTRAINT ratings_pkey PRIMARY KEY (id);
 
 
 --
@@ -495,20 +296,6 @@ ALTER TABLE ONLY submissions
 
 ALTER TABLE ONLY users
     ADD CONSTRAINT users_pkey PRIMARY KEY (id);
-
-
---
--- Name: index_assignments_on_searchable; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_assignments_on_searchable ON assignments USING gin (searchable);
-
-
---
--- Name: index_assignments_on_slug; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE UNIQUE INDEX index_assignments_on_slug ON assignments USING btree (slug);
 
 
 --
@@ -544,41 +331,6 @@ CREATE INDEX index_comments_on_submission_id ON comments USING btree (submission
 --
 
 CREATE INDEX index_comments_on_user_id ON comments USING btree (user_id);
-
-
---
--- Name: index_courses_on_creator_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_courses_on_creator_id ON courses USING btree (creator_id);
-
-
---
--- Name: index_enrollments_on_course_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_enrollments_on_course_id ON enrollments USING btree (course_id);
-
-
---
--- Name: index_enrollments_on_user_id_and_course_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE UNIQUE INDEX index_enrollments_on_user_id_and_course_id ON enrollments USING btree (user_id, course_id);
-
-
---
--- Name: index_ratings_on_assignment_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_ratings_on_assignment_id ON ratings USING btree (assignment_id);
-
-
---
--- Name: index_ratings_on_user_id_and_assignment_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE UNIQUE INDEX index_ratings_on_user_id_and_assignment_id ON ratings USING btree (user_id, assignment_id);
 
 
 --
@@ -628,13 +380,6 @@ CREATE UNIQUE INDEX index_users_on_username ON users USING btree (username);
 --
 
 CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (version);
-
-
---
--- Name: assignments_searchable_update; Type: TRIGGER; Schema: public; Owner: -
---
-
-CREATE TRIGGER assignments_searchable_update BEFORE INSERT OR UPDATE ON assignments FOR EACH ROW EXECUTE PROCEDURE tsvector_update_trigger('searchable', 'pg_catalog.english', 'title', 'body');
 
 
 --
@@ -693,4 +438,14 @@ INSERT INTO schema_migrations (version) VALUES ('20140802123039');
 INSERT INTO schema_migrations (version) VALUES ('20140807181006');
 
 INSERT INTO schema_migrations (version) VALUES ('20140810001317');
+
+INSERT INTO schema_migrations (version) VALUES ('20140814010454');
+
+INSERT INTO schema_migrations (version) VALUES ('20140814011324');
+
+INSERT INTO schema_migrations (version) VALUES ('20140814011639');
+
+INSERT INTO schema_migrations (version) VALUES ('20140814011852');
+
+INSERT INTO schema_migrations (version) VALUES ('20140814012512');
 
