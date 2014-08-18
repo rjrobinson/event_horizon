@@ -1,9 +1,23 @@
-%h1= "Profile for #{@user.username}"
+- content_for(:title) do
+  = "#{@user.username} - Launch Academy"
+
+%h1= "User: #{@user.username}"
 
 - if @user == current_user
-  #settings
-    %button#show-token Show Token
-    %span#token.hidden= @user.token
+  #settings.box
+    .row.header
+      .small-12.columns
+        %h2 Account Settings
+
+    .row.body
+      .small-3.columns
+        = label_tag :token, "Token", class: "right inline"
+      .small-9.columns
+        %span.token-field
+          Hidden from view
+        %span.hidden.token-field
+          = text_field_tag :token, @user.token, readonly: true
+        %a#show-token Toggle
 
 #submissions
   %ul
