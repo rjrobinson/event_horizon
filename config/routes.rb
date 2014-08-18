@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "challenges#index"
+  root "static_pages#home"
 
   resources :challenges, only: [:index, :show], param: :slug do
     resources :submissions, only: [:index, :new, :create]

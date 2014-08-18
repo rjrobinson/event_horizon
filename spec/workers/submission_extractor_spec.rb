@@ -15,5 +15,17 @@ describe SubmissionExtractor do
       extractor.perform(submission.id)
       expect(submission.files.count).to eq(2)
     end
+
+    it "preserves directories" do
+      submission = FactoryGirl.create(:submission_with_nested_files)
+
+      extractor.perform(submission.id)
+      expect(submission.files.count).to eq(2)
+
+      filenames = submission.files.map { |f| f.filename }
+
+      expect(filenames).to include("foo.rb")
+      expect(filenames).to include("bar/baz.rb")
+    end
   end
 end

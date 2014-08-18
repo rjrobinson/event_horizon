@@ -13,10 +13,10 @@ class SubmissionExtractor
       system("rm #{archive_path}")
 
       SourceFile.transaction do
-        valid_source_files(tmpdir).each do |filepath|
-          SourceFile.create!(body: File.read(filepath),
+        valid_source_files(tmpdir).each do |filename|
+          SourceFile.create!(body: File.read(File.join(tmpdir, filename)),
                              submission: submission,
-                             filename: File.basename(filepath))
+                             filename: filename)
         end
       end
     end
@@ -25,11 +25,28 @@ class SubmissionExtractor
   private
 
   def valid_source_files(dir)
-    filenames = Dir.entries(dir).reject do |filename|
+    find_files(nil, dir)
+  end
+
+  def find_files(prefix, dir)
+    filenames(dir).flat_map do |filename|
+      path = File.join(dir, filename)
+
+      if File.directory?(path)
+        find_files(filename, path)
+      else
+        if prefix
+          File.join(prefix, filename)
+        else
+          filename
+        end
+      end
+    end
+  end
+
+  def filenames(dir)
+    Dir.entries(dir).reject do |filename|
       filename == "." || filename == ".."
     end
-
-    filepaths = filenames.map { |filename| File.join(dir, filename) }
-    filepaths.select { |filepath| !File.directory?(filepath) }
   end
 end

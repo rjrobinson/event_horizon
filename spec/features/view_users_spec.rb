@@ -12,7 +12,7 @@ feature "view users" do
       visit root_path
 
       click_link "Signed in as #{user.username}"
-      expect(page).to have_content(user.token)
+      expect(page).to have_selector("input[value='#{user.token}']")
     end
 
     scenario "cannot view auth token for other user" do

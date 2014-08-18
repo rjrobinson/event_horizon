@@ -3,13 +3,11 @@
 
 %h1= @challenge.title
 
-#body
-  ~ render_markdown(@challenge.body)
-
-.download
-  = link_to "Download Files", @challenge.archive.url
-
-- if user_signed_in?
-  %ul.actions
+%ul.side-nav
+  %li= link_to "Download Files", @challenge.archive.url
+  - if user_signed_in?
     %li= link_to "Your Submissions", challenge_submissions_path(@challenge)
     %li= link_to "Submit Solution", new_challenge_submission_path(@challenge)
+
+#body
+  ~ render_markdown(@challenge.body)
