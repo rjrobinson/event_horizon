@@ -114,7 +114,7 @@ CREATE TABLE schema_migrations (
 
 CREATE VIEW searches AS
  SELECT challenges.id AS result_id,
-    'Challenge' AS result_type,
+    'Challenge'::character varying AS result_type,
     challenges.title,
     challenges.searchable
    FROM challenges;
@@ -448,4 +448,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140814011639');
 INSERT INTO schema_migrations (version) VALUES ('20140814011852');
 
 INSERT INTO schema_migrations (version) VALUES ('20140814012512');
+
+INSERT INTO schema_migrations (version) VALUES ('20140818203653');
 
