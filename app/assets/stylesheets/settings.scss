@@ -1,0 +1,14 @@
+@import "colors";
+
+.box {
+    border: 1px solid $border-color;
+    border-radius: 3px;
+
+    .header {
+        border-bottom: 1px solid $border-color;
+    }
+
+    .body {
+        padding: 1em;
+    }
+}
