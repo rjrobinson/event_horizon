@@ -1,6 +1,0 @@
----
-title: Random Acts of Pizza
-slug: random-pizza
-ignore:
-- "README.md"
-- "pizza_request_training.json"
