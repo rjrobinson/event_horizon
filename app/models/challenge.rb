@@ -33,4 +33,15 @@ class Challenge < ActiveRecord::Base
 
     challenge
   end
+
+  def self.import_all!
+    Dir.mktmpdir do |tmpdir|
+      `git clone https://github.com/atsheehan/challenges.git #{tmpdir}`
+
+      challenge_pattern = File.join(tmpdir, "**/.challenge")
+      Dir[challenge_pattern].each do |challenge_file|
+        Challenge.import!(File.dirname(challenge_file))
+      end
+    end
+  end
 end
