@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:create]
   end
 
-  resources :users, only: [:index, :show]
+  resources :users, only: [:index, :show], param: :username
 
   resource :session, only: [:new, :create, :destroy] do
     get "failure", on: :member

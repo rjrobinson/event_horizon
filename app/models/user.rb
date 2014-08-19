@@ -15,6 +15,10 @@ class User < ActiveRecord::Base
 
   before_validation :ensure_authentication_token
 
+  def to_param
+    username
+  end
+
   def self.find_or_create_from_omniauth(auth)
     account_keys = { uid: auth["uid"], provider: auth["provider"] }
 
