@@ -7,8 +7,10 @@
   %thead
     %tr
       %th Title
+      %th Description
 
   %tbody
     - @challenges.each do |challenge|
       %tr
         %td= link_to challenge.title, challenge_path(challenge)
+        %td= challenge.description
