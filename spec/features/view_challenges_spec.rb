@@ -8,6 +8,7 @@ feature "views challenges" do
 
     challenges.each do |challenge|
       expect(page).to have_link(challenge.title, challenge_path(challenge))
+      expect(page).to have_content(challenge.description)
     end
   end
 
@@ -22,7 +23,5 @@ feature "views challenges" do
     expect(page).to have_selector("p", "bar")
     expect(page).to have_selector("li", "item 1")
     expect(page).to have_selector("li", "item 2")
-
-    expect(page).to have_link("Download Files", challenge.archive.url)
   end
 end

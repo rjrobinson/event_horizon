@@ -9,6 +9,7 @@ describe Challenge do
 
       expect(challenge.title).to eq("Sample Challenge")
       expect(challenge.slug).to eq("sample-challenge")
+      expect(challenge.description).to eq("Describe the challenge here.")
       expect(challenge.body).to include("# Blah Blah")
       expect(challenge.archive_url).to be_present
     end

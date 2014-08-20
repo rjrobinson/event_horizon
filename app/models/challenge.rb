@@ -21,6 +21,7 @@ class Challenge < ActiveRecord::Base
     challenge ||= Challenge.new(slug: slug)
 
     challenge.title = info["title"]
+    challenge.description = info["description"]
     challenge.body = body
 
     Dir.mktmpdir("challenge") do |tmpdir|

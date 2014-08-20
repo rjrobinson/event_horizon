@@ -2,6 +2,7 @@ FactoryGirl.define do
   factory :challenge do
     sequence(:title) { |n| "Challenge #{n}" }
     sequence(:slug) { |n| "challenge-#{n}" }
+    sequence(:description) { |n| "Super fun challenge #{n}" }
     body "# Header\n\nThis is a challenge."
 
     archive do
