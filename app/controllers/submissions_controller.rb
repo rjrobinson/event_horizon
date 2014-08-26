@@ -3,7 +3,7 @@ class SubmissionsController < ApplicationController
 
   def index
     @challenge = Challenge.find_by!(slug: params[:challenge_slug])
-    if current_user.instructor?
+    if current_user.admin?
       @submissions = @challenge.submissions
     else
       @submissions = @challenge.submissions.where(user: current_user)
@@ -11,7 +11,7 @@ class SubmissionsController < ApplicationController
   end
 
   def show
-    if current_user.instructor?
+    if current_user.admin?
       @submission = Submission.find_by(id: params[:id]) || not_found
     else
       @submission = current_user.submissions.

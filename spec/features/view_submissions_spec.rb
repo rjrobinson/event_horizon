@@ -49,11 +49,11 @@ feature "view submissions" do
     end
   end
 
-  context "as an instructor" do
-    let(:instructor) { FactoryGirl.create(:instructor) }
+  context "as an admin" do
+    let(:admin) { FactoryGirl.create(:admin) }
 
     before :each do
-      sign_in_as(instructor)
+      sign_in_as(admin)
     end
 
     scenario "see all of the submissions for a challenge" do
