@@ -3,11 +3,11 @@ require "rails_helper"
 feature "comment on submission" do
   let(:submission) { FactoryGirl.create(:submission_with_file) }
 
-  context "as an instructor" do
-    let(:instructor) { FactoryGirl.create(:instructor) }
+  context "as an admin" do
+    let(:admin) { FactoryGirl.create(:admin) }
 
     before :each do
-      sign_in_as(instructor)
+      sign_in_as(admin)
     end
 
     scenario "comment on submission in general" do
@@ -17,7 +17,7 @@ feature "comment on submission" do
       click_button "Submit"
 
       expect(page).to have_content("Comment saved.")
-      expect(page).to have_content("#{instructor.username} commented")
+      expect(page).to have_content("#{admin.username} commented")
       expect(page).to have_content("Needs more cow-bell.")
     end
 
@@ -32,7 +32,7 @@ feature "comment on submission" do
       select file.filename, from: "Filename"
       click_button "Submit"
 
-      expect(page).to have_content("#{instructor.username} commented")
+      expect(page).to have_content("#{admin.username} commented")
       expect(page).to order_text("foo = 1", "Needs more cow-bell.")
       expect(page).to order_text("Needs more cow-bell.", "bar = 2")
     end
@@ -43,7 +43,7 @@ feature "comment on submission" do
       fill_in "Comment", with: ""
       click_button "Submit"
 
-      expect(page).to_not have_content("#{instructor.username} commented")
+      expect(page).to_not have_content("#{admin.username} commented")
       expect(page).to have_content("can't be blank")
       expect(Comment.count).to eq(0)
     end

@@ -63,9 +63,9 @@ describe SubmissionsController do
         expect(response).to be_success
       end
 
-      it "allows access to instructors" do
-        instructor = FactoryGirl.create(:instructor)
-        session[:user_id] = instructor.id
+      it "allows access to admins" do
+        admin = FactoryGirl.create(:admin)
+        session[:user_id] = admin.id
 
         submission = FactoryGirl.create(:submission)
 

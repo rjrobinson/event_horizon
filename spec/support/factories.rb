@@ -59,10 +59,6 @@ FactoryGirl.define do
     sequence(:name) { |n| "George Michael #{n}" }
     role "member"
 
-    factory :instructor do
-      role "instructor"
-    end
-
     factory :admin do
       role "admin"
     end

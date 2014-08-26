@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   validates :provider, presence: true
   validates :token, presence: true
   validates :role, presence: true, inclusion: {
-    in: ["member", "instructor", "admin"]
+    in: ["member", "admin"]
   }
 
   before_validation :ensure_authentication_token
@@ -33,10 +33,6 @@ class User < ActiveRecord::Base
     if token.blank?
       self.token = SecureRandom.urlsafe_base64
     end
-  end
-
-  def instructor?
-    role == "instructor"
   end
 
   def admin?
