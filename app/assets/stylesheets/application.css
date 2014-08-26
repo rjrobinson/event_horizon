@@ -58,3 +58,18 @@ table {
 .hidden {
     display: none;
 }
+
+dl {
+    width: 100%;
+    overflow: hidden;
+}
+
+dt {
+    float: left;
+    width: 50%;
+}
+
+dd {
+    float: left;
+    width: 50%;
+}

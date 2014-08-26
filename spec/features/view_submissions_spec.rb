@@ -86,7 +86,7 @@ feature "view submissions" do
       visit submission_path(submission)
 
       expect(page).to have_content("Submission for #{challenge.title}")
-      expect(page).to have_content("Submitted by #{submission.user.username}")
+      expect(page).to have_content(submission.user.username)
     end
   end
 
