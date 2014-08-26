@@ -3,11 +3,7 @@ class SubmissionsController < ApplicationController
 
   def index
     @challenge = Challenge.find_by!(slug: params[:challenge_slug])
-    if current_user.admin?
-      @submissions = @challenge.submissions
-    else
-      @submissions = @challenge.submissions.where(user: current_user)
-    end
+    @submissions = @challenge.submissions_viewable_by(current_user)
   end
 
   def show

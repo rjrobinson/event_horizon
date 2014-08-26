@@ -27,6 +27,18 @@ feature "view submissions" do
       end
     end
 
+    scenario "see public submissions from other users" do
+      submissions = FactoryGirl.
+        create_list(:submission, 3, challenge: challenge, public: true)
+
+      visit challenge_submissions_path(challenge)
+
+      submissions.each do |submission|
+        expect(page).to have_content(submission.user.username)
+        expect(page).to have_link_href(submission_path(submission))
+      end
+    end
+
     scenario "submission with multiple files" do
       submission = FactoryGirl.create(:submission, user: student)
       FactoryGirl.create(:source_file,
