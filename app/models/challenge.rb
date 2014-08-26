@@ -12,6 +12,14 @@ class Challenge < ActiveRecord::Base
     slug
   end
 
+  def submissions_viewable_by(user)
+    if user.admin?
+      submissions
+    else
+      submissions.where("user_id = ? OR public = true", user.id)
+    end
+  end
+
   def self.import!(dir)
     slug = File.basename(dir)
     info = YAML.load(File.read(File.join(dir, ".challenge")))

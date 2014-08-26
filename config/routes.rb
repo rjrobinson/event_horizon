@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     resources :submissions, only: [:index, :new, :create]
   end
 
-  resources :submissions, only: [:show] do
+  resources :submissions, only: [:show, :update] do
     resources :comments, only: [:create]
   end
 

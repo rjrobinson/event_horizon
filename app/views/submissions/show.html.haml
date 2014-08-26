@@ -3,8 +3,20 @@
 
 %h1= "Submission for #{@submission.challenge.title}"
 
-#submission-details
-  .user= "Submitted by #{@submission.user.username}"
+%dl#submission-details.attribute-box
+  .setting#submitter
+    %dt Submitter
+    %dd= @submission.user.username
+  .setting#submission-time
+    %dt Date
+    %dd= format_datetime(@submission.created_at)
+  .setting#public
+    %dt Public
+    %dd= @submission.public
+
+  = form_for @submission do |f|
+    = f.hidden_field :public, value: true
+    = f.submit "Make Public"
 
 #submission
   - @submission.files.each do |file|

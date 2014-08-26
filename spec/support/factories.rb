@@ -19,6 +19,7 @@ FactoryGirl.define do
   factory :submission do
     challenge
     user
+    self.public false
 
     archive do
       Rack::Test::UploadedFile.new(Rails.root.join("spec/data/one_file.tar.gz"))
