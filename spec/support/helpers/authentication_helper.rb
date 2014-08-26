@@ -9,6 +9,9 @@ module AuthenticationHelper
         "nickname" => user.username,
         "email" => user.email,
         "name" => user.name
+      },
+      "credentials" => {
+        "token" => "12345"
       }
     }
 

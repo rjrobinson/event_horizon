@@ -12,6 +12,9 @@ feature "returning user signs in" do
         "nickname" => user.username,
         "email" => user.email,
         "name" => user.name
+      },
+      "credentials" => {
+        "token" => "12345"
       }
     }
   end

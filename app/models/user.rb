@@ -42,4 +42,22 @@ class User < ActiveRecord::Base
   def admin?
     role == "admin"
   end
+
+  def belongs_to_org?(organization, oauth_token)
+    if organization.nil? || organization.empty?
+      true
+    else
+      github_orgs(oauth_token).any? { |org| org["login"] == organization }
+    end
+  end
+
+  private
+
+  def github_orgs(token)
+    JSON.parse(Net::HTTP.get(github_orgs_url(token)))
+  end
+
+  def github_orgs_url(token)
+    URI("https://api.github.com/users/#{username}/orgs?access_token=#{token}")
+  end
 end

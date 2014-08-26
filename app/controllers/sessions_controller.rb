@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
   def create
     user = User.find_or_create_from_omniauth(auth_hash)
 
-    if user.persisted?
+    if user.persisted? && user.belongs_to_org?(organization, omniauth_token)
       session[:user_id] = user.id
       flash[:success] = "Successfully signed in as #{user.username}."
     else
@@ -39,5 +39,13 @@ class SessionsController < ApplicationController
 
   def auth_hash
     request.env["omniauth.auth"]
+  end
+
+  def omniauth_token
+    auth_hash["credentials"]["token"]
+  end
+
+  def organization
+    ENV["GITHUB_ORG"]
   end
 end

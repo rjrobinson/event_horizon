@@ -9,6 +9,9 @@ feature "guest creates account" do
         "nickname" => "boblob",
         "email" => "bob@example.com",
         "name" => "Bob Loblaw"
+      },
+      "credentials" => {
+        "token" => "12345"
       }
     }
 
@@ -29,6 +32,9 @@ feature "guest creates account" do
       "uid" => "123456",
       "info" => {
         "nickname" => "boblob"
+      },
+      "credentials" => {
+        "token" => "12345"
       }
     }
 
