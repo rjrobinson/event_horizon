@@ -14,6 +14,10 @@
     %dt Public
     %dd= @submission.public
 
+  = form_for @submission do |f|
+    = f.hidden_field :public, value: true
+    = f.submit "Make Public"
+
 #submission
   - @submission.files.each do |file|
     .source-file(data-source-file-id="#{file.id}")
