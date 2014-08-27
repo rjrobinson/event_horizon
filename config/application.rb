@@ -34,5 +34,7 @@ module EventHorizon
     # Preserves the trigger for updating the assignments searchable column
     # as well as any other PostgreSQL-specific settings.
     config.active_record.schema_format = :sql
+
+    config.action_mailer.default_url_options = { host: "localhost:3000" }
   end
 end
