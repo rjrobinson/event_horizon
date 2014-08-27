@@ -71,4 +71,24 @@ feature "comment on submission" do
       expect(Comment.count).to eq(0)
     end
   end
+
+  context "as a user" do
+    let(:user) { FactoryGirl.create(:user) }
+
+    before :each do
+      sign_in_as(user)
+    end
+
+    scenario "don't email if commenter is the submitter" do
+      submission = FactoryGirl.create(:submission, user: user)
+
+      visit submission_path(submission)
+
+      fill_in "Comment", with: "I like oranges."
+      click_button "Submit"
+
+      expect(page).to have_content("Comment saved.")
+      expect(ActionMailer::Base.deliveries.count).to eq(0)
+    end
+  end
 end

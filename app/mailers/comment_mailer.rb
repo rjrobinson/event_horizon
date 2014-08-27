@@ -1,7 +1,10 @@
 class CommentMailer < ActionMailer::Base
   def new_comment_email(comment)
-    email = comment.submission.user.email
+    commenter = comment.user
+    submitter = comment.submission.user
 
-    mail(to: email, subject: "blah.")
+    if commenter != submitter
+      mail(to: submitter.email, subject: "blah.")
+    end
   end
 end
