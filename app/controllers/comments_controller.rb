@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
 
   def create
     @submission = Submission.find(params[:submission_id])
-    if @submission.user != current_user && !current_user.admin?
+    if @submission.user != current_user && !current_user.admin? && !@submission.public
       not_found
     end
 
