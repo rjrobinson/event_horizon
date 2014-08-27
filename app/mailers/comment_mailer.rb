@@ -1,10 +1,15 @@
 class CommentMailer < ActionMailer::Base
-  def new_comment_email(comment)
-    commenter = comment.user
-    submitter = comment.submission.user
+  add_template_helper(ApplicationHelper)
 
-    if commenter != submitter
-      mail(to: submitter.email, subject: "blah.")
+  def new_comment(comment)
+    @comment = comment
+    @commenter = comment.user
+    @submitter = comment.submission.user
+
+    if @commenter != @submitter
+      mail(
+        to: @submitter.email,
+        subject: "#{@commenter.username} commented on your submission.")
     end
   end
 end
