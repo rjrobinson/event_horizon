@@ -40,6 +40,8 @@ feature "comment on submission" do
       expect(page).to have_content("Comment saved.")
       expect(page).to have_content("#{admin.username} commented")
       expect(page).to have_content("Needs more cow-bell.")
+
+      expect(ActionMailer::Base.deliveries.count).to eq(1)
     end
 
     it "comment on specific file and line" do
