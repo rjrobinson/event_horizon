@@ -3,6 +3,27 @@ require "rails_helper"
 feature "comment on submission" do
   let(:submission) { FactoryGirl.create(:submission_with_file) }
 
+  context "as a user" do
+    let(:user) { FactoryGirl.create(:user) }
+
+    before :each do
+      sign_in_as(user)
+    end
+
+    scenario "comment on another user's public submission" do
+      submission = FactoryGirl.create(:submission, public: true)
+
+      visit submission_path(submission)
+
+      fill_in "Comment", with: "Needs more cowbell."
+      click_button "Submit"
+
+      expect(page).to have_content("Comment saved.")
+      expect(page).to have_content("#{user.username} commented")
+      expect(page).to have_content("Needs more cowbell.")
+    end
+  end
+
   context "as an admin" do
     let(:admin) { FactoryGirl.create(:admin) }
 
