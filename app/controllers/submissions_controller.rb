@@ -7,13 +7,8 @@ class SubmissionsController < ApplicationController
   end
 
   def show
-    if current_user.admin?
-      @submission = Submission.find_by(id: params[:id]) || not_found
-    else
-      @submission = current_user.submissions.
-        find_by(id: params[:id]) || not_found
-    end
-
+    @submission = Submission
+      .viewable_by(current_user).find_by(id: params[:id]) || not_found
     @comment = Comment.new
   end
 

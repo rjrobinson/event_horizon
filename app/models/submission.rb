@@ -23,6 +23,14 @@ class Submission < ActiveRecord::Base
     comments.where("line_number IS NULL OR source_file_id IS NULL")
   end
 
+  def self.viewable_by(user)
+    if user.admin?
+      all
+    else
+      where("user_id = ? OR public = true", user.id)
+    end
+  end
+
   private
 
   def save_body

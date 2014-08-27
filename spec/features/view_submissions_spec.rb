@@ -37,9 +37,15 @@ feature "view submissions" do
         expect(page).to have_content(submission.user.username)
         expect(page).to have_link_href(submission_path(submission))
       end
+
+      submission = submissions[0]
+
+      visit submission_path(submission)
+      expect(page).to have_content("Submission for #{submission.challenge.title}")
+      expect(page).to have_content(submission.user.username)
     end
 
-    scenario "submission with multiple files" do
+    scenario "view submission with multiple files" do
       submission = FactoryGirl.create(:submission, user: student)
       FactoryGirl.create(:source_file,
                          submission: submission,
