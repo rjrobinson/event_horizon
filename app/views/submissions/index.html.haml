@@ -3,17 +3,20 @@
 
 %h1= "Submissions for #{@challenge.title}"
 
-#submissions
-  %table
-    %thead
-      %tr
-        %th Submitter
-        %th Submission Time
-        %th Status
-
-    %tbody
-      - @submissions.each do |submission|
+- if !@submissions.empty?
+  #submissions
+    %table
+      %thead
         %tr
-          %td= submission.user.username
-          %td= submission.created_at
-          %td= link_to "Submitted", submission_path(submission)
+          %th Submitter
+          %th Submission Time
+          %th Status
+
+      %tbody
+        - @submissions.each do |submission|
+          %tr
+            %td= submission.user.username
+            %td= submission.created_at
+            %td= link_to "Submitted", submission_path(submission)
+- else
+  %p Other submissions hidden until you've submitted yours.

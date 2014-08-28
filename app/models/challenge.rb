@@ -16,8 +16,16 @@ class Challenge < ActiveRecord::Base
     if user.admin?
       submissions
     else
-      submissions.where("user_id = ? OR public = true", user.id)
+      if has_submission_from?(user)
+        submissions.where("user_id = ? OR public = true", user.id)
+      else
+        submissions.none
+      end
     end
+  end
+
+  def has_submission_from?(user)
+    submissions.exists?(user: user)
   end
 
   def self.import!(dir)
