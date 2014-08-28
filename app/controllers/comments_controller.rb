@@ -19,6 +19,8 @@ class CommentsController < ApplicationController
         format.json do
           render :show
         end
+
+        CommentMailer.new_comment(@comment).deliver
       else
         format.html { render "submissions/show" }
         format.json do
