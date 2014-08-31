@@ -10,60 +10,6 @@ feature "view submissions" do
       sign_in_as(student)
     end
 
-    scenario "my submission defaults as private" do
-      my_submissions = FactoryGirl.
-        create_list(:submission, 2, challenge: challenge, user: student)
-      submission = my_submissions[0]
-
-      visit submission_path(submission)
-
-      within("#public") do
-        expect(page).to have_content("false")
-      end
-    end
-
-    scenario "make my submission public" do
-      my_submissions = FactoryGirl.
-        create_list(:submission, 2, challenge: challenge, user: student)
-      submission = my_submissions[0]
-
-      visit submission_path(submission)
-
-      within("#public") do
-        expect(page).to have_content("false")
-      end
-
-      click_button "Make Public"
-
-      within("#public") do
-        expect(page).to have_content("true")
-      end
-    end
-
-    scenario "make my submission public, then private again", focus: true do
-      my_submissions = FactoryGirl.
-        create_list(:submission, 2, challenge: challenge, user: student)
-      submission = my_submissions[0]
-
-      visit submission_path(submission)
-
-      within("#public") do
-        expect(page).to have_content("false")
-      end
-
-      click_button "Make Public"
-
-      within("#public") do
-        expect(page).to have_content("true")
-      end
-
-      click_button "Make Private"
-
-      within("#public") do
-        expect(page).to have_content("false")
-      end
-    end
-
     scenario "see only my submissions for a challenge" do
       my_submissions = FactoryGirl.
         create_list(:submission, 2, challenge: challenge, user: student)
