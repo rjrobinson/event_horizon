@@ -19,5 +19,42 @@ feature "update submission" do
       submission.reload
       expect(submission.public).to eq(true)
     end
+
+    scenario "my submission defaults as private" do
+
+      submission = FactoryGirl.create(:submission, user: user)
+
+      visit submission_path(submission)
+
+      within("#public") do
+        expect(page).to have_content("false")
+      end
+    end
+
+    scenario "make my submission public" do
+      submission = FactoryGirl.create(:submission, user: user, public: true)
+
+      visit submission_path(submission)
+
+      within("#public") do
+        expect(page).to have_content("true")
+      end
+    end
+
+    scenario "make my submission public, then private again" do
+      submission = FactoryGirl.create(:submission, user: user, public: true)
+
+      visit submission_path(submission)
+
+      within("#public") do
+        expect(page).to have_content("true")
+      end
+
+      click_button "Make Private"
+
+      within("#public") do
+        expect(page).to have_content("false")
+      end
+    end
   end
 end
