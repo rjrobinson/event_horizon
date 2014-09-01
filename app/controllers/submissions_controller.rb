@@ -8,7 +8,7 @@ class SubmissionsController < ApplicationController
 
   def show
     @submission = Submission
-      .viewable_by(current_user).find_by(id: params[:id]) || not_found
+      .authorized_find(current_user, params[:id]) || not_found
     @comment = Comment.new
   end
 

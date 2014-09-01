@@ -16,7 +16,11 @@ class Challenge < ActiveRecord::Base
     if user.admin?
       submissions
     else
-      submissions.where("user_id = ? OR public = true", user.id)
+      if submissions.has_submission_from?(user)
+        submissions.where("user_id = ? OR public = true", user.id)
+      else
+        submissions.none
+      end
     end
   end
 

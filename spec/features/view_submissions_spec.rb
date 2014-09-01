@@ -3,16 +3,16 @@ require "rails_helper"
 feature "view submissions" do
   let(:challenge) { FactoryGirl.create(:challenge) }
 
-  context "as a student" do
-    let(:student) { FactoryGirl.create(:user) }
+  context "as a user" do
+    let(:user) { FactoryGirl.create(:user) }
 
     before :each do
-      sign_in_as(student)
+      sign_in_as(user)
     end
 
-    scenario "see only my submissions for a challenge" do
+    scenario "see my submissions for a challenge" do
       my_submissions = FactoryGirl.
-        create_list(:submission, 2, challenge: challenge, user: student)
+        create_list(:submission, 2, challenge: challenge, user: user)
       other_submissions = FactoryGirl.
         create_list(:submission, 2, challenge: challenge)
 
@@ -28,6 +28,8 @@ feature "view submissions" do
     end
 
     scenario "see public submissions from other users" do
+      my_submission = FactoryGirl
+        .create(:submission, challenge: challenge, user: user)
       submissions = FactoryGirl.
         create_list(:submission, 3, challenge: challenge, public: true)
 
@@ -45,8 +47,21 @@ feature "view submissions" do
       expect(page).to have_content(submission.user.username)
     end
 
+    scenario "hide other public submissions if haven't submitted once" do
+      submission = FactoryGirl
+        .create(:submission, challenge: challenge, public: true)
+
+      visit challenge_submissions_path(challenge)
+
+      expect(page).to_not have_content(submission.user.username)
+      expect(page).to_not have_link_href(submission_path(submission))
+
+      expect(page).to have_content(
+        "Other submissions hidden until you've submitted yours.")
+    end
+
     scenario "view submission with multiple files" do
-      submission = FactoryGirl.create(:submission, user: student)
+      submission = FactoryGirl.create(:submission, user: user)
       FactoryGirl.create(:source_file,
                          submission: submission,
                          filename: "bar.rb",

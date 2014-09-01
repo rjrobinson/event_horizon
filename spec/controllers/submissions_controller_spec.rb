@@ -63,6 +63,14 @@ describe SubmissionsController do
         expect(response).to be_success
       end
 
+      it "denies access unless you've submitted one solution" do
+        submission = FactoryGirl.create(:submission, public: true)
+        session[:user_id] = user.id
+
+        expect { get :show, id: submission.id }.
+          to raise_error(ActionController::RoutingError)
+      end
+
       it "allows access to admins" do
         admin = FactoryGirl.create(:admin)
         session[:user_id] = admin.id
@@ -73,7 +81,7 @@ describe SubmissionsController do
         expect(response).to be_success
       end
 
-      it "avoids showing other user submissions" do
+      it "avoids showing other private submissions" do
         other_user_submission = FactoryGirl.create(:submission)
         session[:user_id] = user.id
 
