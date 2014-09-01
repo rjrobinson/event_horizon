@@ -40,7 +40,8 @@ CREATE TABLE articles (
     body text NOT NULL,
     description text,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    searchable tsvector
 );
 
 
@@ -148,11 +149,17 @@ CREATE TABLE schema_migrations (
 --
 
 CREATE VIEW searches AS
- SELECT challenges.id AS result_id,
-    'Challenge'::character varying AS result_type,
-    challenges.title,
-    challenges.searchable
-   FROM challenges;
+         SELECT challenges.id AS result_id,
+            'Challenge'::character varying AS result_type,
+            challenges.title,
+            challenges.searchable
+           FROM challenges
+UNION
+         SELECT articles.id AS result_id,
+            'Article'::character varying AS result_type,
+            articles.title,
+            articles.searchable
+           FROM articles;
 
 
 --
@@ -350,6 +357,13 @@ ALTER TABLE ONLY users
 
 
 --
+-- Name: index_articles_on_searchable; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_articles_on_searchable ON articles USING gin (searchable);
+
+
+--
 -- Name: index_articles_on_slug; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -441,6 +455,13 @@ CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (v
 
 
 --
+-- Name: articles_searchable_update; Type: TRIGGER; Schema: public; Owner: -
+--
+
+CREATE TRIGGER articles_searchable_update BEFORE INSERT OR UPDATE ON articles FOR EACH ROW EXECUTE PROCEDURE tsvector_update_trigger('searchable', 'pg_catalog.english', 'title', 'body');
+
+
+--
 -- Name: challenges_searchable_update; Type: TRIGGER; Schema: public; Owner: -
 --
 
@@ -514,4 +535,8 @@ INSERT INTO schema_migrations (version) VALUES ('20140819174653');
 INSERT INTO schema_migrations (version) VALUES ('20140826152921');
 
 INSERT INTO schema_migrations (version) VALUES ('20140901185227');
+
+INSERT INTO schema_migrations (version) VALUES ('20140901191401');
+
+INSERT INTO schema_migrations (version) VALUES ('20140901191402');
 
