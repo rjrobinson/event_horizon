@@ -2,6 +2,7 @@ require "rails_helper"
 
 feature "comment on submission" do
   let(:submission) { FactoryGirl.create(:submission_with_file) }
+  let(:challenge) { FactoryGirl.create(:challenge) }
 
   context "as a user" do
     let(:user) { FactoryGirl.create(:user) }
@@ -11,7 +12,9 @@ feature "comment on submission" do
     end
 
     scenario "comment on another user's public submission" do
-      submission = FactoryGirl.create(:submission, public: true)
+      FactoryGirl.create(:submission, challenge: challenge, user: user)
+      submission = FactoryGirl
+        .create(:submission, challenge: challenge, public: true)
 
       visit submission_path(submission)
 

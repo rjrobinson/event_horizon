@@ -23,12 +23,27 @@ class Submission < ActiveRecord::Base
     comments.where("line_number IS NULL OR source_file_id IS NULL")
   end
 
+  def self.authorized_find(user, id)
+    submission = viewable_by(user).find_by(id: id)
+
+    if submission &&
+        (user.admin? || user.has_completed_challenge?(submission.challenge))
+      submission
+    else
+      nil
+    end
+  end
+
   def self.viewable_by(user)
     if user.admin?
       all
     else
       where("user_id = ? OR public = true", user.id)
     end
+  end
+
+  def self.has_submission_from?(user)
+    exists?(user: user)
   end
 
   private
