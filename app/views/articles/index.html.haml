@@ -1,0 +1,16 @@
+- content_for(:title) do
+  Articles - Launch Academy
+
+%h1 Articles
+
+%table
+  %thead
+    %tr
+      %th Title
+      %th Description
+
+  %tbody
+    - @articles.each do |article|
+      %tr
+        %td= link_to article.title, article_path(article)
+        %td= article.description

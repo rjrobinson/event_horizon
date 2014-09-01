@@ -1,4 +1,11 @@
 FactoryGirl.define do
+  factory :article do
+    sequence(:title) { |n| "Article #{n}" }
+    sequence(:slug) { |n| "article-#{n}" }
+    description "Describes the article."
+    body "# Article Foo\n\nThis is an article."
+  end
+
   factory :challenge do
     sequence(:title) { |n| "Challenge #{n}" }
     sequence(:slug) { |n| "challenge-#{n}" }
