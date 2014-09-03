@@ -149,17 +149,17 @@ CREATE TABLE schema_migrations (
 --
 
 CREATE VIEW searches AS
-         SELECT challenges.id AS result_id,
-            'Challenge'::character varying AS result_type,
-            challenges.title,
-            challenges.searchable
-           FROM challenges
+ SELECT challenges.id AS result_id,
+    'Challenge'::character varying AS result_type,
+    challenges.title,
+    challenges.searchable
+   FROM challenges
 UNION
-         SELECT articles.id AS result_id,
-            'Article'::character varying AS result_type,
-            articles.title,
-            articles.searchable
-           FROM articles;
+ SELECT articles.id AS result_id,
+    'Article'::character varying AS result_type,
+    articles.title,
+    articles.searchable
+   FROM articles;
 
 
 --
