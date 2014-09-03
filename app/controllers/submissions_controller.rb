@@ -10,6 +10,7 @@ class SubmissionsController < ApplicationController
     @submission = Submission
       .authorized_find(current_user, params[:id]) || not_found
     @comment = Comment.new
+    @vote = Vote.new
   end
 
   def new

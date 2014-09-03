@@ -2,6 +2,7 @@ class Submission < ActiveRecord::Base
   belongs_to :user
   belongs_to :challenge
   has_many :comments
+  has_many :votes
   has_many :files, -> { order :filename },
            class_name: "SourceFile"
 
@@ -44,6 +45,10 @@ class Submission < ActiveRecord::Base
 
   def self.has_submission_from?(user)
     exists?(user: user)
+  end
+
+  def up_votes
+    votes.where(value: 1)
   end
 
   private

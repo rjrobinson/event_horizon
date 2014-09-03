@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   resources :submissions, only: [:show, :update] do
     resources :comments, only: [:create]
+    resources :votes, only: [:create]
   end
 
   resources :users, only: [:index, :show], param: :username

@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   has_many :ratings
   has_many :enrollments
   has_many :courses, through: :enrollments
+  has_many :votes
 
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true

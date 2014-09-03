@@ -29,6 +29,12 @@
       .body
         ~ render_source_file(file)
 
+#vote-helpful
+  %p Was this submission helpful to you?
+  = form_for [@submission, @vote] do |f|
+    = f.hidden_field :value, value: 1
+    = f.submit "Yes"
+
 #comments
   - @submission.general_comments.each do |comment|
     - if comment.persisted?
