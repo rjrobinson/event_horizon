@@ -7,7 +7,7 @@ class VotesController < ApplicationController
     @vote.user = current_user
     @vote.save
 
-    flash[:info] = "You have marked this submission as helpful."
+    flash[:info] = "Thanks for voting!"
     redirect_to @submission
   end
 
