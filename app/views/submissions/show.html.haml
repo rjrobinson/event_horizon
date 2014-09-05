@@ -29,11 +29,15 @@
       .body
         ~ render_source_file(file)
 
-#vote-helpful
-  %p Was this submission helpful to you?
-  = form_for [@submission, @vote] do |f|
-    = f.hidden_field :value, value: 1
-    = f.submit "Yes"
+- if @submission.user != current_user
+  #vote-helpful
+    %p Was this submission helpful to you?
+    = form_for [@submission, @vote] do |f|
+      = f.hidden_field :value, value: 1
+      = f.submit "Yes"
+    = form_for [@submission, @downvote] do |f|
+      = f.hidden_field :value, value: 1
+      = f.submit "No"
 
 #comments
   - @submission.general_comments.each do |comment|

@@ -136,6 +136,39 @@ ALTER SEQUENCE comments_id_seq OWNED BY comments.id;
 
 
 --
+-- Name: downvotes; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE downvotes (
+    id integer NOT NULL,
+    value integer NOT NULL,
+    user_id integer NOT NULL,
+    submission_id integer NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: downvotes_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE downvotes_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: downvotes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE downvotes_id_seq OWNED BY downvotes.id;
+
+
+--
 -- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -324,6 +357,13 @@ ALTER TABLE ONLY comments ALTER COLUMN id SET DEFAULT nextval('comments_id_seq':
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY downvotes ALTER COLUMN id SET DEFAULT nextval('downvotes_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY source_files ALTER COLUMN id SET DEFAULT nextval('source_files_id_seq'::regclass);
 
 
@@ -370,6 +410,14 @@ ALTER TABLE ONLY challenges
 
 ALTER TABLE ONLY comments
     ADD CONSTRAINT comments_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: downvotes_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY downvotes
+    ADD CONSTRAINT downvotes_pkey PRIMARY KEY (id);
 
 
 --
@@ -451,6 +499,20 @@ CREATE INDEX index_comments_on_submission_id ON comments USING btree (submission
 --
 
 CREATE INDEX index_comments_on_user_id ON comments USING btree (user_id);
+
+
+--
+-- Name: index_downvotes_on_submission_id_and_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_downvotes_on_submission_id_and_user_id ON downvotes USING btree (submission_id, user_id);
+
+
+--
+-- Name: index_downvotes_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_downvotes_on_user_id ON downvotes USING btree (user_id);
 
 
 --
@@ -603,4 +665,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140901191401');
 INSERT INTO schema_migrations (version) VALUES ('20140901191402');
 
 INSERT INTO schema_migrations (version) VALUES ('20140903184839');
+
+INSERT INTO schema_migrations (version) VALUES ('20140905140228');
 

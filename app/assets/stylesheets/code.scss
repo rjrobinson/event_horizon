@@ -63,6 +63,11 @@ $source-padding: 0.8em;
     }
 }
 
+#vote-helpful {
+    border: 1px solid $border-color;
+    border-radius: 3px;
+}
+
 .inline-comment {
     margin-left: -$source-padding;
     margin-right: -$source-padding;

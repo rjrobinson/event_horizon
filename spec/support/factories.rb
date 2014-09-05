@@ -71,4 +71,10 @@ FactoryGirl.define do
       role "admin"
     end
   end
+
+  factory :vote do
+    user
+    submission
+    value 1
+  end
 end
