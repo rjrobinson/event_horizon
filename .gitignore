@@ -30,3 +30,7 @@
 
 # This file is auto-generated.
 /debian/install
+
+# Build artifacts
+/horizon-*
+/horizon_*
