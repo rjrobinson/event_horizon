@@ -27,3 +27,6 @@
 # Ignore uploaded files
 /public/uploads
 /public/downloads
+
+# This file is auto-generated.
+/debian/install

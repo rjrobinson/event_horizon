@@ -1,0 +1,14 @@
+Source: horizon
+Section: web
+Priority: extra
+Maintainer: Adam Sheehan <a.t.sheehan@gmail.com>
+Build-Depends: debhelper (>=9)
+Standards-Version: 3.9.5
+Homepage: https://github.com/atsheehan/event_horizon
+Vcs-Git: git://github.com/atsheehan/event_horizon.git
+Vcs-Browser: https://github.com/atsheehan/event_horizon
+
+Package: horizon
+Architecture: all
+Depends: ruby2.0 (>= 2.0.0)
+Description: horizon web application
