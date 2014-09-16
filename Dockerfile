@@ -2,7 +2,7 @@ FROM ubuntu
 MAINTAINER Adam Sheehan <a.t.sheehan@gmail.com>
 
 RUN apt-get update
-RUN apt-get install -y ruby2.0
+RUN apt-get install -y ruby2.0 ruby2.0-dev build-essential libpq-dev nodejs
 
 RUN ln -sf /usr/bin/ruby2.0 /usr/bin/ruby
 RUN ln -sf /usr/bin/gem2.0 /usr/bin/gem
