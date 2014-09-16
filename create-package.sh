@@ -3,9 +3,9 @@
 rm -rf horizon-0.1
 rm -f horizon_0.1.orig.tar.gz
 
-git ls-tree --name-only master | sed 's/$/ usr\/share\/horizon/' > debian/install
+git ls-tree --name-only HEAD | sed 's/$/ usr\/share\/horizon/' > debian/install
 
-git archive --format=tar.gz --prefix=horizon-0.1/ master > horizon-0.1.tar.gz
+git archive --format=tar.gz --prefix=horizon-0.1/ HEAD > horizon-0.1.tar.gz
 ln -s horizon-0.1.tar.gz horizon_0.1.orig.tar.gz
 
 tar zxf horizon-0.1.tar.gz
