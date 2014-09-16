@@ -1,15 +1,17 @@
 #!/bin/sh
 
-rm -rf horizon-0.1
-rm -f horizon_0.1.orig.tar.gz
+version=0.1
 
-git archive --format=tar.gz --prefix=horizon-0.1/horizon/ HEAD > horizon-0.1.tar.gz
-ln -s horizon-0.1.tar.gz horizon_0.1.orig.tar.gz
+rm -rf horizon-${version}
+rm -f horizon_${version}.orig.tar.gz
 
-tar zxf horizon-0.1.tar.gz
-cp -r debian horizon-0.1
+git archive --format=tar.gz --prefix=horizon-${version}/horizon/ HEAD > horizon-${version}.tar.gz
+ln -s horizon-${version}.tar.gz horizon_${version}.orig.tar.gz
 
-cd horizon-0.1
+tar zxf horizon-${version}.tar.gz
+cp -r debian horizon-${version}
+
+cd horizon-${version}
 dpkg-buildpackage
 cd ..
 
