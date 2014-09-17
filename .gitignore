@@ -22,7 +22,7 @@
 .sass-cache
 
 # Ignore environment variables containing sensitive info.
-/.env
+/.env*
 
 # Ignore uploaded files
 /public/uploads
