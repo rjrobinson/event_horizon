@@ -80,6 +80,7 @@ test:
 #
 production:
   <<: *default
-  database: event_horizon_production
-  username: event_horizon
-  password: <%= ENV['EVENT_HORIZON_DATABASE_PASSWORD'] %>
+  host: <%= ENV["DATABASE_HOST"] %>
+  database: <%= ENV["DATABASE_NAME"] %>
+  username: <%= ENV["DATABASE_USERNAME"] %>
+  password: <%= ENV["DATABASE_PASSWORD"] %>
