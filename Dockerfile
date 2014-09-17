@@ -14,6 +14,9 @@ RUN ln -sf /usr/bin/rdoc2.0 /usr/bin/rdoc
 ADD horizon_0.1-1_amd64.deb /tmp/horizon_0.1-1_amd64.deb
 RUN dpkg -i /tmp/horizon_0.1-1_amd64.deb
 
-EXPOSE 3000
+ENV BUNDLE_GEMFILE /usr/share/horizon/Gemfile
+ENV RAILS_ENV production
 
-ENTRYPOINT BUNDLE_GEMFILE=/usr/share/horizon/Gemfile bundle exec /usr/share/horizon/bin/rails server -e production
+EXPOSE 5000
+
+ENTRYPOINT bundle exec unicorn /usr/share/horizon/config.ru -c /usr/share/horizon/config/unicorn.rb -p 5000
