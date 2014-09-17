@@ -9,6 +9,6 @@ Vcs-Git: git://github.com/atsheehan/event_horizon.git
 Vcs-Browser: https://github.com/atsheehan/event_horizon
 
 Package: horizon
-Architecture: all
-Depends: ruby2.0 (>= 2.0.0)
+Architecture: any
+Depends: ruby2.0 (>= 2.0.0), libpq5, nodejs
 Description: horizon web application

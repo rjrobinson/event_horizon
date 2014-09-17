@@ -1,3 +1,8 @@
 #!/usr/bin/make -f
+build:
+	bundle install --gemfile=horizon/Gemfile --deployment --without=development test
+	RAILS_ENV=production bundle exec rake -f horizon/Rakefile assets:precompile
+	dh $@
+
 %:
 	dh $@

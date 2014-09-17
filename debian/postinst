@@ -1,9 +1,6 @@
 #!/bin/sh
 
 gem install bundler --no-rdoc --no-ri
-cd usr/share/horizon
-bundle install --deployment
 
-cd ../../..
 adduser --system horizon
 chown -R horizon usr/share/horizon
