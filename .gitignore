@@ -23,6 +23,7 @@
 
 # Ignore environment variables containing sensitive info.
 /.env*
+!/.env.sample
 
 # Ignore uploaded files
 /public/uploads
