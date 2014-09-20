@@ -14,9 +14,10 @@ RUN ln -sf /usr/bin/rdoc2.0 /usr/bin/rdoc
 ADD horizon_0.1-1_amd64.deb /tmp/horizon_0.1-1_amd64.deb
 RUN dpkg -i /tmp/horizon_0.1-1_amd64.deb
 
-ENV BUNDLE_GEMFILE /usr/share/horizon/Gemfile
-ENV RAILS_ENV production
+RUN apt-get install -y nginx
+RUN echo "daemon off;" >> /etc/nginx/nginx.conf
+ADD deploy/nginx.conf /etc/nginx/conf.d/default.conf
 
-EXPOSE 5000
+EXPOSE 80
 
-ENTRYPOINT bundle exec unicorn /usr/share/horizon/config.ru -c /usr/share/horizon/config/unicorn.rb -p 5000
+ENTRYPOINT service nginx start
