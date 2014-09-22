@@ -2,5 +2,9 @@
 
 gem install /tmp/bundler-1.7.3.gem --local --no-rdoc --no-ri
 
+# Overwrite the unicorn.rb used by heroku.
+mkdir -p /usr/share/horizon/pids
+ln -sf /usr/share/horizon/deploy/unicorn.rb /usr/share/horizon/config/unicorn.rb
+
 adduser --system horizon
-chown -R horizon usr/share/horizon
+chown -R horizon /usr/share/horizon
