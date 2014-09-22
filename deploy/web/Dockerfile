@@ -18,7 +18,6 @@ RUN apt-get install -y nginx
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 ADD tmp/nginx.conf /etc/nginx/conf.d/default.conf
 
-
 EXPOSE 80
 
 ENTRYPOINT service nginx start
