@@ -16,6 +16,8 @@ RUN dpkg -i /tmp/horizon_amd64.deb
 
 USER horizon
 
+ADD tmp/unicorn.rb /usr/share/horizon/config/unicorn.rb
+
 ENV BUNDLE_GEMFILE /usr/share/horizon/Gemfile
 ENV RAILS_ENV production
 

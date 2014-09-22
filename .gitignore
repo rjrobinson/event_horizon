@@ -30,6 +30,6 @@
 /public/downloads
 
 # Build artifacts
-/horizon-*
-/horizon_*
+/deploy/horizon-*
+/deploy/horizon_*
 /deploy/**/tmp/
