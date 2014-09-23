@@ -36,3 +36,7 @@
 
 /deploy/.vagrant
 /deploy/ssl
+
+# These are automatically generated from librarian-chef
+/deploy/cookbooks
+/deploy/tmp
