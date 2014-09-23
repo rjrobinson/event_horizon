@@ -1,0 +1,10 @@
+{
+  "name": "web",
+  "chef_type": "role",
+  "json_class": "Chef::Role",
+
+  "description": "Web server for the horizon application",
+  "run_list": [
+    "recipe[docker]"
+  ]
+}
