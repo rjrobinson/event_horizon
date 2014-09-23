@@ -33,3 +33,6 @@
 /deploy/horizon-*
 /deploy/horizon_*
 /deploy/**/tmp/
+
+/deploy/.vagrant
+/deploy/ssl
