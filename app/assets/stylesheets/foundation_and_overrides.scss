@@ -11,6 +11,7 @@
 
 // Allows the use of rem-calc() or lower-bound() in your settings
 @import "foundation/functions";
+@import "colors";
 
 // $experimental: true;
 
@@ -42,7 +43,7 @@ $row-width: rem-calc(1200);
 
 // We use these to define default font weights
 // $font-weight-normal: normal !default
-// $font-weight-bold: bold !default
+$font-weight-bold: bold !default;
 
 // We use these to control various global styles
 // $body-bg: #fff;
@@ -1186,16 +1187,16 @@ $code-font-weight: normal;
 // $include-html-top-bar-classes: $include-html-classes;
 
 // Background color for the top bar
-// $topbar-bg-color: #333;
-// $topbar-bg: $topbar-bg-color;
+$topbar-bg-color: $light-bg-color;
+$topbar-bg: $topbar-bg-color;
 
 // Height and margin
 // $topbar-height: 45px;
 // $topbar-margin-bottom: 0;
 
 // Controlling the styles for the title in the top bar
-// $topbar-title-weight: $font-weight-normal;
-// $topbar-title-font-size: rem-calc(17);
+$topbar-title-weight: $font-weight-bold;
+$topbar-title-font-size: rem-calc(23);
 
 // Style the top bar dropdown elements
 // $topbar-dropdown-bg: #333;
@@ -1207,16 +1208,16 @@ $code-font-weight: normal;
 // $topbar-dropdown-toggle-alpha: 0.4;
 
 // Set the link colors and styles for top-level nav
-// $topbar-link-color: #fff;
-// $topbar-link-color-hover: #fff;
-// $topbar-link-color-active: #fff;
-// $topbar-link-color-active-hover: #fff;
+$topbar-link-color: #333;
+$topbar-link-color-hover: $link-blue;
+$topbar-link-color-active: $link-blue;
+$topbar-link-color-active-hover: $link-blue;
 // $topbar-link-weight: $font-weight-normal;
 // $topbar-link-font-size: rem-calc(13);
 // $topbar-link-hover-lightness: -10%; // Darken by 10%
-// $topbar-link-bg: $topbar-bg;
-// $topbar-link-bg-color-hover: #555555;
-// $topbar-link-bg-hover: #272727;
+$topbar-link-bg: $topbar-bg;
+$topbar-link-bg-color-hover: $topbar-bg;
+$topbar-link-bg-hover: $topbar-bg;
 // $topbar-link-bg-active: $primary-color;
 // $topbar-link-bg-active-hover: scale-color($primary-color, $lightness: -14%);
 // $topbar-link-font-family: $body-font-family;
