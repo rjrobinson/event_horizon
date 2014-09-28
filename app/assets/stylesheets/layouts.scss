@@ -3,3 +3,33 @@
 .full-top-bar {
     border-bottom: 1px solid $border-color;
 }
+
+.lessons {
+    .lesson {
+        margin: 0.5em 0;
+        padding: 1em;
+        border: 1px solid $border-color;
+        border-radius: 5px;
+        background-color: $light-bg-color;
+
+        .type {
+            padding: 10px;
+            border: 1px solid $border-color;
+            border-radius: 3px;
+
+            float: right;
+            font-size: 0.8em;
+            font-weight: bold;
+
+            color: #ffffff;
+        }
+
+        .type.article {
+            background-color: $article-color;
+        }
+
+        .type.challenge {
+            background-color: $challenge-color;
+        }
+    }
+}
