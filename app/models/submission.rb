@@ -1,6 +1,6 @@
 class Submission < ActiveRecord::Base
   belongs_to :user
-  belongs_to :challenge
+  belongs_to :lesson
   has_many :comments
   has_many :files, -> { order :filename },
            class_name: "SourceFile"
@@ -8,7 +8,7 @@ class Submission < ActiveRecord::Base
   mount_uploader :archive, ArchiveUploader
 
   validates :user, presence: true
-  validates :challenge, presence: true
+  validates :lesson, presence: true
   validates :archive, presence: true
 
   before_validation :save_body
@@ -27,7 +27,7 @@ class Submission < ActiveRecord::Base
     submission = viewable_by(user).find_by(id: id)
 
     if submission &&
-        (user.admin? || user.has_completed_challenge?(submission.challenge))
+        (user.admin? || user.has_completed_lesson?(submission.lesson))
       submission
     else
       nil

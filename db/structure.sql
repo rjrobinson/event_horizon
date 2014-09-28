@@ -136,6 +136,43 @@ ALTER SEQUENCE comments_id_seq OWNED BY comments.id;
 
 
 --
+-- Name: lessons; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE lessons (
+    id integer NOT NULL,
+    type character varying(255) NOT NULL,
+    title character varying(255) NOT NULL,
+    slug character varying(255) NOT NULL,
+    body text NOT NULL,
+    description text,
+    searchable tsvector,
+    archive character varying(255),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: lessons_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE lessons_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: lessons_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE lessons_id_seq OWNED BY lessons.id;
+
+
+--
 -- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -149,17 +186,17 @@ CREATE TABLE schema_migrations (
 --
 
 CREATE VIEW searches AS
-         SELECT challenges.id AS result_id,
-            'Challenge'::character varying AS result_type,
-            challenges.title,
-            challenges.searchable
-           FROM challenges
+ SELECT challenges.id AS result_id,
+    'Challenge'::character varying AS result_type,
+    challenges.title,
+    challenges.searchable
+   FROM challenges
 UNION
-         SELECT articles.id AS result_id,
-            'Article'::character varying AS result_type,
-            articles.title,
-            articles.searchable
-           FROM articles;
+ SELECT articles.id AS result_id,
+    'Article'::character varying AS result_type,
+    articles.title,
+    articles.searchable
+   FROM articles;
 
 
 --
@@ -202,7 +239,7 @@ ALTER SEQUENCE source_files_id_seq OWNED BY source_files.id;
 CREATE TABLE submissions (
     id integer NOT NULL,
     user_id integer NOT NULL,
-    challenge_id integer NOT NULL,
+    lesson_id integer NOT NULL,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     archive character varying(255) NOT NULL,
@@ -291,6 +328,13 @@ ALTER TABLE ONLY comments ALTER COLUMN id SET DEFAULT nextval('comments_id_seq':
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY lessons ALTER COLUMN id SET DEFAULT nextval('lessons_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY source_files ALTER COLUMN id SET DEFAULT nextval('source_files_id_seq'::regclass);
 
 
@@ -330,6 +374,14 @@ ALTER TABLE ONLY challenges
 
 ALTER TABLE ONLY comments
     ADD CONSTRAINT comments_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: lessons_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY lessons
+    ADD CONSTRAINT lessons_pkey PRIMARY KEY (id);
 
 
 --
@@ -406,6 +458,20 @@ CREATE INDEX index_comments_on_user_id ON comments USING btree (user_id);
 
 
 --
+-- Name: index_lessons_on_searchable; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_lessons_on_searchable ON lessons USING gin (searchable);
+
+
+--
+-- Name: index_lessons_on_slug; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_lessons_on_slug ON lessons USING btree (slug);
+
+
+--
 -- Name: index_source_files_on_submission_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -413,10 +479,10 @@ CREATE INDEX index_source_files_on_submission_id ON source_files USING btree (su
 
 
 --
--- Name: index_submissions_on_challenge_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_submissions_on_lesson_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE INDEX index_submissions_on_challenge_id ON submissions USING btree (challenge_id);
+CREATE INDEX index_submissions_on_lesson_id ON submissions USING btree (lesson_id);
 
 
 --
@@ -466,6 +532,13 @@ CREATE TRIGGER articles_searchable_update BEFORE INSERT OR UPDATE ON articles FO
 --
 
 CREATE TRIGGER challenges_searchable_update BEFORE INSERT OR UPDATE ON challenges FOR EACH ROW EXECUTE PROCEDURE tsvector_update_trigger('searchable', 'pg_catalog.english', 'title', 'body');
+
+
+--
+-- Name: lessons_searchable_update; Type: TRIGGER; Schema: public; Owner: -
+--
+
+CREATE TRIGGER lessons_searchable_update BEFORE INSERT OR UPDATE ON lessons FOR EACH ROW EXECUTE PROCEDURE tsvector_update_trigger('searchable', 'pg_catalog.english', 'title', 'body', 'description');
 
 
 --
@@ -539,4 +612,8 @@ INSERT INTO schema_migrations (version) VALUES ('20140901185227');
 INSERT INTO schema_migrations (version) VALUES ('20140901191401');
 
 INSERT INTO schema_migrations (version) VALUES ('20140901191402');
+
+INSERT INTO schema_migrations (version) VALUES ('20140928165428');
+
+INSERT INTO schema_migrations (version) VALUES ('20140928170912');
 

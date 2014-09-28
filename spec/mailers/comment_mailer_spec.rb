@@ -10,8 +10,8 @@ describe CommentMailer do
       expect(mail.body.encoded).to include(comment.user.username)
     end
 
-    it "includes the name of the challenge" do
-      expect(mail.body.encoded).to include(comment.submission.challenge.title)
+    it "includes the name of the lesson" do
+      expect(mail.body.encoded).to include(comment.submission.lesson.title)
     end
 
     it "includes the body of the comment" do

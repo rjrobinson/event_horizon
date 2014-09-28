@@ -1,19 +1,22 @@
 FactoryGirl.define do
-  factory :article do
+  factory :lesson do
+    type "article"
     sequence(:title) { |n| "Article #{n}" }
     sequence(:slug) { |n| "article-#{n}" }
     description "Describes the article."
     body "# Article Foo\n\nThis is an article."
-  end
 
-  factory :challenge do
-    sequence(:title) { |n| "Challenge #{n}" }
-    sequence(:slug) { |n| "challenge-#{n}" }
-    sequence(:description) { |n| "Super fun challenge #{n}" }
-    body "# Header\n\nThis is a challenge."
+    factory :article do
+      type "article"
+    end
 
-    archive do
-      Rack::Test::UploadedFile.new(Rails.root.join("spec/data/one_file.tar.gz"))
+    factory :challenge do
+      type "challenge"
+
+      archive do
+        Rack::Test::UploadedFile.new(
+          Rails.root.join("spec/data/one_file.tar.gz"))
+      end
     end
   end
 
@@ -24,7 +27,7 @@ FactoryGirl.define do
   end
 
   factory :submission do
-    challenge
+    association :lesson, factory: :challenge
     user
     self.public false
 
