@@ -1,4 +1,4 @@
-module AssignmentHelper
+module LessonHelper
   def render_markdown(content)
     renderer.render(content).html_safe
   end
