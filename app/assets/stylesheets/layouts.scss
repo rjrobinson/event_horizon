@@ -31,5 +31,13 @@
         .type.challenge {
             background-color: $challenge-color;
         }
+
+        .type.tutorial {
+            background-color: $tutorial-color;
+        }
     }
+}
+
+.lesson-title {
+    border-bottom: 1px solid $border-color;
 }

@@ -6,6 +6,7 @@ class Lesson < ActiveRecord::Base
   validates :title, presence: true
   validates :slug, presence: true, uniqueness: true
   validates :body, presence: true
+  validates :type, presence: true, inclusion: ["article", "tutorial", "challenge"]
 
   mount_uploader :archive, LessonUploader
 
@@ -27,5 +28,19 @@ class Lesson < ActiveRecord::Base
 
   def self.search(query)
     where("searchable @@ plainto_tsquery(?)", query)
+  end
+
+  def self.import!(source_file)
+    content = File.read(source_file)
+    headers = YAML.load(content)
+
+    slug = File.basename(source_file).chomp(".md")
+
+    lesson = Lesson.find_or_initialize_by(slug: slug)
+    lesson.body = content.gsub(/---(.|\n)*---/, "")
+    lesson.title = headers["title"]
+    lesson.description = headers["description"]
+    lesson.type = headers["type"]
+    lesson.save!
   end
 end
