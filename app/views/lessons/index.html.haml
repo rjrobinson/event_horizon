@@ -10,14 +10,10 @@
     - else
       = "Found #{@lessons.length} result(s) for \"#{params[:query]}\"."
 
-%table
-  %thead
-    %tr
-      %th Title
-      %th Description
-
-  %tbody
-    - @lessons.each do |lesson|
-      %tr
-        %td= link_to lesson.title, lesson_path(lesson)
-        %td= lesson.description
+.lessons
+  - @lessons.each do |lesson|
+    .lesson
+      .type{ class: lesson.type }= lesson.type
+      %h3.title= link_to lesson.title, lesson
+      .description
+        = lesson.description

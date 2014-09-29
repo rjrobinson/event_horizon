@@ -1,7 +1,7 @@
 - content_for(:title) do
   = "#{@lesson.title} - Launch Academy"
 
-%h1= @lesson.title
+%h2.lesson-title= @lesson.title
 
 #body
   ~ render_markdown(@lesson.body)
