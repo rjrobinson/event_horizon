@@ -39,8 +39,8 @@ class User < ActiveRecord::Base
     role == "admin"
   end
 
-  def has_completed_challenge?(challenge)
-    challenge.submissions.has_submission_from?(self)
+  def has_completed_lesson?(lesson)
+    lesson.submissions.has_submission_from?(self)
   end
 
   def belongs_to_org?(organization, oauth_token)

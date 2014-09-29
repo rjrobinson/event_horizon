@@ -2,14 +2,14 @@ require "rails_helper"
 
 describe SubmissionsController do
   let(:user) { FactoryGirl.create(:user) }
-  let(:challenge) { FactoryGirl.create(:challenge) }
+  let(:lesson) { FactoryGirl.create(:lesson) }
 
   context "api" do
     describe "POST create" do
       context "with valid authentication" do
         it "successfully stores the submission" do
           set_auth_headers_for(user)
-          post :create, challenge_slug: challenge.slug,
+          post :create, lesson_slug: lesson.slug,
                         submission: { body: "1 + 2 == 4" },
                         format: :json
 
@@ -20,7 +20,7 @@ describe SubmissionsController do
 
       context "with no authentication" do
         it "fails to save the submission" do
-          post :create, challenge_slug: challenge.slug,
+          post :create, lesson_slug: lesson.slug,
                         submission: { body: "1 + 2 == 4" },
                         format: :json
 
@@ -35,7 +35,7 @@ describe SubmissionsController do
       context "as an authenticated user" do
         it "redirects after successful create" do
           session[:user_id] = user.id
-          post :create, challenge_slug: challenge.slug,
+          post :create, lesson_slug: lesson.slug,
                         submission: { body: "1 + 2 == 4" }
 
           expect(Submission.count).to eq(1)
@@ -45,7 +45,7 @@ describe SubmissionsController do
 
       context "as a guest" do
         it "redirects without saving" do
-          post :create, challenge_slug: challenge.slug,
+          post :create, lesson_slug: lesson.slug,
                         submission: { body: "1 + 2 == 4" }
 
           expect(Submission.count).to eq(0)

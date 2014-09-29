@@ -31,11 +31,11 @@
         %table
           %thead
             %tr
-              %th Challenge
+              %th Lesson
               %th Submitted On
 
           %body
             - @user.submissions.each do |submission|
               %tr
-                %td= link_to submission.challenge.title, submission_path(submission)
+                %td= link_to submission.lesson.title, submission_path(submission)
                 %td= format_datetime(submission.created_at)

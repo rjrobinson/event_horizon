@@ -1,4 +1,4 @@
-class ChallengeUploader < CarrierWave::Uploader::Base
+class LessonUploader < CarrierWave::Uploader::Base
   if Rails.env.test?
     storage :file
   else
@@ -10,6 +10,6 @@ class ChallengeUploader < CarrierWave::Uploader::Base
   end
 
   def store_dir
-    "downloads/challenges/#{mounted_as}/#{model.slug}"
+    "downloads/lessons/#{mounted_as}/#{model.slug}"
   end
 end

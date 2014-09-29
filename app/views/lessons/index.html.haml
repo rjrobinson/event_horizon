@@ -1,0 +1,23 @@
+- content_for(:title) do
+  Lessons - Launch Academy
+
+%h1 Lessons
+
+- if params[:query]
+  .result-count
+    - if @lessons.empty?
+      = "No results found for \"#{params[:query]}\"."
+    - else
+      = "Found #{@lessons.length} result(s) for \"#{params[:query]}\"."
+
+%table
+  %thead
+    %tr
+      %th Title
+      %th Description
+
+  %tbody
+    - @lessons.each do |lesson|
+      %tr
+        %td= link_to lesson.title, lesson_path(lesson)
+        %td= lesson.description

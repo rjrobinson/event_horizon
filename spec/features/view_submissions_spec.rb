@@ -1,7 +1,7 @@
 require "rails_helper"
 
 feature "view submissions" do
-  let(:challenge) { FactoryGirl.create(:challenge) }
+  let(:lesson) { FactoryGirl.create(:lesson) }
 
   context "as a user" do
     let(:user) { FactoryGirl.create(:user) }
@@ -10,13 +10,13 @@ feature "view submissions" do
       sign_in_as(user)
     end
 
-    scenario "see my submissions for a challenge" do
+    scenario "see my submissions for a lesson" do
       my_submissions = FactoryGirl.
-        create_list(:submission, 2, challenge: challenge, user: user)
+        create_list(:submission, 2, lesson: lesson, user: user)
       other_submissions = FactoryGirl.
-        create_list(:submission, 2, challenge: challenge)
+        create_list(:submission, 2, lesson: lesson)
 
-      visit challenge_submissions_path(challenge)
+      visit lesson_submissions_path(lesson)
 
       my_submissions.each do |submission|
         expect(page).to have_link_href(submission_path(submission))
@@ -29,11 +29,11 @@ feature "view submissions" do
 
     scenario "see public submissions from other users" do
       my_submission = FactoryGirl
-        .create(:submission, challenge: challenge, user: user)
+        .create(:submission, lesson: lesson, user: user)
       submissions = FactoryGirl.
-        create_list(:submission, 3, challenge: challenge, public: true)
+        create_list(:submission, 3, lesson: lesson, public: true)
 
-      visit challenge_submissions_path(challenge)
+      visit lesson_submissions_path(lesson)
 
       submissions.each do |submission|
         expect(page).to have_content(submission.user.username)
@@ -43,15 +43,15 @@ feature "view submissions" do
       submission = submissions[0]
 
       visit submission_path(submission)
-      expect(page).to have_content("Submission for #{submission.challenge.title}")
+      expect(page).to have_content("Submission for #{submission.lesson.title}")
       expect(page).to have_content(submission.user.username)
     end
 
     scenario "hide other public submissions if haven't submitted once" do
       submission = FactoryGirl
-        .create(:submission, challenge: challenge, public: true)
+        .create(:submission, lesson: lesson, public: true)
 
-      visit challenge_submissions_path(challenge)
+      visit lesson_submissions_path(lesson)
 
       expect(page).to_not have_content(submission.user.username)
       expect(page).to_not have_link_href(submission_path(submission))
@@ -89,11 +89,11 @@ feature "view submissions" do
       sign_in_as(admin)
     end
 
-    scenario "see all of the submissions for a challenge" do
+    scenario "see all of the submissions for a lesson" do
       submissions = FactoryGirl.
-        create_list(:submission, 3, challenge: challenge)
+        create_list(:submission, 3, lesson: lesson)
 
-      visit challenge_submissions_path(challenge)
+      visit lesson_submissions_path(lesson)
 
       submissions.each do |submission|
         expect(page).to have_link_href(submission_path(submission))
@@ -102,21 +102,21 @@ feature "view submissions" do
 
     scenario "view submission from student" do
       submission = FactoryGirl.create(:submission_with_file,
-                                      challenge: challenge)
+                                      lesson: lesson)
 
       visit submission_path(submission)
 
-      expect(page).to have_content("Submission for #{challenge.title}")
+      expect(page).to have_content("Submission for #{lesson.title}")
       expect(page).to have_content(submission.user.username)
     end
   end
 
   context "as a guest" do
     scenario "redirect to login" do
-      visit challenge_submissions_path(challenge)
+      visit lesson_submissions_path(lesson)
 
       expect(page).to have_content("You need to sign in before continuing.")
-      expect(page).to_not have_content("Submissions for #{challenge.title}")
+      expect(page).to_not have_content("Submissions for #{lesson.title}")
     end
   end
 end

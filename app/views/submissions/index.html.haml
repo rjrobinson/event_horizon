@@ -1,7 +1,7 @@
 - content_for(:title) do
-  = "#{@challenge.title} Submissions - Launch Academy"
+  = "#{@lesson.title} Submissions - Launch Academy"
 
-%h1= "Submissions for #{@challenge.title}"
+%h1= "Submissions for #{@lesson.title}"
 
 - if !@submissions.empty?
   #submissions
