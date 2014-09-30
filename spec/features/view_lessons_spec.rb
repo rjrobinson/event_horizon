@@ -1,6 +1,6 @@
 require "rails_helper"
 
-feature "view lessons", focus: true do
+feature "view lessons" do
   scenario "view list of available lessons" do
     middle_lesson = FactoryGirl.create(:lesson, position: 2)
     first_lesson = FactoryGirl.create(:lesson, position: 1)
