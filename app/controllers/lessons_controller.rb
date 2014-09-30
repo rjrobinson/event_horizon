@@ -3,7 +3,7 @@ class LessonsController < ApplicationController
     if params[:query]
       @lessons = Lesson.search(params[:query])
     else
-      @lessons = Lesson.all
+      @lessons = Lesson.order(:position)
     end
   end
 
