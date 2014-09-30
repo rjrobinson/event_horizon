@@ -10,7 +10,7 @@ position: 2
 
 Write a program which calculates the value of an investment given the initial amount *PV*, the annual interest rate *i*, and the number of years to invest *n*. Use the following formula to calculate the future value:
 
-![Compound Interest Equation](http://upload.wikimedia.org/math/e/0/c/e0ca87a82c591a0e0610792963751fd5.png)
+![Compound Interest Equation](https://upload.wikimedia.org/math/e/0/c/e0ca87a82c591a0e0610792963751fd5.png)
 
 The interest should be compounded every year.
 
