@@ -78,7 +78,8 @@ CREATE TABLE lessons (
     searchable tsvector,
     archive character varying(255),
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    "position" integer NOT NULL
 );
 
 
@@ -457,4 +458,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140928165428');
 INSERT INTO schema_migrations (version) VALUES ('20140928170912');
 
 INSERT INTO schema_migrations (version) VALUES ('20140928175407');
+
+INSERT INTO schema_migrations (version) VALUES ('20140930132041');
 

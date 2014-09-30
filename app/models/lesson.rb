@@ -7,6 +7,9 @@ class Lesson < ActiveRecord::Base
   validates :slug, presence: true, uniqueness: true
   validates :body, presence: true
   validates :type, presence: true, inclusion: ["article", "tutorial", "challenge"]
+  validates :position, presence: true, numericality: {
+    greater_than_or_equal_to: 1
+  }
 
   mount_uploader :archive, LessonUploader
 
@@ -41,6 +44,7 @@ class Lesson < ActiveRecord::Base
     lesson.title = headers["title"]
     lesson.description = headers["description"]
     lesson.type = headers["type"]
+    lesson.position = headers["position"]
     lesson.save!
   end
 end
