@@ -7,6 +7,18 @@ $comment-bg-color: #e3f3f6;
 $line-no-color: #aaaaaa;
 $source-padding: 0.8em;
 
+code {
+    border: 1px solid $border-color;
+    background-color: $code-bg-color-light;
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+
+pre code {
+    padding: 0;
+    border: 0px;
+}
+
 .code-block {
     border: 1px solid $border-color;
     font-size: 0.9em;
