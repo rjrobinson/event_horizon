@@ -1,5 +1,15 @@
 @import "colors";
 
+body {
+    background-color: $light-bg-color;
+}
+
+#content {
+    background-color: white;
+    border: 1px solid $border-color;
+    padding: 1em;
+}
+
 .full-top-bar {
     border-bottom: 1px solid $border-color;
 }
