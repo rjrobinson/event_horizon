@@ -34,7 +34,7 @@ $ gem install et
 
 The **et** gem is the interface for retrieving and submitting challenges to Horizon.
 
-Before we retrieve any challenges let's create a directory to store our work in. From the terminal, run the following commands (the `$` does not need to be typed in and is used to represent the terminal prompt):
+Before we retrieve any challenges let's create a directory to store our work in. From the terminal, run the following commands (**the `$` does not need to be typed in and is used to represent the terminal prompt**):
 
 ```no-highlight
 $ mkdir ~/challenges
