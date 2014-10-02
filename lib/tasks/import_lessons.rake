@@ -3,8 +3,9 @@ namespace :horizon do
     dir = Rails.root.join("db/sample_lessons")
 
     Dir.entries(dir).each do |filename|
-      if filename.ends_with?(".md")
-        path = File.join(dir, filename)
+      path = File.join(dir, filename)
+
+      if File.directory?(path) && !filename.start_with?(".")
         Lesson.import!(path)
       end
     end

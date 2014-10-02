@@ -1,11 +1,3 @@
----
-title: "Expressions"
-type: "article"
-description: "Describes how Ruby evaluates the code we write and how can we use variables as placeholders within our expressions."
-tags: "expressions, variables, constants"
-position: 1
----
-
 Expressions are an essential part of programming and are how we instruct Ruby to transform data from one value to another. In this article we discuss what it means to evaluate an expression and demonstrate how variables can be used to make our programs more flexible.
 
 ### Learning Goals

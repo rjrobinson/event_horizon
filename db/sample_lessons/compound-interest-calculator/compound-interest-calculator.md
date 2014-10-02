@@ -1,11 +1,3 @@
----
-title: "Compound Interest Calculator"
-type: "challenge"
-description: "Write a program to calculate the future value of an investment."
-depends: "expressions"
-position: 2
----
-
 ### Instructions
 
 Write a program which calculates the value of an investment given the initial amount *PV*, the annual interest rate *i*, and the number of years to invest *n*. Use the following formula to calculate the future value:
