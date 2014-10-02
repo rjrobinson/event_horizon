@@ -21,7 +21,7 @@ describe LessonsController do
         end
       end
 
-      it "filters based on type", focus: true do
+      it "filters based on type" do
         challenge = FactoryGirl.create(:lesson, type: "challenge")
         article = FactoryGirl.create(:lesson, type: "article")
 
