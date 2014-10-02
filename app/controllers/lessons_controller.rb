@@ -5,6 +5,10 @@ class LessonsController < ApplicationController
     else
       @lessons = Lesson.order(:position)
     end
+
+    if params[:type]
+      @lessons = @lessons.type(params[:type])
+    end
   end
 
   def show

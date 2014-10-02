@@ -33,6 +33,10 @@ class Lesson < ActiveRecord::Base
     where("searchable @@ plainto_tsquery(?)", query)
   end
 
+  def self.type(type)
+    where(type: type)
+  end
+
   def self.import!(source_file)
     content = File.read(source_file)
     headers = YAML.load(content)
