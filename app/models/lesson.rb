@@ -50,6 +50,15 @@ class Lesson < ActiveRecord::Base
     lesson.type = attributes["type"]
     lesson.position = attributes["position"]
 
+    if lesson.type == "challenge"
+      Dir.mktmpdir("challenge") do |tmpdir|
+        parent_dir = File.dirname(source_dir)
+        archive_path = File.join(tmpdir, "#{slug}.tar.gz")
+        system("tar zcf #{archive_path} -C #{parent_dir} #{slug}")
+        lesson.archive = File.open(archive_path)
+      end
+    end
+
     lesson.save!
   end
 end
