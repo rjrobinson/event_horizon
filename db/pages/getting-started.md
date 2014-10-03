@@ -6,7 +6,7 @@ Once you're ready to get started, [sign in or register][sign_in] for an account 
 
 ## Installation
 
-*Note: The software and instructions in this guide were designed for users running a UNIX-like operating system (i.e. Mac OS X or Linux). Windows is currently untested and some of the software/instructions may not work or will require modification. If you are using Windows, consider installing a version of Linux on a Virtual Machine. [This guide][ubuntu-vm] offers instructions on how to install Ubuntu Linux on a Virtual Machine in Windows.*
+*Note: The software and instructions in this guide were designed for users running a UNIX-like operating system (i.e. Mac OS X or Linux). Windows is currently untested and some of the software/instructions may not work or will require modification. If you are using Windows, consider using [Nitrous.IO][nitrous-io] for a complete, in-browser development environment or installing a version of Linux on a Virtual Machine. [This guide][ubuntu-vm] offers instructions on how to install Ubuntu Linux on a Virtual Machine in Windows.*
 
 To complete the challenges you'll need to setup your local development environment. At a minimum you'll need to install Ruby to run your code and a text editor to edit your files. Once Ruby is installed, you can get the **et** gem to download and submit challenges.
 
@@ -80,7 +80,46 @@ Once **et** is configured, we can download a challenge to work on. Run the follo
 
 ```no-highlight
 $ et list
+
+ slug                         | title
+--------------------------------------------------------------
+ compound-interest-calculator | Compound Interest Calculator
 ```
+
+The table contains the title of the challenge as well as the *slug* that we reference it with. In this case there is only one challenge which we'll download using the **get** command:
+
+```no-highlight
+$ et get compound-interest-calculator
+Extracted challenge to /home/asheehan/challenges/compound-interest-calculator
+```
+
+If everything worked correctly we should have a new directory containing our challenge:
+
+```no-highlight
+$ ls
+compound-interest-calculator
+```
+
+The `ls` command lists the files in the current directory and we can see an entry for `compound-interest-calculator`. This is a directory that we can `cd` into:
+
+```no-highlight
+$ cd compound-interest-calculator
+$ ls
+calculator.rb    compound-interest-calculator.md
+```
+
+Here we have two files: `calculator.rb` which is where we should write our code and the instructions in `compound-interest-calculator.md`. At this point you can open `calculator.rb` in your text editor and start working on the challenge!
+
+## Submitting Challenges
+
+Once you've completed the challenge (by writing code in `calculator.rb`) you can submit it with the **et submit** command within the `compound-interest-calculator` directory:
+
+```no-highlight
+$ et submit
+Challenge submitted
+```
+
+Congratulations! At this point, your code has been submitted to Horizon and be viewed on your profile page.
 
 [browse]: /lessons
 [sign_in]: /session/new
@@ -92,3 +131,4 @@ $ et list
 [atom]: https://atom.io/
 [iterm2]: http://iterm2.com/
 [ubuntu-vm]: http://www.wikihow.com/Install-Ubuntu-on-VirtualBox
+[nitrous-io]: https://www.nitrous.io/
