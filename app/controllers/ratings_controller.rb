@@ -13,6 +13,19 @@ class RatingsController < ApplicationController
     end
   end
 
+  def update
+    @lesson = Lesson.find_by!(slug: params[:lesson_slug])
+    @rating = @lesson.ratings.find_by!(user: current_user, id: params[:id])
+
+    if @rating.update(rating_params)
+      flash[:info] = "Rating updated."
+      redirect_to @lesson
+    else
+      flash[:alert] = "Rating could not be updated."
+      render "lessons/show"
+    end
+  end
+
   private
 
   def rating_params
