@@ -4,7 +4,7 @@ Write a program which calculates the value of an investment given the initial am
 
 ![Compound Interest Equation](https://upload.wikimedia.org/math/e/0/c/e0ca87a82c591a0e0610792963751fd5.png)
 
-The interest should be compounded every year.
+Add your code to `calculator.rb`.
 
 ### Sample Usage
 

@@ -4,3 +4,5 @@ type: "challenge"
 description: "Write a program to calculate the future value of an investment."
 depends: "expressions"
 position: 2
+ignore:
+- "compound-interest-calculator.md"
