@@ -27,6 +27,15 @@ FactoryGirl.define do
     body "Needs more cow-bell."
   end
 
+  factory :rating do
+    user
+    lesson
+
+    clarity 2
+    helpfulness 4
+    comment "Not bad."
+  end
+
   factory :submission do
     association :lesson, factory: :challenge
     user

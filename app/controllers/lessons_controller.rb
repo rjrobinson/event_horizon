@@ -13,5 +13,6 @@ class LessonsController < ApplicationController
 
   def show
     @lesson = Lesson.find_by!(slug: params[:slug])
+    @rating = @lesson.ratings.find_or_initialize_by(user: current_user)
   end
 end

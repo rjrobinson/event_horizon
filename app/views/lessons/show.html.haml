@@ -5,3 +5,27 @@
 
 #body
   ~ render_markdown(@lesson.body)
+
+- if user_signed_in?
+  #rating
+    = form_for [@lesson, @rating] do |f|
+      = field_set_tag "Rate this lesson" do
+        #helpfulness
+          = f.label :helpfulness, "How useful was the material discussed?"
+          - (1..5).each do |rating|
+            = f.label "helpfulness_#{rating}", class: "inline" do
+              = rating
+              = f.radio_button :helpfulness, rating
+
+        #clarity
+          = f.label :clarity, "How clearly explained were the concepts?"
+          - (1..5).each do |rating|
+            = f.label "clarity_#{rating}", class: "inline" do
+              = rating
+              = f.radio_button :clarity, rating
+
+        #comment
+          = f.label :comment, "Additional comments (optional)"
+          = f.text_area :comment, rows: 5
+
+        = f.submit "Rate Lesson", class: "button"

@@ -1,7 +1,8 @@
 class Lesson < ActiveRecord::Base
   self.inheritance_column = :_type_disabled
 
-  has_many :submissions
+  has_many :submissions, dependent: :destroy
+  has_many :ratings, dependent: :destroy
 
   validates :title, presence: true
   validates :slug, presence: true, uniqueness: true
