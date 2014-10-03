@@ -28,5 +28,14 @@ feature "rate lesson" do
       expect(rating.clarity).to eq(2)
       expect(rating.user).to eq(user)
     end
+
+    scenario "fail when form is empty" do
+      visit lesson_path(lesson)
+
+      click_button "Rate Lesson"
+
+      expect(page).to have_content("Rating could not be saved.")
+      expect(lesson.ratings.count).to eq(0)
+    end
   end
 end

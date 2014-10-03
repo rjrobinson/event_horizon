@@ -5,8 +5,11 @@ class RatingsController < ApplicationController
     @rating.user = current_user
 
     if @rating.save
-      flash[:success] = "Rating saved."
+      flash[:info] = "Rating saved."
       redirect_to @lesson
+    else
+      flash[:alert] = "Rating could not be saved."
+      render "lessons/show"
     end
   end
 
