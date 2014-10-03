@@ -1,4 +1,6 @@
 class RatingsController < ApplicationController
+  before_action :authenticate_user!
+
   def create
     @lesson = Lesson.find_by!(slug: params[:lesson_slug])
     @rating = @lesson.ratings.build(rating_params)

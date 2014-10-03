@@ -72,4 +72,11 @@ feature "rate lesson" do
       expect(lesson.ratings.count).to eq(0)
     end
   end
+
+  context "as a guest" do
+    scenario "the rating form is hidden" do
+      visit lesson_path(lesson)
+      expect(page).to_not have_content("Rate this lesson")
+    end
+  end
 end
