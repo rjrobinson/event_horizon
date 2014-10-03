@@ -20,6 +20,17 @@ describe LessonsController do
           expect(result["lessons"]).to include(lesson_info)
         end
       end
+
+      it "filters based on type" do
+        challenge = FactoryGirl.create(:lesson, type: "challenge")
+        article = FactoryGirl.create(:lesson, type: "article")
+
+        get :index, format: :json, type: "challenge"
+        result = JSON.parse(response.body)
+
+        expect(result["lessons"].count).to eq(1)
+        expect(result["lessons"][0]["slug"]).to eq(challenge.slug)
+      end
     end
 
     describe "GET show" do

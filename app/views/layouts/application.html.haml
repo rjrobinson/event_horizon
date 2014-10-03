@@ -28,6 +28,7 @@
 
           %ul.left
             %li= link_to "Browse", lessons_path
+            %li= link_to "Getting Started", start_path
             %li.has-form
               .row.collapse
                 = form_tag lessons_path, method: :get do
@@ -37,12 +38,11 @@
                     = submit_tag "Search", class: "alert button expand"
 
 
-    - if flash.any?
-      #notifications.row
-        - flash.each do |type, message|
-          .alert-box(class=type data-alert)
-            = message
-            %a.close(href="#") &times;
+    #notifications.row
+      - flash.each do |type, message|
+        .alert-box(class=type data-alert)
+          = message
+          %a.close(href="#") &times;
 
     #content.row
       .small-12.columns

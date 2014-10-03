@@ -33,18 +33,32 @@ class Lesson < ActiveRecord::Base
     where("searchable @@ plainto_tsquery(?)", query)
   end
 
-  def self.import!(source_file)
-    content = File.read(source_file)
-    headers = YAML.load(content)
+  def self.type(type)
+    where(type: type)
+  end
 
-    slug = File.basename(source_file).chomp(".md")
+  def self.import!(source_dir)
+    slug = File.basename(source_dir)
+
+    attributes = YAML.load_file(File.join(source_dir, ".lesson.yml"))
+    content = File.read(File.join(source_dir, "#{slug}.md"))
 
     lesson = Lesson.find_or_initialize_by(slug: slug)
-    lesson.body = content.gsub(/---(.|\n)*---/, "")
-    lesson.title = headers["title"]
-    lesson.description = headers["description"]
-    lesson.type = headers["type"]
-    lesson.position = headers["position"]
+    lesson.body = content
+    lesson.title = attributes["title"]
+    lesson.description = attributes["description"]
+    lesson.type = attributes["type"]
+    lesson.position = attributes["position"]
+
+    if lesson.type == "challenge"
+      Dir.mktmpdir("challenge") do |tmpdir|
+        parent_dir = File.dirname(source_dir)
+        archive_path = File.join(tmpdir, "#{slug}.tar.gz")
+        system("tar zcf #{archive_path} -C #{parent_dir} #{slug}")
+        lesson.archive = File.open(archive_path)
+      end
+    end
+
     lesson.save!
   end
 end
