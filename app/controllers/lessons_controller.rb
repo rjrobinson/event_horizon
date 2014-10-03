@@ -13,5 +13,6 @@ class LessonsController < ApplicationController
 
   def show
     @lesson = Lesson.find_by!(slug: params[:slug])
+    @rating = Rating.new
   end
 end

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :lessons, only: [:index, :show], param: :slug do
     resources :submissions, only: [:index, :new, :create]
+    resources :ratings, only: [:create]
   end
 
   resources :submissions, only: [:show, :update] do
