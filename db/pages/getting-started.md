@@ -6,23 +6,21 @@ Once you're ready to get started, [sign in or register][sign_in] for an account 
 
 ## Installation
 
-*Note: The software and instructions in this guide were designed for users running a UNIX-like operating system (i.e. Mac OS X or Linux). Windows is currently untested and some of the software/instructions may not work or will require modification. If you are using Windows, consider using [Nitrous.IO][nitrous-io] for a complete, in-browser development environment or installing a version of Linux on a Virtual Machine. [This guide][ubuntu-vm] offers instructions on how to install Ubuntu Linux on a Virtual Machine in Windows.*
+To complete the challenges you'll need to setup a development environment. At a minimum this consists of installing Ruby to run our code and a text editor to modify it.
 
-To complete the challenges you'll need to setup your local development environment. At a minimum you'll need to install Ruby to run your code and a text editor to edit your files. Once Ruby is installed, you can get the **et** gem to download and submit challenges.
+### Local Development Environment (Mac OS X / Linux only)
 
-### Quick Option: Rocket Fuel
+If you're on a UNIX-like operating system (e.g. Mac OS X or Linux) you can try setting up a local development environment (i.e. installing the necessary software on your computer).
 
-[Rocket fuel][rocket-fuel] is an installation script that will install Ruby, the Sublime Text editor, and a handful of other useful utilities for OS X, Linux, and Windows. Follow the instructions on the [GitHub][rocket-fuel] page to run the installer.
+[Rocket fuel][rocket-fuel] is an installation script that will install Ruby, the Atom text editor, and a handful of other useful utilities for OS X and Linux (Windows support is pending). Follow the instructions on the [GitHub][rocket-fuel] page to run the installer.
 
-### Manual Option
+### Remote Development Environment
 
-If you'd prefer to manually install your tools, you'll need Ruby, a text editor, and a terminal to get started:
+If you're not using OS X or Linux or are having issues installing some of the software, we recommend using [Nitrous.IO][nitrous-io] to setup a remote development environment. Nitrous.IO provides an in-browser development environment including a text editor and a terminal.
 
-* Ruby: This is the Ruby interpreter that will run our programs. The Ruby documentation lists a number of options for [installing Ruby][install-ruby] on your machine. If you're on OS X or Linux, [RVM][rvm] is probably the easiest way to get started. For Windows, use [RubyInstaller][ruby-installer].
+To get started, sign up for an account and create a new box with the **Ruby/Rails** template. Choose a name for your box, select a region close to you, and choose the minimum settings for *Memory* and *Storage*. Click **Create Box** to startup your development environment.
 
-* Text editor: To write and modify programs in Ruby you'll need a text editor. There are a number of options available but we recommend [Sublime Text][sublime-text] (either version 2 or 3 are acceptable) or the [Atom][atom] text editor from GitHub.
-
-* Terminal: This is the place where you can run programs and navigate around your filesystem. All operating systems come with a default Terminal application but if you're on OS X we recommend installing [iTerm2][iterm2].
+At this point you should see a few windows in the browser. In the center there is a text editor which is used to write our Ruby programs. Along the bottom is a console window where we can enter commands in the terminal. The window on the left shows our file hierarchy and can be used to select which files are being edited.
 
 ## Configuration
 
