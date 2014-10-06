@@ -28,6 +28,9 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
+    bugsnag (2.5.0)
+      httparty (>= 0.6, < 1.0)
+      multi_json (~> 1.0)
     builder (3.2.2)
     capybara (2.3.0)
       mime-types (>= 1.16)
@@ -103,6 +106,9 @@ GEM
       railties (>= 4.0.1)
     hashie (2.1.2)
     hike (1.2.3)
+    httparty (0.13.1)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     i18n (0.6.9)
     inflecto (0.0.2)
     ipaddress (0.8.0)
@@ -260,6 +266,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bugsnag
   capybara
   carrierwave
   coveralls
