@@ -18,6 +18,7 @@ gem "jbuilder"
 gem "carrierwave"
 gem "fog"
 gem "sidekiq"
+gem "newrelic_rpm"
 
 group :development do
   gem "spring"
