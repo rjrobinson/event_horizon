@@ -46,7 +46,15 @@ class SubmissionExtractor
 
   def filenames(dir)
     Dir.entries(dir).reject do |filename|
-      filename == "." || filename == ".."
+      filename == "." || filename == ".." || ignore?(filename)
     end
+  end
+
+  def ignore?(filename)
+    ignored_files.any? { |pattern| pattern.match(filename) }
+  end
+
+  def ignored_files
+    [".git", ".DS_Store", "._.DS_Store", /.*~/]
   end
 end

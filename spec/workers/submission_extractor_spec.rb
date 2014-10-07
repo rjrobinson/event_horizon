@@ -27,5 +27,14 @@ describe SubmissionExtractor do
       expect(filenames).to include("foo.rb")
       expect(filenames).to include("bar/baz.rb")
     end
+
+    it "ignores certain files" do
+      submission = FactoryGirl.create(:submission_with_ignored_files)
+
+      extractor.perform(submission.id)
+      expect(submission.files.count).to eq(1)
+
+      expect(submission.files[0].filename).to eq(".important")
+    end
   end
 end
