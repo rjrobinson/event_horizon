@@ -55,6 +55,6 @@ class SubmissionExtractor
   end
 
   def ignored_files
-    [".git", ".DS_Store", "._.DS_Store", /.*~/]
+    [".git", ".DS_Store", /\._.*/, /.*~/]
   end
 end
