@@ -33,7 +33,17 @@ some_value = gets.chomp.to_f
 4 ** 3 #=> 64
 ```
 
-* The `printf` method can be used to format numbers with a specific number of decimal places. The documentation for [`sprintf`][sprintf] contains information on how the format string works. The following snippet will print the value of Pi with two decimal places:
+* The **printf** method can be used to format numbers with a specific number of decimal places. There are two parts to a `printf` call: the format string and the values to inject:
+
+```ruby
+pi = 3.14159
+meaning_of_life = 42
+
+printf("a format string with placeholders %f and %d\n", pi, meaning_of_life)
+# Outputs "a format string with placeholders 3.141590 and 42"
+```
+
+The format string contains placeholders using the **%** symbol. These placeholders can represent a real number (**%f** for [floating-point][floating-point] number), an integer (**%d**), or another string (**%s**), among others. The benefit of using these placeholders is that we can specify how they appear by adding modifiers. To print out the decimal value with two decimal places, we use **%.2f** instead of **%f**:
 
 ```ruby
 pi = 3.14159
@@ -41,4 +51,8 @@ printf("The value of Pi is %.2f\n", pi)
 # Outputs "The value of Pi is 3.14"
 ```
 
+`printf` can be used when we need more control over the formatting than `puts` or `print` gives us. More documentation for the available options can be found on the [**sprintf**][sprintf] documentation page or on [Wikipedia][printf-format-string].
+
 [sprintf]: http://ruby-doc.org/core-1.9.3/Kernel.html#method-i-sprintf
+[printf-format-string]: http://en.wikipedia.org/wiki/Printf_format_string
+[floating-point]: http://en.wikipedia.org/wiki/Floating_point
