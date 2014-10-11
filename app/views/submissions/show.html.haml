@@ -11,13 +11,14 @@
   %dt Public
   %dd#public
     = @submission.public
-    = form_for @submission, html: { class: "inline" } do |f|
-      - if @submission.public
-        = f.hidden_field :public, value: false
-        = f.submit "Make Private", class: "button tiny"
-      - else
-        = f.hidden_field :public, value: true
-        = f.submit "Make Public", class: "button tiny"
+    - if current_user == @submission.user
+      = form_for @submission, html: { class: "inline" } do |f|
+        - if @submission.public
+          = f.hidden_field :public, value: false
+          = f.submit "Make Private", class: "button tiny"
+        - else
+          = f.hidden_field :public, value: true
+          = f.submit "Make Public", class: "button tiny"
 
 #submission
   - @submission.files.each do |file|

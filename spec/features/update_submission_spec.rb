@@ -1,7 +1,7 @@
 require "rails_helper"
 
 feature "update submission" do
-  context "as a member" do
+  context "as a user" do
     let(:user) { FactoryGirl.create(:user) }
     let(:submission) { FactoryGirl.create(:submission_with_file, user: user) }
 
@@ -10,51 +10,36 @@ feature "update submission" do
     end
 
     scenario "make submission public" do
+      submission = FactoryGirl.create(:submission, user: user)
       visit submission_path(submission)
 
       click_button "Make Public"
 
       expect(page).to have_content("Submission updated.")
-
-      submission.reload
-      expect(submission.public).to eq(true)
-    end
-
-    scenario "my submission defaults as private" do
-
-      submission = FactoryGirl.create(:submission, user: user)
-
-      visit submission_path(submission)
-
-      within("#public") do
-        expect(page).to have_content("false")
-      end
-    end
-
-    scenario "make my submission public" do
-      submission = FactoryGirl.create(:submission, user: user, public: true)
-
-      visit submission_path(submission)
-
       within("#public") do
         expect(page).to have_content("true")
       end
     end
 
-    scenario "make my submission public, then private again" do
+    scenario "hide public submission" do
       submission = FactoryGirl.create(:submission, user: user, public: true)
-
       visit submission_path(submission)
-
-      within("#public") do
-        expect(page).to have_content("true")
-      end
 
       click_button "Make Private"
 
+      expect(page).to have_content("Submission updated.")
       within("#public") do
         expect(page).to have_content("false")
       end
+    end
+
+    scenario "hide button for other user submissions" do
+      lesson = FactoryGirl.create(:lesson)
+      FactoryGirl.create(:submission, lesson: lesson, user: user)
+      submission = FactoryGirl.create(:submission, lesson: lesson, public: true)
+
+      visit submission_path(submission)
+      expect(page).to_not have_selector(:link_or_button, "Make Private")
     end
   end
 end
