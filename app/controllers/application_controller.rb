@@ -42,6 +42,14 @@ class ApplicationController < ActionController::Base
   def authenticate_via_session
     if !user_signed_in?
       flash[:info] = "You need to sign in before continuing."
+      redirect_to_back_or_root
+    end
+  end
+
+  def redirect_to_back_or_root
+    begin
+      redirect_to :back
+    rescue ActionController::RedirectBackError
       redirect_to root_path
     end
   end
