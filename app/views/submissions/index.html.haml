@@ -1,7 +1,9 @@
 - content_for(:title) do
   = "#{@lesson.title} Submissions - Launch Academy"
 
-%h1= "Submissions for #{@lesson.title}"
+%h1
+  Submissions for
+  = link_to(@lesson.title, lesson_path(@lesson))
 
 - if !@submissions.empty?
   #submissions
