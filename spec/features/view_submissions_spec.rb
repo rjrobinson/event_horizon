@@ -1,13 +1,18 @@
 require "rails_helper"
 
 feature "view submissions" do
-  let(:lesson) { FactoryGirl.create(:lesson) }
+  let(:lesson) { FactoryGirl.create(:lesson, type: "challenge") }
 
   context "as a user" do
     let(:user) { FactoryGirl.create(:user) }
 
     before :each do
       sign_in_as(user)
+    end
+
+    scenario "include link to view public submissions" do
+      visit lesson_path(lesson)
+      expect(page).to have_link("Submissions", href: lesson_submissions_path(lesson))
     end
 
     scenario "see my submissions for a lesson" do

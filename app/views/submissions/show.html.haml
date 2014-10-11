@@ -1,26 +1,31 @@
 - content_for(:title) do
   = "#{@submission.lesson.title} Submission - Launch Academy"
 
+%ul.breadcrumbs
+  %li= link_to "Lessons", lessons_path
+  %li= link_to @submission.lesson.title, lesson_path(@submission.lesson)
+  %li= link_to "Submissions", lesson_submissions_path(@submission.lesson)
+  %li.current= link_to @submission.user.username, submission_path(@submission)
+
 %h1= "Submission for #{@submission.lesson.title}"
 
 %dl#submission-details.attribute-box
-  .setting#submitter
-    %dt Submitter
-    %dd= @submission.user.username
-  .setting#submission-time
-    %dt Date
-    %dd= format_datetime(@submission.created_at)
-  .setting#public
-    %dt Public
-    %dd= @submission.public
+  %dt Submitter
+  %dd#submitter= @submission.user.username
+  %dt Date
+  %dd#submission-time= format_datetime(@submission.created_at)
+  %dt Public
+  %dd#public
+    = @submission.public
+    - if current_user == @submission.user
+      = form_for @submission, html: { class: "inline" } do |f|
+        - if @submission.public
+          = f.hidden_field :public, value: false
+          = f.submit "Make Private", class: "button tiny"
+        - else
+          = f.hidden_field :public, value: true
+          = f.submit "Make Public", class: "button tiny"
 
-  = form_for @submission do |f|
-    - if @submission.public
-      = f.hidden_field :public, value: false
-      = f.submit "Make Private"
-    - else
-      = f.hidden_field :public, value: true
-      = f.submit "Make Public"
 #submission
   - @submission.files.each do |file|
     .source-file(data-source-file-id="#{file.id}")

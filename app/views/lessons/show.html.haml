@@ -1,6 +1,14 @@
 - content_for(:title) do
   = "#{@lesson.title} - Launch Academy"
 
+%ul.breadcrumbs
+  %li= link_to "Lessons", lessons_path
+  %li.current= link_to @lesson.title, lesson_path(@lesson)
+  - if @lesson.accepts_submissions?
+    %li= link_to "Submissions", lesson_submissions_path(@lesson)
+
+.lesson-type{ class: @lesson.type }= @lesson.type
+
 %h2.lesson-title= @lesson.title
 
 #body

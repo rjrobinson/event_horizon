@@ -14,38 +14,40 @@ body {
     border-bottom: 1px solid $border-color;
 }
 
-.lessons {
-    .lesson {
-        margin: 0.5em 0;
-        padding: 1em;
-        border: 1px solid $border-color;
-        border-radius: 5px;
-        background-color: $light-bg-color;
+.lesson {
+    margin: 0.5em 0;
+    padding: 1em;
+    border: 1px solid $border-color;
+    border-radius: 5px;
+    background-color: $light-bg-color;
+}
 
-        .type {
-            padding: 10px;
-            border: 1px solid $border-color;
-            border-radius: 3px;
+.lesson-nav {
+    padding: 1em 0;
+}
 
-            float: right;
-            font-size: 0.8em;
-            font-weight: bold;
+.lesson-type {
+    padding: 10px;
+    border: 1px solid $border-color;
+    border-radius: 3px;
 
-            color: #ffffff;
-        }
+    float: right;
+    font-size: 0.8em;
+    font-weight: bold;
 
-        .type.article {
-            background-color: $article-color;
-        }
+    color: #ffffff;
+}
 
-        .type.challenge {
-            background-color: $challenge-color;
-        }
+.lesson-type.article {
+    background-color: $article-color;
+}
 
-        .type.tutorial {
-            background-color: $tutorial-color;
-        }
-    }
+.lesson-type.challenge {
+    background-color: $challenge-color;
+}
+
+.lesson-type.tutorial {
+    background-color: $tutorial-color;
 }
 
 .lesson-title {

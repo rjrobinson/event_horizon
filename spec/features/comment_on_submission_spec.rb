@@ -25,6 +25,18 @@ feature "comment on submission" do
       expect(page).to have_content("#{user.username} commented")
       expect(page).to have_content("Needs more cowbell.")
     end
+
+    scenario "don't email if commenter is the submitter" do
+      submission = FactoryGirl.create(:submission, user: user)
+
+      visit submission_path(submission)
+
+      fill_in "Comment", with: "I like oranges."
+      click_button "Submit"
+
+      expect(page).to have_content("Comment saved.")
+      expect(ActionMailer::Base.deliveries.count).to eq(0)
+    end
   end
 
   context "as an admin" do
@@ -72,26 +84,6 @@ feature "comment on submission" do
       expect(page).to_not have_content("#{admin.username} commented")
       expect(page).to have_content("can't be blank")
       expect(Comment.count).to eq(0)
-    end
-  end
-
-  context "as a user" do
-    let(:user) { FactoryGirl.create(:user) }
-
-    before :each do
-      sign_in_as(user)
-    end
-
-    scenario "don't email if commenter is the submitter" do
-      submission = FactoryGirl.create(:submission, user: user)
-
-      visit submission_path(submission)
-
-      fill_in "Comment", with: "I like oranges."
-      click_button "Submit"
-
-      expect(page).to have_content("Comment saved.")
-      expect(ActionMailer::Base.deliveries.count).to eq(0)
     end
   end
 end

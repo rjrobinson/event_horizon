@@ -1,6 +1,9 @@
 - content_for(:title) do
   Lessons - Launch Academy
 
+%ul.breadcrumbs
+  %li.current= link_to "Lessons", lessons_path
+
 %h1 Lessons
 
 - if params[:query]
@@ -13,7 +16,7 @@
 .lessons
   - @lessons.each do |lesson|
     .lesson
-      .type{ class: lesson.type }= lesson.type
+      .lesson-type{ class: lesson.type }= lesson.type
       %h3.title= link_to lesson.title, lesson
       .description
         = lesson.description

@@ -30,6 +30,10 @@ class Lesson < ActiveRecord::Base
     end
   end
 
+  def accepts_submissions?
+    type == "challenge"
+  end
+
   def self.search(query)
     where("searchable @@ plainto_tsquery(?)", query)
   end
