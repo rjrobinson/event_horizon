@@ -1,9 +1,13 @@
 - content_for(:title) do
   = "#{@lesson.title} Submissions - Launch Academy"
 
+%ul.breadcrumbs
+  %li= link_to "Lessons", lessons_path
+  %li= link_to @lesson.title, lesson_path(@lesson)
+  %li.current= link_to "Submissions", lesson_submissions_path(@lesson)
+
 %h1
-  Submissions for
-  = link_to(@lesson.title, lesson_path(@lesson))
+  = "Submissions for #{@lesson.title}"
 
 - if !@submissions.empty?
   #submissions

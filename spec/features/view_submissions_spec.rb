@@ -12,8 +12,7 @@ feature "view submissions" do
 
     scenario "include link to view public submissions" do
       visit lesson_path(lesson)
-      expect(page).to have_link("View Submissions",
-        href: lesson_submissions_path(lesson))
+      expect(page).to have_link("Submissions", href: lesson_submissions_path(lesson))
     end
 
     scenario "see my submissions for a lesson" do
