@@ -1,6 +1,9 @@
 - content_for(:title) do
   = "#{@lesson.title} - Launch Academy"
 
+- if user_signed_in? && @lesson.accepts_submissions?
+  = link_to "View Submissions", lesson_submissions_path(@lesson), class: "right"
+
 %h2.lesson-title= @lesson.title
 
 #body

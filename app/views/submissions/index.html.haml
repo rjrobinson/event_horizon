@@ -11,6 +11,7 @@
           %th Submitter
           %th Submission Time
           %th Status
+          %th(title = "Public submissions are visible to other logged in users who have submitted a solution to this challenge. Private submissions are only visible to you and administrators.") Visibility
 
       %tbody
         - @submissions.each do |submission|
@@ -18,5 +19,6 @@
             %td= submission.user.username
             %td= submission.created_at
             %td= link_to "Submitted", submission_path(submission)
+            %td= submission.public ? "public" : "private"
 - else
   %p Other submissions hidden until you've submitted yours.
