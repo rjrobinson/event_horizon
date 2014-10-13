@@ -418,17 +418,17 @@ CREATE UNIQUE INDEX index_users_on_email ON users USING btree (email);
 
 
 --
+-- Name: index_users_on_lowercase_username; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_users_on_lowercase_username ON users USING btree (lower((username)::text));
+
+
+--
 -- Name: index_users_on_uid_and_provider; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE UNIQUE INDEX index_users_on_uid_and_provider ON users USING btree (uid, provider);
-
-
---
--- Name: index_users_on_username; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE UNIQUE INDEX index_users_on_username ON users USING btree (username);
 
 
 --
@@ -526,4 +526,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140928175407');
 INSERT INTO schema_migrations (version) VALUES ('20140930132041');
 
 INSERT INTO schema_migrations (version) VALUES ('20141003154749');
+
+INSERT INTO schema_migrations (version) VALUES ('20141013190514');
 
