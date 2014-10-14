@@ -47,8 +47,9 @@
           = message
           %a.close(href="#") &times;
 
-    #content.row
+    .row
       .small-12.columns
-        ~ yield
+        #content
+          ~ yield
 
     = javascript_include_tag "application"

@@ -3,16 +3,16 @@
 .box {
     border: 1px solid $border-color;
     border-radius: 3px;
-
-    .header {
-        border-bottom: 1px solid $border-color;
-    }
-
-    .body {
-        padding: 1em;
-    }
-
     margin: 1em 0;
+}
+
+.box__header {
+    padding: 0 1em;
+    border-bottom: 1px solid $border-color;
+}
+
+.box__body {
+    padding: 1em;
 }
 
 .attribute-box {

@@ -5,37 +5,35 @@
 
 - if @user == current_user
   #settings
-    .small-12.columns.box
-      .row.header
-        .small-12.columns
-          %h2 Account Settings
+    .box
+      .box__header
+        %h2 Account Settings
 
-      .row.body
-        .small-3.columns
-          = label_tag :token, "Token", class: "right inline"
-        .small-9.columns
-          %span.token-field
-            Hidden from view
-          %span.hidden.token-field
-            = text_field_tag :token, @user.token, readonly: true
-          %a#show-token Toggle
+      .box__body
+        .row
+          .small-3.columns
+            = label_tag :token, "Token", class: "right inline"
+          .small-9.columns
+            %span.token-field
+              Hidden from view
+            %span.hidden.token-field
+              = text_field_tag :token, @user.token, readonly: true
+            %a#show-token Toggle
 
 #submissions
-  .small-12.columns.box
-    .row
-      .small-12.columns
-        %h2 Submissions
+  .box
+    .box__header
+      %h2 Submissions
 
-    .row
-      .small-12.columns
-        %table
-          %thead
+    .box__body
+      %table
+        %thead
+          %tr
+            %th Lesson
+            %th Submitted On
+
+        %tbody
+          - @user.submissions.each do |submission|
             %tr
-              %th Lesson
-              %th Submitted On
-
-          %body
-            - @user.submissions.each do |submission|
-              %tr
-                %td= link_to submission.lesson.title, submission_path(submission)
-                %td= format_datetime(submission.created_at)
+              %td= link_to submission.lesson.title, submission_path(submission)
+              %td= format_datetime(submission.created_at)
