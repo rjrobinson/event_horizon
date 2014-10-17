@@ -1,7 +1,11 @@
 - content_for(:title) do
   = "#{@user.username} - Launch Academy"
 
-%h1= "User: #{@user.username}"
+- if !@user.name.blank?
+  %h2= "User: #{@user.username} (#{@user.name})"
+- else
+  %h2= "User: #{@user.username}"
+
 
 - if @user == current_user
   #settings
