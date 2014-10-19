@@ -91,4 +91,13 @@ FactoryGirl.define do
       role "admin"
     end
   end
+
+  factory :team do
+    sequence(:name) { |n| "Team #{n}" }
+  end
+
+  factory :team_membership do
+    user
+    team
+  end
 end

@@ -21,6 +21,18 @@ feature "view users" do
       visit user_path(other_user)
       expect(page).to_not have_content(other_user.token)
     end
+
+    scenario "view teams they belong to" do
+      team_memberships = FactoryGirl.create_list(:team_membership, 3, user: user)
+
+      visit user_path(user)
+
+      team_memberships.each do |membership|
+        team = membership.team
+
+        expect(page).to have_link(team.name, href: team_path(team))
+      end
+    end
   end
 
   context "as an admin" do
