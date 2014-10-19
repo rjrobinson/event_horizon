@@ -11,7 +11,7 @@
   #settings
     .box
       .box__header
-        %h2 Account Settings
+        %h3 Account Settings
 
       .box__body
         .row
@@ -24,10 +24,20 @@
               = text_field_tag :token, @user.token, readonly: true
             %a#show-token Toggle
 
+#teams
+  .box
+    .box__header
+      %h3 Teams
+
+    .box__body
+      %ul
+        - @user.teams.each do |team|
+          %li= link_to team.name, team_path(team)
+
 #submissions
   .box
     .box__header
-      %h2 Submissions
+      %h3 Submissions
 
     .box__body
       %table
