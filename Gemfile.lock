@@ -53,6 +53,8 @@ GEM
       simplecov (>= 0.7)
       term-ansicolor
       thor
+    d3-rails (3.4.11)
+      railties (>= 3.1)
     diff-lcs (1.2.5)
     docile (1.1.5)
     dotenv (0.11.1)
@@ -270,6 +272,7 @@ DEPENDENCIES
   capybara
   carrierwave
   coveralls
+  d3-rails
   dotenv-rails
   factory_girl_rails
   fog
