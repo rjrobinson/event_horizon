@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   has_many :submissions, dependent: :destroy
   has_many :ratings, dependent: :destroy
+  has_many :team_memberships, dependent: :destroy
+  has_many :teams, through: :team_memberships
 
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
