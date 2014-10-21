@@ -10,6 +10,14 @@ describe SubmissionExtractor do
       expect(submission.files.count).to eq(1)
     end
 
+    it "does not create duplicate files when re-run" do
+      submission = FactoryGirl.create(:submission)
+
+      extractor.perform(submission.id)
+      extractor.perform(submission.id)
+      expect(submission.files.count).to eq(1)
+    end
+
     it "extracts multiple source files" do
       submission = FactoryGirl.create(:submission_with_two_file_archive)
       extractor.perform(submission.id)

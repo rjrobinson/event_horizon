@@ -14,9 +14,9 @@ class SubmissionExtractor
 
       SourceFile.transaction do
         valid_source_files(tmpdir).each do |filename|
-          SourceFile.create!(body: File.read(File.join(tmpdir, filename)),
-                             submission: submission,
-                             filename: filename)
+          file = submission.files.find_or_initialize_by(filename: filename)
+          file.body = File.read(File.join(tmpdir, filename))
+          file.save!
         end
       end
     end
