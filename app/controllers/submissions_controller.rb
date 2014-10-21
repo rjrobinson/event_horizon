@@ -55,7 +55,11 @@ class SubmissionsController < ApplicationController
   private
 
   def update_params
-    params.require(:submission).permit(:public, :featured)
+    if current_user.admin?
+      params.require(:submission).permit(:public, :featured)
+    else
+      params.require(:submission).permit(:public)
+    end
   end
 
   def create_params
