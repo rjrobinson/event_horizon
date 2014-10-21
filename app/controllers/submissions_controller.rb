@@ -3,7 +3,9 @@ class SubmissionsController < ApplicationController
 
   def index
     @lesson = Lesson.find_by!(slug: params[:lesson_slug])
-    @submissions = @lesson.submissions_viewable_by(current_user)
+    @submissions = @lesson
+      .submissions_viewable_by(current_user)
+      .order(featured: :desc)
   end
 
   def show
