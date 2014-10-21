@@ -54,6 +54,18 @@ describe SubmissionsController do
       end
     end
 
+    describe "PUT update" do
+      it "prevents non-admin users from marking submissions as featured" do
+        submission = FactoryGirl.create(:submission, featured: false, user: user)
+
+        session[:user_id] = user.id
+        put :update, id: submission.id, submission: { featured: true }
+
+        submission.reload
+        expect(submission.featured).to eq(false)
+      end
+    end
+
     describe "GET show" do
       it "allows access to the submitting user" do
         submission = FactoryGirl.create(:submission, user: user)

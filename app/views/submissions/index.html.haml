@@ -16,15 +16,19 @@
         %tr
           %th Submitter
           %th Submission Time
-          %th Status
-          %th(title = "Public submissions are visible to other logged in users who have submitted a solution to this challenge. Private submissions are only visible to you and administrators.") Visibility
+          %th.center Status
+          %th.center(title = "Public submissions are visible to other logged in users who have submitted a solution to this challenge. Private submissions are only visible to you and administrators.") Visibility
+          %th.center(title = "Featured submissions indicate an exemplary solution to a challenge") Featured
 
       %tbody
         - @submissions.each do |submission|
           %tr
             %td= submission.user.username
             %td= submission.created_at
-            %td= link_to "Submitted", submission_path(submission)
-            %td= submission.public ? "public" : "private"
+            %td.center= link_to "Submitted", submission_path(submission)
+            %td.center= submission.public ? "public" : "private"
+            %td.center
+              - if submission.featured
+                %i.fi-check
 - else
   %p Other submissions hidden until you've submitted yours.

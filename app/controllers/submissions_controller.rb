@@ -3,7 +3,9 @@ class SubmissionsController < ApplicationController
 
   def index
     @lesson = Lesson.find_by!(slug: params[:lesson_slug])
-    @submissions = @lesson.submissions_viewable_by(current_user)
+    @submissions = @lesson
+      .submissions_viewable_by(current_user)
+      .order(featured: :desc)
   end
 
   def show
@@ -18,7 +20,7 @@ class SubmissionsController < ApplicationController
   end
 
   def update
-    @submission = current_user.submissions.find(params[:id])
+    @submission = Submission.authorized_find(current_user, params[:id])
 
     if @submission.update(update_params)
       flash[:info] = "Submission updated."
@@ -55,7 +57,11 @@ class SubmissionsController < ApplicationController
   private
 
   def update_params
-    params.require(:submission).permit(:public)
+    if current_user.admin?
+      params.require(:submission).permit(:public, :featured)
+    else
+      params.require(:submission).permit(:public)
+    end
   end
 
   def create_params
