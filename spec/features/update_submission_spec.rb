@@ -42,4 +42,36 @@ feature "update submission" do
       expect(page).to_not have_selector(:link_or_button, "Make Private")
     end
   end
+
+  context "as an admin" do
+    let(:admin) { FactoryGirl.create(:admin) }
+
+    before :each do
+      sign_in_as(admin)
+    end
+
+    scenario "mark submission as featured" do
+      submission = FactoryGirl.create(:submission, featured: false)
+
+      visit submission_path(submission)
+
+      click_button "Make Featured"
+
+      within("#featured") do
+        expect(page).to have_content("true")
+      end
+    end
+
+    scenario "remove featured from submission" do
+      submission = FactoryGirl.create(:submission, featured: true)
+
+      visit submission_path(submission)
+
+      click_button "Remove Featured"
+
+      within("#featured") do
+        expect(page).to have_content("false")
+      end
+    end
+  end
 end

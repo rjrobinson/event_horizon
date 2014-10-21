@@ -18,7 +18,7 @@ class SubmissionsController < ApplicationController
   end
 
   def update
-    @submission = current_user.submissions.find(params[:id])
+    @submission = Submission.authorized_find(current_user, params[:id])
 
     if @submission.update(update_params)
       flash[:info] = "Submission updated."
@@ -55,7 +55,7 @@ class SubmissionsController < ApplicationController
   private
 
   def update_params
-    params.require(:submission).permit(:public)
+    params.require(:submission).permit(:public, :featured)
   end
 
   def create_params

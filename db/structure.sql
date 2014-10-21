@@ -190,7 +190,8 @@ CREATE TABLE submissions (
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     archive character varying(255) NOT NULL,
-    public boolean DEFAULT false NOT NULL
+    public boolean DEFAULT false NOT NULL,
+    featured boolean DEFAULT false NOT NULL
 );
 
 
@@ -646,4 +647,6 @@ INSERT INTO schema_migrations (version) VALUES ('20141013190514');
 INSERT INTO schema_migrations (version) VALUES ('20141019150156');
 
 INSERT INTO schema_migrations (version) VALUES ('20141019150403');
+
+INSERT INTO schema_migrations (version) VALUES ('20141021185401');
 

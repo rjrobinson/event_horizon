@@ -25,6 +25,18 @@
         - else
           = f.hidden_field :public, value: true
           = f.submit "Make Public", class: "button tiny"
+  %dt Featured
+  %dd#featured
+    = @submission.featured
+    - if current_user.admin?
+      = form_for @submission, html: { class: "inline" } do |f|
+        - if @submission.featured
+          = f.hidden_field :featured, value: false
+          = f.submit "Remove Featured", class: "button tiny"
+        - else
+          = f.hidden_field :featured, value: true
+          = f.submit "Make Featured", class: "button tiny"
+
 
 #submission
   - @submission.files.each do |file|
