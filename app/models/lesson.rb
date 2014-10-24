@@ -42,7 +42,28 @@ class Lesson < ActiveRecord::Base
     where(type: type)
   end
 
-  def self.import!(source_dir)
+  def self.import_all!(lessons_dir)
+    lessons = {}
+    dependencies = {}
+
+    Dir.entries(lessons_dir).each do |filename|
+      path = File.join(lessons_dir, filename)
+
+      if File.directory?(path) && !filename.start_with?(".")
+        lesson, lesson_dependencies = import(path)
+        lessons.merge!(lesson.slug => lesson)
+        dependencies.merge!(lesson_dependencies)
+      end
+    end
+
+    order_lessons(dependencies).each_with_index do |slug, position|
+      lesson = lessons[slug]
+      lesson.position = position + 1
+      lesson.save!
+    end
+  end
+
+  def self.import(source_dir)
     slug = File.basename(source_dir)
 
     attributes = YAML.load_file(File.join(source_dir, ".lesson.yml"))
@@ -59,11 +80,54 @@ class Lesson < ActiveRecord::Base
       Dir.mktmpdir("challenge") do |tmpdir|
         parent_dir = File.dirname(source_dir)
         archive_path = File.join(tmpdir, "#{slug}.tar.gz")
-        system("tar zcf #{archive_path} -C #{parent_dir} #{slug}")
+        system("tar", "zcf", archive_path, "-C", parent_dir, slug)
         lesson.archive = File.open(archive_path)
       end
     end
 
-    lesson.save!
+    if attributes["depends"]
+      dependencies = attributes["depends"].split(",").map(&:strip)
+    else
+      dependencies = []
+    end
+
+    [lesson, { lesson.slug => dependencies }]
+  end
+
+  def self.order_lessons(lesson_prereqs)
+    # This method uses the topological sort algorithm to produce a
+    # linear ordering of lessons given their dependencies.  The
+    # lessons_prereqs param is a hash where the key is the lesson slug
+    # and the value is an array of dependencies:
+    #
+    # lesson_prereqs = { "foo" => ["bar"], "bar" => ["baz"], "baz" => [] }
+
+    ordered = []
+    next_lessons = []
+
+    lesson_prereqs.each do |lesson, prereqs|
+      if prereqs.empty?
+        next_lessons.push(lesson)
+      end
+    end
+
+    next_lessons.sort!
+
+    while !next_lessons.empty?
+      next_lesson = next_lessons.shift()
+      ordered.push(next_lesson)
+
+      lesson_prereqs.each do |lesson, prereqs|
+        if prereqs.include?(next_lesson)
+          prereqs.delete(next_lesson)
+
+          if prereqs.empty?
+            next_lessons.push(lesson)
+          end
+        end
+      end
+    end
+
+    ordered
   end
 end
