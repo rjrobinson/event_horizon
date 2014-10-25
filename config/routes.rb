@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show], param: :username
 
-  resources :teams, only: [:show]
+  resources :teams, only: [:index, :show]
 
   resource :session, only: [:new, :create, :destroy] do
     get "failure", on: :member

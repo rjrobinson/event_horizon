@@ -1,0 +1,8 @@
+- content_for(:title) do
+  = "Teams - Launch Academy"
+
+%h2 Teams
+
+%ul#teams
+  - @teams.each do |team|
+    %li= link_to(team.name, team)
