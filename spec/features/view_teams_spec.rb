@@ -24,6 +24,24 @@ feature "view teams" do
     end
   end
 
+  context "as an admin" do
+    let(:admin) { FactoryGirl.create(:admin) }
+
+    before :each do
+      sign_in_as(admin)
+    end
+
+    scenario "view list of teams" do
+      teams = FactoryGirl.create_list(:team, 3)
+
+      visit teams_path
+
+      teams.each do |team|
+        expect(page).to have_link(team.name, href: team_path(team))
+      end
+    end
+  end
+
   context "as a guest" do
     scenario "require authentication to view teams" do
       visit team_path(team)
