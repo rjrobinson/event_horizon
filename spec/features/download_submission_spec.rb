@@ -11,7 +11,7 @@ feature 'admin downloads a submission', %q{
 } do
 
   let(:admin) { FactoryGirl.create(:admin) }
-  let(:submission) { FactoryGirl.create(:submission_with_file, public: true) }
+  let(:submission) { FactoryGirl.create(:submission_with_file) }
 
   scenario 'admin visits submission page, sees link to download' do
     sign_in_as(admin)
