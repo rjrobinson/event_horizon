@@ -30,7 +30,7 @@
       %h3 Teams
 
     .box__body
-      %ul
+      %ul.block
         - @user.teams.each do |team|
           %li= link_to team.name, team_path(team)
 

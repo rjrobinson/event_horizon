@@ -16,6 +16,16 @@ describe SubmissionsController do
           expect(Submission.count).to eq(1)
           expect(response).to be_success
         end
+
+        it "responds with 422 on failure" do
+          set_auth_headers_for(user)
+          post :create, lesson_slug: lesson.slug,
+                        submission: { body: "" },
+                        format: :json
+
+          expect(Submission.count).to eq(0)
+          expect(response.status).to eq(422)
+        end
       end
 
       context "with no authentication" do
@@ -40,6 +50,15 @@ describe SubmissionsController do
 
           expect(Submission.count).to eq(1)
           expect(response).to redirect_to(submission_path(Submission.first))
+        end
+
+        it "redirects on failure" do
+          session[:user_id] = user.id
+          post :create, lesson_slug: lesson.slug,
+                        submission: { body: "" }
+
+          expect(Submission.count).to eq(0)
+          expect(response).to redirect_to(lesson_submissions_path(lesson))
         end
       end
 
