@@ -1,6 +1,6 @@
 class Comment < ActiveRecord::Base
   belongs_to :user
-  belongs_to :submission
+  belongs_to :submission, counter_cache: true
   belongs_to :source_file
 
   validates :user, presence: true

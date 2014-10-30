@@ -191,7 +191,8 @@ CREATE TABLE submissions (
     updated_at timestamp without time zone,
     archive character varying(255) NOT NULL,
     public boolean DEFAULT false NOT NULL,
-    featured boolean DEFAULT false NOT NULL
+    featured boolean DEFAULT false NOT NULL,
+    comments_count integer
 );
 
 
@@ -649,4 +650,6 @@ INSERT INTO schema_migrations (version) VALUES ('20141019150156');
 INSERT INTO schema_migrations (version) VALUES ('20141019150403');
 
 INSERT INTO schema_migrations (version) VALUES ('20141021185401');
+
+INSERT INTO schema_migrations (version) VALUES ('20141030203942');
 

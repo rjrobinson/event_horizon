@@ -87,7 +87,7 @@ feature "comment on submission" do
     end
 
     scenario "view number of comments from submissions index page" do
-      3.times { FactoryGirl.create(:comment, submission: submission) }
+      FactoryGirl.create_list(:comment, 3, submission: submission)
       visit lesson_submissions_path(submission.lesson)
       expect(page).to have_content("3 comments")
     end
