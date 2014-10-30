@@ -85,5 +85,11 @@ feature "comment on submission" do
       expect(page).to have_content("can't be blank")
       expect(Comment.count).to eq(0)
     end
+
+    scenario "view number of comments from submissions index page" do
+      3.times { FactoryGirl.create(:comment, submission: submission) }
+      visit lesson_submissions_path(submission.lesson)
+      expect(page).to have_content("3 comments")
+    end
   end
 end
