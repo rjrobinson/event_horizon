@@ -14,11 +14,6 @@ class SubmissionsController < ApplicationController
     @comment = Comment.new
   end
 
-  def new
-    @lesson = Lesson.find_by!(slug: params[:lesson_slug])
-    @submission = Submission.new
-  end
-
   def update
     @submission = Submission.authorized_find(current_user, params[:id])
 
