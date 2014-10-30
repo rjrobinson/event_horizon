@@ -68,3 +68,8 @@
         %small.error= @comment.errors[:body].first
 
       = f.submit "Submit", class: "button"
+
+#download
+  - if current_user.admin?
+    .download-link
+      = link_to "Download Submission", @submission.archive.url, class: "button"
