@@ -10,6 +10,25 @@ body {
     padding: 1em 2em;
 }
 
+ul.block {
+  margin-left: 0;
+  border: 1px solid $border-color;
+
+  li {
+    display: block;
+    border-bottom: 1px solid $border-color;
+    padding: 0.5em;
+  }
+
+  li:last-child {
+    border-bottom: 0;
+  }
+
+  li:nth-child(even) {
+    background-color: $light-bg-color;
+  }
+}
+
 .full-top-bar {
     border-bottom: 1px solid $border-color;
 }
