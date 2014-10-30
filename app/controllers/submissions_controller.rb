@@ -32,24 +32,33 @@ class SubmissionsController < ApplicationController
   end
 
   def create
-    @lesson = Lesson.find_by!(slug: params[:lesson_slug])
-    @submission = @lesson.submissions.build(create_params)
-    @submission.user = current_user
+    lesson = Lesson.find_by!(slug: params[:lesson_slug])
+    submission = lesson.submissions.build(create_params)
+    submission.user = current_user
 
     respond_to do |format|
-      if @submission.save
-        SubmissionExtractor.perform_async(@submission.id)
+      if submission.save
+        SubmissionExtractor.perform_async(submission.id)
 
         format.html do
           flash[:info] = "Solution submitted."
-          redirect_to submission_path(@submission)
+          redirect_to submission_path(submission)
         end
 
         format.json do
           head :no_content
         end
       else
-        format.html { render :new }
+        format.html do
+          flash[:alert] = "Failed to save submission."
+          redirect_to lesson_submissions_path(lesson)
+        end
+
+        format.json do
+          render json: {
+            errors: submission.errors.full_messages
+          }, status: :unprocessable_entity
+        end
       end
     end
   end
