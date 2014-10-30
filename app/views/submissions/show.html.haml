@@ -7,7 +7,7 @@
   %li= link_to "Submissions", lesson_submissions_path(@submission.lesson)
   %li.current= link_to @submission.user.username, submission_path(@submission)
 
-%h1= "Submission for #{@submission.lesson.title}"
+%h2= "Submission for #{@submission.lesson.title}"
 
 %dl#submission-details.attribute-box
   %dt Submitter

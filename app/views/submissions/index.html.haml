@@ -6,7 +6,7 @@
   %li= link_to @lesson.title, lesson_path(@lesson)
   %li.current= link_to "Submissions", lesson_submissions_path(@lesson)
 
-%h1
+%h2
   = "Submissions for #{@lesson.title}"
 
 - if !@submissions.empty?
