@@ -45,4 +45,16 @@ describe Submission do
       end
     end
   end
+
+  describe "#comments_count" do
+    it "should be zero, initially" do
+      expect(submission.comments_count).to eq(0)
+    end
+
+    it "should equal the number of comments" do
+      FactoryGirl.create_list(:comment, 5, submission: submission)
+      submission.reload
+      expect(submission.comments_count).to eq(5)
+    end
+  end
 end
