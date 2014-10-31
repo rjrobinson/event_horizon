@@ -31,6 +31,8 @@
             %td.center
               - if submission.featured
                 %i.fi-check
-            %td.center= link_to "#{submission.comments_count} comments", submission_path(submission, anchor: "comments")
+            %td.center
+              - if submission.comments_count > 0
+                = link_to pluralize(submission.comments_count, "comment"), submission_path(submission, anchor: "comments")
 - else
   %p Other submissions hidden until you've submitted yours.
