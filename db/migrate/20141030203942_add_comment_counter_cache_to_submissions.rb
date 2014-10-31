@@ -1,8 +1,16 @@
 class AddCommentCounterCacheToSubmissions < ActiveRecord::Migration
+  class Comment < ActiveRecord::Base
+    belongs_to :submission, counter_cache: true
+  end
+
+  class Submission < ActiveRecord::Base
+    has_many :comments
+  end
+
   def up
     add_column :submissions, :comments_count, :integer, null: false, default: 0
 
-    Submission.all.pluck(:id) do |id|
+    Submission.pluck(:id).each do |id|
       Submission.reset_counters(id, :comments)
     end
   end
