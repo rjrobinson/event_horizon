@@ -19,6 +19,7 @@
           %th.center Status
           %th.center(title = "Public submissions are visible to other logged in users who have submitted a solution to this challenge. Private submissions are only visible to you and administrators.") Visibility
           %th.center(title = "Featured submissions indicate an exemplary solution to a challenge") Featured
+          %th.center Comments
 
       %tbody
         - @submissions.each do |submission|
@@ -30,5 +31,8 @@
             %td.center
               - if submission.featured
                 %i.fi-check
+            %td.center
+              - if submission.comments_count > 0
+                = link_to pluralize(submission.comments_count, "comment"), submission_path(submission, anchor: "comments")
 - else
   %p Other submissions hidden until you've submitted yours.

@@ -6,6 +6,7 @@ class SubmissionsController < ApplicationController
     @submissions = @lesson
       .submissions_viewable_by(current_user)
       .order(featured: :desc)
+      .includes(:user)
   end
 
   def show
