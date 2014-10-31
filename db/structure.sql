@@ -192,7 +192,7 @@ CREATE TABLE submissions (
     archive character varying(255) NOT NULL,
     public boolean DEFAULT false NOT NULL,
     featured boolean DEFAULT false NOT NULL,
-    comments_count integer
+    comments_count integer DEFAULT 0 NOT NULL
 );
 
 
