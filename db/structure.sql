@@ -30,6 +30,40 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
+-- Name: assignments; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE assignments (
+    id integer NOT NULL,
+    team_id integer NOT NULL,
+    lesson_id integer NOT NULL,
+    due_on timestamp without time zone NOT NULL,
+    required boolean DEFAULT true NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: assignments_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE assignments_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: assignments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE assignments_id_seq OWNED BY assignments.id;
+
+
+--
 -- Name: comments; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -319,6 +353,13 @@ ALTER SEQUENCE users_id_seq OWNED BY users.id;
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY assignments ALTER COLUMN id SET DEFAULT nextval('assignments_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY comments ALTER COLUMN id SET DEFAULT nextval('comments_id_seq'::regclass);
 
 
@@ -369,6 +410,14 @@ ALTER TABLE ONLY teams ALTER COLUMN id SET DEFAULT nextval('teams_id_seq'::regcl
 --
 
 ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
+
+
+--
+-- Name: assignments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY assignments
+    ADD CONSTRAINT assignments_pkey PRIMARY KEY (id);
 
 
 --
@@ -433,6 +482,20 @@ ALTER TABLE ONLY teams
 
 ALTER TABLE ONLY users
     ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: index_assignments_on_lesson_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_assignments_on_lesson_id ON assignments USING btree (lesson_id);
+
+
+--
+-- Name: index_assignments_on_team_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_assignments_on_team_id ON assignments USING btree (team_id);
 
 
 --
@@ -652,4 +715,6 @@ INSERT INTO schema_migrations (version) VALUES ('20141019150403');
 INSERT INTO schema_migrations (version) VALUES ('20141021185401');
 
 INSERT INTO schema_migrations (version) VALUES ('20141030203942');
+
+INSERT INTO schema_migrations (version) VALUES ('20141102184011');
 

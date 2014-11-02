@@ -3,6 +3,7 @@ class Lesson < ActiveRecord::Base
 
   has_many :submissions, dependent: :destroy
   has_many :ratings, dependent: :destroy
+  has_many :assignments, dependent: :destroy
 
   validates :title, presence: true
   validates :slug, presence: true, uniqueness: true

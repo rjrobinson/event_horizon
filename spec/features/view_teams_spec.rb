@@ -22,6 +22,18 @@ feature "view teams" do
         expect(page).to have_link(user.username, href: user_path(user))
       end
     end
+
+    scenario "view assignments for a team" do
+      assignments = FactoryGirl.create_list(:assignment, 3, team: team)
+
+      visit team_path(team)
+
+      expect(page).to have_content("Assignments")
+
+      assignments.each do |assignment|
+        expect(page).to have_content(assignment.lesson.title)
+      end
+    end
   end
 
   context "as an admin" do
