@@ -114,6 +114,39 @@ feature "view submissions" do
       expect(page).to have_content("Submission for #{lesson.title}")
       expect(page).to have_content(submission.user.username)
     end
+
+    context "for a team assignment" do
+      scenario "check team member submission" do
+        team_member = FactoryGirl.create(:team_membership)
+
+        submission = FactoryGirl.create(:submission,
+          user: team_member.user,
+          lesson: lesson,
+          created_at: 2.days.ago)
+
+        assignment = FactoryGirl.create(:assignment,
+          team: team_member.team,
+          lesson: lesson,
+          due_on: 1.day.ago)
+
+        visit assignment_path(assignment)
+        expect(page).to have_content(team_member.user.username)
+        expect(page).to have_content("On-Time")
+        expect(page).to have_link(submission.created_at, href: submission_path(submission))
+      end
+
+      scenario "late if missing submission" do
+        team_member = FactoryGirl.create(:team_membership)
+        assignment = FactoryGirl.create(:assignment,
+          team: team_member.team,
+          lesson: lesson,
+          due_on: 1.day.ago)
+
+        visit assignment_path(assignment)
+        expect(page).to have_content(team_member.user.username)
+        expect(page).to have_content("Late")
+      end
+    end
   end
 
   context "as a guest" do

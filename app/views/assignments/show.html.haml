@@ -1,0 +1,33 @@
+- content_for(:title) do
+  = "#{@assignment.lesson.title} Assignment - Launch Academy"
+
+%h2= "#{@assignment.lesson.title} Assignment"
+
+%ul.breadcrumbs
+  %li= link_to "Teams", teams_path
+  %li= link_to @assignment.team.name, team_path(@assignment.team)
+  %li Assignments
+  %li.current= link_to @assignment.lesson.title, assignment_path(@assignment)
+
+%table
+  %thead
+    %tr
+      %th User
+      %th Status
+      %th Submission Time
+      %th Comments
+
+  %tbody
+
+    - @assignment.user_submissions.each do |submission|
+      %tr
+        %td= link_to submission.username, user_path(submission.username)
+        %td{ class: (submission.on_time ? "on-time" : "late") }= submission.on_time ? "On-Time" : "Late"
+        %td
+          - if submission.submission_id
+            = link_to(submission.submission_time, submission_path(id: submission.submission_id))
+          - else
+            No submission.
+        %td
+          - if submission.comments_count && submission.comments_count > 0
+            = submission.comments_count

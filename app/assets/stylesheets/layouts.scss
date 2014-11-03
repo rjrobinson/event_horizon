@@ -29,6 +29,16 @@ ul.block {
   }
 }
 
+table tr {
+  td.late {
+    color: red;
+  }
+
+  td.on-time {
+    color: green;
+  }
+}
+
 .full-top-bar {
     border-bottom: 1px solid $border-color;
 }

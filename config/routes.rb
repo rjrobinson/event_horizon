@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     resources :comments, only: [:create]
   end
 
+  resources :assignments, only: [:show]
+
   resources :users, only: [:index, :show], param: :username
 
   resources :teams, only: [:index, :show]
