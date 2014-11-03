@@ -3,6 +3,12 @@
 
 %h2= "#{@assignment.lesson.title} Assignment"
 
+%ul.breadcrumbs
+  %li= link_to "Teams", teams_path
+  %li= link_to @assignment.team.name, team_path(@assignment.team)
+  %li Assignments
+  %li.current= link_to @assignment.lesson.title, assignment_path(@assignment)
+
 %table
   %thead
     %tr
