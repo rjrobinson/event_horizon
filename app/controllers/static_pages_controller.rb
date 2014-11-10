@@ -1,7 +1,7 @@
 class StaticPagesController < ApplicationController
   def home
     if user_signed_in?
-      redirect_to lessons_path
+      redirect_to dashboard_path
     else
       @content = File.read(Rails.root.join("db/pages/getting-started.md"))
       render :start
