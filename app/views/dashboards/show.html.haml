@@ -1,0 +1,10 @@
+- content_for(:title) do
+  Dashboard - Launch Academy
+
+%h2 Dashboard
+
+%h3 Upcoming Assignments
+
+%ul.block
+  - @upcoming_assignments.each do |assignment|
+    %li= assignment.lesson.title
