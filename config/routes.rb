@@ -20,8 +20,6 @@ Rails.application.routes.draw do
     get "failure", on: :member
   end
 
-  resource :search, only: [:show]
-
   get "/auth/:provider/callback", to: "sessions#create"
   get "/auth/failure", to: "sessions#failure"
 
