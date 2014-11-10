@@ -56,6 +56,7 @@ RSpec.configure do |config|
     Sidekiq::Testing.fake!
   end
 
+  config.include ApplicationHelper
   config.include AuthenticationHelper
   config.include ArchiveHelper
 end

@@ -11,11 +11,20 @@ feature "view dashboard" do
     end
 
     scenario "show upcoming assignments" do
-      assignment = FactoryGirl.create(:assignment, team: team)
+      first_assignment = FactoryGirl.create(:assignment,
+        due_on: 1.day.from_now,
+        team: team)
+
+      second_assignment = FactoryGirl.create(:assignment,
+        due_on: 2.days.from_now,
+        team: team)
 
       visit dashboard_path
 
-      expect(page).to have_content(assignment.lesson.title)
+      expect(page).to order_text(
+        first_assignment.lesson.title, second_assignment.lesson.title)
+
+      expect(page).to have_content(format_datetime(first_assignment.due_on))
     end
   end
 end

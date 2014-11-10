@@ -5,6 +5,18 @@
 
 %h3 Upcoming Assignments
 
-%ul.block
-  - @upcoming_assignments.each do |assignment|
-    %li= assignment.lesson.title
+%table
+  %thead
+    %tr
+      %th Team
+      %th Lesson
+      %th Due Date
+      %th Required
+
+  %tbody
+    - @upcoming_assignments.each do |assignment|
+      %tr
+        %td= link_to(assignment.team.name, assignment.team)
+        %td= link_to(assignment.lesson.title, assignment.lesson)
+        %td= format_datetime(assignment.due_on)
+        %td= assignment.required ? "yes" : "no"
