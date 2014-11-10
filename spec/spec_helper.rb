@@ -63,8 +63,4 @@ RSpec.configure do |config|
     # a real object. This is generally recommended.
     mocks.verify_partial_doubles = true
   end
-
-  config.before :each do
-    ActionMailer::Base.deliveries.clear
-  end
 end

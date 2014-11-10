@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   has_many :ratings, dependent: :destroy
   has_many :team_memberships, dependent: :destroy
   has_many :teams, through: :team_memberships
+  has_many :assignments, through: :teams
 
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true

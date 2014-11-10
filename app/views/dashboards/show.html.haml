@@ -1,0 +1,22 @@
+- content_for(:title) do
+  Dashboard - Launch Academy
+
+%h2 Dashboard
+
+%h3 Upcoming Assignments
+
+%table
+  %thead
+    %tr
+      %th Team
+      %th Lesson
+      %th Due Date
+      %th Required
+
+  %tbody
+    - @upcoming_assignments.each do |assignment|
+      %tr
+        %td= link_to(assignment.team.name, assignment.team)
+        %td= link_to(assignment.lesson.title, assignment.lesson)
+        %td= format_datetime(assignment.due_on)
+        %td= assignment.required ? "yes" : "no"

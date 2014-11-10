@@ -54,8 +54,12 @@ RSpec.configure do |config|
     # Clear out any jobs.
     Sidekiq::Worker.clear_all
     Sidekiq::Testing.fake!
+
+    # Clear out any e-mails to be delivered.
+    ActionMailer::Base.deliveries.clear
   end
 
+  config.include ApplicationHelper
   config.include AuthenticationHelper
   config.include ArchiveHelper
 end
