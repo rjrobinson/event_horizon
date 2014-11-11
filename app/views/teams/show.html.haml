@@ -34,3 +34,7 @@
             %td= assignment.required
             - if current_user.admin?
               %td= link_to "View", assignment_path(assignment)
+
+    - if current_user.admin?
+      #new-assignment
+        = link_to "Add Assignment", new_team_assignment_path(@team)

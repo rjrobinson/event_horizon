@@ -14,7 +14,9 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show], param: :username
 
-  resources :teams, only: [:index, :show]
+  resources :teams, only: [:index, :show] do
+    resources :assignments, only: [:new, :create]
+  end
 
   resource :session, only: [:new, :create, :destroy] do
     get "failure", on: :member
