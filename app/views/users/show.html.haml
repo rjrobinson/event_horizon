@@ -1,6 +1,10 @@
 - content_for(:title) do
   = "#{@user.username} - Launch Academy"
 
+%ul.breadcrumbs
+  %li= link_to "Users", users_path
+  %li.current= link_to @user.username, user_path(@user)
+
 - if !@user.name.blank?
   %h2= "User: #{@user.username} (#{@user.name})"
 - else
