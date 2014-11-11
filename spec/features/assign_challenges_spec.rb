@@ -13,7 +13,7 @@ feature "assign challenges" do
     scenario "assign challenge to team" do
       challenge = FactoryGirl.create(:challenge, title: "FizzBuzz")
 
-      visit new_team_assignment_path(team)
+      visit team_assignments_path(team)
 
       select "FizzBuzz", from: "Challenge"
       fill_in "Due Date", with: "2014-11-14T11:00:00"
@@ -35,7 +35,7 @@ feature "assign challenges" do
     scenario "re-render form when missing info" do
       challenge = FactoryGirl.create(:challenge, title: "FizzBuzz")
 
-      visit new_team_assignment_path(team)
+      visit team_assignments_path(team)
 
       click_button "Add Assignment"
 

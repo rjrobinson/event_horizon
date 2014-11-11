@@ -16,7 +16,7 @@
         %li= link_to(user.username, user)
 
   .large-6.columns
-    %h3 Assignments
+    %h3= link_to "Assignments", team_assignments_path(@team)
 
     %table#assignments
       %thead
@@ -34,7 +34,3 @@
             %td= assignment.required
             - if current_user.admin?
               %td= link_to "View", assignment_path(assignment)
-
-    - if current_user.admin?
-      #new-assignment
-        = link_to "Add Assignment", new_team_assignment_path(@team)

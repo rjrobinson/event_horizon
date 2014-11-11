@@ -1,7 +1,8 @@
 class AssignmentsController < ApplicationController
-  before_action :authorize_admin!
+  before_action :authenticate_user!
+  before_action :authorize_admin!, except: [:index]
 
-  def new
+  def index
     @team = Team.find(params[:team_id])
     @assignment = Assignment.new
   end
@@ -12,10 +13,10 @@ class AssignmentsController < ApplicationController
 
     if @assignment.save
       flash[:info] = "Added assignment for #{@assignment.lesson.title}."
-      redirect_to new_team_assignment_path(@team)
+      redirect_to team_assignments_path(@team)
     else
       flash[:alert] = "Failed to add assignment."
-      render :new
+      render :index
     end
   end
 
