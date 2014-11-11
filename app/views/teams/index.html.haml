@@ -1,10 +1,10 @@
 - content_for(:title) do
-  = "Teams - Launch Academy"
-
-%h2 Teams
+  Teams - Launch Academy
 
 %ul.breadcrumbs
   %li.current= link_to "Teams", teams_path
+
+%h2 Teams
 
 %ul.block#teams
   - @teams.each do |team|

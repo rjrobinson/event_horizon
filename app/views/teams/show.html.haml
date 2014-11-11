@@ -1,11 +1,11 @@
 - content_for(:title) do
   = "#{@team.name} - Launch Academy"
 
-%h2= "Team: #{@team.name}"
-
 %ul.breadcrumbs
   %li= link_to "Teams", teams_path
   %li.current= link_to @team.name, team_path(@team)
+
+%h2= "Team: #{@team.name}"
 
 .row
   .large-6.columns
@@ -16,7 +16,7 @@
         %li= link_to(user.username, user)
 
   .large-6.columns
-    %h3 Assignments
+    %h3= link_to "Assignments", team_assignments_path(@team)
 
     %table#assignments
       %thead

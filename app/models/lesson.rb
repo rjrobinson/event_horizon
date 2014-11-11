@@ -35,6 +35,10 @@ class Lesson < ActiveRecord::Base
     type == "challenge"
   end
 
+  def self.challenges
+    type("challenge")
+  end
+
   def self.search(query)
     where("searchable @@ plainto_tsquery(?)", query)
   end
