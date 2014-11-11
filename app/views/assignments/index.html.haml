@@ -1,12 +1,12 @@
 - content_for(:title) do
   New Assignment - Launch Academy
 
-%h2= "New Assignment for #{@team.name}"
-
 %ul.breadcrumbs
   %li= link_to "Teams", teams_path
   %li= link_to @team.name, @team
   %li.current= link_to "Assignments", team_assignments_path(@team)
+
+%h2= "New Assignment for #{@team.name}"
 
 - if current_user.admin?
   #new-assignment
