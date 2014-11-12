@@ -33,7 +33,7 @@ describe SubmissionExtractor do
       filenames = submission.files.map { |f| f.filename }
 
       expect(filenames).to include("foo.rb")
-      expect(filenames).to include("bar/baz.rb")
+      expect(filenames).to include("bar/baz/bat.rb")
     end
 
     it "ignores certain files" do

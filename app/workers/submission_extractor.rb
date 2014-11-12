@@ -33,7 +33,11 @@ class SubmissionExtractor
       path = File.join(dir, filename)
 
       if File.directory?(path)
-        find_files(filename, path)
+        if prefix
+          find_files(File.join(prefix, filename), path)
+        else
+          find_files(filename, path)
+        end
       else
         if prefix
           File.join(prefix, filename)
