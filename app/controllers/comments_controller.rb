@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
           render :show
         end
 
-        CommentMailer.new_comment(@comment).deliver
+        CommentNotifier.perform_in(15.minutes, @comment.id)
       else
         format.html { render "submissions/show" }
         format.json do

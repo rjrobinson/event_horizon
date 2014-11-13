@@ -25,18 +25,6 @@ feature "comment on submission" do
       expect(page).to have_content("#{user.username} commented")
       expect(page).to have_content("Needs more cowbell.")
     end
-
-    scenario "don't email if commenter is the submitter" do
-      submission = FactoryGirl.create(:submission, user: user)
-
-      visit submission_path(submission)
-
-      fill_in "Comment", with: "I like oranges."
-      click_button "Submit"
-
-      expect(page).to have_content("Comment saved.")
-      expect(ActionMailer::Base.deliveries.count).to eq(0)
-    end
   end
 
   context "as an admin" do
@@ -56,7 +44,7 @@ feature "comment on submission" do
       expect(page).to have_content("#{admin.username} commented")
       expect(page).to have_content("Needs more cow-bell.")
 
-      expect(ActionMailer::Base.deliveries.count).to eq(1)
+      expect(CommentNotifier.jobs.size).to eq(1)
     end
 
     it "comment on specific file and line" do
