@@ -1,0 +1,15 @@
+There <%= @comments.length == 1 ? "is one new comment" : "are #{@comments.length} new comments" %> on your <%= @submission.lesson.title %> submission.
+
+Link: <%= submission_url(@submission) %>
+
+Comments:
+
+<%- @comments.each do |comment| %>
+
+<%= comment.user.username %> commented at <%= format_datetime(comment.created_at) %>:
+
+<%= comment.body %>
+
+============================================================
+
+<%- end %>

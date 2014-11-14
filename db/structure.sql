@@ -75,7 +75,8 @@ CREATE TABLE comments (
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     line_number integer,
-    source_file_id integer
+    source_file_id integer,
+    delivered boolean DEFAULT false NOT NULL
 );
 
 
@@ -499,6 +500,13 @@ CREATE INDEX index_assignments_on_team_id ON assignments USING btree (team_id);
 
 
 --
+-- Name: index_comments_on_delivered; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_comments_on_delivered ON comments USING btree (delivered) WHERE (delivered = false);
+
+
+--
 -- Name: index_comments_on_source_file_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -717,4 +725,6 @@ INSERT INTO schema_migrations (version) VALUES ('20141021185401');
 INSERT INTO schema_migrations (version) VALUES ('20141030203942');
 
 INSERT INTO schema_migrations (version) VALUES ('20141102184011');
+
+INSERT INTO schema_migrations (version) VALUES ('20141113200644');
 
