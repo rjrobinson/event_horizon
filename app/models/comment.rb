@@ -12,4 +12,8 @@ class Comment < ActiveRecord::Base
 
   validates :source_file, presence: true, if: -> { line_number.present? }
   validates :line_number, presence: true, if: -> { source_file.present? }
+
+  def self.pending
+    where(delivered: false)
+  end
 end
