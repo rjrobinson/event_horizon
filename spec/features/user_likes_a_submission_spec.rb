@@ -10,7 +10,6 @@ feature 'user likes a submission', %q{
 } do
 
   # Acceptance Criteria:
-  #  * User must have a submission for the assignment
   #  * User cannot 'like' their own submission
   #  * user cannot 'like' a submission more than once
 
@@ -18,11 +17,20 @@ feature 'user likes a submission', %q{
   let!(:user) { FactoryGirl.create(:submission, lesson: lesson).user }
   let!(:submission) { FactoryGirl.create(:submission, lesson: lesson, public: true) }
 
-  scenario "user 'likes' someone else's submission", focus: true do
+  scenario "user 'likes' someone else's submission" do
     sign_in_as user
 
     visit submission_path(submission)
     click_on 'Like'
     expect(page).to have_content('1 Like')
   end
+
+  scenario "user attempts to 'like' their own submission" do
+    sign_in_as user
+
+    visit submission_path(user.submissions.first)
+    click_on 'Like'
+    expect(page).to have_content("Don't be an egotist.")
+  end
+
 end
