@@ -1,6 +1,9 @@
 class Like < ActiveRecord::Base
-  belongs_to :submission
+  belongs_to :submission, counter_cache: true
   belongs_to :user
+
+  validates :submission, uniqueness:
+    { scope: :user, message: "You already 'liked' that." }
 
   validate :submission_does_not_belong_to_user
 

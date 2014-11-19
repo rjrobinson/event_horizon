@@ -259,7 +259,8 @@ CREATE TABLE submissions (
     archive character varying(255) NOT NULL,
     public boolean DEFAULT false NOT NULL,
     featured boolean DEFAULT false NOT NULL,
-    comments_count integer DEFAULT 0 NOT NULL
+    comments_count integer DEFAULT 0 NOT NULL,
+    likes_count integer DEFAULT 0 NOT NULL
 );
 
 
@@ -589,6 +590,13 @@ CREATE UNIQUE INDEX index_lessons_on_slug ON lessons USING btree (slug);
 
 
 --
+-- Name: index_likes_on_submission_id_and_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_likes_on_submission_id_and_user_id ON likes USING btree (submission_id, user_id);
+
+
+--
 -- Name: index_ratings_on_lesson_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -776,4 +784,6 @@ INSERT INTO schema_migrations (version) VALUES ('20141102184011');
 INSERT INTO schema_migrations (version) VALUES ('20141113200644');
 
 INSERT INTO schema_migrations (version) VALUES ('20141119152935');
+
+INSERT INTO schema_migrations (version) VALUES ('20141119161534');
 

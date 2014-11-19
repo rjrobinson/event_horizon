@@ -33,4 +33,13 @@ feature 'user likes a submission', %q{
     expect(page).to have_content("Don't be an egotist.")
   end
 
+  scenario "user attempts to 'like' a submission twice" do
+    sign_in_as user
+
+    visit submission_path(submission)
+    click_on 'Like'
+    click_on 'Like'
+    expect(page).to have_content("You already 'liked' that.")
+  end
+
 end
