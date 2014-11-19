@@ -4,5 +4,5 @@ class SourceFile < ActiveRecord::Base
 
   validates :submission, presence: true
   validates :filename, presence: true
-  validates :body, presence: true
+  validates :body, length: { in: 0..50000, allow_nil: false }
 end
