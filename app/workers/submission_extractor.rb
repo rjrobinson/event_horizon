@@ -14,8 +14,17 @@ class SubmissionExtractor
 
       SourceFile.transaction do
         valid_source_files(tmpdir).each do |filename|
+          filepath = File.join(tmpdir, filename)
+
           file = submission.files.find_or_initialize_by(filename: filename)
-          file.body = File.read(File.join(tmpdir, filename))
+          file_size = File.stat(filepath).size
+
+          if file_size < 50000
+            file.body = File.read(filepath)
+          else
+            file.body = "File too large to display (#{file_size} bytes)"
+          end
+
           file.save!
         end
       end

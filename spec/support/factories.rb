@@ -71,6 +71,13 @@ FactoryGirl.define do
           Rails.root.join("spec/data/ignored_files.tar.gz"))
       end
     end
+
+    factory :submission_with_large_file do
+      archive do
+        Rack::Test::UploadedFile.new(
+          Rails.root.join("spec/data/large_file.tar.gz"))
+      end
+    end
   end
 
   factory :source_file do
