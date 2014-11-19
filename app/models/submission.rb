@@ -4,6 +4,7 @@ class Submission < ActiveRecord::Base
   has_many :comments
   has_many :files, -> { order :filename },
            class_name: "SourceFile"
+  has_many :likes
 
   mount_uploader :archive, ArchiveUploader
 

@@ -138,6 +138,38 @@ ALTER SEQUENCE lessons_id_seq OWNED BY lessons.id;
 
 
 --
+-- Name: likes; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE likes (
+    id integer NOT NULL,
+    submission_id integer NOT NULL,
+    user_id integer NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: likes_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE likes_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: likes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE likes_id_seq OWNED BY likes.id;
+
+
+--
 -- Name: ratings; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -375,6 +407,13 @@ ALTER TABLE ONLY lessons ALTER COLUMN id SET DEFAULT nextval('lessons_id_seq'::r
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY likes ALTER COLUMN id SET DEFAULT nextval('likes_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY ratings ALTER COLUMN id SET DEFAULT nextval('ratings_id_seq'::regclass);
 
 
@@ -435,6 +474,14 @@ ALTER TABLE ONLY comments
 
 ALTER TABLE ONLY lessons
     ADD CONSTRAINT lessons_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: likes_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY likes
+    ADD CONSTRAINT likes_pkey PRIMARY KEY (id);
 
 
 --
@@ -727,4 +774,6 @@ INSERT INTO schema_migrations (version) VALUES ('20141030203942');
 INSERT INTO schema_migrations (version) VALUES ('20141102184011');
 
 INSERT INTO schema_migrations (version) VALUES ('20141113200644');
+
+INSERT INTO schema_migrations (version) VALUES ('20141119152935');
 

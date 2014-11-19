@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   resources :submissions, only: [:show, :update] do
     resources :comments, only: [:create]
+    resources :likes, only: [:create]
   end
 
   resources :assignments, only: [:show]

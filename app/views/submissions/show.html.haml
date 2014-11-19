@@ -36,6 +36,10 @@
         - else
           = f.hidden_field :featured, value: true
           = f.submit "Make Featured", class: "button tiny"
+  %dt Like
+  %dd#like
+    %i.fi-like
+    = link_to "#{@submission.likes.count} Likes", submission_likes_path(@submission), method: :post
 
 
 #submission
