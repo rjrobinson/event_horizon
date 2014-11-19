@@ -1,9 +1,9 @@
-require 'rails_helper'
+require "rails_helper"
 
-feature 'user likes a submission', %q{
+feature "user likes a submission", %q{
 
   As an Event Horizon user
-  I would like to 'like' a submission
+  I would like to "like" a submission
   So that the most liked submission is pushed
     to the top of the list.
 
@@ -21,7 +21,7 @@ feature 'user likes a submission', %q{
     sign_in_as user
 
     visit submission_path(submission)
-    click_on 'Like'
+    click_on "Like"
     expect(page).to have_content('1 Like')
   end
 
@@ -29,7 +29,7 @@ feature 'user likes a submission', %q{
     sign_in_as user
 
     visit submission_path(user.submissions.first)
-    click_on 'Like'
+    click_on "Like"
     expect(page).to have_content("Don't be an egotist.")
   end
 
@@ -37,8 +37,8 @@ feature 'user likes a submission', %q{
     sign_in_as user
 
     visit submission_path(submission)
-    click_on 'Like'
-    click_on 'Like'
+    click_on "Like"
+    click_on "Like"
     expect(page).to have_content("You already 'liked' that.")
   end
 
