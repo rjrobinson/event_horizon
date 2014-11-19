@@ -114,4 +114,9 @@ FactoryGirl.define do
     due_on { DateTime.now + 1.day }
     required true
   end
+
+  factory :like do
+    submission
+    user
+  end
 end

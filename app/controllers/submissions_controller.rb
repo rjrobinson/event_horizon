@@ -5,8 +5,11 @@ class SubmissionsController < ApplicationController
     @lesson = Lesson.find_by!(slug: params[:lesson_slug])
     @submissions = @lesson
       .submissions_viewable_by(current_user)
-      .order(featured: :desc)
       .includes(:user)
+      .order(featured: :desc)
+      .order(likes_count: :desc)
+      .order("users.username asc")
+      .order(created_at: :desc)
   end
 
   def show
