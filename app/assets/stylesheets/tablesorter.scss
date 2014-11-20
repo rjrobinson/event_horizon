@@ -1,3 +1,5 @@
+@import "colors";
+
 table.tablesorter {
   text-align: left;
 }
@@ -18,5 +20,5 @@ table.tablesorter thead tr .headerSortDown {
 }
 
 table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
-  background-color: #c5c5c5;
+  background-color: $dark-bg-color;
 }
