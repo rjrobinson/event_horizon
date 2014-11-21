@@ -19,6 +19,11 @@ table.tablesorter thead tr .headerSortDown {
   background-image: image-url("desc.gif");
 }
 
-table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
+table.tablesorter thead tr .headerSortDown,
+table.tablesorter thead tr .headerSortUp {
   background-color: $dark-bg-color;
+}
+
+table.tablesorter thead tr th.header {
+  padding-right: 20px;
 }
