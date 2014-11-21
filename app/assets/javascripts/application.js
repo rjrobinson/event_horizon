@@ -12,9 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.tablesorter.min
 //= require foundation
 //= require_tree .
 
 $(function(){
   $(document).foundation();
+  $("table.tablesorter").tablesorter();
 });
