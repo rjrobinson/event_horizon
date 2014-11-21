@@ -8,14 +8,14 @@
 %h2= "Team: #{@team.name}"
 
 .row
-  .large-6.columns
+  .large-3.columns
     %h3 Members
 
     %ul.block#members
       - @team.users.each do |user|
         %li= link_to(user.username, user)
 
-  .large-6.columns
+  .large-9.columns
     %h3= link_to "Assignments", team_assignments_path(@team)
 
     %table#assignments.tablesorter
