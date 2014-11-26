@@ -40,7 +40,7 @@ feature "user likes a submission", %q{
     expect(page).to have_content("You already 'liked' that.")
   end
 
-  scenario "the most liked submission is at the top of the list", focus: true do
+  scenario "the most liked submission is at the top of the list" do
     other_submission = FactoryGirl.create(:submission, lesson: lesson, public: true)
     best_submission = submission
     3.times { FactoryGirl.create(:like, submission: best_submission)}
