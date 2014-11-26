@@ -21,7 +21,7 @@ feature "assignment status is displayed on dashboard", %q{
     expect(page).to have_content("submitted")
   end
 
-  scenario "admin reviews assignment", focus: true do
+  scenario "admin reviews assignment" do
     team_membership = FactoryGirl.create(:team_membership)
     user = team_membership.user
     assignment = FactoryGirl.create(:assignment,

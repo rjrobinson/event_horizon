@@ -11,6 +11,10 @@ class Assignment < ActiveRecord::Base
     scope
   end
 
+  def submitted?(user)
+    lesson.submissions.where(user: user).count > 0
+  end
+
   def reviewed?(user)
     Comment.count_by_sql([ADMIN_COMMENT_COUNT, lesson.id, user.id]) > 0
   end
