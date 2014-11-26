@@ -12,6 +12,7 @@
       %th Lesson
       %th Due Date
       %th Required
+      %th Reviewed
 
   %tbody
     - @upcoming_assignments.each do |assignment|
@@ -20,3 +21,4 @@
         %td= link_to(assignment.lesson.title, assignment.lesson)
         %td= format_datetime(assignment.due_on)
         %td= assignment.required ? "yes" : "no"
+        %td= assignment.reviewed?(current_user) ? "reviewed" : "no"
