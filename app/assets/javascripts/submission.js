@@ -1,5 +1,5 @@
 $(function(){
   $("div.filename").click(function(){
-    $(this).siblings("div.body").toggle();
+    $(this).siblings("div.body").slideToggle();
   });
 });
