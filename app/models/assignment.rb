@@ -7,10 +7,6 @@ class Assignment < ActiveRecord::Base
   validates :required, inclusion: [true, false]
   validates :due_on, presence: true
 
-  def self.with_status_for(user)
-    scope
-  end
-
   def submitted?(user)
     lesson.submissions.where(user: user).count > 0
   end
