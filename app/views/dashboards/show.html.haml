@@ -17,7 +17,7 @@
       %tr
         %td= link_to(announcement.team.name, announcement.team)
         %td= announcement.title
-        %td= announcement.description
+        %td= render_markdown(announcement.description)
 
 
 %h3 Upcoming Assignments

@@ -30,4 +30,4 @@
       %tr
         %td= announcement.team.name
         %td= announcement.title
-        %td= announcement.description
+        %td= render_markdown(announcement.description)

@@ -27,7 +27,7 @@
         - @team.announcements.order(created_at: :desc).each do |announcement|
           %tr
             %td= announcement.title
-            %td= announcement.description
+            %td= render_markdown(announcement.description)
 
   .large-9.columns
     %h3= link_to "Assignments", team_assignments_path(@team)
