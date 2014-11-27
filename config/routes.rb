@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :assignments, only: [:show]
 
-  resources :announcements, only: [:show]
+  resources :announcements, only: [:show, :update, :destroy]
 
   resources :users, only: [:index, :show], param: :username
 

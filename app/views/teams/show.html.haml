@@ -22,12 +22,14 @@
       %thead
         %th Title
         %th Description
+        %th
 
       %tbody
         - @team.announcements.order(created_at: :desc).each do |announcement|
           %tr
             %td= announcement.title
-            %td= render_markdown(announcement.description)
+            %td= announcement.description
+            %td= link_to("show", announcement)
 
   .large-9.columns
     %h3= link_to "Assignments", team_assignments_path(@team)

@@ -1,0 +1,11 @@
+- content_for(:title) do
+  = "#{@announcement.title} Assignment - Launch Academy"
+
+%h1= "#{@announcement.title}"
+
+#body
+  ~ render_markdown(@announcement.description)
+
+
+%td= link_to("delete announcement", announcement_path, method: :delete)
+%td= link_to("edit announcement", announcement_path, method: :update)

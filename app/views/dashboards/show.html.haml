@@ -11,13 +11,15 @@
       %th Team
       %th Title
       %th Description
+      %th
 
   %tbody
     - @announcements.each do |announcement|
       %tr
         %td= link_to(announcement.team.name, announcement.team)
         %td= announcement.title
-        %td= render_markdown(announcement.description)
+        %td= announcement.description
+        %td= link_to("show", announcement)
 
 
 %h3 Upcoming Assignments
