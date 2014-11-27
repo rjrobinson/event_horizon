@@ -16,6 +16,20 @@
         %li= link_to(user.username, user)
 
   .large-9.columns
+    %h3= link_to "Announcements", team_announcements_path(@team)
+
+    %table#assignments.tablesorter
+      %thead
+        %th Title
+        %th Description
+
+      %tbody
+        - @team.announcements.order(created_at: :desc).each do |announcement|
+          %tr
+            %td= announcement.title
+            %td= announcement.description
+
+  .large-9.columns
     %h3= link_to "Assignments", team_assignments_path(@team)
 
     %table#assignments.tablesorter
@@ -34,3 +48,6 @@
             %td= assignment.required
             - if current_user.admin?
               %td= link_to "View", assignment_path(assignment)
+
+
+

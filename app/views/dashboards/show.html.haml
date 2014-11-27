@@ -16,7 +16,7 @@
     - @announcements.each do |announcement|
       %tr
         %td= link_to(announcement.team.name, announcement.team)
-        %td= link_to(announcement.title, announcement.title)
+        %td= announcement.title
         %td= announcement.description
 
 

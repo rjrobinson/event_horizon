@@ -3,7 +3,6 @@ class AnnouncementsController < ApplicationController
   before_action :authorize_admin!, except: [:index]
 
   def index
-
     @team = Team.find(params[:team_id])
     @announcement = Announcement.new
   end
