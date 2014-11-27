@@ -1,0 +1,18 @@
+- content_for(:title) do
+  New Announcement - Launch Academy
+
+%h2= "New Announcement for #{@team.name}"
+
+- if current_user.admin?
+  #new-announcement
+    = form_for [@team, @announcement] do |f|
+      = field_set_tag "Add Announcement" do
+
+        = f.label :title, "Title"
+        = f.text_field :title
+
+        = f.label :description, "Description"
+        = f.text_area :description
+
+        = f.submit "Add Announcement", class: "button"
+

@@ -8,6 +8,7 @@ class AssignmentsController < ApplicationController
   end
 
   def create
+    binding.pry
     @team = Team.find(params[:team_id])
     @assignment = @team.assignments.build(assignment_params)
 

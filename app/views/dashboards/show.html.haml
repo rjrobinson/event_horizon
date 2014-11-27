@@ -3,6 +3,23 @@
 
 %h2 Dashboard
 
+%h3 Announcements
+
+%table.tablesorter
+  %thead
+    %tr
+      %th Team
+      %th Title
+      %th Description
+
+  %tbody
+    - @announcements.each do |announcement|
+      %tr
+        %td= link_to(announcement.team.name, announcement.team)
+        %td= link_to(announcement.title, announcement.title)
+        %td= announcement.description
+
+
 %h3 Upcoming Assignments
 
 %table.tablesorter
