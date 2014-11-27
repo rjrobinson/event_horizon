@@ -12,13 +12,13 @@ Rails.application.routes.draw do
 
   resources :assignments, only: [:show]
 
-  resources :announcements
+  resources :announcements, only: [:show]
 
   resources :users, only: [:index, :show], param: :username
 
   resources :teams, only: [:index, :show] do
     resources :assignments, only: [:index, :create]
-    resources :announcements
+    resources :announcements, only: [:index, :create]
   end
 
   resource :session, only: [:new, :create, :destroy] do

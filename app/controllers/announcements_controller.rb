@@ -13,9 +13,9 @@ class AnnouncementsController < ApplicationController
 
     if @announcement.save
       flash[:info] = "Added announcement."
-      redirect_to team_assignments_path(@team)
+      redirect_to team_announcements_path(@team)
     else
-      flash[:alert] = "Failed to add assignment."
+      flash[:alert] = "Failed to add announcement."
       render :index
     end
   end
