@@ -30,6 +30,6 @@
     - @team.announcements.order(created_at: :desc).each do |announcement|
       %tr
         %td= announcement.team.name
-        %td= announcement.title
-        %td= announcement.description
+        %td= announcement.title.truncate(35)
+        %td= announcement.description.truncate(50)
         %td= link_to("show", announcement)
