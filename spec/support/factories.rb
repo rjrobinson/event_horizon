@@ -114,4 +114,11 @@ FactoryGirl.define do
     due_on { DateTime.now + 1.day }
     required true
   end
+
+  factory :announcement do
+    title "Here is a title for an announcement"
+    description "Here is a very nice description for a very nice announcement. The students shall cheer and rejoice when they see it."
+    association :team
+  end
+
 end
