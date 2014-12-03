@@ -8,33 +8,49 @@ feature "assignment status is displayed on dashboard", %q{
 
 } do
 
-  scenario "user completes assignment" do
-    team_membership = FactoryGirl.create(:team_membership)
-    user = team_membership.user
-    assignment = FactoryGirl.create(:assignment,
-      team: team_membership.team)
-    submission = FactoryGirl.create(:submission,
-      lesson: assignment.lesson, user: team_membership.user)
+  let(:user) { FactoryGirl.create(:user_with_assignment_submission) }
+  let(:admin) { FactoryGirl.create(:admin) }
 
-    sign_in_as submission.user
+  before(:each) do
+    sign_in_as user
+  end
+
+  scenario "user completes assignment" do
     visit dashboard_path
-    expect(page).to have_content("submitted")
+
+    within("td.submitted") do
+      expect(page).to have_content("yes")
+    end
+  end
+
+  scenario "user submission has not been reviewed" do
+    visit dashboard_path
+
+    within("td.reviewed") do
+      expect(page).to have_content("no")
+    end
+  end
+
+  scenario "user comments on a submission, not counted as reviewed" do
+    user_comment = FactoryGirl.create(:comment, user: user,
+      submission: user.submissions.first)
+
+    visit dashboard_path
+
+    within("td.reviewed") do
+      expect(page).to have_content("no")
+    end
   end
 
   scenario "admin reviews assignment" do
-    team_membership = FactoryGirl.create(:team_membership)
-    user = team_membership.user
-    assignment = FactoryGirl.create(:assignment,
-      team: team_membership.team)
-    submission = FactoryGirl.create(:submission,
-      lesson: assignment.lesson, user: team_membership.user)
+    admin_comment = FactoryGirl.create(:comment, user: admin,
+      submission: user.submissions.first)
 
-    admin = FactoryGirl.create(:user, role: "admin")
-    comment = FactoryGirl.create(:comment, user: admin, submission: submission)
-
-    sign_in_as submission.user
     visit dashboard_path
-    expect(page).to have_content("reviewed")
+
+    within("td.reviewed") do
+      expect(page).to have_content("yes")
+    end
   end
 
 end
