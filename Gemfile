@@ -35,6 +35,7 @@ end
 
 group :test do
   gem "coveralls", require: false
+  gem "launchy", require: false
 end
 
 group :production do
