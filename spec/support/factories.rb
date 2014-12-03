@@ -95,7 +95,7 @@ FactoryGirl.define do
     role "member"
 
     factory :admin do
-       role "admin"
+      role "admin"
     end
 
     factory :user_with_assignment_submission do
@@ -121,9 +121,5 @@ FactoryGirl.define do
     lesson
     due_on { DateTime.now + 1.day }
     required true
-
-    factory :assignment_with_submission do
-
-    end
   end
 end
