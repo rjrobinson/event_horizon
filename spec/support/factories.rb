@@ -97,6 +97,14 @@ FactoryGirl.define do
     factory :admin do
       role "admin"
     end
+
+    factory :user_with_assignment_submission do
+      after(:create) do |user|
+        team_membership = create(:team_membership , user: user)
+        assignment = create(:assignment, team: team_membership.team)
+        create(:submission, lesson: assignment.lesson, user: user)
+      end
+    end
   end
 
   factory :team do
