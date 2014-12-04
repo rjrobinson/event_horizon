@@ -15,6 +15,13 @@ feature "view users" do
       expect(page).to have_selector("input[value='#{user.token}']")
     end
 
+    scenario "view comments on submissions on own page" do
+      visit root_path
+
+      click_link "Signed in as #{user.username}"
+      expect(page).to have_content("Number Of Comments")
+    end
+
     scenario "cannot view auth token for other user" do
       other_user = FactoryGirl.create(:user)
 
