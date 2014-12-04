@@ -10,6 +10,7 @@
 - else
   %h2= "User: #{@user.username}"
 
+%h3= "#{@user.username}\'s comments: #{@count}"
 
 - if @user == current_user
   #settings
