@@ -1,4 +1,6 @@
 class Lesson < ActiveRecord::Base
+  SUBMITTABLE_TYPES = ["challenge", "exercise"]
+
   self.inheritance_column = :_type_disabled
 
   has_many :submissions, dependent: :destroy
@@ -35,7 +37,11 @@ class Lesson < ActiveRecord::Base
   end
 
   def accepts_submissions?
-    type == "challenge" || type == "exercise"
+    SUBMITTABLE_TYPES.include?(type)
+  end
+
+  def self.submittable
+    where(type: SUBMITTABLE_TYPES)
   end
 
   def self.challenges

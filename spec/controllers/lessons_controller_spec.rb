@@ -31,6 +31,21 @@ describe LessonsController do
         expect(result["lessons"].count).to eq(1)
         expect(result["lessons"][0]["slug"]).to eq(challenge.slug)
       end
+
+      it "filters based on submittable lessons" do
+        challenge = FactoryGirl.create(:lesson, type: "challenge")
+        exercise = FactoryGirl.create(:lesson, type: "exercise")
+        article = FactoryGirl.create(:lesson, type: "article")
+
+        get :index, format: :json, submittable: "1"
+        result = JSON.parse(response.body)
+
+        expect(result["lessons"].count).to eq(2)
+
+        slugs = result["lessons"].map { |lesson| lesson["slug"] }
+        expect(slugs).to include(challenge.slug)
+        expect(slugs).to include(exercise.slug)
+      end
     end
 
     describe "GET show" do
