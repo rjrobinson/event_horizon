@@ -44,6 +44,14 @@ class Lesson < ActiveRecord::Base
     where(type: SUBMITTABLE_TYPES)
   end
 
+  def clarity
+    ratings.inject(0) {|sum, rating| sum + rating.clarity} / ratings.count.to_f
+  end
+
+  def helpfulness
+    ratings.inject(0) {|sum, rating| sum + rating.helpfulness} / ratings.count.to_f
+  end
+
   def self.challenges
     type("challenge")
   end
