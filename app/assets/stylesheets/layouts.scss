@@ -75,6 +75,10 @@ table tr {
     background-color: $challenge-color;
 }
 
+.lesson-type.exercise {
+    background-color: $exercise-color;
+}
+
 .lesson-type.tutorial {
     background-color: $tutorial-color;
 }
