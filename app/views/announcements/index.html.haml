@@ -27,7 +27,7 @@
       %th
 
   %tbody
-    - @team.announcements.order(created_at: :desc).each do |announcement|
+    - @team.announcements.order(created_at: :desc).limit(50).each do |announcement|
       %tr
         %td= announcement.team.name
         %td= announcement.title.truncate(35)
