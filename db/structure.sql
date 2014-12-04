@@ -534,6 +534,13 @@ ALTER TABLE ONLY users
 
 
 --
+-- Name: index_announcements_on_team_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_announcements_on_team_id ON announcements USING btree (team_id);
+
+
+--
 -- Name: index_assignments_on_lesson_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -777,4 +784,6 @@ INSERT INTO schema_migrations (version) VALUES ('20141102184011');
 INSERT INTO schema_migrations (version) VALUES ('20141113200644');
 
 INSERT INTO schema_migrations (version) VALUES ('20141126230346');
+
+INSERT INTO schema_migrations (version) VALUES ('20141204203947');
 
