@@ -25,9 +25,9 @@ class AnnouncementsController < ApplicationController
   end
 
   def destroy
-    @announcement = Announcement.find(params[:id])
+    announcement = Announcement.find(params[:id])
 
-    @announcement.destroy
+    announcement.destroy
     flash[:success] = "You have deleted an announcement."
     redirect_to root_path
   end
