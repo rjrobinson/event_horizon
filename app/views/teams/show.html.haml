@@ -16,6 +16,22 @@
         %li= link_to(user.username, user)
 
   .large-9.columns
+    %h3= link_to "Announcements", team_announcements_path(@team)
+
+    %table#assignments.tablesorter
+      %thead
+        %th Title
+        %th Description
+        %th
+
+      %tbody
+        - @team.announcements.order(created_at: :desc).limit(50).each do |announcement|
+          %tr
+            %td= announcement.title.truncate(35)
+            %td= announcement.description.truncate(50)
+            %td= link_to("show", announcement)
+
+  .large-9.columns
     %h3= link_to "Assignments", team_assignments_path(@team)
 
     %table#assignments.tablesorter
