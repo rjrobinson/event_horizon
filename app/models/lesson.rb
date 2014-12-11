@@ -1,4 +1,6 @@
 class Lesson < ActiveRecord::Base
+  SUBMITTABLE_TYPES = ["challenge", "exercise"]
+
   self.inheritance_column = :_type_disabled
 
   has_many :submissions, dependent: :destroy
@@ -8,7 +10,10 @@ class Lesson < ActiveRecord::Base
   validates :title, presence: true
   validates :slug, presence: true, uniqueness: true
   validates :body, presence: true
-  validates :type, presence: true, inclusion: ["article", "tutorial", "challenge"]
+  validates :type, presence: true, inclusion: [
+    "article", "tutorial", "challenge", "exercise"
+  ]
+
   validates :position, presence: true, numericality: {
     greater_than_or_equal_to: 1
   }
@@ -32,7 +37,11 @@ class Lesson < ActiveRecord::Base
   end
 
   def accepts_submissions?
-    type == "challenge"
+    SUBMITTABLE_TYPES.include?(type)
+  end
+
+  def self.submittable
+    where(type: SUBMITTABLE_TYPES)
   end
 
   def self.challenges
@@ -81,8 +90,8 @@ class Lesson < ActiveRecord::Base
     lesson.type = attributes["type"]
     lesson.position = attributes["position"]
 
-    if lesson.type == "challenge"
-      Dir.mktmpdir("challenge") do |tmpdir|
+    if lesson.accepts_submissions?
+      Dir.mktmpdir("archive") do |tmpdir|
         parent_dir = File.dirname(source_dir)
         archive_path = File.join(tmpdir, "#{slug}.tar.gz")
         system("tar", "zcf", archive_path, "-C", parent_dir, slug)

@@ -104,13 +104,19 @@ describe Lesson do
 
       lesson = Lesson.find_by!(slug: "rock-paper-scissors")
       expect(lesson.type).to eq("challenge")
-      expect(lesson.archive).to_not eq(nil)
+      expect(lesson.archive.url).to_not eq(nil)
+    end
+
+    it "packages an archive for an exercise" do
+      Lesson.import_all!(sample_lessons_dir)
+
+      lesson = Lesson.find_by!(slug: "max-number")
+      expect(lesson.type).to eq("exercise")
+      expect(lesson.archive.url).to_not eq(nil)
     end
 
     it "orders the lessons based on dependencies" do
       Lesson.import_all!(sample_lessons_dir)
-
-      expect(Lesson.count).to eq(4)
 
       expressions = Lesson.find_by!(slug: "expressions")
       data_types = Lesson.find_by!(slug: "data-types")

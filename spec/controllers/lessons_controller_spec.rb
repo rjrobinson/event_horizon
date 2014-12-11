@@ -5,8 +5,8 @@ describe LessonsController do
     render_views
 
     describe "GET index" do
-      it "lists just the lesson name and slug" do
-        lessons = FactoryGirl.create_list(:lesson, 3)
+      it "lists the lesson name, type, and slug" do
+        lessons = FactoryGirl.create_list(:lesson, 3, type: "challenge")
 
         get :index, format: :json
         result = JSON.parse(response.body)
@@ -14,7 +14,8 @@ describe LessonsController do
         lessons.each do |lesson|
           lesson_info = {
             "title" => lesson.title,
-            "slug" => lesson.slug
+            "slug" => lesson.slug,
+            "type" => "challenge"
           }
 
           expect(result["lessons"]).to include(lesson_info)
@@ -30,6 +31,21 @@ describe LessonsController do
 
         expect(result["lessons"].count).to eq(1)
         expect(result["lessons"][0]["slug"]).to eq(challenge.slug)
+      end
+
+      it "filters based on submittable lessons" do
+        challenge = FactoryGirl.create(:lesson, type: "challenge")
+        exercise = FactoryGirl.create(:lesson, type: "exercise")
+        article = FactoryGirl.create(:lesson, type: "article")
+
+        get :index, format: :json, submittable: "1"
+        result = JSON.parse(response.body)
+
+        expect(result["lessons"].count).to eq(2)
+
+        slugs = result["lessons"].map { |lesson| lesson["slug"] }
+        expect(slugs).to include(challenge.slug)
+        expect(slugs).to include(exercise.slug)
       end
     end
 

@@ -6,6 +6,10 @@ class LessonsController < ApplicationController
       @lessons = Lesson.order(:position)
     end
 
+    if params[:submittable] == "1"
+      @lessons = @lessons.submittable
+    end
+
     if params[:type]
       @lessons = @lessons.type(params[:type])
     end
