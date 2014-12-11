@@ -5,8 +5,8 @@ describe LessonsController do
     render_views
 
     describe "GET index" do
-      it "lists just the lesson name and slug" do
-        lessons = FactoryGirl.create_list(:lesson, 3)
+      it "lists the lesson name, type, and slug" do
+        lessons = FactoryGirl.create_list(:lesson, 3, type: "challenge")
 
         get :index, format: :json
         result = JSON.parse(response.body)
@@ -14,7 +14,8 @@ describe LessonsController do
         lessons.each do |lesson|
           lesson_info = {
             "title" => lesson.title,
-            "slug" => lesson.slug
+            "slug" => lesson.slug,
+            "type" => "challenge"
           }
 
           expect(result["lessons"]).to include(lesson_info)
