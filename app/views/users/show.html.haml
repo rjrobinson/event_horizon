@@ -49,9 +49,11 @@
           %tr
             %th Lesson
             %th Submitted On
+            %th Number Of Comments
 
         %tbody
           - @user.submissions.each do |submission|
             %tr
               %td= link_to submission.lesson.title, submission_path(submission)
               %td= format_datetime(submission.created_at)
+              %td= submission.comments.count
