@@ -19,6 +19,7 @@ gem "carrierwave"
 gem "fog"
 gem "sidekiq"
 gem "newrelic_rpm"
+gem "ruby-filemagic"
 
 group :development do
   gem "spring"

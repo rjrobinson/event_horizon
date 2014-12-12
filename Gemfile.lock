@@ -215,6 +215,7 @@ GEM
       rspec-mocks (~> 3.0.0)
       rspec-support (~> 3.0.0)
     rspec-support (3.0.2)
+    ruby-filemagic (0.6.1)
     sass (3.2.19)
     sass-rails (4.0.3)
       railties (>= 4.0.0, < 5.0)
@@ -291,6 +292,7 @@ DEPENDENCIES
   redcarpet
   rouge
   rspec-rails
+  ruby-filemagic
   sass-rails (~> 4.0.3)
   sidekiq
   spring
