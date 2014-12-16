@@ -35,7 +35,24 @@ feature "questions" do
     end
   end
 
-  scenario "submit a valid question"
+  scenario "submit a valid question" do
+    user = FactoryGirl.create(:user)
+    sign_in_as(user)
+
+    visit new_question_path
+
+    fill_in "Title", with: "What's for lunch?"
+    fill_in "Body", with: "Please, no more Dumpling Cafe."
+
+    click_button "Ask Question"
+
+    expect(page).to have_content("Question saved.")
+
+    expect(Question.count).to eq(1)
+    expect(page).to have_content("What's for lunch?")
+    expect(page).to have_content("Please, no more Dumpling Cafe.")
+  end
+
   scenario "submit an invalid question"
   scenario "answer a question"
   scenario "comment on a question"
