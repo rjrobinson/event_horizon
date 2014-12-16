@@ -30,7 +30,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: announcements; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: announcements; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE announcements (
@@ -63,7 +63,7 @@ ALTER SEQUENCE announcements_id_seq OWNED BY announcements.id;
 
 
 --
--- Name: answers; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: answers; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE answers (
@@ -96,7 +96,7 @@ ALTER SEQUENCE answers_id_seq OWNED BY answers.id;
 
 
 --
--- Name: assignments; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: assignments; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE assignments (
@@ -130,7 +130,7 @@ ALTER SEQUENCE assignments_id_seq OWNED BY assignments.id;
 
 
 --
--- Name: comments; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: comments; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE comments (
@@ -166,7 +166,7 @@ ALTER SEQUENCE comments_id_seq OWNED BY comments.id;
 
 
 --
--- Name: lessons; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: lessons; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE lessons (
@@ -204,7 +204,7 @@ ALTER SEQUENCE lessons_id_seq OWNED BY lessons.id;
 
 
 --
--- Name: questions; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: questions; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE questions (
@@ -238,7 +238,7 @@ ALTER SEQUENCE questions_id_seq OWNED BY questions.id;
 
 
 --
--- Name: ratings; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: ratings; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE ratings (
@@ -273,7 +273,7 @@ ALTER SEQUENCE ratings_id_seq OWNED BY ratings.id;
 
 
 --
--- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE schema_migrations (
@@ -282,7 +282,7 @@ CREATE TABLE schema_migrations (
 
 
 --
--- Name: source_files; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: source_files; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE source_files (
@@ -315,7 +315,7 @@ ALTER SEQUENCE source_files_id_seq OWNED BY source_files.id;
 
 
 --
--- Name: submissions; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: submissions; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE submissions (
@@ -351,7 +351,7 @@ ALTER SEQUENCE submissions_id_seq OWNED BY submissions.id;
 
 
 --
--- Name: team_memberships; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: team_memberships; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE team_memberships (
@@ -383,7 +383,7 @@ ALTER SEQUENCE team_memberships_id_seq OWNED BY team_memberships.id;
 
 
 --
--- Name: teams; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: teams; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE teams (
@@ -414,7 +414,7 @@ ALTER SEQUENCE teams_id_seq OWNED BY teams.id;
 
 
 --
--- Name: users; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+-- Name: users; Type: TABLE; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE TABLE users (
@@ -535,7 +535,7 @@ ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regcl
 
 
 --
--- Name: announcements_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: announcements_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY announcements
@@ -543,7 +543,7 @@ ALTER TABLE ONLY announcements
 
 
 --
--- Name: answers_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: answers_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY answers
@@ -551,7 +551,7 @@ ALTER TABLE ONLY answers
 
 
 --
--- Name: assignments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: assignments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY assignments
@@ -559,7 +559,7 @@ ALTER TABLE ONLY assignments
 
 
 --
--- Name: comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY comments
@@ -567,7 +567,7 @@ ALTER TABLE ONLY comments
 
 
 --
--- Name: lessons_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: lessons_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY lessons
@@ -575,7 +575,7 @@ ALTER TABLE ONLY lessons
 
 
 --
--- Name: questions_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: questions_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY questions
@@ -583,7 +583,7 @@ ALTER TABLE ONLY questions
 
 
 --
--- Name: ratings_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: ratings_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY ratings
@@ -591,7 +591,7 @@ ALTER TABLE ONLY ratings
 
 
 --
--- Name: source_files_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: source_files_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY source_files
@@ -599,7 +599,7 @@ ALTER TABLE ONLY source_files
 
 
 --
--- Name: submissions_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: submissions_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY submissions
@@ -607,7 +607,7 @@ ALTER TABLE ONLY submissions
 
 
 --
--- Name: team_memberships_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: team_memberships_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY team_memberships
@@ -615,7 +615,7 @@ ALTER TABLE ONLY team_memberships
 
 
 --
--- Name: teams_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: teams_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY teams
@@ -623,7 +623,7 @@ ALTER TABLE ONLY teams
 
 
 --
--- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+-- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
 --
 
 ALTER TABLE ONLY users
@@ -631,168 +631,168 @@ ALTER TABLE ONLY users
 
 
 --
--- Name: index_announcements_on_team_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_announcements_on_team_id; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_announcements_on_team_id ON announcements USING btree (team_id);
 
 
 --
--- Name: index_answers_on_question_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_answers_on_question_id; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_answers_on_question_id ON answers USING btree (question_id);
 
 
 --
--- Name: index_answers_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_answers_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_answers_on_user_id ON answers USING btree (user_id);
 
 
 --
--- Name: index_assignments_on_lesson_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_assignments_on_lesson_id; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_assignments_on_lesson_id ON assignments USING btree (lesson_id);
 
 
 --
--- Name: index_assignments_on_team_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_assignments_on_team_id; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_assignments_on_team_id ON assignments USING btree (team_id);
 
 
 --
--- Name: index_comments_on_delivered; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_comments_on_delivered; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_comments_on_delivered ON comments USING btree (delivered) WHERE (delivered = false);
 
 
 --
--- Name: index_comments_on_source_file_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_comments_on_source_file_id; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_comments_on_source_file_id ON comments USING btree (source_file_id);
 
 
 --
--- Name: index_comments_on_submission_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_comments_on_submission_id; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_comments_on_submission_id ON comments USING btree (submission_id);
 
 
 --
--- Name: index_comments_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_comments_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_comments_on_user_id ON comments USING btree (user_id);
 
 
 --
--- Name: index_lessons_on_searchable; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_lessons_on_searchable; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_lessons_on_searchable ON lessons USING gin (searchable);
 
 
 --
--- Name: index_lessons_on_slug; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_lessons_on_slug; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE UNIQUE INDEX index_lessons_on_slug ON lessons USING btree (slug);
 
 
 --
--- Name: index_questions_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_questions_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_questions_on_user_id ON questions USING btree (user_id);
 
 
 --
--- Name: index_ratings_on_lesson_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_ratings_on_lesson_id; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_ratings_on_lesson_id ON ratings USING btree (lesson_id);
 
 
 --
--- Name: index_ratings_on_user_id_and_lesson_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_ratings_on_user_id_and_lesson_id; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE UNIQUE INDEX index_ratings_on_user_id_and_lesson_id ON ratings USING btree (user_id, lesson_id);
 
 
 --
--- Name: index_source_files_on_submission_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_source_files_on_submission_id; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_source_files_on_submission_id ON source_files USING btree (submission_id);
 
 
 --
--- Name: index_submissions_on_lesson_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_submissions_on_lesson_id; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_submissions_on_lesson_id ON submissions USING btree (lesson_id);
 
 
 --
--- Name: index_submissions_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_submissions_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_submissions_on_user_id ON submissions USING btree (user_id);
 
 
 --
--- Name: index_team_memberships_on_team_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_team_memberships_on_team_id; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE INDEX index_team_memberships_on_team_id ON team_memberships USING btree (team_id);
 
 
 --
--- Name: index_team_memberships_on_user_id_and_team_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_team_memberships_on_user_id_and_team_id; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE UNIQUE INDEX index_team_memberships_on_user_id_and_team_id ON team_memberships USING btree (user_id, team_id);
 
 
 --
--- Name: index_teams_on_name; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_teams_on_name; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE UNIQUE INDEX index_teams_on_name ON teams USING btree (name);
 
 
 --
--- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE UNIQUE INDEX index_users_on_email ON users USING btree (email);
 
 
 --
--- Name: index_users_on_lowercase_username; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_users_on_lowercase_username; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE UNIQUE INDEX index_users_on_lowercase_username ON users USING btree (lower((username)::text));
 
 
 --
--- Name: index_users_on_uid_and_provider; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_users_on_uid_and_provider; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE UNIQUE INDEX index_users_on_uid_and_provider ON users USING btree (uid, provider);
 
 
 --
--- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: -; Tablespace:
 --
 
 CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (version);
@@ -910,4 +910,3 @@ INSERT INTO schema_migrations (version) VALUES ('20141216173739');
 INSERT INTO schema_migrations (version) VALUES ('20141216212826');
 
 INSERT INTO schema_migrations (version) VALUES ('20141217191055');
-
