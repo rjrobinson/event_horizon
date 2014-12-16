@@ -129,4 +129,9 @@ FactoryGirl.define do
     team
   end
 
+  factory :question do
+    sequence(:title) { |n| "Question #{n}" }
+    body "This is definitely a question."
+    user
+  end
 end
