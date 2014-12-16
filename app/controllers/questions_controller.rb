@@ -16,8 +16,13 @@ class QuestionsController < ApplicationController
     @question.user = current_user
     @question.save
 
-    flash[:info] = "Question saved."
-    redirect_to question_path(@question)
+    if @question.save
+      flash[:info] = "Question saved."
+      redirect_to question_path(@question)
+    else
+      flash[:alert] = "Failed to save question."
+      render :new
+    end
   end
 
   private

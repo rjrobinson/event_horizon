@@ -53,7 +53,17 @@ feature "questions" do
     expect(page).to have_content("Please, no more Dumpling Cafe.")
   end
 
-  scenario "submit an invalid question"
+  scenario "submit an invalid question" do
+    user = FactoryGirl.create(:user)
+    sign_in_as(user)
+
+    visit new_question_path
+    click_button "Ask Question"
+
+    expect(page).to have_content("Failed to save question.")
+    expect(Question.count).to eq(0)
+  end
+
   scenario "answer a question"
   scenario "comment on a question"
   scenario "comment on an answer"
