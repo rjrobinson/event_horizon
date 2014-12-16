@@ -134,4 +134,10 @@ FactoryGirl.define do
     body "This is definitely a question."
     user
   end
+
+  factory :answer do
+    question
+    user
+    sequence(:body) { |n| "This is definitely the right answer #{n}." }
+  end
 end

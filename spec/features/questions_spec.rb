@@ -24,7 +24,17 @@ feature "questions" do
     expect(page).to have_content("There are no answers yet.")
   end
 
-  scenario "view a single question with answers"
+  scenario "view a single question with answers" do
+    question = FactoryGirl.create(:question)
+    answers = FactoryGirl.create_list(:answer, 3, question: question)
+
+    visit question_path(question)
+
+    answers.each do |answer|
+      expect(page).to have_content(answer.body)
+    end
+  end
+
   scenario "submit a valid question"
   scenario "submit an invalid question"
   scenario "answer a question"

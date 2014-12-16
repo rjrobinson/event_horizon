@@ -13,3 +13,6 @@
 #answers
   - if @question.answers.empty?
     There are no answers yet.
+  - else
+    - @question.answers.each do |answer|
+      .answer= answer.body
