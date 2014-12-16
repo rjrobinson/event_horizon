@@ -1,0 +1,15 @@
+- content_for(:title) do
+  = "#{@question.title} - Launch Academy"
+
+%ul.breadcrumbs
+  %li= link_to "Questions", questions_path
+  %li.current= link_to @question.title, question_path(@question)
+
+#question
+  %h2.title= @question.title
+
+  .body= @question.body
+
+#answers
+  - if @question.answers.empty?
+    There are no answers yet.

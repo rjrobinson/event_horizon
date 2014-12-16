@@ -63,6 +63,39 @@ ALTER SEQUENCE announcements_id_seq OWNED BY announcements.id;
 
 
 --
+-- Name: answers; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE answers (
+    id integer NOT NULL,
+    question_id integer NOT NULL,
+    user_id integer NOT NULL,
+    body text NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: answers_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE answers_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: answers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE answers_id_seq OWNED BY answers.id;
+
+
+--
 -- Name: assignments; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -427,6 +460,13 @@ ALTER TABLE ONLY announcements ALTER COLUMN id SET DEFAULT nextval('announcement
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY answers ALTER COLUMN id SET DEFAULT nextval('answers_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY assignments ALTER COLUMN id SET DEFAULT nextval('assignments_id_seq'::regclass);
 
 
@@ -499,6 +539,14 @@ ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regcl
 
 ALTER TABLE ONLY announcements
     ADD CONSTRAINT announcements_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: answers_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY answers
+    ADD CONSTRAINT answers_pkey PRIMARY KEY (id);
 
 
 --
@@ -586,6 +634,20 @@ ALTER TABLE ONLY users
 --
 
 CREATE INDEX index_announcements_on_team_id ON announcements USING btree (team_id);
+
+
+--
+-- Name: index_answers_on_question_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_answers_on_question_id ON answers USING btree (question_id);
+
+
+--
+-- Name: index_answers_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_answers_on_user_id ON answers USING btree (user_id);
 
 
 --
@@ -843,4 +905,6 @@ INSERT INTO schema_migrations (version) VALUES ('20141126230346');
 INSERT INTO schema_migrations (version) VALUES ('20141204203947');
 
 INSERT INTO schema_migrations (version) VALUES ('20141216173739');
+
+INSERT INTO schema_migrations (version) VALUES ('20141216212826');
 
