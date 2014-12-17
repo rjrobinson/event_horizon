@@ -16,8 +16,16 @@
   - else
     - @question.answers.each do |answer|
       .answer
+        - if answer == @question.accepted_answer
+          .accepted Accepted answer:
+
         .user= "#{answer.user.username} answered"
         .body= answer.body
+
+        .accept-form
+          = form_for @question do |f|
+            = f.hidden_field :accepted_answer_id, value: answer.id
+            = f.submit "Accept Answer", class: "button"
 
 #new-answer
   = form_for [@question, @answer] do |f|

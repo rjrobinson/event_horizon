@@ -13,7 +13,7 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    @question = Question.new(question_params)
+    @question = Question.new(create_params)
     @question.user = current_user
     @question.save
 
@@ -26,9 +26,21 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def update
+    question = Question.find(params[:id])
+    question.update(update_params)
+
+    flash[:info] = "Answer has been accepted."
+    redirect_to question_path(question)
+  end
+
   private
 
-  def question_params
+  def create_params
     params.require(:question).permit(:title, :body)
+  end
+
+  def update_params
+    params.require(:question).permit(:accepted_answer_id)
   end
 end

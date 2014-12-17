@@ -90,8 +90,28 @@ feature "questions" do
       expect(Answer.count).to eq(0)
     end
 
+    scenario "accept an answer" do
+      question = FactoryGirl.create(:question, user: user)
+      answer = FactoryGirl.create(:answer, question: question)
+
+      visit question_path(question)
+
+      click_button "Accept Answer"
+
+      expect(page).to have_content("Answer has been accepted.")
+      expect(page).to have_content("Accepted answer")
+
+      question.reload
+      expect(question.accepted_answer).to eq(answer)
+    end
+
+    scenario "edit question"
+    scenario "edit answer"
+    scenario "delete question"
+    scenario "delete answer"
+    scenario "un-accept an answer"
+    scenario "change accepted answer"
     scenario "comment on a question"
     scenario "comment on an answer"
-    scenario "accept an answer"
   end
 end
