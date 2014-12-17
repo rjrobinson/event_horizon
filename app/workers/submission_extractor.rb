@@ -25,6 +25,7 @@ class SubmissionExtractor
             file.body = "File too large to display (#{file_size} bytes)"
           end
 
+          Sidekiq.logger.info "Saving #{filename}"
           file.save!
         end
       end
