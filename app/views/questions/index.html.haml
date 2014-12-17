@@ -1,0 +1,13 @@
+- content_for(:title) do
+  Questions - Launch Academy
+
+%ul.breadcrumbs
+  %li.current= link_to "Questions", questions_path
+
+%h2 Questions
+
+%ul
+  - @questions.each do |question|
+    %li= question.title
+
+

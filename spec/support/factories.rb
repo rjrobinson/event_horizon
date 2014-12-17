@@ -129,4 +129,9 @@ FactoryGirl.define do
     team
   end
 
+  factory :question do
+    sequence(:title) { |n| "What's for lunch #{n}?" }
+    body "Anything but the Dumpling Cafe."
+    user
+  end
 end
