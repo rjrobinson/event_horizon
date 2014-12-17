@@ -35,37 +35,53 @@ feature "questions" do
     end
   end
 
-  scenario "submit a valid question" do
-    user = FactoryGirl.create(:user)
-    sign_in_as(user)
+  context "as a member" do
+    let(:user) { FactoryGirl.create(:user) }
 
-    visit new_question_path
+    before :each do
+      sign_in_as(user)
+    end
 
-    fill_in "Title", with: "What's for lunch?"
-    fill_in "Body", with: "Please, no more Dumpling Cafe."
+    scenario "submit a valid question" do
+      visit new_question_path
 
-    click_button "Ask Question"
+      fill_in "Title", with: "What's for lunch?"
+      fill_in "Body", with: "Please, no more Dumpling Cafe."
 
-    expect(page).to have_content("Question saved.")
+      click_button "Ask Question"
 
-    expect(Question.count).to eq(1)
-    expect(page).to have_content("What's for lunch?")
-    expect(page).to have_content("Please, no more Dumpling Cafe.")
+      expect(page).to have_content("Question saved.")
+
+      expect(Question.count).to eq(1)
+      expect(page).to have_content("What's for lunch?")
+      expect(page).to have_content("Please, no more Dumpling Cafe.")
+    end
+
+    scenario "submit an invalid question" do
+      visit new_question_path
+      click_button "Ask Question"
+
+      expect(page).to have_content("Failed to save question.")
+      expect(Question.count).to eq(0)
+    end
+
+    scenario "answer a question" do
+      question = FactoryGirl.create(:question)
+
+      visit question_path(question)
+
+      fill_in "Answer", with: "You need to reticulate the splines."
+      click_button "Submit Answer"
+
+      expect(page).to have_content("Answer saved.")
+      expect(page).to have_content("You need to reticulate the splines.")
+      expect(page).to have_content("#{user.username} answered")
+
+      expect(Answer.count).to eq(1)
+    end
+
+    scenario "comment on a question"
+    scenario "comment on an answer"
+    scenario "accept an answer"
   end
-
-  scenario "submit an invalid question" do
-    user = FactoryGirl.create(:user)
-    sign_in_as(user)
-
-    visit new_question_path
-    click_button "Ask Question"
-
-    expect(page).to have_content("Failed to save question.")
-    expect(Question.count).to eq(0)
-  end
-
-  scenario "answer a question"
-  scenario "comment on a question"
-  scenario "comment on an answer"
-  scenario "accept an answer"
 end

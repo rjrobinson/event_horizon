@@ -15,4 +15,15 @@
     There are no answers yet.
   - else
     - @question.answers.each do |answer|
-      .answer= answer.body
+      .answer
+        .user= "#{answer.user.username} answered"
+        .body= answer.body
+
+#new-answer
+  = form_for [@question, @answer] do |f|
+    = field_set_tag "Answer Question" do
+
+      = f.label :body, "Answer"
+      = f.text_area :body
+
+      = f.submit "Submit Answer", class: "button"
