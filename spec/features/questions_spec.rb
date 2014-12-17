@@ -21,7 +21,7 @@ feature "questions" do
 
     expect(page).to have_content(question.title)
     expect(page).to have_content(question.body)
-    expect(page).to have_content("There are no answers yet.")
+    expect(page).to have_content("0 answers")
   end
 
   scenario "view a single question with answers" do
@@ -99,7 +99,7 @@ feature "questions" do
       click_button "Accept Answer"
 
       expect(page).to have_content("Answer has been accepted.")
-      expect(page).to have_content("Accepted answer")
+      expect(page).to have_content("accepted answer")
 
       question.reload
       expect(question.accepted_answer).to eq(answer)
@@ -113,5 +113,6 @@ feature "questions" do
     scenario "change accepted answer"
     scenario "comment on a question"
     scenario "comment on an answer"
+    scenario "only original asker can accept answer"
   end
 end

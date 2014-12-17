@@ -39,6 +39,35 @@ table tr {
   }
 }
 
+#question {
+    .title {
+        border-bottom: 1px solid $border-color;
+    }
+
+    .user, .created_at {
+        padding: 0.5em 0;
+    }
+}
+
+#answers {
+    .answer-count {
+        border-bottom: 1px solid $border-color;
+    }
+
+    .answer {
+        border-bottom: 1px solid $border-color;
+        padding: 1em 0;
+
+        .user, .answered_at {
+            padding: 0.5em 0;
+        }
+
+        .accepted {
+            color: green;
+        }
+    }
+}
+
 .full-top-bar {
     border-bottom: 1px solid $border-color;
 }
