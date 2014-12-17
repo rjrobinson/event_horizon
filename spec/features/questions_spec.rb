@@ -65,7 +65,7 @@ feature "questions" do
       expect(Question.count).to eq(0)
     end
 
-    scenario "answer a question" do
+    scenario "submit an answer successfully" do
       question = FactoryGirl.create(:question)
 
       visit question_path(question)
@@ -78,6 +78,16 @@ feature "questions" do
       expect(page).to have_content("#{user.username} answered")
 
       expect(Answer.count).to eq(1)
+    end
+
+    scenario "display error when submitting a blank answer" do
+      question = FactoryGirl.create(:question)
+
+      visit question_path(question)
+      click_button "Submit Answer"
+
+      expect(page).to have_content("Failed to save answer.")
+      expect(Answer.count).to eq(0)
     end
 
     scenario "comment on a question"

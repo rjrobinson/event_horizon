@@ -1,13 +1,16 @@
 class AnswersController < ApplicationController
   def create
-    question = Question.find(params[:question_id])
-    answer = question.answers.build(answer_params)
-    answer.user = current_user
+    @question = Question.find(params[:question_id])
+    @answer = @question.answers.build(answer_params)
+    @answer.user = current_user
 
-    answer.save
-    flash[:info] = "Answer saved."
-
-    redirect_to question_path(question)
+    if @answer.save
+      flash[:info] = "Answer saved."
+      redirect_to question_path(@question)
+    else
+      flash[:alert] = "Failed to save answer."
+      render "questions/show"
+    end
   end
 
   private
