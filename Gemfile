@@ -18,7 +18,6 @@ gem "jbuilder"
 gem "carrierwave"
 gem "fog"
 gem "sidekiq"
-gem "sinatra", ">= 1.3.0", require: false
 gem "newrelic_rpm"
 
 group :development do
