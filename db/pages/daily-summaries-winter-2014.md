@@ -193,7 +193,7 @@
 
 ## General Resources
 - [Rails Guides](http://guides.rubyonrails.org/)
-- [LaunchVotes](http://launchvotes.herokuapp.com/)
+- [LaunchVotes](launchvotes.herokuapp.com)
 - [SuggestionOx](http://www.suggestionox.com/response/zLQXp6)
 - [Launchcop](https://github.com/LaunchAcademy/launchcop)
 - [Ruby Style Guide](https://github.com/bbatsov/ruby-style-guide)
