@@ -27,7 +27,7 @@
 * Thursday
   * **Lecture:** Compound Data Structures
   * **Clinic:**
-    - Review of Compound Data Structures (HH) ([[notes|/experience-engineering/winter-2014-daily-summaries/week-1-data-structures-review]])
+    - Review of Compound Data Structures (HH)
     - Making the most out of Atom (SD) [Atom Shortcuts and Plugins](https://gist.github.com/ba0bf44ec84b313b0ed3)
   * **Challenge:** [In Theaters](https://horizon.launchacademy.com/lessons/in-theaters)
   * **Evening:** Hiring Partners Panel (with Intrepid, ConstantContact, and CareCloud)
@@ -95,7 +95,7 @@
 
 * Monday
   * **Lecture:** Object Orientation in Ruby
-  * **Clinic:** Livecode Workout Analyzer challenge([repo](https://github.com/hchood/workout-analyzer-clinic), [screencast: pw Winter!2014](https://vimeo.com/113324199))
+  * **Clinic:** Livecode Workout Analyzer challenge ([repo](https://github.com/hchood/workout-analyzer-clinic), [screencast: pw Winter!2014](https://vimeo.com/113324199))
   * **Challenges:** [Space Jams](https://horizon.launchacademy.com/lessons/space-jams) (core), [Minesweeper](https://horizon.launchacademy.com/lessons/minesweeper) (non-core)
 
 * Tuesday
@@ -134,7 +134,7 @@
 
 * Tuesday
   * **Lecture:** Validations (DP; [screencast](https://vimeo.com/114150394))
-  * **Clinic:** ER Diagrams (HH; based on materials from last cohort: ([repo](https://github.com/hchood/sinatra-lunar-kitchen), [[notes|/experience-engineering/fall-2014-daily-summaries/week-5-normalization-and-er-diagrams]]))
+  * **Clinic:** ER Diagrams (HH; based on materials from last cohort: [repo](https://github.com/hchood/sinatra-lunar-kitchen)
     - Reviewed ER diagram for Migration Marathon
     - Touched briefly on associations
   * **Challenge:** Meetups In Space, cont'd., Contact Validations tutorial
@@ -176,12 +176,12 @@
 * Thursday
   * **Lecture:** Intro to JavaScript (DP) [screencast](http://vimeo.com/114897511, pw Winter!2014)
   * **Challenge:** [Guess the Number](https://horizon.launchacademy.com/lessons/guess-the-number-javascript)
-  * **Clinic:** Testing user authentication[screencast](https://github.com/hchood/meetups-in-space-rails/pull/4)
+  * **Clinic:** Testing user authentication [screencast](http://vimeo.com/114919944) & [pull request](https://github.com/hchood/meetups-in-space-rails/pull/4)
 
 * Friday
-  * **Systems Check:**
-  * **Challenge:**
-  * **Clinic:**
+  * **Systems Check:** [Good Eats](https://horizon.launchacademy.com/lessons/good-eats)
+  * **Challenge:** Non-Core [Book Reviews in Space](https://horizon.launchacademy.com/lessons/book-reviews-in-space)
+  * **Clinic:** [What a Web Developer Should Know](https://gist.github.com/atsheehan/5673edcd03fadb4e9108) [Screencast on TDD, Capybara and Devise](http://apollo.launchacademy.co/assignments/game-collector), [Screencast on Authorization and Controller Namespaces](http://vimeo.com/114995218)
 
 ## Week 7:  Group Project (Week 1)
 
@@ -211,3 +211,4 @@
 - [Katrina Owen's presentation on naming](https://www.youtube.com/watch?v=qLpvc5r6Bb0)
 - [Horizon's Github Issues](https://github.com/LaunchAcademy/event_horizon/issues)
 - [Chrome Video Speed Controller](https://chrome.google.com/webstore/detail/video-speed-controller/nffaoalbilbmmfgbnbgppjihopabppdk?hl=en)
+- [What a Web Developer Should Know](https://gist.github.com/atsheehan/5673edcd03fadb4e9108)
