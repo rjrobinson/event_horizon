@@ -181,7 +181,7 @@
 * Friday
   * **Systems Check:** [Good Eats](https://horizon.launchacademy.com/lessons/good-eats)
   * **Challenge:** Non-Core [Book Reviews in Space](https://horizon.launchacademy.com/lessons/book-reviews-in-space)
-  * **Clinic:** [What a Web Developer Should Know](https://gist.github.com/atsheehan/5673edcd03fadb4e9108) [Screencast on TDD, Capybara and Devise](http://apollo.launchacademy.co/assignments/game-collector), [Screencast on Authorization and Controller Namespaces](http://vimeo.com/114995218)
+  * **Clinic:** [What a Web Developer Should Know](https://gist.github.com/atsheehan/5673edcd03fadb4e9108), TDD, Capybara and Devise [Screencasts](http://apollo.launchacademy.co/assignments/game-collector), Authorization and Controller Namespaces [Screencast](http://vimeo.com/114995218)
 
 ## Week 7:  Group Project (Week 1)
 
