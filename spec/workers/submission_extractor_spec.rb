@@ -45,7 +45,7 @@ describe SubmissionExtractor do
       expect(submission.files[0].filename).to eq(".important")
     end
 
-    it "uses a placeholder for large files" do
+    it "saves placeholders for large files" do
       submission = FactoryGirl.create(:submission_with_large_file)
 
       extractor.perform(submission.id)
@@ -54,17 +54,6 @@ describe SubmissionExtractor do
       expect(submission.files[0].filename).to eq("large_file")
       expect(submission.files[0].body)
         .to eq("File too large to display (50006 bytes)")
-    end
-
-    it "uses a placeholder for binary files" do
-      submission = FactoryGirl.create(:submission_with_binary_file)
-
-      extractor.perform(submission.id)
-      expect(submission.files.count).to eq(1)
-
-      expect(submission.files[0].filename).to eq("kitten.jpg")
-      expect(submission.files[0].body)
-        .to eq("Binary file (59905 bytes)")
     end
   end
 end

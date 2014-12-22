@@ -1,5 +1,3 @@
-require "filemagic"
-
 class SubmissionExtractor
   include Sidekiq::Worker
 
@@ -10,9 +8,9 @@ class SubmissionExtractor
 
     Dir.mktmpdir do |tmpdir|
       archive_path = File.join(tmpdir, "archive.tar.gz")
-      system("cp", submission.archive.path, archive_path)
-      system("tar", "zxf", archive_path, "-C", tmpdir)
-      system("rm", archive_path)
+      system("cp #{submission.archive.path} #{archive_path}")
+      system("tar zxf #{archive_path} -C #{tmpdir}")
+      system("rm #{archive_path}")
 
       SourceFile.transaction do
         valid_source_files(tmpdir).each do |filename|
@@ -21,14 +19,10 @@ class SubmissionExtractor
           file = submission.files.find_or_initialize_by(filename: filename)
           file_size = File.stat(filepath).size
 
-          if file_size == 0
-            file.body = ""
-          elsif binary?(filepath)
-            file.body = "Binary file (#{file_size} bytes)"
-          elsif file_size > 50000
-            file.body = "File too large to display (#{file_size} bytes)"
-          else
+          if file_size < 50000
             file.body = File.read(filepath)
+          else
+            file.body = "File too large to display (#{file_size} bytes)"
           end
 
           file.save!
@@ -38,15 +32,6 @@ class SubmissionExtractor
   end
 
   private
-
-  def binary?(filename)
-    begin
-      fm = FileMagic.new(FileMagic::MAGIC_MIME)
-      !(fm.file(filename)=~ /^text\//)
-    ensure
-      fm.close
-    end
-  end
 
   def valid_source_files(dir)
     find_files(nil, dir)
