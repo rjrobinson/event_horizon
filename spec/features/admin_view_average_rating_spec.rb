@@ -5,7 +5,7 @@ feature "admin can see average ratings" do
 
   let(:admin) { FactoryGirl.create(:admin) }
 
-  scenario "admin visits lessons page", focus: true do
+  scenario "admin visits lessons page" do
     sign_in_as(admin)
     lesson = FactoryGirl.create(:lesson)
     FactoryGirl.create(:rating, lesson: lesson, clarity: 5, helpfulness: 5)

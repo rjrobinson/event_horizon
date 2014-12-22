@@ -19,6 +19,18 @@ FactoryGirl.define do
           Rails.root.join("spec/data/one_file.tar.gz"))
       end
     end
+
+    factory :lesson_with_ratings do
+
+      ignore do
+        ratings_count 10
+      end
+
+      after(:create) do |lesson, evaluator|
+        create_list(:rating, evaluator.ratings_count, lesson: lesson)
+      end
+
+    end
   end
 
   factory :comment do

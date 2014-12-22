@@ -128,4 +128,11 @@ describe Lesson do
       expect(conditionals.position).to be < (rps.position)
     end
   end
+
+  describe '#clarity', focus: true do
+    it 'gets the average clarity score for a given lesson' do
+      lesson = FactoryGirl.create(:lesson_with_ratings)
+      expect(lesson.clarity).to be_within(0.1).of(2.0)
+    end
+  end
 end
