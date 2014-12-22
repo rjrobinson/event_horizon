@@ -129,10 +129,17 @@ describe Lesson do
     end
   end
 
-  describe '#clarity', focus: true do
+  describe '#clarity' do
     it 'gets the average clarity score for a given lesson' do
       lesson = FactoryGirl.create(:lesson_with_ratings)
       expect(lesson.clarity).to be_within(0.1).of(2.0)
+    end
+  end
+
+  describe '#helpfulness' do
+    it 'gets the average helpfulness score for a given lesson' do
+      lesson = FactoryGirl.create(:lesson_with_ratings)
+      expect(lesson.helpfulness).to be_within(0.1).of(4.0)
     end
   end
 end
