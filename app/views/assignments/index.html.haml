@@ -13,7 +13,7 @@
     = form_for [@team, @assignment] do |f|
       = field_set_tag "Add Assignment" do
         = f.label :lesson_id, "Challenge"
-        = f.select :lesson_id , Lesson.challenges.map { |l| [l.title, l.id] }
+        = f.select :lesson_id , Lesson.all.map { |l| [l.title, l.id] }
 
         = f.label :due_on, "Due Date"
         = f.text_field :due_on
