@@ -3,7 +3,7 @@ class LessonsController < ApplicationController
     if params[:query]
       @lessons = Lesson.search(params[:query])
     else
-      @lessons = Lesson.order(:position)
+      @lessons = Lesson.includes(:ratings).order(:position)
     end
 
     if params[:submittable] == "1"

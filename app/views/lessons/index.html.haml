@@ -18,8 +18,8 @@
     .lesson
       .lesson-type{ class: lesson.type }= lesson.type
       %h3.title= link_to lesson.title, lesson
-      .clarity= "Clarity Score: #{lesson.clarity}"
-      .helpfulness= "Helpfulness Score: #{lesson.helpfulness}"
+      .clarity= "Clarity Score: #{lesson.clarity.round(1)}"
+      .helpfulness= "Helpfulness Score: #{lesson.helpfulness.round(1)}"
       .review_count= "Reviews: #{lesson.ratings.count}"
       .description
         = lesson.description
