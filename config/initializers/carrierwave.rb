@@ -1,5 +1,9 @@
-if !Rails.env.test?
-  CarrierWave.configure do |config|
+CarrierWave.configure do |config|
+  if Rails.env.test? || Rails.env.development?
+    config.storage = :file
+  else
+    config.storage = :fog
+
     config.fog_credentials = {
       provider: "AWS",
       aws_access_key_id: ENV["AWS_ACCESS_KEY"] || "",
