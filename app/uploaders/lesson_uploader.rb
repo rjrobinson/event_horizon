@@ -1,10 +1,4 @@
 class LessonUploader < CarrierWave::Uploader::Base
-  if Rails.env.test?
-    storage :file
-  else
-    storage :fog
-  end
-
   def fog_public
     true
   end
