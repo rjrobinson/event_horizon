@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show], param: :username
 
-  resources :teams, only: [:index, :show] do
+  resources :teams, only: [:index, :show, :edit, :update] do
     resources :assignments, only: [:index, :create]
     resources :announcements, only: [:index, :create]
   end

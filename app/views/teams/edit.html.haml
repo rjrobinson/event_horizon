@@ -1,0 +1,25 @@
+- content_for(:title) do
+  = "#{@team.name} - Launch Academy"
+
+%ul.breadcrumbs
+  %li= link_to "Teams", teams_path
+  %li.current= link_to @team.name, team_path(@team)
+
+%h2= "Team: #{@team.name}"
+
+= form_for @team do |f|
+  %table.tablesorter
+    %thead
+      %th Username
+      %th Email
+      %th Add To Team?
+
+    %tbody
+      - @users.each do |user|
+        %tr
+          %td= user.username
+          %td= user.email
+          %td= check_box_tag('user_ids[]', user.id)
+  = f.submit 'Add to team'
+
+
