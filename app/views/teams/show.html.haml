@@ -10,6 +10,7 @@
 .row
   .large-3.columns
     %h3 Members
+    = link_to 'Add/Remove Members', edit_team_path(@team), class: 'button info tiny'
 
     %ul.block#members
       - @team.users.each do |user|

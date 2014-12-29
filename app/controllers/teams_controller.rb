@@ -9,7 +9,11 @@ class TeamsController < ApplicationController
 
   def update
     @team = Team.find(params[:id])
-    @team.users << User.find(params[:user_ids])
+    begin
+      @team.users << User.find(params[:user_ids])
+    rescue ActiveRecord::RecordInvalid
+      flash.now.notice "Member already added"
+    end
     redirect_to @team, notice: "Users successfully added to #{@team.name}."
   end
 
