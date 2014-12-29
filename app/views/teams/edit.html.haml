@@ -19,7 +19,7 @@
         %tr
           %td= user.username
           %td= user.email
-          %td= check_box_tag('user_ids[]', user.id)
-  = f.submit 'Add to team'
+          %td= check_box_tag('user_ids[]', user.id, @team.users.include?(user))
+  = f.submit 'Update team', class: 'button tiny'
 
 

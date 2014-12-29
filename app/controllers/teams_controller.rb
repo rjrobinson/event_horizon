@@ -4,17 +4,15 @@ class TeamsController < ApplicationController
 
   def edit
     @team = Team.find(params[:id])
-    @users = User.all  # refactor to get proper users
+    @users = User.all
+    @team_membership = TeamMembership.new
   end
 
   def update
     @team = Team.find(params[:id])
-    begin
-      @team.users << User.find(params[:user_ids])
-    rescue ActiveRecord::RecordInvalid
-      flash.now.notice "Member already added"
-    end
-    redirect_to @team, notice: "Users successfully added to #{@team.name}."
+    @team.team_memberships.destroy_all
+    @team.users << User.find(params[:user_ids])
+    redirect_to @team, notice: "#{@team.name.capitalize} was successfully updated."
   end
 
   def index
