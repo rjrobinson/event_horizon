@@ -185,6 +185,14 @@
 
 ## Week 7:  Group Project (Week 1)
 
+* Monday
+  * **Lectures:** Group Dynamics, ER Diagrams & User Stories (Dan)
+  * **Focus:** Break up into groups and began discussing what they want to review. Start writing user stories and drawing ER diagrams.
+  * **Clinic:** Acceptance Criteria & Writing Good Tests (Richard), [Test Helpers in RSpec / Capybara](http://radavis.github.io/blog/2014/09/24/sign-in-out-test-helpers-for-and-devise-and-capybara/), [Live Code](https://github.com/radavis/planet_reviews) for clinic
+  * **Other:** App generator gem -- [Make It So](https://github.com/LaunchAcademy/make_it_so)
+  * **Tools:** [Github Issues](https://guides.github.com/features/issues/), [Trello](www.trello.com), [Pivotal Tracker](https://www.pivotaltracker.com/)
+  * **Talk:** Peter Degen-Portnoy with [Black Duck Software](https://www.blackducksoftware.com/) on TDD
+
 ## Week 8:  Group Project (Week 2)
 
 ## Week 9:  Breakable Toy (Week 1)
