@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   has_many :teams, through: :team_memberships
   has_many :assignments, through: :teams
   has_many :announcements, through: :teams
+  has_many :questions
 
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true

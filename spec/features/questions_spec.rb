@@ -35,6 +35,8 @@ feature "questions" do
     end
   end
 
+  scenario "show accepted answer first"
+
   context "as a member" do
     let(:user) { FactoryGirl.create(:user) }
 
@@ -113,6 +115,13 @@ feature "questions" do
     scenario "change accepted answer"
     scenario "comment on a question"
     scenario "comment on an answer"
-    scenario "only original asker can accept answer"
+
+    scenario "only original asker can accept answer" do
+      question = FactoryGirl.create(:question)
+      answer = FactoryGirl.create(:answer, question: question)
+
+      visit question_path(question)
+      expect(page).to_not have_button("Accept Answer")
+    end
   end
 end

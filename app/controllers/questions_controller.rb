@@ -27,9 +27,8 @@ class QuestionsController < ApplicationController
   end
 
   def update
-    question = Question.find(params[:id])
+    question = current_user.questions.find(params[:id])
     question.update(update_params)
-
     flash[:info] = "Answer has been accepted."
     redirect_to question_path(question)
   end
