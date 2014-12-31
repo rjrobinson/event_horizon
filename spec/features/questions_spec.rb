@@ -35,7 +35,17 @@ feature "questions" do
     end
   end
 
-  scenario "show accepted answer first"
+  scenario "show accepted answer first" do
+    question = FactoryGirl.create(:question)
+    unaccepted_answer = FactoryGirl.create(:answer, question: question)
+    accepted_answer = FactoryGirl.create(:answer, question: question)
+
+    question.accepted_answer = accepted_answer
+    question.save!
+
+    visit question_path(question)
+    expect(page).to order_text(accepted_answer.body, unaccepted_answer.body)
+  end
 
   context "as a member" do
     let(:user) { FactoryGirl.create(:user) }

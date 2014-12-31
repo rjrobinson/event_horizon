@@ -19,7 +19,7 @@
 #answers
   %h3.answer-count= pluralize(@question.answers.count, "answer")
 
-  - @question.answers.each do |answer|
+  - @question.sorted_answers.each do |answer|
     - if answer.persisted?
       .answer
         .row
@@ -31,7 +31,7 @@
               = link_to answer.user.username, user_path(answer.user)
               answered on
               .answered_at= format_datetime(answer.created_at)
-            - if answer == @question.accepted_answer
+            - if answer.accepted?
               .accepted
                 %i.fi-check.large
                 accepted answer

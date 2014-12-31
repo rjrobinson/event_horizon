@@ -5,4 +5,8 @@ class Answer < ActiveRecord::Base
   validates :user, presence: true
   validates :question, presence: true
   validates :body, presence: true, length: { in: 10..10000 }
+
+  def accepted?
+    question.accepted_answer == self
+  end
 end

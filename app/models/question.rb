@@ -14,4 +14,8 @@ class Question < ActiveRecord::Base
       errors.add(:accepted_answer_id, "must belong to this question")
     end
   end
+
+  def sorted_answers
+    answers.sort_by { |answer| answer.accepted? ? 0 : 1 }
+  end
 end
