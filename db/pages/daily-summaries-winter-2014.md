@@ -193,6 +193,14 @@
   * **Tools:** [Github Issues](https://guides.github.com/features/issues/), [Trello](www.trello.com), [Pivotal Tracker](https://www.pivotaltracker.com/)
   * **Talk:** Peter Degen-Portnoy with [Black Duck Software](https://www.blackducksoftware.com/) on TDD
 
+* Tuesday
+  * **Lectures:** All The Badges (Travis, Coveralls, Code Climate) (Dan)
+  * **Focus:** Installing the Badges, TDD, Understanding pull request workflow
+  * **Clinic:** Git Workflow [screencast](https://horizon.launchacademy.com/lessons/github-pull-request-workflow)
+  * **Other:** Lightning Talks -- Flexboxes (James Paskett), Finding Local Music (Chris Cerami), Editing Your Work (Zoe Lang), Phishing (Tim Desir), Electronic Music (Peter Ko)
+
+<!-- NOTES: Next time we should move Git Workflow to before Badges -->
+
 ## Week 8:  Group Project (Week 2)
 
 ## Week 9:  Breakable Toy (Week 1)
