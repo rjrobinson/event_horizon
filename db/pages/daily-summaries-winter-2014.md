@@ -204,7 +204,7 @@
 * Wednesday
   * **Lectures:** Unit Testing (Adam), Reminder to talk to Mentor about Breakable Toy
   * **Focus:** More CRUD, TDD
-  * **Clinic:** Checkboxes and models (Dan), Seeding a Database [pull request](https://github.com/vikram7/clinic_seeding/pull/1) (Vikram)
+  * **Clinic:** Checkboxes and models [screencast](https://vimeo.com/115716341)(Dan), Seeding a Database [pull request](https://github.com/vikram7/clinic_seeding/pull/1) (Vikram)
 
 * Thursday -- New Years Day
 
