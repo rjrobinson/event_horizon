@@ -196,10 +196,17 @@
 * Tuesday
   * **Lectures:** All The Badges (Travis, Coveralls, Code Climate) (Dan)
   * **Focus:** Installing the Badges, TDD, Understanding pull request workflow
-  * **Clinic:** Git Workflow [screencast](https://horizon.launchacademy.com/lessons/github-pull-request-workflow)
+  * **Clinic:** Git Workflow [screencast](https://horizon.launchacademy.com/lessons/github-pull-request-workflow) (Adam)
   * **Other:** Lightning Talks -- Flexboxes (James Paskett), Finding Local Music (Chris Cerami), Editing Your Work (Zoe Lang), Phishing (Tim Desir), Electronic Music (Peter Ko)
 
 <!-- NOTES: Next time we should move Git Workflow to before Badges -->
+
+* Wednesday
+  * **Lectures:** Unit Testing (Adam), Reminder to talk to Mentor about Breakable Toy
+  * **Focus:** More CRUD, TDD
+  * **Clinic:** Checkboxes and models (Dan), Seeding a Database [pull request](https://github.com/vikram7/clinic_seeding/pull/1) (Vikram)
+
+* Thursday -- New Years Day
 
 ## Week 8:  Group Project (Week 2)
 
