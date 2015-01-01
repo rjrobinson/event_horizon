@@ -78,6 +78,13 @@ FactoryGirl.define do
           Rails.root.join("spec/data/large_file.tar.gz"))
       end
     end
+
+    factory :submission_with_binary_file do
+      archive do
+        Rack::Test::UploadedFile.new(
+          Rails.root.join("spec/data/binary_file.tar.gz"))
+      end
+    end
   end
 
   factory :source_file do
@@ -128,5 +135,4 @@ FactoryGirl.define do
     description "Here is a very nice description for a very nice announcement. The students shall cheer and rejoice when they see it."
     team
   end
-
 end
