@@ -1,3 +1,5 @@
+require "open3"
+
 class SubmissionExtractor
   include Sidekiq::Worker
 
@@ -19,10 +21,14 @@ class SubmissionExtractor
           file = submission.files.find_or_initialize_by(filename: filename)
           file_size = File.stat(filepath).size
 
-          if file_size < 50000
-            file.body = File.read(filepath)
-          else
+          if file_size == 0
+            file.body = ""
+          elsif file_size > 50000
             file.body = "File too large to display (#{file_size} bytes)"
+          elsif binary?(filepath)
+            file.body = "Binary file (#{file_size} bytes)"
+          else
+            file.body = File.read(filepath)
           end
 
           file.save!
@@ -32,6 +38,11 @@ class SubmissionExtractor
   end
 
   private
+
+  def binary?(filepath)
+    file_type, status = Open3.capture2e("file", filepath)
+    !status.success? || !file_type.include?("text")
+  end
 
   def valid_source_files(dir)
     find_files(nil, dir)
