@@ -24,5 +24,4 @@ class Question < ActiveRecord::Base
   def self.unanswered
     where(answers_count: 0)
   end
-
 end
