@@ -4,7 +4,8 @@
 %ul.breadcrumbs
   %li.current= link_to "Questions", questions_path
 
-= link_to 'Unanswered questions', questions_path(query: 'unanswered')
+= link_to 'Unanswered questions', questions_path(query: 'unanswered'), class: "article lesson-type"
+= link_to 'All Questions', questions_path, class: "challenge lesson-type"
 
 %h2 Newest Questions
 
@@ -12,6 +13,7 @@
   - @questions.each do |question|
     .question
       %h3.title= link_to question.title, question
+      %p.answer_count= pluralize question.answers_count, 'answer'
 
 #new-question
   = link_to "Ask A Question", new_question_path
