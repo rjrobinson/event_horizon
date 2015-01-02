@@ -1,13 +1,7 @@
 class QuestionsController < ApplicationController
   def index
     if params[:query] == "unanswered"
-      questions = []
-      Question.all.each do |q|
-        if q.answers.count == 0
-          questions << q
-        end
-      end
-      @questions = questions
+      @questions = Question.unanswered_questions
     else
       @questions = Question.all
     end

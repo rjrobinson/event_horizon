@@ -20,4 +20,14 @@ class Question < ActiveRecord::Base
   def sorted_answers
     answers.sort_by { |answer| answer.accepted? ? 0 : 1 }
   end
+
+  def self.unanswered_questions
+    questions = []
+    all.each do |q|
+      if q.answers.count == 0
+        questions << q
+      end
+    end
+    questions
+  end
 end
