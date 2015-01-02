@@ -1,6 +1,6 @@
 require "rails_helper"
 
-feature "questions" do
+feature "questions", focus: true do
   scenario "view the newest questions" do
     questions = FactoryGirl.create_list(:question, 3)
 

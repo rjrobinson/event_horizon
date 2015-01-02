@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
   def index
     if params[:query] == "unanswered"
-      @questions = Question.unanswered_questions
+      @questions = Question.unanswered
     else
       @questions = Question.all
     end

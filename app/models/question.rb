@@ -21,13 +21,16 @@ class Question < ActiveRecord::Base
     answers.sort_by { |answer| answer.accepted? ? 0 : 1 }
   end
 
-  def self.unanswered_questions
-    questions = []
-    all.each do |q|
-      if q.answers.count == 0
-        questions << q
-      end
-    end
-    questions
+  def self.unanswered
+    where(id: unanswered_ids)
+  end
+
+  private
+
+  def self.unanswered_ids
+    joins("LEFT OUTER JOIN answers ON answers.question_id = questions.id")
+      .group("questions.id")
+      .select("questions.id")
+      .having("COUNT(answers.id) = 0")
   end
 end
