@@ -13,7 +13,16 @@ feature "questions" do
     end
   end
 
-  scenario "view unanswered questions"
+  scenario "view unanswered questions" do
+    unanswered_question = FactoryGirl.create(:question)
+    answered_question = FactoryGirl.create(:answer)
+
+    visit questions_path
+    click_on 'Unanswered questions'
+
+    expect(page).to_not have_content(answered_question.question.title)
+    expect(page).to have_content(unanswered_question.title)
+  end
 
   scenario "view a question with no answers" do
     question = FactoryGirl.create(:question)

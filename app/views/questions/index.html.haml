@@ -4,6 +4,8 @@
 %ul.breadcrumbs
   %li.current= link_to "Questions", questions_path
 
+= link_to 'Unanswered questions', questions_path(query: 'unanswered')
+
 %h2 Newest Questions
 
 .questions

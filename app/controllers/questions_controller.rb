@@ -1,6 +1,16 @@
 class QuestionsController < ApplicationController
   def index
-    @questions = Question.all.limit(20)
+    if params[:query] == "unanswered"
+      questions = []
+      Question.all.each do |q|
+        if q.answers.count == 0
+          questions << q
+        end
+      end
+      @questions = questions
+    else
+      @questions = Question.all
+    end
   end
 
   def show
