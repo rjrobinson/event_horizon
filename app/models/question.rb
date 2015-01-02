@@ -22,15 +22,7 @@ class Question < ActiveRecord::Base
   end
 
   def self.unanswered
-    where(id: unanswered_ids)
+    where(answers_count: 0)
   end
 
-  private
-
-  def self.unanswered_ids
-    joins("LEFT OUTER JOIN answers ON answers.question_id = questions.id")
-      .group("questions.id")
-      .select("questions.id")
-      .having("COUNT(answers.id) = 0")
-  end
 end

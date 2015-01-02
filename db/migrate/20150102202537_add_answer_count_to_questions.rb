@@ -10,7 +10,7 @@ class AddAnswerCountToQuestions < ActiveRecord::Migration
   def up
     add_column :questions, :answers_count, :integer, null: false, default: 0
 
-    Question.plug(:id).each do |id|
+    Question.pluck(:id).each do |id|
       Question.reset_counters(id, :answers)
     end
   end

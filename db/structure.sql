@@ -214,7 +214,8 @@ CREATE TABLE questions (
     body text NOT NULL,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    accepted_answer_id integer
+    accepted_answer_id integer,
+    answers_count integer DEFAULT 0 NOT NULL
 );
 
 
@@ -910,3 +911,5 @@ INSERT INTO schema_migrations (version) VALUES ('20141216173739');
 INSERT INTO schema_migrations (version) VALUES ('20141216212826');
 
 INSERT INTO schema_migrations (version) VALUES ('20141217191055');
+
+INSERT INTO schema_migrations (version) VALUES ('20150102202537');
