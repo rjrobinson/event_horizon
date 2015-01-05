@@ -1,0 +1,50 @@
+@import "globals/colors";
+
+#content {
+  background-color: white;
+  border: 1px solid $border-color;
+  padding: 1em 2em;
+}
+
+#notifications {
+  padding: 1em;
+}
+
+.inline {
+  display: inline;
+}
+
+.errors {
+  color: red;
+}
+
+.hidden {
+  display: none;
+}
+
+.center {
+  text-align: center;
+}
+
+ul.block {
+  margin-left: 0;
+  border: 1px solid $border-color;
+
+  li {
+    display: block;
+    border-bottom: 1px solid $border-color;
+    padding: 0.5em;
+  }
+
+  li:last-child {
+    border-bottom: 0;
+  }
+
+  li:nth-child(even) {
+    background-color: $light-bg-color;
+  }
+}
+
+.full-top-bar {
+  border-bottom: 1px solid $border-color;
+}

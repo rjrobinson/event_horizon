@@ -1,0 +1,36 @@
+@import "globals/colors";
+
+body {
+  background-color: $light-bg-color;
+}
+
+table {
+  width: 100%;
+}
+
+dl {
+  width: 100%;
+  overflow: hidden;
+}
+
+dt {
+  float: left;
+  width: 50%;
+}
+
+dd {
+  float: left;
+  width: 50%;
+}
+
+code {
+  border: 1px solid $border-color;
+  background-color: $code-bg-color-light;
+  padding: 2px 4px;
+  border-radius: 3px;
+}
+
+pre code {
+  padding: 0;
+  border: 0px;
+}
