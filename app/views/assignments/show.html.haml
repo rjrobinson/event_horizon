@@ -20,7 +20,7 @@
   %tbody
 
     - @assignment.user_submissions.each do |submission|
-      %tr
+      %tr.assignment
         %td= link_to submission.username, user_path(submission.username)
         %td{ class: (submission.on_time ? "on-time" : "late") }= submission.on_time ? "On-Time" : "Late"
         %td
