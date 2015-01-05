@@ -1,5 +1,5 @@
-@import "foundation_and_overrides";
-@import "*";
+//= require foundation_and_overrides
+//= require_tree ./modules
 
 table {
   width: 100%;
