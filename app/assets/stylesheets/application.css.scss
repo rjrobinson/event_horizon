@@ -2,38 +2,38 @@
 @import "*";
 
 table {
-    width: 100%;
+  width: 100%;
 }
 
 #notifications {
-    padding: 1em;
+  padding: 1em;
 }
 
 .inline {
-    display: inline;
+  display: inline;
 }
 
 .errors {
-    color: red;
+  color: red;
 }
 
 .hidden {
-    display: none;
+  display: none;
 }
 
 dl {
-    width: 100%;
-    overflow: hidden;
+  width: 100%;
+  overflow: hidden;
 }
 
 dt {
-    float: left;
-    width: 50%;
+  float: left;
+  width: 50%;
 }
 
 dd {
-    float: left;
-    width: 50%;
+  float: left;
+  width: 50%;
 }
 
 .center {

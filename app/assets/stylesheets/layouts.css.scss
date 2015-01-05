@@ -1,13 +1,13 @@
 @import "colors";
 
 body {
-    background-color: $light-bg-color;
+  background-color: $light-bg-color;
 }
 
 #content {
-    background-color: white;
-    border: 1px solid $border-color;
-    padding: 1em 2em;
+  background-color: white;
+  border: 1px solid $border-color;
+  padding: 1em 2em;
 }
 
 ul.block {
@@ -73,64 +73,64 @@ table tr {
 }
 
 .full-top-bar {
-    border-bottom: 1px solid $border-color;
+  border-bottom: 1px solid $border-color;
 }
 
 .lesson {
-    margin: 0.5em 0;
-    padding: 1em;
-    border: 1px solid $border-color;
-    border-radius: 5px;
-    background-color: $light-bg-color;
+  margin: 0.5em 0;
+  padding: 1em;
+  border: 1px solid $border-color;
+  border-radius: 5px;
+  background-color: $light-bg-color;
 }
 
 .lesson-nav {
-    padding: 1em 0;
+  padding: 1em 0;
 }
 
 .lesson-type {
-    padding: 10px;
-    border: 1px solid $border-color;
-    border-radius: 3px;
+  padding: 10px;
+  border: 1px solid $border-color;
+  border-radius: 3px;
 
-    float: right;
-    font-size: 0.8em;
-    font-weight: bold;
+  float: right;
+  font-size: 0.8em;
+  font-weight: bold;
 
-    color: #ffffff;
+  color: #ffffff;
 }
 
 .lesson-type.article {
-    background-color: $article-color;
+  background-color: $article-color;
 }
 
 .lesson-type.challenge {
-    background-color: $challenge-color;
+  background-color: $challenge-color;
 }
 
 .lesson-type.exercise {
-    background-color: $exercise-color;
+  background-color: $exercise-color;
 }
 
 .lesson-type.tutorial {
-    background-color: $tutorial-color;
+  background-color: $tutorial-color;
 }
 
 .lesson-title {
-    border-bottom: 1px solid $border-color;
+  border-bottom: 1px solid $border-color;
 }
 
 .video-wrapper {
-	position: relative;
-	padding-bottom: 56.25%; /* 16:9 */
-	padding-top: 25px;
-	height: 0;
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  padding-top: 25px;
+  height: 0;
 }
 
 .video-wrapper iframe {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
