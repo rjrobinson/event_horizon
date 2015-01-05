@@ -1,41 +1,4 @@
 //= require foundation_and_overrides
+//= require ./base
+//= require ./layout
 //= require_tree ./modules
-
-table {
-  width: 100%;
-}
-
-#notifications {
-  padding: 1em;
-}
-
-.inline {
-  display: inline;
-}
-
-.errors {
-  color: red;
-}
-
-.hidden {
-  display: none;
-}
-
-dl {
-  width: 100%;
-  overflow: hidden;
-}
-
-dt {
-  float: left;
-  width: 50%;
-}
-
-dd {
-  float: left;
-  width: 50%;
-}
-
-.center {
-  text-align: center;
-}
