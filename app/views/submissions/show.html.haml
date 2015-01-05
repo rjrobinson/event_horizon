@@ -51,7 +51,7 @@
     - if comment.persisted?
       .comment.general-comment
         .user= "#{comment.user.username} commented"
-        .body= comment.body
+        .body= render_markdown(comment.body)
 
   = form_for [@submission, @comment] do |f|
     = field_set_tag "Leave a comment" do

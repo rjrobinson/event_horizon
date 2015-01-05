@@ -18,12 +18,13 @@ feature "comment on submission" do
 
       visit submission_path(submission)
 
-      fill_in "Comment", with: "Needs more cowbell."
+      fill_in "Comment", with: "Needs **more** cowbell."
       click_button "Submit"
 
       expect(page).to have_content("Comment saved.")
       expect(page).to have_content("#{user.username} commented")
       expect(page).to have_content("Needs more cowbell.")
+      expect(page).to have_selector("strong", "more")
     end
   end
 
