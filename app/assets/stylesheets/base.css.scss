@@ -1,4 +1,5 @@
 @import "globals/colors";
+@import "globals/spacing";
 
 body {
   background-color: $light-bg-color;
@@ -33,4 +34,16 @@ code {
 pre code {
   padding: 0;
   border: 0px;
+}
+
+pre {
+  border: 1px solid $border-color;
+  font-size: 14px;
+  line-height: 1.1em;
+  overflow: auto;
+  margin-top: 0.6em;
+  margin-bottom: 0.6em;
+  border-radius: 3px;
+  word-wrap: break-word;
+  padding: $source-padding;
 }

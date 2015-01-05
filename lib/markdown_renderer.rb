@@ -1,7 +1,5 @@
-require "code_renderer"
+require "rouge/plugins/redcarpet"
 
 class MarkdownRenderer < Redcarpet::Render::HTML
-  def block_code(code, language)
-    CodeRenderer.new(code, language).to_html
-  end
+  include Rouge::Plugins::Redcarpet
 end

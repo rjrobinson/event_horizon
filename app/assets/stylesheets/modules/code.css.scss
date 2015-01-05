@@ -1,11 +1,5 @@
 @import "globals/colors";
-
-$code-bg-color-light: #f8f8f8;
-$code-bg-color-dark: #d8d8d8;
-$filename-bg-color: #d8d8d8;
-$comment-bg-color: #e3f3f6;
-$line-no-color: #aaaaaa;
-$source-padding: 0.8em;
+@import "globals/spacing";
 
 .code-block {
   border: 1px solid $border-color;
