@@ -38,12 +38,13 @@ feature "comment on submission" do
     scenario "comment on submission in general" do
       visit submission_path(submission)
 
-      fill_in "Comment", with: "Needs more cow-bell."
+      fill_in "Comment", with: "Needs **more** cow-bell."
       click_button "Submit"
 
       expect(page).to have_content("Comment saved.")
       expect(page).to have_content("#{admin.username} commented")
       expect(page).to have_content("Needs more cow-bell.")
+      expect(page).to have_selector("strong", "more")
 
       expect(CommentNotifier.jobs.size).to eq(1)
     end
@@ -54,7 +55,7 @@ feature "comment on submission" do
 
       visit submission_path(file.submission)
 
-      fill_in "Comment", with: "Needs more cow-bell."
+      fill_in "Comment", with: "Needs **more** cow-bell."
       fill_in "Line Number", with: "1"
       select file.filename, from: "Filename"
       click_button "Submit"
@@ -62,6 +63,7 @@ feature "comment on submission" do
       expect(page).to have_content("#{admin.username} commented")
       expect(page).to order_text("foo = 1", "Needs more cow-bell.")
       expect(page).to order_text("Needs more cow-bell.", "bar = 2")
+      expect(page).to have_selector("strong", "more")
     end
 
     scenario "redisplay form with error if comment is blank" do
