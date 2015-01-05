@@ -1,0 +1,45 @@
+@import "globals/color";
+
+.lesson {
+  margin: 0.5em 0;
+  padding: 1em;
+  border: 1px solid $border-color;
+  border-radius: 5px;
+  background-color: $light-bg-color;
+}
+
+.lesson-nav {
+  padding: 1em 0;
+}
+
+.lesson-type {
+  padding: 10px;
+  border: 1px solid $border-color;
+  border-radius: 3px;
+
+  float: right;
+  font-size: 0.8em;
+  font-weight: bold;
+
+  color: #ffffff;
+}
+
+.lesson-type.article {
+  background-color: $article-color;
+}
+
+.lesson-type.challenge {
+  background-color: $challenge-color;
+}
+
+.lesson-type.exercise {
+  background-color: $exercise-color;
+}
+
+.lesson-type.tutorial {
+  background-color: $tutorial-color;
+}
+
+.lesson-title {
+  border-bottom: 1px solid $border-color;
+}
