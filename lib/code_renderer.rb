@@ -1,3 +1,5 @@
+require "markdown_renderer"
+
 class CodeRenderer
   attr_reader :source, :language, :comments
 
@@ -38,7 +40,7 @@ class CodeRenderer
     "<div class='inline-comment comment'>" +
       "<div class='inline-comment-body'><div class='user'>" +
       "#{comment.user.username} commented" +
-      "</div><div class='body'>#{comment.body}</div></div></div>"
+      "</div><div class='body'>#{render_markdown(comment.body)}</div></div></div>"
   end
 
   def inline_comments
@@ -81,5 +83,15 @@ class CodeRenderer
 
   def formatter
     @formatter ||= Rouge::Formatters::HTML.new
+  end
+
+  def markdown_renderer
+    @markdown_renderer ||= Redcarpet::Markdown.new(
+      MarkdownRenderer,
+      fenced_code_blocks: true)
+  end
+
+  def render_markdown(content)
+    markdown_renderer.render(content)
   end
 end
