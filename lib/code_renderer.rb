@@ -1,19 +1,21 @@
 require "markdown_renderer"
 
 class CodeRenderer
-  attr_reader :source, :language, :comments
+  attr_reader :source, :filename, :language, :comments
 
-  def initialize(source, language, comments = [])
+  def initialize(source, filename, language, comments = [])
     @source = source
+    @filename = filename
     @language = language
     @comments = comments
   end
 
   def to_html
-    "<div class='code-block'>" +
-      "<pre><code class='highlight #{language}'>" +
+    "<table class=\"code-block highlight\">" +
+      "<caption class=\"code-filename\">#{filename}</caption>" +
+      "<tbody>" +
       html_code_with_comments +
-      "</code></pre></div>"
+      "</tbody></table>"
   end
 
   private
@@ -37,10 +39,7 @@ class CodeRenderer
   end
 
   def format_comment(comment)
-    "<div class='inline-comment comment'>" +
-      "<div class='inline-comment-body'><div class='user'>" +
-      "#{comment.user.username} commented" +
-      "</div><div class='body'>#{render_markdown(comment.body)}</div></div></div>"
+    "<tr class=\"code-comment-inline\"><td colspan=\"2\"><div class=\"code-comment-header\"><span class=\"code-username\">#{comment.user.username}</span> commented on <span class=\"code-timestamp\">#{comment.created_at}</span></div><div class=\"code-comment-body\">#{comment.body}</div></td></tr>"
   end
 
   def inline_comments
@@ -66,8 +65,7 @@ class CodeRenderer
   def numbered_lines
     unnumbered_lines.each_with_index.map do |line, index|
       line_no = index + 1
-      "<span class=\"line\" data-line-no=\"#{line_no}\">" +
-        "<span class=\"line-no\">#{line_no}:</span>#{line}</span>"
+      "<tr class=\"code-line\" data-line-no=\"#{line_no}\"><td class=\"code-line-no\">#{line_no}</td><td class=\"code-line-body\">#{line}</td></tr>"
     end
   end
 
