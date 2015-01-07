@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root "static_pages#home"
 
+  resources :units, only: [:index, :show]
+
   resources :lessons, only: [:index, :show], param: :slug do
     resources :submissions, only: [:index, :create]
     resources :ratings, only: [:create, :update]

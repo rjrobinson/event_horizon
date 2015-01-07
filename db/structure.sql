@@ -347,6 +347,38 @@ ALTER SEQUENCE teams_id_seq OWNED BY teams.id;
 
 
 --
+-- Name: units; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE units (
+    id integer NOT NULL,
+    name character varying(255) NOT NULL,
+    description text,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: units_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE units_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: units_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE units_id_seq OWNED BY units.id;
+
+
+--
 -- Name: users; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -450,6 +482,13 @@ ALTER TABLE ONLY teams ALTER COLUMN id SET DEFAULT nextval('teams_id_seq'::regcl
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY units ALTER COLUMN id SET DEFAULT nextval('units_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
 
 
@@ -523,6 +562,14 @@ ALTER TABLE ONLY team_memberships
 
 ALTER TABLE ONLY teams
     ADD CONSTRAINT teams_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: units_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY units
+    ADD CONSTRAINT units_pkey PRIMARY KEY (id);
 
 
 --
@@ -786,4 +833,6 @@ INSERT INTO schema_migrations (version) VALUES ('20141113200644');
 INSERT INTO schema_migrations (version) VALUES ('20141126230346');
 
 INSERT INTO schema_migrations (version) VALUES ('20141204203947');
+
+INSERT INTO schema_migrations (version) VALUES ('20150104182010');
 

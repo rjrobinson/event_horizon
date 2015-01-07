@@ -1,0 +1,5 @@
+%h2 Units
+
+%ul
+  - @units.each do |unit|
+    %li= link_to unit.name, unit_path(unit)
