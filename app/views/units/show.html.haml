@@ -6,4 +6,4 @@
 
 %ul
   - @unit.quizzes.each do |quiz|
-    %li= quiz.name
+    %li= link_to quiz.name, quiz_path(quiz)

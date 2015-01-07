@@ -1,0 +1,7 @@
+%h2= @quiz.name
+
+%h3 Questions
+
+%ol
+  - @quiz.questions.each do |question|
+    %li= render_markdown(question.prompt)

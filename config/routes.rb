@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   resources :units, only: [:index, :show]
 
+  resources :quizzes, only: [:show]
+
   resources :lessons, only: [:index, :show], param: :slug do
     resources :submissions, only: [:index, :create]
     resources :ratings, only: [:create, :update]
