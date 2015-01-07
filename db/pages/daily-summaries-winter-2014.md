@@ -71,7 +71,7 @@
 
 #
 * Friday
-  * **Systems Check(9-noon):** Grocery List
+  * **Systems Check(9-noon):** [Grocery List](https://horizon.launchacademy.com/lessons/grocery-list)
   * **Clinic:** Ruby drills (RD & SD) ([gist](https://gist.github.com/hchood/e49098b075a707346f79))
   * Also posted readings for Bravo
 
@@ -102,6 +102,13 @@
   * **Clinic:** Using APIs in a Sinatra app (HH; [repo](https://github.com/hchood/brewery_api_clinic)) [screencast: pw Winter!2014](http://vimeo.com/112959959)
   * **Non-Core Challenge:** [Six Degrees of Marky-Mark](https://horizon.launchacademy.com/lessons/six-degrees-marky-mark)
 
+#
+* Thursday -- Thanksgiving!
+
+#
+* Friday
+  * **Systems Check:** [Recipe Box](https://horizon.launchacademy.com/lessons/recipe-box)
+
 ## Week 4:  Object-Oriented Programming in Ruby
 
 #
@@ -113,7 +120,7 @@
 #
 * Tuesday
   * **Lecture:** Getters and setters (DP) [screencast: pw Winter!2014](http://vimeo.com/113412335)
-  * **Clinic:** Benchmarking (VR; [gist](https://gist.github.com/vikram7/c61874d8ef90eb6e53b4))
+  * **Clinic:** Benchmarking (Vikram; [gist](https://gist.github.com/vikram7/c61874d8ef90eb6e53b4))
   * **Challenge:**
 
 #
@@ -132,7 +139,7 @@
 
 #
 * Friday
-  * **Systems Check(9-noon):** Bounding Boxes
+  * **Systems Check(9-noon):** [Bounding Boxes](https://horizon.launchacademy.com/lessons/bounding-box)
   * **Clinic:**
     - Intro to Gosu (SD)
     - Deploying Sinatra apps to Heroku (HH)
@@ -171,7 +178,7 @@
 
 #
 * Friday
-  * **Systems Check(9-noon):** Task Galaxy
+  * **Systems Check(9-noon):** [Task Galaxy](https://horizon.launchacademy.com/lessons/task-galaxy)
 
 ## Week 6: JavaScript & Rails
 
@@ -240,6 +247,25 @@
   * **Focus:** CRUD for Reviews, Begin Votes, Deployment
 
 ## Week 8:  Group Project (Week 2)
+
+* Monday
+  * **Lectures:** Namespacing (Dan)
+  * **Focus:** Namespacing, Pagination with Kaminari [screencast](https://vimeo.com/115986436) (Dan)
+  * **Clinic:** Deployment (Dan)
+  * **Other:** [David Delmar](mailto:david@resilientcoders.org) from [Resilient Coders](http://www.resilientcoders.org/) came to discuss his program. Tuesdays, 6-8p: Grove Hall, 51 Geneva Avenue, Dorchester - http://mydorchester.org/Grove-Hall (ends in 6 weeks). More information to come to mentors, so connect with Del if you are interested in getting involved now or post-Launch.
+
+#
+* Tuesday
+  * **Lectures:** Carrierwave & S3 (Adam) [github repo](https://github.com/LaunchAcademy/kittens/pulls?q=is%3Apr+is%3Aclosed)
+  * **Focus:** Carrierwave, Styling
+  * **Clinic:** Rails Asset Pipeline (Spencer) [github repo](https://github.com/SpencerCDixon/Rails-Asset-Pipeline)
+  * **Other:** Speaker [Derek Bennewiess](https://www.linkedin.com/in/derekbennewies) from [Cogo Labs](http://www.cogolabs.com/) spoke about Python for Rubyists
+
+#
+* Wednesday
+  * **Lectures:** ActionMailer & TCP-IP (Dan)
+  * **Focus:** Profile photos, Email
+
 
 ## Week 9:  Breakable Toy (Week 1)
 
