@@ -171,6 +171,39 @@ ALTER SEQUENCE lessons_id_seq OWNED BY lessons.id;
 
 
 --
+-- Name: quizzes; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE quizzes (
+    id integer NOT NULL,
+    name character varying(255) NOT NULL,
+    description text,
+    unit_id integer NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: quizzes_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE quizzes_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: quizzes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE quizzes_id_seq OWNED BY quizzes.id;
+
+
+--
 -- Name: ratings; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -447,6 +480,13 @@ ALTER TABLE ONLY lessons ALTER COLUMN id SET DEFAULT nextval('lessons_id_seq'::r
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY quizzes ALTER COLUMN id SET DEFAULT nextval('quizzes_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY ratings ALTER COLUMN id SET DEFAULT nextval('ratings_id_seq'::regclass);
 
 
@@ -522,6 +562,14 @@ ALTER TABLE ONLY comments
 
 ALTER TABLE ONLY lessons
     ADD CONSTRAINT lessons_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: quizzes_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY quizzes
+    ADD CONSTRAINT quizzes_pkey PRIMARY KEY (id);
 
 
 --
@@ -641,6 +689,13 @@ CREATE INDEX index_lessons_on_searchable ON lessons USING gin (searchable);
 --
 
 CREATE UNIQUE INDEX index_lessons_on_slug ON lessons USING btree (slug);
+
+
+--
+-- Name: index_quizzes_on_unit_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_quizzes_on_unit_id ON quizzes USING btree (unit_id);
 
 
 --
@@ -835,4 +890,6 @@ INSERT INTO schema_migrations (version) VALUES ('20141126230346');
 INSERT INTO schema_migrations (version) VALUES ('20141204203947');
 
 INSERT INTO schema_migrations (version) VALUES ('20150104182010');
+
+INSERT INTO schema_migrations (version) VALUES ('20150107011009');
 

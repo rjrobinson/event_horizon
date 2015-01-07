@@ -1,3 +1,9 @@
 %h2= @unit.name
 
-%p Welcome.
+%p.description= @unit.description
+
+%h3 Quizzes
+
+%ul
+  - @unit.quizzes.each do |quiz|
+    %li= quiz.name

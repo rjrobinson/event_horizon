@@ -1,0 +1,25 @@
+{
+  "units": [
+    {
+      "name": "Ruby Fundamentals I",
+      "description": "Learn how to write basic expressions and make decisions in the Ruby programming language.",
+      "quizzes": [
+        {
+          "name": "Expressions Pre-Quiz",
+          "questions": [
+            "What is the value of 1 + 1?",
+            "What is the value of x + 1?",
+            "If x = 5, what is the value of x + 1?",
+            "What is the value of the expression `\"banana\".capitalize`?"
+          ]
+        }
+      ]
+    },
+
+    {
+      "name": "Ruby Fundamentals II",
+      "description": "Learn how model data and define abstractions in the Ruby programming language.",
+      "quizzes": []
+    }
+  ]
+}
