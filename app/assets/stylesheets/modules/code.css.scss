@@ -7,7 +7,6 @@
 
 .code-block {
   font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace;
-  background-color: blue;
   border-collapse: collapse;
 }
 
@@ -58,4 +57,9 @@
 .code-comment-body {
   padding: 0.8em;
   border: 1px solid $border-color;
+}
+
+.code-comment-body p {
+  font-size: 1em;
+  margin-bottom: 0;
 }
