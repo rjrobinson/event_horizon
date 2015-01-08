@@ -2,8 +2,10 @@ class QuestionsController < ApplicationController
   def index
     if params[:query] == "unanswered"
       @questions = Question.unanswered
+      @filter = "unanswered"
     else
-      @questions = Question.all
+      @questions = Question.order(created_at: :desc)
+      @filter = "newest"
     end
   end
 
