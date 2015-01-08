@@ -3,14 +3,11 @@ module ApplicationHelper
     time.strftime("%B %e, %Y at %l:%M:%S %p")
   end
 
-  def render_markdown(content)
-    renderer.render(content).html_safe
+  def render_safe_markdown(content)
+    Markdown.render_safe(content).html_safe
   end
 
-  def renderer
-    @renderer ||= Redcarpet::Markdown.new(
-      MarkdownRenderer,
-      fenced_code_blocks: true,
-      disable_indented_code_blocks: true)
+  def render_markdown(content)
+    Markdown.render(content).html_safe
   end
 end
