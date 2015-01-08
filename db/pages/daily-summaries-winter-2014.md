@@ -319,3 +319,26 @@
 #### Other
 - [Chrome Video Speed Controller](https://chrome.google.com/webstore/detail/video-speed-controller/nffaoalbilbmmfgbnbgppjihopabppdk?hl=en)
 
+## Books We Recommend (yes, not everything you need is on a website)
+
+#### Ruby
+- Intermediate to Advanced Ruby: [The Well-Grounded Rubyist](http://www.amazon.com/The-Well-Grounded-Rubyist-David-Black/dp/1617291692/ref=pd_sim_b_2?ie=UTF8&refRID=137ZD38BD7233W7HDSV1)
+- Sandi Metz's Treatise on Object Oriented Design: [POODR](http://www.amazon.com/Practical-Object-Oriented-Design-Ruby-Addison-Wesley/dp/0321721330/ref=pd_bxgy_b_img_y)
+
+#### Rails
+- The canonical guidebook to Rails and its Magic: [Rails 4 Way](http://www.amazon.com/Rails-Way-Addison-Wesley-Professional-Ruby/dp/0321944275/ref=sr_1_1?s=books&ie=UTF8&qid=1420741317&sr=1-1&keywords=rails+4+way)
+
+#### Databases
+- How to Write Any SQL Statement You Need: [SQL Cookbook](http://www.amazon.com/Cookbook-Cookbooks-OReilly-Anthony-Molinaro/dp/0596009763/ref=sr_1_1?ie=UTF8&qid=1420744533&sr=8-1&keywords=sql+cookbook)
+
+#### Networking
+- HTTP: [HTTP: The Definitive Guide](http://www.amazon.com/HTTP-Definitive-Guide-Guides-ebook/dp/B0043D2EKO/ref=sr_1_2?ie=UTF8&qid=1420744499&sr=8-2&keywords=http)
+- Computer Networking and TCP: [Computer Networks](http://www.amazon.com/Computer-Networks-5th-Andrew-Tanenbaum/dp/0132126958/ref=sr_1_16?s=books&ie=UTF8&qid=1420741079&sr=1-16&keywords=networking)
+
+#### Design
+- SASS: [SASS for Web Designers](https://fd-files-production.s3.amazonaws.com/46335/u_b0-LSnds48v_dkjc62ng?AWSAccessKeyId=AKIAIA2QBI5WP5HA3ZEA&Signature=S8r%2BsMaSf9VdjoqHat9EgmOH8n8%3D&Expires=1420741576)
+- An Introduction to Ruby: [Learn to Program by Chris Pine](http://www.amazon.com/Learn-Program-Second-Facets-Ruby/dp/1934356360/ref=sr_1_1?s=books&ie=UTF8&qid=1420741381&sr=1-1&keywords=learn+to+program+pine)
+
+#### Other
+- Machine Learning & Data Science: [Programming Collective Intelligence](http://www.amazon.com/Programming-Collective-Intelligence-Building-Applications-ebook/dp/B00F8QDZWG/ref=sr_1_1?ie=UTF8&qid=1420744403&sr=8-1&keywords=programming+collective+intelligence)
+- How to Write Good User Stories: [User Stories Applied](http://www.amazon.com/User-Stories-Applied-Software-Development/dp/0321205685/ref=sr_1_1?ie=UTF8&qid=1420744594&sr=8-1&keywords=user+stories+applied)
