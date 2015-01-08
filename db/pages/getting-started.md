@@ -130,3 +130,14 @@ Congratulations! At this point, your code has been submitted to Horizon and be v
 [iterm2]: http://iterm2.com/
 [ubuntu-vm]: http://www.wikihow.com/Install-Ubuntu-on-VirtualBox
 [nitrous-io]: https://www.nitrous.io/
+
+## Troubleshooting
+
+You may encounter the following error with `et` commands if you're using Ruby 2.0 or below:
+
+```no-highlight
+$ et list
+error: private method `load' called for Psych:Module
+```
+
+Upgrading to Ruby 2.1 should resolve this issue.
