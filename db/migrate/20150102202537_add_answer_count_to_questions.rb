@@ -19,4 +19,3 @@ class AddAnswerCountToQuestions < ActiveRecord::Migration
     remove_column :questions, :answers_count
   end
 end
-

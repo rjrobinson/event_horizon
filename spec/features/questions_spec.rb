@@ -18,7 +18,7 @@ feature "questions" do
     answered_question = FactoryGirl.create(:answer)
 
     visit questions_path
-    click_on 'Unanswered questions'
+    click_on "Unanswered questions"
 
     expect(page).to_not have_content(answered_question.question.title)
     expect(page).to have_content(unanswered_question.title)
