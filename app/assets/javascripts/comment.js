@@ -35,7 +35,7 @@ $(function() {
 });
 
 function formatComment(comment) {
-  return "<tr class=\"code-comment-inline\"><td colspan=\"2\"><div class=\"code-comment-header\"><span class=\"code-username\">" + comment.user + "</span> commented on <span class=\"code-timestamp\">" + comment.created_at + "</span></div><div class=\"code-comment-body\">" + comment.body + "</div></td></tr>";
+  return "<tr class=\"code-comment-inline\"><td colspan=\"2\"><div class=\"code-comment-header\"><span class=\"code-username\">" + comment.user + "</span> commented on <span class=\"code-timestamp\">" + comment.created_at + "</span></div><div class=\"code-comment-body\">" + comment.html_body + "</div></td></tr>";
 }
 
 function generateRowWithForm(id, action, sourceFileId, lineNo) {
