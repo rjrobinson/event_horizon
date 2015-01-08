@@ -12,8 +12,7 @@ class Markdown
   private
 
   def self.renderer
-    @renderer ||= Redcarpet::Markdown.new(
-      HighlightingRenderer,
+    Redcarpet::Markdown.new(HighlightingRenderer,
       fenced_code_blocks: true,
       disable_indented_code_blocks: true)
   end
