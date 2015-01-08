@@ -75,7 +75,7 @@ module SourceFileHelper
           <span class="code-username">#{comment.user.username}</span>
           commented on <span class=\"code-timestamp\">#{comment.created_at}</span>
         </div>
-        <div class="code-comment-body">#{comment.body}</div>
+        <div class="code-comment-body">#{render_safe_markdown(comment.body)}</div>
       </td>
     </tr>
     HTML
@@ -91,6 +91,10 @@ module SourceFileHelper
 
     def language
       File.extname(filename)[1..-1]
+    end
+
+    def render_safe_markdown(content)
+      Markdown.render_safe(content)
     end
   end
 end
