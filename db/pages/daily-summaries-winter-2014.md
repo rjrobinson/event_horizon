@@ -352,4 +352,3 @@
 #### Soft Nerdy Reading
 - A non-technical look at what makes up a computer: [Code: The Hidden Language of Computer Hardware and Software](http://www.amazon.com/Code-Language-Computer-Hardware-Software/dp/0735611319)
 - How algorithms have played a huge role in the world today: [Nine Algorithms That Changed the Future](http://www.amazon.com/Nine-Algorithms-That-Changed-Future-ebook/dp/B005Z67EI0/ref=pd_sim_kstore_1?ie=UTF8&refRID=0EWG9R6F7YH6B958F0VX)
-
