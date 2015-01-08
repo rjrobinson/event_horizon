@@ -266,6 +266,12 @@
   * **Lectures:** ActionMailer & TCP-IP (Dan)
   * **Focus:** Profile photos, Email
 
+<!-- NOTES: Need to organize the group projects a bit more clearly -->
+#
+* Thursday
+  * **Lectures:** Integrating Search Into Your App (Adam) [repo](https://github.com/LaunchAcademy/movie_catalog)
+  * **Focus:** Search
+
 
 ## Week 9:  Breakable Toy (Week 1)
 
@@ -290,6 +296,7 @@
 - [Using the Command Line](https://gist.github.com/radavis/eb19ec95d62a864e1af1)
 
 #### ActiveRecord
+- [ActiveRecord Basics](http://guides.rubyonrails.org/active_record_basics.html)
 - [ActiveRecord Naming Challenge](http://ar-naming.herokuapp.com/)
 
 #### Rails
@@ -297,6 +304,7 @@
 - [Responsive Web Design Tools](https://chrome.google.com/webstore/detail/responsive-web-design-tes/objclahbaimlfnbjdeobicmmlnbhamkg?hl=en)
 
 #### Git
+- [git game](https://github.com/hgarc014/git-game)
 - [gitignore](https://help.github.com/articles/ignoring-files/)
 
 #### Design
@@ -305,6 +313,9 @@
 - [CSS font stack](http://www.cssfontstack.com/)
 - [dribbble](https://dribbble.com/)
 
+#### Career
+- [What a Web Developer Should Know](https://gist.github.com/atsheehan/5673edcd03fadb4e9108)
+
 #### Other
 - [Chrome Video Speed Controller](https://chrome.google.com/webstore/detail/video-speed-controller/nffaoalbilbmmfgbnbgppjihopabppdk?hl=en)
-- [What a Web Developer Should Know](https://gist.github.com/atsheehan/5673edcd03fadb4e9108)
+
