@@ -8,8 +8,6 @@ $(function() {
     var action = $("form.new_comment").attr("action");
     var id = "source-" + sourceFileId + "-line-" + lineNo + "-form"
 
-    console.log('action' + action);
-
     if (!line.hasClass("generated-form")) {
       var row = $(generateRowWithForm(id, action, sourceFileId, lineNo)).insertAfter(line);
       var form = row.find("form");
