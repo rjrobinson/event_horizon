@@ -1,0 +1,7 @@
+%h2 Perception Problem
+
+~ render_markdown(@problem.prompt)
+
+%ul.options
+  - @problem.options.each do |option|
+    %li~ render_markdown(option.body)

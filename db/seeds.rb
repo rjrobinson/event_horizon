@@ -4,6 +4,7 @@ problems = [
     options: [
       {
         correct: true,
+        reason: "Correctly uses the `do..end` keywords for the `each` block of code.",
         body: <<OPTION
 ```ruby
 numbers = [7, 4, 7]
@@ -19,7 +20,9 @@ OPTION
       },
       {
         correct: false,
+        reason: "When using a multiline block, prefer the `do..end` syntax over `{..}`.",
         body: <<OPTION
+```ruby
 numbers = [7, 4, 7]
 sum = 0
 
@@ -28,6 +31,7 @@ numbers.each { |number|
 }
 
 puts "The total is \#{sum}"
+```
 OPTION
       }
     ]
@@ -42,6 +46,7 @@ ActiveRecord::Base.transaction do
 
     problem_hash[:options].each do |option_hash|
       option = problem.options.find_or_initialize_by(body: option_hash[:body])
+      option.reason = option_hash[:reason]
       option.correct = option_hash[:correct]
       option.save!
     end

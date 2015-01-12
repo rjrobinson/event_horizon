@@ -2,4 +2,4 @@
 
 %ul
   - @problems.each do |problem|
-    %li= problem.prompt
+    %li= link_to problem.prompt, problem

@@ -4,6 +4,7 @@ class CreatePerceptionProblemOptions < ActiveRecord::Migration
       t.integer :perception_problem_id, null: false
       t.text :body, null: false
       t.boolean :correct, null: false
+      t.text :reason, null: false
 
       t.timestamps
     end

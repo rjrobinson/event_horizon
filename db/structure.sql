@@ -212,6 +212,7 @@ CREATE TABLE perception_problem_options (
     perception_problem_id integer NOT NULL,
     body text NOT NULL,
     correct boolean NOT NULL,
+    reason text NOT NULL,
     created_at timestamp without time zone,
     updated_at timestamp without time zone
 );
