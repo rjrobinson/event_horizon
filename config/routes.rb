@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root "static_pages#home"
 
   resources :perception_problems, only: [:index, :show] do
+    get "random", on: :collection
     resources :perception_problem_answers, only: [:create]
   end
 

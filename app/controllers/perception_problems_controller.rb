@@ -7,4 +7,10 @@ class PerceptionProblemsController < ApplicationController
     @problem = PerceptionProblem.find(params[:id])
     @answer = PerceptionProblemAnswer.new
   end
+
+  def random
+    @problem = PerceptionProblem.random
+    @answer = PerceptionProblemAnswer.new
+    render :show
+  end
 end
