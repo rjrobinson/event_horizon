@@ -130,9 +130,9 @@ feature "view submissions" do
           due_on: 1.day.ago)
 
         visit assignment_path(assignment)
-        expect(page).to have_content(team_member.user.username)
+
+        expect(page).to have_link(team_member.user.username, href: submission_path(submission))
         expect(page).to have_content("On-Time")
-        expect(page).to have_link(submission.created_at, href: submission_path(submission))
       end
 
       scenario "late if missing submission" do
