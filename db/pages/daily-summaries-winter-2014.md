@@ -289,6 +289,7 @@
   * 9:24: Career Day Presentation Prep
   * Open Work Day
   * **Other:** [Tony Eng](https://www.linkedin.com/pub/tony-eng/0/3b3/407)'s presentation on Public Speaking and Pitches
+  * **Group Project Peer Evaluations:** [Evaluation Form Here](https://docs.google.com/forms/d/1NO0Gdrv98BFcQoSfKLpNSx6NdTNIw8ZSPDVyPAKcxYo/viewform)
 
 ## Week 10:  Breakable Toy (Week 2)
 
