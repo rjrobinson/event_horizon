@@ -41,17 +41,17 @@
 #submission
   - @submission.files.each do |file|
     .source-file(data-source-file-id="#{file.id}")
-      .filename
-        = file.filename
-      .body
-        ~ render_source_file(file)
+      ~ render_source_file(file)
 
 #comments
   - @submission.general_comments.each do |comment|
     - if comment.persisted?
-      .comment.general-comment
-        .user= "#{comment.user.username} commented"
-        .body= comment.body
+      .code-comment
+        .code-comment-header
+          %span.code-comment-user= comment.user.username
+          commented on
+          %span.code-comment-timestamp= comment.created_at
+        .code-comment-body= render_safe_markdown(comment.body)
 
   = form_for [@submission, @comment] do |f|
     = field_set_tag "Leave a comment" do

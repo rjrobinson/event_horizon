@@ -44,7 +44,7 @@ describe CommentsController do
 
         expect(response).to be_successful
         body = JSON.parse(response.body)
-        expect(body["comment"]["body"]).to eq("foo")
+        expect(body["comment"]["html_body"]).to eq("<p>foo</p>\n")
         expect(body["comment"]["user"]).to eq(submission.user.username)
       end
 
