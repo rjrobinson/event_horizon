@@ -126,15 +126,22 @@ feature "questions" do
 
       expect(page).to have_content("Edit Question")
 
-      fill_in "Title", with: "New Title!"
-      fill_in "Body", with: "New Body New Body"
+      title = "How strong is gravity at the event horizon?"
+      body = "A complete description of event horizons is
+        expected to, at minimum, require a theory of quantum gravity. One such
+        candidate theory is M-theory. Another such candidate theory is loop
+        quantum gravity."
+
+      fill_in "Title", with: title
+      fill_in "Body", with: body
 
       click_button "Update Question"
 
       expect(page).to have_content("Your question has been updated.")
-      expect(page).to have_content("New Title")
-      expect(page).to have_content("New Body")
+      expect(page).to have_content(title)
+      expect(page).to have_content(body)
     end
+    
     scenario "edit answer"
     scenario "delete question"
     scenario "delete answer"
