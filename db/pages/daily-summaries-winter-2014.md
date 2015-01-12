@@ -271,9 +271,24 @@
 * Thursday
   * **Lectures:** Integrating Search Into Your App (Adam) [repo](https://github.com/LaunchAcademy/movie_catalog)
   * **Focus:** Search
+  * **Other:** Lightning Talks -- Social Boston Sports (William Mahoney), Hacking Flight Fares (Daniel Bonnell), How to make an iPhone App (Tim Desir)
 
+#
+* Friday
+  * Open Work Day
+  * **Other:** Corinne's Career Presentation, Week 9 and 10 expectations
+  * **Group Project Presentations:** [Spotlist](http://spotlist-launch.herokuapp.com/) by William, Jamie, Steven, Diego; [Pizzerium](https://pizzerium.herokuapp.com/) by Chris, Judy, Liz, Kerron; [Code Buddy](http://code-buddy.herokuapp.com/) by Christina, Tracey, Steve, John; [Git That Wifi](https://github.com/danielbonnell/git_that_wifi) by Jenny, Kiran, Daniel, Chan, Nick), [Tipsy Tally](https://github.com/dancernerd32/tipsy_tally) by Alex, Cori, Michael, Lauren, [Countries](https://github.com/nf1213/countries) by Jon, Nicole, Allison, Peter, [Rubbit](https://github.com/parvathyv/rubbit) by Jason, Tim, Zoe, Nathan, Parvathy), [Subway Station Reviews](https://github.com/tylyon/subway_station_reviews) by Chris Wand, James, Ty, Justin, [Three's a Cloud](https://github.com/dgrosenblatt/threesacloud) by Danny R., Patrick, Tamara, Glenn
+
+#
+* Ship It! Saturday 1/10
 
 ## Week 9:  Breakable Toy (Week 1)
+
+#
+* Monday
+  * 9:24: Career Day Presentation Prep
+  * Open Work Day
+  * **Other:** [Tony Eng](https://www.linkedin.com/pub/tony-eng/0/3b3/407)'s presentation on Public Speaking and Pitches
 
 ## Week 10:  Breakable Toy (Week 2)
 
@@ -302,10 +317,14 @@
 #### Rails
 - [Rails Guides](http://guides.rubyonrails.org/)
 - [Responsive Web Design Tools](https://chrome.google.com/webstore/detail/responsive-web-design-tes/objclahbaimlfnbjdeobicmmlnbhamkg?hl=en)
+- [Railscasts](https://gorails.com/)
 
 #### Git
 - [git game](https://github.com/hgarc014/git-game)
 - [gitignore](https://help.github.com/articles/ignoring-files/)
+
+#### Computer Science
+- [A giant list of CS Courses](https://github.com/prakhar1989/awesome-courses)
 
 #### Design
 - [Typecast](http://typecast.com/)
@@ -318,6 +337,7 @@
 
 #### Other
 - [Chrome Video Speed Controller](https://chrome.google.com/webstore/detail/video-speed-controller/nffaoalbilbmmfgbnbgppjihopabppdk?hl=en)
+- [Explore Github](https://github.com/explore) to see what repos are trending or find some interesting open source projects you can join!
 
 ## Books We Recommend
 ###(yes, not everything you need is on a website)
