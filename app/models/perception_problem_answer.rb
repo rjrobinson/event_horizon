@@ -6,4 +6,8 @@ class PerceptionProblemAnswer < ActiveRecord::Base
   validates :user, presence: true
   validates :perception_problem, presence: true
   validates :perception_problem_option, presence: true
+
+  def correct?
+    perception_problem_option.correct?
+  end
 end

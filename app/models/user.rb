@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_many :perception_problem_answers, dependent: :destroy
   has_many :submissions, dependent: :destroy
   has_many :ratings, dependent: :destroy
   has_many :team_memberships, dependent: :destroy

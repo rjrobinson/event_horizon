@@ -1,14 +1,18 @@
 class PerceptionProblemAnswersController < ApplicationController
   before_action :authenticate_user!
 
-  def create
-    @perception_problem = PerceptionProblem.find(params[:perception_problem_id])
-    @perception_problem_answer = @perception_problem.answers.build(answer_params)
-    @perception_problem_answer.user = current_user
+  def show
+    @answer = current_user.perception_problem_answers.find(params[:id])
+  end
 
-    if @perception_problem_answer.save
+  def create
+    @problem = PerceptionProblem.find(params[:perception_problem_id])
+    @answer = @problem.answers.build(answer_params)
+    @answer.user = current_user
+
+    if @answer.save
       flash[:success] = "Answer submitted."
-      redirect_to perception_problem_path(@perception_problem)
+      redirect_to perception_problem_answer_path(@answer)
     else
       flash[:alert] = "Sorry, we couldn't save your answer at this time."
       render "perception_problems/show"

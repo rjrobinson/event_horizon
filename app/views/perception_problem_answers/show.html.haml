@@ -1,0 +1,20 @@
+%h2 Perception Problem - Answered
+
+~ render_markdown(@answer.perception_problem.prompt)
+
+- if @answer.correct?
+  Correct!
+- else
+  Incorrect!
+
+%ul
+  - @answer.perception_problem.options.each do |option|
+    %li
+      .body
+        ~ render_markdown(option.body)
+      .correct
+        Correct:
+        = option.correct
+      .reason
+        Reason:
+        = option.reason

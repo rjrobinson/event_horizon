@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     resources :perception_problem_answers, only: [:create]
   end
 
+  resources :perception_problem_answers, only: [:show]
+
   resources :lessons, only: [:index, :show], param: :slug do
     resources :submissions, only: [:index, :create]
     resources :ratings, only: [:create, :update]
