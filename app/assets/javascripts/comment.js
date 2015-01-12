@@ -1,7 +1,7 @@
 $(function() {
   $(".hidden-attributes").hide();
 
-  $("#submission .line").on("click", function(e) {
+  $(".code-line").on("click", function(e) {
     var line = $(this);
     var sourceFileId = line.parents(".source-file").data("sourceFileId");
     var lineNo = line.data("line-no");
@@ -9,44 +9,35 @@ $(function() {
     var id = "source-" + sourceFileId + "-line-" + lineNo + "-form"
 
     if (!line.hasClass("generated-form")) {
-      var form = $(generateForm(id, action, sourceFileId, lineNo)).insertAfter(line);
+      var row = $(generateRowWithForm(id, action, sourceFileId, lineNo)).insertAfter(line);
+      var form = row.find("form");
+
       form.on("submit", function(e) {
         e.preventDefault();
         $.post(
-          $(this).attr("action") + ".json",
-          $(this).serialize(),
+          form.attr("action") + ".json",
+          form.serialize(),
           function(data) {
             var comment = formatComment(data.comment);
-            form.replaceWith(comment);
+            row.replaceWith(comment);
+            line.removeClass("generated-form");
           }
         );
       });
-      line.addClass("generated-form show-form");
+      line.addClass("generated-form");
     } else {
-      $("#" + id).toggle();
-      line.toggleClass("show-form");
+      var formLine = $("#" + id).parents(".code-comment-form");
+      formLine.toggle();
     }
   });
 });
 
 function formatComment(comment) {
-  return '<div class="inline-comment comment">' +
-    '<div class="inline-comment-body"><div class="user">' +
-    comment.user + ' commented' +
-    '</div><div class="body">' + comment.body + '</div></div></div>';
+  return "<tr class=\"code-comment-inline\"><td colspan=\"2\"><div class=\"code-comment-header\"><span class=\"code-username\">" + comment.user + "</span> commented on <span class=\"code-timestamp\">" + comment.created_at + "</span></div><div class=\"code-comment-body\">" + comment.html_body + "</div></td></tr>";
 }
 
-function generateForm(id, action, sourceFileId, lineNo) {
+function generateRowWithForm(id, action, sourceFileId, lineNo) {
   var token = $("meta[name=\"csrf-token\"]").attr("content");
 
-
-  return '<form accept-charset="UTF-8" action="' + action + '" ' +
-    'class="inline-comment-form" id="' + id + '" method="post">' +
-    '  <input name="utf8" type="hidden" value="&#x2713;" />' +
-    '  <input name="authenticity_token" type="hidden" value="' + token + '" />' +
-    '  <input name="comment[source_file_id]" type="hidden" value="' + sourceFileId + '" />' +
-    '  <input name="comment[line_number]" type="hidden" value="' + lineNo + '" />' +
-    '  <textarea id="comment_body" name="comment[body]" placeholder="Leave a comment..." rows="5"></textarea>' +
-    '  <input class="button tiny" name="commit" type="submit" value="Submit" />' +
-    '</form>';
+  return "<tr class=\"code-comment-form\"><td colspan=\"2\"><form accept-charset=\"UTF-8\" action=\"" + action + "\" id=\"" + id + "\" method=\"post\"><input name=\"utf8\" type=\"hidden\" value=\"&#x2713;\" /><input name=\"authenticity_token\" type=\"hidden\" value=\"" + token + "\" /><input name=\"comment[source_file_id]\" type=\"hidden\" value=\"" + sourceFileId + "\" /><input name=\"comment[line_number]\" type=\"hidden\" value=\"" + lineNo + "\" /><textarea id=\"comment_body\" name=\"comment[body]\" placeholder=\"Leave a comment...\" rows=\"5\"></textarea><input class=\"button tiny\" name=\"commit\" type=\"submit\" value=\"Submit\" /></form></td></tr>";
 }

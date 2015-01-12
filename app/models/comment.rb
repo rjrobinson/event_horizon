@@ -16,4 +16,8 @@ class Comment < ActiveRecord::Base
   def self.pending
     where(delivered: false)
   end
+
+  def html_body
+    Markdown.render_safe(body)
+  end
 end
