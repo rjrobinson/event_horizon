@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     resources :announcements, only: [:index, :create]
   end
 
-  resources :questions, only: [:index, :show, :new, :create, :update] do
+  resources :questions, only: [:index, :show, :new, :create, :update, :edit] do
     resources :answers, only: [:create]
   end
 

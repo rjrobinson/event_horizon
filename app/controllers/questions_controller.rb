@@ -29,8 +29,11 @@ class QuestionsController < ApplicationController
   def update
     question = current_user.questions.find(params[:id])
     question.update(update_params)
-    flash[:info] = "Answer has been accepted."
-    redirect_to question_path(question)
+    redirect_to question_path(question), info: "Your question has been updated."
+  end
+
+  def edit
+    @question = Question.find(params[:id])
   end
 
   private
@@ -40,6 +43,6 @@ class QuestionsController < ApplicationController
   end
 
   def update_params
-    params.require(:question).permit(:accepted_answer_id)
+    params.require(:question).permit(:accepted_answer_id, :title, :body)
   end
 end

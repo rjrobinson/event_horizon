@@ -110,14 +110,31 @@ feature "questions" do
 
       click_button "Accept Answer"
 
-      expect(page).to have_content("Answer has been accepted.")
+      expect(page).to have_content("Your question has been updated.")
       expect(page).to have_content("accepted answer")
 
       question.reload
       expect(question.accepted_answer).to eq(answer)
     end
 
-    scenario "edit question"
+    scenario "edit question" do
+      question = FactoryGirl.create(:question, user: user)
+
+      visit question_path(question)
+
+      click_on "Edit Question"
+
+      expect(page).to have_content("Edit Question")
+
+      fill_in "Title", with: "New Title!"
+      fill_in "Body", with: "New Body New Body"
+
+      click_button "Update Question"
+
+      expect(page).to have_content("Your question has been updated.")
+      expect(page).to have_content("New Title")
+      expect(page).to have_content("New Body")
+    end
     scenario "edit answer"
     scenario "delete question"
     scenario "delete answer"

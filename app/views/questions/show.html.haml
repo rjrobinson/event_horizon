@@ -7,6 +7,7 @@
 
 #question
   %h2.title= @question.title
+  = link_to "Edit Question", edit_question_path(@question)
   .row
     .small-8.columns
       %p.body= @question.body
