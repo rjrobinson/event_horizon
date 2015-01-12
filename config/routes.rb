@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   root "static_pages#home"
 
-  resources :perception_problems, only: [:index, :show]
+  resources :perception_problems, only: [:index, :show] do
+    resources :perception_problem_answers, only: [:create]
+  end
 
   resources :lessons, only: [:index, :show], param: :slug do
     resources :submissions, only: [:index, :create]

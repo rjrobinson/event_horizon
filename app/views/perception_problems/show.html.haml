@@ -2,6 +2,9 @@
 
 ~ render_markdown(@problem.prompt)
 
-%ul.options
+= form_for [@problem, @answer] do |f|
   - @problem.options.each do |option|
-    %li~ render_markdown(option.body)
+    .boop
+      = f.radio_button :perception_problem_option_id, option.id
+      ~ f.label "perception_problem_option_id_#{option.id}", render_markdown(option.body)
+  = f.submit "Submit Answer"

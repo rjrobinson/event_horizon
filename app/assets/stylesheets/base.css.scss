@@ -48,3 +48,8 @@ pre {
   word-wrap: break-word;
   padding: $source-padding;
 }
+
+input[type="radio"] + label,
+input[type="checkbox"] + label {
+  vertical-align: middle;
+}

@@ -204,6 +204,39 @@ ALTER SEQUENCE lessons_id_seq OWNED BY lessons.id;
 
 
 --
+-- Name: perception_problem_answers; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE perception_problem_answers (
+    id integer NOT NULL,
+    user_id integer NOT NULL,
+    perception_problem_id integer NOT NULL,
+    perception_problem_option_id integer NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: perception_problem_answers_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE perception_problem_answers_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: perception_problem_answers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE perception_problem_answers_id_seq OWNED BY perception_problem_answers.id;
+
+
+--
 -- Name: perception_problem_options; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -555,6 +588,13 @@ ALTER TABLE ONLY lessons ALTER COLUMN id SET DEFAULT nextval('lessons_id_seq'::r
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY perception_problem_answers ALTER COLUMN id SET DEFAULT nextval('perception_problem_answers_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY perception_problem_options ALTER COLUMN id SET DEFAULT nextval('perception_problem_options_id_seq'::regclass);
 
 
@@ -655,6 +695,14 @@ ALTER TABLE ONLY lessons
 
 
 --
+-- Name: perception_problem_answers_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY perception_problem_answers
+    ADD CONSTRAINT perception_problem_answers_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: perception_problem_options_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -724,6 +772,13 @@ ALTER TABLE ONLY teams
 
 ALTER TABLE ONLY users
     ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: boop; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX boop ON perception_problem_answers USING btree (perception_problem_option_id);
 
 
 --
@@ -801,6 +856,20 @@ CREATE INDEX index_lessons_on_searchable ON lessons USING gin (searchable);
 --
 
 CREATE UNIQUE INDEX index_lessons_on_slug ON lessons USING btree (slug);
+
+
+--
+-- Name: index_perception_problem_answers_on_perception_problem_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_perception_problem_answers_on_perception_problem_id ON perception_problem_answers USING btree (perception_problem_id);
+
+
+--
+-- Name: index_perception_problem_answers_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_perception_problem_answers_on_user_id ON perception_problem_answers USING btree (user_id);
 
 
 --
@@ -1019,4 +1088,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150102202537');
 INSERT INTO schema_migrations (version) VALUES ('20150112201637');
 
 INSERT INTO schema_migrations (version) VALUES ('20150112203019');
+
+INSERT INTO schema_migrations (version) VALUES ('20150112210914');
 

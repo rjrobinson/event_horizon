@@ -5,5 +5,6 @@ class PerceptionProblemsController < ApplicationController
 
   def show
     @problem = PerceptionProblem.find(params[:id])
+    @answer = PerceptionProblemAnswer.new
   end
 end
