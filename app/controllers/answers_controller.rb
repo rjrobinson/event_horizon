@@ -13,6 +13,17 @@ class AnswersController < ApplicationController
     end
   end
 
+  def edit
+    @answer = Answer.find(params[:id])
+    @question = @answer.question
+  end
+
+  def update
+    answer = current_user.answers.find(params[:id])
+    answer.update(answer_params)
+    redirect_to question_path(answer.question), info: "Your answer has been updated."
+  end
+
   private
 
   def answer_params

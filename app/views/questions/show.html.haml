@@ -26,6 +26,7 @@
         .row
           .small-8.columns
             %p.body= answer.body
+            = link_to "Edit Answer", edit_question_answer_path(@question, answer)
 
           .small-4.columns
             .user

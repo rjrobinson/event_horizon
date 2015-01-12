@@ -124,8 +124,6 @@ feature "questions" do
 
       click_on "Edit Question"
 
-      expect(page).to have_content("Edit Question")
-
       title = "How strong is gravity at the event horizon?"
       body = "A complete description of event horizons is
         expected to, at minimum, require a theory of quantum gravity. One such
@@ -141,8 +139,26 @@ feature "questions" do
       expect(page).to have_content(title)
       expect(page).to have_content(body)
     end
-    
-    scenario "edit answer"
+
+    scenario "edit answer", focus: true do
+      question = FactoryGirl.create(:question, user: user)
+      answer = FactoryGirl.create(:answer, question: question)
+
+      visit question_path(question)
+
+      click_on "Edit Answer"
+
+      body = "No. A complete description of event horizons is not
+      expected to, at minimum, require a theory of quantum gravity."
+
+      fill_in "Answer", with: body
+
+      click_button "Update Answer"
+
+      expect(page).to have_content("Your answer has been updated.")
+      expect(page).to have_content(body)
+    end
+
     scenario "delete question"
     scenario "delete answer"
     scenario "un-accept an answer"

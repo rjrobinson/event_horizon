@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   end
 
   resources :questions, only: [:index, :show, :new, :create, :update, :edit] do
-    resources :answers, only: [:create]
+    resources :answers, only: [:edit, :update, :create]
   end
 
   resource :session, only: [:new, :create, :destroy] do
