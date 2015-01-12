@@ -21,11 +21,15 @@
 
     - @assignment.user_submissions.each do |submission|
       %tr.assignment
-        %td= link_to submission.username, user_path(submission.username)
+        %td
+          - if submission.submission_id
+            = link_to submission.username, submission_path(id: submission.submission_id)
+          - else
+            = submission.username
         %td{ class: (submission.on_time ? "on-time" : "late") }= submission.on_time ? "On-Time" : "Late"
         %td
           - if submission.submission_id
-            = link_to(submission.submission_time, submission_path(id: submission.submission_id))
+            = submission.submission_time
           - else
             No submission.
         %td
