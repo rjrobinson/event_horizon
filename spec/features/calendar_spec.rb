@@ -14,14 +14,36 @@ feature "calendar", %(
 ) do
 
   let(:user) { FactoryGirl.create(:user) }
-  let!(:calendar_event) { FactoryGirl.create(:calendar_event) }
 
-  scenario "user sees calendar event", focus: true do
+  scenario "user sees event information" do
+    calendar_event = FactoryGirl.create(:calendar_event)
+
     sign_in_as(user)
     visit dashboard_path
+
     expect(page).to have_content(calendar_event.from)
     expect(page).to have_content(calendar_event.to)
     expect(page).to have_content(calendar_event.title)
+  end
+
+  scenario "user sees today's and tomorrow's events" do
+    past_event = FactoryGirl.create(:calendar_event, from: 1.day.ago)
+    future_event = FactoryGirl.create(:calendar_event, from: 1.hour.from_now)
+
+    sign_in_as(user)
+    visit dashboard_path
+
+    expect(page).to have_content(past_event.title)
+    expect(page).to have_content(future_event.title)
+  end
+
+  scenario "user should not see old events", focus: true do
+    past_event = FactoryGirl.create(:calendar_event, from: 2.day.ago)
+
+    sign_in_as(user)
+    visit dashboard_path
+
+    expect(page).to_not have_content(past_event.title)
   end
 
 end
