@@ -16,7 +16,7 @@ feature "assign challenges" do
       visit team_assignments_path(team)
 
       select "FizzBuzz", from: "Challenge"
-      fill_in "Due Date", with: "2014-11-14T11:00:00"
+      fill_in "Due Date", with: "2014-11-14T11:00:00-0500"
       check "Required"
 
       click_button "Add Assignment"
@@ -26,7 +26,7 @@ feature "assign challenges" do
       assignment = Assignment.first
       expect(assignment.team).to eq(team)
       expect(assignment.lesson).to eq(challenge)
-      expect(assignment.due_on).to eq("2014-11-14T11:00:00")
+      expect(assignment.due_on).to eq("2014-11-14T11:00:00-0500")
       expect(assignment.required).to eq(true)
 
       expect(page).to have_content("Added assignment for FizzBuzz.")
