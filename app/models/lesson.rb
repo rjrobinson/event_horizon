@@ -45,7 +45,8 @@ class Lesson < ActiveRecord::Base
   end
 
   def clarity
-    ratings.inject(0) {|sum, rating| sum + rating.clarity} / ratings.count.to_f
+    binding.pry
+    ratings.average(:clarity)
   end
 
   def helpfulness
