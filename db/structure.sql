@@ -97,6 +97,39 @@ ALTER SEQUENCE assignments_id_seq OWNED BY assignments.id;
 
 
 --
+-- Name: calendar_events; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE calendar_events (
+    id integer NOT NULL,
+    title character varying(255) NOT NULL,
+    "from" timestamp without time zone NOT NULL,
+    "to" timestamp without time zone NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: calendar_events_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE calendar_events_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: calendar_events_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE calendar_events_id_seq OWNED BY calendar_events.id;
+
+
+--
 -- Name: comments; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -401,6 +434,13 @@ ALTER TABLE ONLY assignments ALTER COLUMN id SET DEFAULT nextval('assignments_id
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY calendar_events ALTER COLUMN id SET DEFAULT nextval('calendar_events_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY comments ALTER COLUMN id SET DEFAULT nextval('comments_id_seq'::regclass);
 
 
@@ -467,6 +507,14 @@ ALTER TABLE ONLY announcements
 
 ALTER TABLE ONLY assignments
     ADD CONSTRAINT assignments_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: calendar_events_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY calendar_events
+    ADD CONSTRAINT calendar_events_pkey PRIMARY KEY (id);
 
 
 --
@@ -786,4 +834,6 @@ INSERT INTO schema_migrations (version) VALUES ('20141113200644');
 INSERT INTO schema_migrations (version) VALUES ('20141126230346');
 
 INSERT INTO schema_migrations (version) VALUES ('20141204203947');
+
+INSERT INTO schema_migrations (version) VALUES ('20150113180539');
 

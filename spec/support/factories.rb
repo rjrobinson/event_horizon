@@ -135,4 +135,10 @@ FactoryGirl.define do
     description "Here is a very nice description for a very nice announcement. The students shall cheer and rejoice when they see it."
     team
   end
+
+  factory :calendar_event do
+    title "Lecture on factory_girl"
+    from "2015-01-10 10:00:00"
+    to "2015-01-10 11:00:00"
+  end
 end

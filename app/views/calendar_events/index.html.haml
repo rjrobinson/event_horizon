@@ -1,0 +1,15 @@
+%h3 Calendar
+
+%table
+  %thead
+    %tr
+      %th From
+      %th To
+      %th Title
+
+  %tbody
+    - @calendar_events.each do |calendar_event|
+      %tr
+        %td= calendar_event.from
+        %td= calendar_event.to
+        %td= calendar_event.title

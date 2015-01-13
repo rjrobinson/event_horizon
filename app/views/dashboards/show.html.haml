@@ -43,3 +43,5 @@
         %td.required= assignment.required ? "yes" : "no"
         %td.submitted= assignment.submitted?(current_user) ? "yes" : "no"
         %td.reviewed= assignment.reviewed?(current_user) ? "yes" : "no"
+
+= render template: "calendar_events/index"
