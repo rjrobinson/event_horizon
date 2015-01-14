@@ -6,12 +6,12 @@ feature "calendar", %(
   So that I can be informed about the happenings of the cohort.
 
   Acceptance Criteria:
-  - [] I can see today and tomorrow's events
+  - [x] I can see today and tomorrow's events
   - [] Events that have already started are shown in a lesser
     visual priority
   - [] I can click on an event and it links to the event in
     the calendar
-) do
+), focus: true do
 
   let(:user) { FactoryGirl.create(:user) }
 
@@ -27,23 +27,32 @@ feature "calendar", %(
   end
 
   scenario "user sees today's and tomorrow's events" do
-    past_event = FactoryGirl.create(:calendar_event, from: 1.day.ago)
-    future_event = FactoryGirl.create(:calendar_event, from: 1.hour.from_now)
+    event_today = FactoryGirl.create(:calendar_event, from: 1.hour.from_now)
+    event_tomorrow = FactoryGirl.create(:calendar_event, from: 2.days.from_now)
 
     sign_in_as(user)
     visit dashboard_path
 
-    expect(page).to have_content(past_event.title)
-    expect(page).to have_content(future_event.title)
+    expect(page).to have_content(event_today.title)
+    expect(page).to have_content(event_tomorrow.title)
   end
 
   scenario "user should not see old events" do
-    past_event = FactoryGirl.create(:calendar_event, from: 2.day.ago)
+    past_event = FactoryGirl.create(:calendar_event, from: 25.hours.ago)
 
     sign_in_as(user)
     visit dashboard_path
 
     expect(page).to_not have_content(past_event.title)
+  end
+
+  scenario "user should not see events far into the future" do
+    future_event = FactoryGirl.create(:calendar_event, from: 2.days.from_now)
+
+    sign_in_as(user)
+    visit dashboard_path
+
+    expect(page).to_not have_content(future_event.title)
   end
 
 end

@@ -138,7 +138,7 @@ FactoryGirl.define do
 
   factory :calendar_event do
     title "Lecture on factory_girl"
-    from { DateTime.new(2015, 1, 10, 9, 0) }
+    from { DateTime.now }
     to { from + 1.hour }
   end
 end
