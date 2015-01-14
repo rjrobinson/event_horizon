@@ -12,9 +12,9 @@
 
       %tbody
         %tr
-          %td= @latest_announcement.try(:title)
+          %td= @latest_announcement.try(:title) || "No new announcements"
 
-    %p= link_to "Read all", team_announcements_path(@team)
+    %p= link_to "Read all announcements", team_announcements_path(@team)
 
 %h3 Upcoming Assignments
 
