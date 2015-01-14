@@ -34,6 +34,16 @@ feature "announcements" do
         expect(page).to have_content(announcement.title)
       end
     end
+
+    scenario "view latest announcement on dashboard", focus: true do
+      old_announcement = FactoryGirl.create(:announcement, team: team)
+      new_announcement = FactoryGirl.create(:announcement, 
+                                            title: "This is a very important announcement!", team: team)
+      visit dashboard_path
+
+      expect(page).to_not have_content(old_announcement.title)
+      expect(page).to have_content(new_announcement.title)
+    end
   end
 
   context "as an admin" do

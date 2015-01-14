@@ -3,24 +3,18 @@
 
 %h2 Dashboard
 
-%h3 Announcements
+.row
+  .large-4.columns.large-offset-8
 
-%table.tablesorter
-  %thead
-    %tr
-      %th Team
-      %th Title
-      %th Description
-      %th
+    %h3 Announcements
 
-  %tbody
-    - @announcements.each do |announcement|
-      %tr
-        %td= link_to(announcement.team.name, announcement.team)
-        %td= announcement.title.truncate(35)
-        %td= announcement.description.truncate(50)
-        %td= link_to("show", announcement)
+    %table
 
+      %tbody
+        %tr
+          %td= @latest_announcement.try(:title)
+
+    %p= link_to "Read all", team_announcements_path(@team)
 
 %h3 Upcoming Assignments
 
