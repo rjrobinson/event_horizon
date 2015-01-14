@@ -37,7 +37,7 @@ feature "calendar", %(
     expect(page).to have_content(future_event.title)
   end
 
-  scenario "user should not see old events", focus: true do
+  scenario "user should not see old events" do
     past_event = FactoryGirl.create(:calendar_event, from: 2.day.ago)
 
     sign_in_as(user)
