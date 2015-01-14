@@ -291,6 +291,11 @@
   * **Other:** [Tony Eng](https://www.linkedin.com/pub/tony-eng/0/3b3/407)'s presentation on Public Speaking and Pitches
   * **Group Project Peer Evaluations:** [Evaluation Form Here](https://docs.google.com/forms/d/1NO0Gdrv98BFcQoSfKLpNSx6NdTNIw8ZSPDVyPAKcxYo/viewform)
 
+* Tuesday
+  * 9:24: Career Day Presentation Prep
+  * **Lectures:** Inheritance (Adam), Open Work Day
+  * **Other:** Lightning Talks -- Baking (Liz), Grilling (Nick), Loyalty Metrics (Judy), Kidney Transplants (Kerron), Medivacs (Steve Rogers), Beer (Jason)
+
 ## Week 10:  Breakable Toy (Week 2)
 
 ## General Resources
