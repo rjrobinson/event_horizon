@@ -29,6 +29,8 @@ Rails.application.routes.draw do
     get "failure", on: :member
   end
 
+  resources :questions, only: [:index]
+
   resource :dashboard, only: [:show]
 
   get "/auth/:provider/callback", to: "sessions#create"
