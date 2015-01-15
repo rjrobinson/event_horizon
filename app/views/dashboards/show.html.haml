@@ -12,7 +12,8 @@
 
       %tbody
         %tr
-          %td= @latest_announcement.try(:title) || "No new announcements"
+          - if @latest_announcement
+            %td= link_to @latest_announcement.title
 
     %p= link_to "Read all announcements", team_announcements_path(@team)
 
