@@ -77,46 +77,6 @@ feature "questions" do
       expect(Question.count).to eq(0)
     end
 
-    scenario "submit an answer successfully" do
-      question = FactoryGirl.create(:question)
-
-      visit question_path(question)
-
-      fill_in "Answer", with: "You need to reticulate the splines."
-      click_button "Submit Answer"
-
-      expect(page).to have_content("Answer saved.")
-      expect(page).to have_content("You need to reticulate the splines.")
-      expect(page).to have_content("#{user.username} answered")
-
-      expect(Answer.count).to eq(1)
-    end
-
-    scenario "display error when submitting a blank answer" do
-      question = FactoryGirl.create(:question)
-
-      visit question_path(question)
-      click_button "Submit Answer"
-
-      expect(page).to have_content("Failed to save answer.")
-      expect(Answer.count).to eq(0)
-    end
-
-    scenario "accept an answer" do
-      question = FactoryGirl.create(:question, user: user)
-      answer = FactoryGirl.create(:answer, question: question)
-
-      visit question_path(question)
-
-      click_button "Accept Answer"
-
-      expect(page).to have_content("Your question has been updated.")
-      expect(page).to have_content("accepted answer")
-
-      question.reload
-      expect(question.accepted_answer).to eq(answer)
-    end
-
     scenario "edit question" do
       question = FactoryGirl.create(:question, user: user)
 
@@ -140,35 +100,14 @@ feature "questions" do
       expect(page).to have_content(body)
     end
 
-    scenario "edit answer", focus: true do
-      question = FactoryGirl.create(:question, user: user)
-      answer = FactoryGirl.create(:answer, question: question)
-
-      visit question_path(question)
-
-      click_on "Edit Answer"
-
-      body = "No. A complete description of event horizons is not
-      expected to, at minimum, require a theory of quantum gravity."
-
-      fill_in "Answer", with: body
-
-      click_button "Update Answer"
-
-      expect(page).to have_content("Your answer has been updated.")
-      expect(page).to have_content(body)
-    end
-
     scenario "delete question"
-    scenario "delete answer"
     scenario "un-accept an answer"
     scenario "change accepted answer"
     scenario "comment on a question"
-    scenario "comment on an answer"
 
     scenario "only original asker can accept answer" do
       question = FactoryGirl.create(:question)
-      answer = FactoryGirl.create(:answer, question: question)
+      FactoryGirl.create(:answer, question: question)
 
       visit question_path(question)
       expect(page).to_not have_button("Accept Answer")

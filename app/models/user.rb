@@ -6,8 +6,8 @@ class User < ActiveRecord::Base
   has_many :assignments, through: :teams
   has_many :announcements, through: :teams
   has_many :questions
-  has_many :answers, through: :questions
-
+  has_many :answers,
+    through: :questions
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
   validates :uid, presence: true, uniqueness: { scope: :provider }

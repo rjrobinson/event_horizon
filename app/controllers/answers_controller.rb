@@ -1,4 +1,6 @@
 class AnswersController < ApplicationController
+  before_action :authenticate_user!
+
   def create
     @question = Question.find(params[:question_id])
     @answer = @question.answers.build(answer_params)
@@ -21,7 +23,8 @@ class AnswersController < ApplicationController
   def update
     answer = current_user.answers.find(params[:id])
     answer.update(answer_params)
-    redirect_to question_path(answer.question), info: "Your answer has been updated."
+    redirect_to question_path(answer.question),
+      info: "Your answer has been updated."
   end
 
   private
