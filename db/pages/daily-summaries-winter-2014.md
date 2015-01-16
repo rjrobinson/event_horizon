@@ -293,8 +293,16 @@
 
 * Tuesday
   * 9:24: Career Day Presentation Prep
-  * **Lectures:** Inheritance (Adam), Open Work Day
+  * **Lectures:** Inheritance (Adam), Breakable Toy Open Work Day
   * **Other:** Lightning Talks -- Baking (Liz), Grilling (Nick), Loyalty Metrics (Judy), Kidney Transplants (Kerron), Medivacs (Steve Rogers), Beer (Jason)
+
+* Wednesday
+  * 9:24: Career Day Presentation Prep
+  * **Lectures:** Big O Notation, Breakable Toy Open Work Day
+
+* Thursday
+  * 9:24: Career Day Presentation Prep
+  * Open Work Day
 
 ## Week 10:  Breakable Toy (Week 2)
 
