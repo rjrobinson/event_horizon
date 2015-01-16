@@ -32,6 +32,12 @@ class QuestionsController < ApplicationController
     redirect_to question_path(question), info: "Your question has been updated."
   end
 
+  def destroy
+    @question = current_user.questions.find(params[:id])
+    @question.destroy
+    redirect_to questions_path, info: "Successfully deleted question"
+  end
+
   def edit
     @question = Question.find(params[:id])
   end

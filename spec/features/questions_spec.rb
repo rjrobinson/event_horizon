@@ -100,9 +100,6 @@ feature "questions" do
       expect(page).to have_content(body)
     end
 
-    scenario "delete question"
-    scenario "un-accept an answer"
-    scenario "change accepted answer"
     scenario "comment on a question"
 
     scenario "only original asker can accept answer" do

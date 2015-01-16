@@ -8,7 +8,6 @@ feature "answering questions" do
       sign_in_as(user)
     end
 
-
     scenario "accept an answer" do
       question = FactoryGirl.create(:question, user: user)
       answer = FactoryGirl.create(:answer, question: question)
