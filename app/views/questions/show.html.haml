@@ -7,8 +7,6 @@
 
 #question
   %h2.title= @question.title
-  = link_to "Edit Question", edit_question_path(@question)
-  = link_to "Delete question", question_path(@question), method: :delete
   .row
     .small-8.columns
       %p.body= @question.body
@@ -17,6 +15,10 @@
         = link_to @question.user.username, user_path(@question.user)
         asked on
         .created_at= format_datetime(@question.created_at)
+        - if @question.user == current_user
+          = link_to "Edit Question", edit_question_path(@question)
+          %br
+          = link_to "Delete question", question_path(@question), method: :delete
 
 #answers
   %h3.answer-count= pluralize(@question.answers.count, "answer")
