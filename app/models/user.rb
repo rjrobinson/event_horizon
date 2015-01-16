@@ -1,19 +1,48 @@
 class User < ActiveRecord::Base
-  has_many :submissions, dependent: :destroy
-  has_many :ratings, dependent: :destroy
-  has_many :team_memberships, dependent: :destroy
-  has_many :teams, through: :team_memberships
-  has_many :assignments, through: :teams
-  has_many :announcements, through: :teams
+  has_many :submissions,
+    dependent: :destroy
 
-  validates :username, presence: true, uniqueness: true
-  validates :email, presence: true, uniqueness: true
-  validates :uid, presence: true, uniqueness: { scope: :provider }
-  validates :provider, presence: true
-  validates :token, presence: true
-  validates :role, presence: true, inclusion: {
-    in: ["member", "admin"]
-  }
+  has_many :ratings,
+    dependent: :destroy
+
+  has_many :team_memberships,
+    dependent: :destroy
+
+  has_many :teams,
+    through: :team_memberships
+
+  has_many :assignments,
+    through: :teams
+
+  has_many :announcements,
+    through: :teams
+
+  include Feedster::Actor
+  include Feedster::Recipient
+
+  validates :username,
+    presence: true,
+    uniqueness: true
+
+  validates :email,
+    presence: true,
+    uniqueness: true
+
+  validates :uid,
+    presence: true,
+    uniqueness: { scope: :provider }
+
+  validates :provider,
+    presence: true
+
+  validates :token,
+    presence: true
+
+  validates :role,
+    presence: true,
+    inclusion: {
+      in: ["member", "admin"]
+    }
 
   before_validation :ensure_authentication_token
 
