@@ -298,11 +298,15 @@
 
 * Wednesday
   * 9:24: Career Day Presentation Prep
-  * **Lectures:** Big O Notation, Breakable Toy Open Work Day
+  * **Lectures:** Big O Notation (Adam), Breakable Toy Open Work Day
 
 * Thursday
   * 9:24: Career Day Presentation Prep
-  * Open Work Day
+  * Breakable Toy Open Work Day
+
+* Friday
+  * 9:24: Career Day Presentation Prep
+  * **Lectures:** Linked Lists (Adam), Breakable Toy Open Work Day
 
 ## Week 10:  Breakable Toy (Week 2)
 
@@ -352,6 +356,7 @@
 #### Other
 - [Chrome Video Speed Controller](https://chrome.google.com/webstore/detail/video-speed-controller/nffaoalbilbmmfgbnbgppjihopabppdk?hl=en)
 - [Explore Github](https://github.com/explore) to see what repos are trending or find some interesting open source projects you can join!
+- ["What happens when you type google.com into your browser and press enter?"](https://github.com/alex/what-happens-when)
 
 ## Books We Recommend
 ###(yes, not everything you need is on a website)
