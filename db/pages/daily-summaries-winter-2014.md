@@ -291,24 +291,32 @@
   * **Other:** [Tony Eng](https://www.linkedin.com/pub/tony-eng/0/3b3/407)'s presentation on Public Speaking and Pitches
   * **Group Project Peer Evaluations:** [Evaluation Form Here](https://docs.google.com/forms/d/1NO0Gdrv98BFcQoSfKLpNSx6NdTNIw8ZSPDVyPAKcxYo/viewform)
 
+#
 * Tuesday
   * 9:24: Career Day Presentation Prep
   * **Lectures:** Inheritance (Adam), Breakable Toy Open Work Day
   * **Other:** Lightning Talks -- Baking (Liz), Grilling (Nick), Loyalty Metrics (Judy), Kidney Transplants (Kerron), Medivacs (Steve Rogers), Beer (Jason)
 
+#
 * Wednesday
   * 9:24: Career Day Presentation Prep
   * **Lectures:** Big O Notation (Adam), Breakable Toy Open Work Day
 
+#
 * Thursday
   * 9:24: Career Day Presentation Prep
   * Breakable Toy Open Work Day
 
+#
 * Friday
   * 9:24: Career Day Presentation Prep
   * **Lectures:** Linked Lists (Adam), Breakable Toy Open Work Day
 
 ## Week 10:  Breakable Toy (Week 2)
+
+* Monday
+  * 9:24: Career Day Presentation Prep, link to [Prior Presentations](https://www.dropbox.com/sh/vag59p1gvpqkn80/AABDT7_RUUI_x4_IttHMFuqaa?dl=0)
+  * Breakable Toy Open Work Day
 
 ## General Resources
 
@@ -344,11 +352,12 @@
 #### Computer Science
 - [A giant list of CS Courses](https://github.com/prakhar1989/awesome-courses)
 
-#### Design
+#### Design / Front-end
 - [Typecast](http://typecast.com/)
 - [Type Genius](http://www.typegenius.com/)
 - [CSS font stack](http://www.cssfontstack.com/)
 - [dribbble](https://dribbble.com/)
+- [Hover](http://ianlunn.github.io/Hover/), a collection of CSS3 powered hover effects to be applied to links, buttons, logos, SVG, featured images and so on.
 
 #### Career
 - [What a Web Developer Should Know](https://gist.github.com/atsheehan/5673edcd03fadb4e9108)
