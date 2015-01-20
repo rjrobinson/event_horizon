@@ -318,6 +318,12 @@
   * 9:24: Career Day Presentation Prep, link to [Prior Presentations](https://www.dropbox.com/sh/vag59p1gvpqkn80/AABDT7_RUUI_x4_IttHMFuqaa?dl=0)
   * Breakable Toy Open Work Day
 
+#
+* Tuesday
+  * 9:24: Career Day Presentation Prep
+  * Breakable Toy Open Work Day
+  * **Other:** Mike Hebert career presentation. Available on Twitter at @mhebertglo and mhebert100@gmail.com
+
 ## General Resources
 
 #### Launch Academy
