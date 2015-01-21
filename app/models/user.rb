@@ -58,6 +58,14 @@ class User < ActiveRecord::Base
     announcements.order(created_at: :desc).limit(count)
   end
 
+  def core_assignments
+     assignments.where(required: true).order(due_on: :asc) 
+  end
+
+  def non_core_assignments
+     assignments.where(required: false).order(due_on: :asc) 
+  end
+
   private
 
   def github_orgs(token)
