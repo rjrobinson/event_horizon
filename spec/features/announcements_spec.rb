@@ -10,7 +10,7 @@ feature "announcements" do
       sign_in_as(team_member.user)
     end
 
-    scenario "view latest announcements on dashboard" do
+    scenario "view latest 5 announcements on dashboard" do
       old_announcements = FactoryGirl.create_list(:announcement, 2, team: team, created_at: 1.day.ago)
       recent_announcements = FactoryGirl.create_list(:announcement, 5, team: team)
 
@@ -35,17 +35,6 @@ feature "announcements" do
       end
     end
 
-    scenario "view latest announcement on dashboard" do
-      old_announcement = FactoryGirl.create(:announcement, team: team)
-      new_announcement = FactoryGirl.create(:announcement,
-        title: "This is a very important announcement!", team: team)
-
-      visit dashboard_path
-
-      expect(page).to_not have_content(old_announcement.title)
-      expect(page).to have_content(new_announcement.title)
-    end
-
     scenario "notified if no announcements exist" do
       visit dashboard_path
 
@@ -57,8 +46,9 @@ feature "announcements" do
       announcement2 = FactoryGirl.create(:announcement, team: team, title: "This is an announcement") 
 
       visit dashboard_path
+      button = "Read all announcements for " + team.name 
 
-      click_on "Read all announcements"
+      click_on button
 
       expect(page).to have_content(announcement1.title)
       expect(page).to have_content(announcement2.title)

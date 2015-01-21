@@ -54,6 +54,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def latest_announcements(count)
+    announcements.order(created_at: :desc).limit(count)
+  end
+
   private
 
   def github_orgs(token)
