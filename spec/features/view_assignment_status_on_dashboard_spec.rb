@@ -53,4 +53,19 @@ feature "assignment status is displayed on dashboard", %q{
     end
   end
 
+  scenario "all required assignments are in a core table", focus: true do
+    visit dashboard_path
+    assignment = user.assignments.first.lesson
+
+    within("table.core-assignments") do
+      expect(page).to have_content(assignment.title)
+    end
+
+    within("table.non-core-assignments") do
+      expect(page).to_not have_content(assignment.title)
+    end
+  end
+
+  scenario "all not required assignments are in a non-core table" 
+
 end
