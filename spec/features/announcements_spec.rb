@@ -49,6 +49,7 @@ feature "announcements" do
     scenario "notified if no announcements exist", focus: true do
       visit dashboard_path
 
+      save_and_open_page
       expect(page).to have_content("No new announcements")
     end
 

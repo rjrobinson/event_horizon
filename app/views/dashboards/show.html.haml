@@ -14,8 +14,10 @@
         %tr
           - if @latest_announcement
             %td= link_to @latest_announcement.title
+          - else
+            %p No new announcements
 
-    %p= link_to "Read all announcements", team_announcements_path(@team)
+    %p= link_to "Read all announcements", team_announcements_path(@team), class: "button small"
 
 %h3 Upcoming Assignments
 
