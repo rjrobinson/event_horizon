@@ -324,6 +324,13 @@
   * Breakable Toy Open Work Day
   * **Other:** Mike Hebert career presentation. Available on Twitter at @mhebertglo and mhebert100@gmail.com
 
+#
+* Wednesday
+  * 9:24: Career Day Presentation Prep
+  * **Lectures:** How Career Day is Going to Work (Dan)
+  * Breakable Toy Open Work Day
+  * [Link](https://www.dropbox.com/sh/xvahmwiaw31lkim/AAA8k_MS0tG_TqcUwMl4A0M4a?dl=0) to Dropbox for Student Career Day Screencasts
+
 ## General Resources
 
 #### Launch Academy
@@ -352,6 +359,7 @@
 - [Railscasts](https://gorails.com/)
 
 #### Git
+- [github cheat sheet](https://github.com/tiimgreen/github-cheat-sheet)
 - [git game](https://github.com/hgarc014/git-game)
 - [gitignore](https://help.github.com/articles/ignoring-files/)
 
@@ -367,6 +375,7 @@
 
 #### Career
 - [What a Web Developer Should Know](https://gist.github.com/atsheehan/5673edcd03fadb4e9108)
+- [Front-end Job Interview Questions](https://github.com/h5bp/Front-end-Developer-Interview-Questions)
 
 #### Other
 - [Chrome Video Speed Controller](https://chrome.google.com/webstore/detail/video-speed-controller/nffaoalbilbmmfgbnbgppjihopabppdk?hl=en)
