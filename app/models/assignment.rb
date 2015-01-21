@@ -11,6 +11,10 @@ class Assignment < ActiveRecord::Base
     lesson.submissions.where(user: user).count > 0
   end
 
+  def late?
+    DateTime.now > due_on
+  end
+
   def core
     where(required: true)
   end

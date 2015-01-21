@@ -38,7 +38,7 @@
 
   %tbody
     - @upcoming_core_assignments.each do |assignment|
-      %tr
+      %tr{ class: assignment_state(assignment, current_user) }
         %td= link_to(assignment.team.name, assignment.team)
         %td= link_to(assignment.lesson.title, assignment.lesson)
         %td= format_datetime(assignment.due_on)
