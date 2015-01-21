@@ -9,15 +9,16 @@
     %h3 Announcements
 
     %table
-
       %tbody
-        %tr
+        %tr.panel.callout
           - if @latest_announcement
-            %td= link_to @latest_announcement.title
+            %td
+              %h4= link_to @latest_announcement.title, announcement_path(@latest_announcement)
+              %p= @latest_announcement.description.truncate(40)
           - else
             %p No new announcements
 
-    %p= link_to "Read all announcements", team_announcements_path(@team), class: "button small"
+    %div= link_to "Read all announcements", team_announcements_path(@team), class: "button small"
 
 %h3 Upcoming Assignments
 
