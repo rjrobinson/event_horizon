@@ -82,4 +82,12 @@ feature "assignment status is displayed on dashboard", %q{
     end
   end
 
+  scenario "submitted assignments turn green", focus: true do
+    visit dashboard_path
+
+    within("table.core-assignments") do
+      expect(page).to have_css("submitted-assignment")
+    end
+  end
+
 end
