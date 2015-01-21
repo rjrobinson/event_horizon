@@ -112,6 +112,15 @@ FactoryGirl.define do
         create(:submission, lesson: assignment.lesson, user: user)
       end
     end
+
+    factory :user_with_multiple_assignment_submissions do
+      after(:create) do |user|
+        team_membership = create(:team_membership , user: user)
+        core = create(:assignment, team: team_membership.team)
+        non_core = create(:assignment, required: false, team: team_membership.team)
+        create(:submission, lesson: core.lesson, user: user)
+      end
+    end
   end
 
   factory :team do

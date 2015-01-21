@@ -8,7 +8,7 @@ feature "assignment status is displayed on dashboard", %q{
 
 } do
 
-  let(:user) { FactoryGirl.create(:user_with_assignment_submission) }
+  let(:user) { FactoryGirl.create(:user_with_multiple_assignment_submissions) }
   let(:admin) { FactoryGirl.create(:admin) }
 
   before(:each) do
@@ -66,6 +66,20 @@ feature "assignment status is displayed on dashboard", %q{
     end
   end
 
-  scenario "all not required assignments are in a non-core table" 
+  scenario "all not required assignments are in a non-core table", focus: true do
+    core = user.assignments.first.lesson
+    non_core = user.assignments.last.lesson
+
+    visit dashboard_path
+
+    within("table.core-assignments") do
+      expect(page).to have_content(core.title)
+    end
+
+    within("table.non-core-assignments") do
+      expect(page).to_not have_content(core.title)
+      expect(page).to have_content(non_core.title)
+    end
+  end
 
 end
