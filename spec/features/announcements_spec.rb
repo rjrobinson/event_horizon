@@ -35,7 +35,7 @@ feature "announcements" do
       end
     end
 
-    scenario "view latest announcement on dashboard", focus: true do
+    scenario "view latest announcement on dashboard" do
       old_announcement = FactoryGirl.create(:announcement, team: team)
       new_announcement = FactoryGirl.create(:announcement,
         title: "This is a very important announcement!", team: team)
@@ -46,14 +46,13 @@ feature "announcements" do
       expect(page).to have_content(new_announcement.title)
     end
 
-    scenario "notified if no announcements exist", focus: true do
+    scenario "notified if no announcements exist" do
       visit dashboard_path
 
-      save_and_open_page
       expect(page).to have_content("No new announcements")
     end
 
-    scenario "there is a link to announcements page from dashboard", focus: true do
+    scenario "there is a link to announcements page from dashboard" do
       announcement1 = FactoryGirl.create(:announcement, team: team)
       announcement2 = FactoryGirl.create(:announcement, team: team, title: "This is an announcement") 
 
