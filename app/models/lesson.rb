@@ -18,6 +18,10 @@ class Lesson < ActiveRecord::Base
     greater_than_or_equal_to: 1
   }
 
+  validates :visibility, presence: true, inclusion: [
+    "public", "assign"
+  ]
+
   mount_uploader :archive, LessonUploader
 
   def to_param
@@ -97,6 +101,7 @@ class Lesson < ActiveRecord::Base
     lesson.description = attributes["description"]
     lesson.type = attributes["type"]
     lesson.position = attributes["position"]
+    lesson.visibility = attributes["visibility"] || "public"
 
     if lesson.accepts_submissions?
       Dir.mktmpdir("archive") do |tmpdir|
