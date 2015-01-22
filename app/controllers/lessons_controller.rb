@@ -1,28 +1,51 @@
 class LessonsController < ApplicationController
   def index
-    if user_signed_in?
-      @lessons = Lesson.visible_for(current_user)
-    else
-      @lessons = Lesson.public
-    end
-
-    if params[:query]
-      @lessons = @lessons.search(params[:query])
-    else
-      @lessons = @lessons.order(:position)
-    end
-
-    if params[:submittable] == "1"
-      @lessons = @lessons.submittable
-    end
-
-    if params[:type]
-      @lessons = @lessons.type(params[:type])
-    end
+    @lessons = filter_lessons(Lesson.order(:position))
   end
 
   def show
     @lesson = Lesson.find_by!(slug: params[:slug])
     @rating = @lesson.ratings.find_or_initialize_by(user: current_user)
+  end
+
+  private
+
+  def filter_lessons(lessons)
+    lessons = visible_filter(current_user, lessons)
+    lessons = type_filter(params[:type], lessons)
+    lessons = submittable_filter(params[:submittable], lessons)
+    search_filter(params[:query], lessons)
+  end
+
+  def search_filter(query, lessons)
+    if query
+      lessons.search(query)
+    else
+      lessons
+    end
+  end
+
+  def submittable_filter(flag, lessons)
+    if flag == "1"
+      lessons.submittable
+    else
+      lessons
+    end
+  end
+
+  def type_filter(type, lessons)
+    if type
+      lessons.type(type)
+    else
+      lessons
+    end
+  end
+
+  def visible_filter(user, lessons)
+    if user
+      lessons.visible_for(user)
+    else
+      lessons.public
+    end
   end
 end
