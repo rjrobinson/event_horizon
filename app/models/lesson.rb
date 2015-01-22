@@ -40,6 +40,14 @@ class Lesson < ActiveRecord::Base
     SUBMITTABLE_TYPES.include?(type)
   end
 
+  def self.public
+    where(visibility: "public")
+  end
+
+  def self.visible_for(user)
+    where("visibility = 'public' OR id IN (?)", user.assigned_lesson_ids)
+  end
+
   def self.submittable
     where(type: SUBMITTABLE_TYPES)
   end

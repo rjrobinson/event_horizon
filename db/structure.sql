@@ -147,7 +147,8 @@ CREATE TABLE lessons (
     archive character varying(255),
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    "position" integer NOT NULL
+    "position" integer NOT NULL,
+    visibility character varying(255) DEFAULT 'public'::character varying NOT NULL
 );
 
 
@@ -597,6 +598,13 @@ CREATE UNIQUE INDEX index_lessons_on_slug ON lessons USING btree (slug);
 
 
 --
+-- Name: index_lessons_on_visibility; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_lessons_on_visibility ON lessons USING btree (visibility);
+
+
+--
 -- Name: index_ratings_on_lesson_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -786,4 +794,6 @@ INSERT INTO schema_migrations (version) VALUES ('20141113200644');
 INSERT INTO schema_migrations (version) VALUES ('20141126230346');
 
 INSERT INTO schema_migrations (version) VALUES ('20141204203947');
+
+INSERT INTO schema_migrations (version) VALUES ('20150122213444');
 

@@ -1,9 +1,15 @@
 class LessonsController < ApplicationController
   def index
-    if params[:query]
-      @lessons = Lesson.search(params[:query])
+    if user_signed_in?
+      @lessons = Lesson.visible_for(current_user)
     else
-      @lessons = Lesson.order(:position)
+      @lessons = Lesson.public
+    end
+
+    if params[:query]
+      @lessons = @lessons.search(params[:query])
+    else
+      @lessons = @lessons.order(:position)
     end
 
     if params[:submittable] == "1"
