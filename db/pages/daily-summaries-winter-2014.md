@@ -331,6 +331,12 @@
   * Breakable Toy Open Work Day
   * [Link](https://www.dropbox.com/sh/xvahmwiaw31lkim/AAA8k_MS0tG_TqcUwMl4A0M4a?dl=0) to Dropbox for Student Career Day Screencasts
 
+#
+* Thursday
+  * 9:24: Career Day Presentation Prep with Screencasts
+  * Breakable Toy Open Work Day
+  * [Link](https://www.dropbox.com/sh/xvahmwiaw31lkim/AAA8k_MS0tG_TqcUwMl4A0M4a?dl=0) to Dropbox for Student Career Day Screencasts
+
 ## General Resources
 
 #### Launch Academy
@@ -362,6 +368,7 @@
 - [github cheat sheet](https://github.com/tiimgreen/github-cheat-sheet)
 - [git game](https://github.com/hgarc014/git-game)
 - [gitignore](https://help.github.com/articles/ignoring-files/)
+- [githug](https://github.com/Gazler/githug)
 
 #### Computer Science
 - [A giant list of CS Courses](https://github.com/prakhar1989/awesome-courses)
