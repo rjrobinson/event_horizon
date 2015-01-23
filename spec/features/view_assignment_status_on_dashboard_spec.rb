@@ -53,7 +53,7 @@ feature "assignment status is displayed on dashboard", %q{
     end
   end
 
-  scenario "all required assignments are in a core table", focus: true do
+  scenario "all required assignments are in a core table" do
     visit dashboard_path
     assignment = user.assignments.first.lesson
 
@@ -66,7 +66,7 @@ feature "assignment status is displayed on dashboard", %q{
     end
   end
 
-  scenario "all not required assignments are in a non-core table", focus: true do
+  scenario "all not required assignments are in a non-core table" do
     core = user.assignments.first.lesson
     non_core = user.assignments.last.lesson
 
@@ -82,12 +82,21 @@ feature "assignment status is displayed on dashboard", %q{
     end
   end
 
-  scenario "submitted assignments turn green", focus: true do
+  scenario "submitted assignments turn green" do
     visit dashboard_path
 
     within("table.core-assignments") do
       expect(page).to have_css("submitted-assignment")
     end
+  end
+
+  scenario "submitted assignments have link to the assignment", focus: true do
+    core = user.assignments.first.lesson
+    visit dashboard_path
+
+    click_on "See"
+
+    expect(page).to have_content(core.title)
   end
 
 end

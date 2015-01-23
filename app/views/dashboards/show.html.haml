@@ -43,7 +43,7 @@
         %td= link_to(assignment.lesson.title, assignment.lesson)
         %td= format_datetime(assignment.due_on)
         %td.required= assignment.required ? "yes" : "no"
-        %td.submitted= assignment.submitted?(current_user) ? "yes" : "no"
+        %td.submitted= assignment.submitted?(current_user) ? link_to("See",assignment.lesson.submissions.where(user: current_user)) : "no"
         %td.reviewed= assignment.reviewed?(current_user) ? "yes" : "no"
 
 %h3 Non-core Assignments
