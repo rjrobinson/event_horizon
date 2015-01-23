@@ -6,8 +6,6 @@ class User < ActiveRecord::Base
   has_many :assignments, through: :teams
   has_many :announcements, through: :teams
   has_many :announcement_receipts
-  # has_many :received_announcements, through: :announcement_receipts,
-    # class_name: Announcement
 
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true

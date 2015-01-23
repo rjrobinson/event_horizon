@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   resources :announcements, only: [:show, :destroy]
 
-  resources :announcement_receipts, only: [:new, :create]
+  resources :announcement_receipts, only: [:create]
 
   resources :users, only: [:index, :show], param: :username
 

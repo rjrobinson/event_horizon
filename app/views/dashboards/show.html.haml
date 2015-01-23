@@ -14,7 +14,7 @@
           - @latest_announcements.each do |announcement|
             %tr.panel.callout.latest-announcement
               %td
-                %h4= link_to announcement.title, announcement_path(announcement)
+                %h4= link_to announcement.title, announcement_path(announcement), id: announcement.id
                 %p= announcement.description.truncate(40)
         - else
           %tr

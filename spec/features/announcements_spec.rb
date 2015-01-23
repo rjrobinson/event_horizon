@@ -58,9 +58,17 @@ feature "announcements" do
       announcement = FactoryGirl.create(:announcement, team: team)
 
       visit dashboard_path
+      expect(page).to have_content(announcement.title)
+
+      # visit announcement_path(announcement)
+      expect(page).to have_link(announcement.title, href: announcement_path(announcement))
+
       click_link announcement.title
 
-      click_button "Read"
+      # binding.pry
+      # find(announcement.id).click
+
+      click_button "read"
       expect(page).to_not have_content(announcement.title)
       expect(page).to have_content("Dashboard")
     end
