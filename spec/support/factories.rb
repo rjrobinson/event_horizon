@@ -117,8 +117,8 @@ FactoryGirl.define do
       after(:create) do |user|
         team_membership = create(:team_membership , user: user)
         core = create(:assignment, team: team_membership.team)
-        non_core = create(:assignment, required: false, team: team_membership.team)
-        create(:submission, lesson: core.lesson, user: user)
+        create(:assignment, required: false, team: team_membership.team)
+        variable = create(:submission, lesson: core.lesson, user: user)
       end
     end
   end

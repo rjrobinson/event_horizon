@@ -18,7 +18,7 @@ feature "assignment status is displayed on dashboard", %q{
   scenario "user completes assignment" do
     visit dashboard_path
 
-    within("td.submitted") do
+    within(".core-assignments td.submitted") do
       expect(page).to have_content("yes")
     end
   end
@@ -26,7 +26,7 @@ feature "assignment status is displayed on dashboard", %q{
   scenario "user submission has not been reviewed" do
     visit dashboard_path
 
-    within("td.reviewed") do
+    within(".core-assignments td.reviewed") do
       expect(page).to have_content("no")
     end
   end
@@ -37,7 +37,7 @@ feature "assignment status is displayed on dashboard", %q{
 
     visit dashboard_path
 
-    within("td.reviewed") do
+    within(".core-assignments td.reviewed") do
       expect(page).to have_content("no")
     end
   end
@@ -48,7 +48,7 @@ feature "assignment status is displayed on dashboard", %q{
 
     visit dashboard_path
 
-    within("td.reviewed") do
+    within(".core-assignments td.reviewed") do
       expect(page).to have_content("yes")
     end
   end
@@ -85,8 +85,9 @@ feature "assignment status is displayed on dashboard", %q{
   scenario "submitted assignments turn green" do
     visit dashboard_path
 
-    within("table.core-assignments") do
-      expect(page).to have_css("submitted-assignment")
+    within(".core-assignments") do
+      save_and_open_page
+      expect(page).to have_css(".submitted-assignment")
     end
   end
 end
