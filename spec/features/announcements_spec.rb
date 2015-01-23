@@ -94,5 +94,12 @@ feature "announcements" do
       expect(page).to have_content "You have deleted an announcement."
       expect(Announcement.count).to eq(0)
     end
+
+    scenario "marking assignment read removes it from dashboard" do
+      announcement = FactoryGirl.create(:announcement, team: team)
+      visit dashboard_path
+      click_link "read"
+      expect(page).to_not have_content(announcement.title)
+    end
   end
 end
