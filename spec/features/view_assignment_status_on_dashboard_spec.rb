@@ -89,14 +89,4 @@ feature "assignment status is displayed on dashboard", %q{
       expect(page).to have_css("submitted-assignment")
     end
   end
-
-  scenario "submitted assignments have link to the assignment", focus: true do
-    core = user.assignments.first.lesson
-    visit dashboard_path
-
-    click_on "See"
-
-    expect(page).to have_content(core.title)
-  end
-
 end
