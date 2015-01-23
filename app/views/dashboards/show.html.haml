@@ -16,7 +16,6 @@
               %td
                 %h4= link_to announcement.title, announcement_path(announcement)
                 %p= announcement.description.truncate(40)
-                %p= link_to "read", announcement_receipts_path(announcement_id: announcement.id), method: :post
         - else
           %tr
             %td.panel.callout.latest-announcement

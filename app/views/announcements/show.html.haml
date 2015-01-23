@@ -7,3 +7,4 @@
   ~ render_markdown(@announcement.description)
 
 %td= link_to("delete announcement", announcement_path, method: :delete, class: "button small alert")
+%td= link_to "read", announcement_receipts_path(announcement_id: @announcement.id), method: :post, class: "button small success"
