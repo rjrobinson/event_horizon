@@ -19,3 +19,10 @@
 .late-assignment {
   background: #F2DEDE !important;
 }
+
+.core-assignments a {
+  color: black;
+  &:hover {
+    border-bottom: 2px solid black;
+  }
+}
