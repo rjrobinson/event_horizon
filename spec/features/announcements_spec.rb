@@ -54,21 +54,15 @@ feature "announcements" do
       expect(page).to have_content(announcement2.title)
     end
 
-    scenario "marking assignment read removes it from dashboard", focus: true do
+    scenario "marking assignment read removes it from dashboard" do
       announcement = FactoryGirl.create(:announcement, team: team)
 
       visit dashboard_path
       expect(page).to have_content(announcement.title)
 
-      # visit announcement_path(announcement)
-      expect(page).to have_link(announcement.title, href: announcement_path(announcement))
-
       click_link announcement.title
+      click_on "Got It"
 
-      # binding.pry
-      # find(announcement.id).click
-
-      click_button "read"
       expect(page).to_not have_content(announcement.title)
       expect(page).to have_content("Dashboard")
     end
@@ -104,6 +98,7 @@ feature "announcements" do
     end
 
     scenario "remove an existing announcement" do
+      FactoryGirl.create(:team_membership, user: admin, team: team)
       announcement = FactoryGirl.create(:announcement, team: team)
 
       visit announcement_path(announcement)
