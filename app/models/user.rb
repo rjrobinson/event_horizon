@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   has_many :teams, through: :team_memberships
   has_many :assignments, through: :teams
   has_many :announcements, through: :teams
+  has_many :announcement_receipts
 
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
@@ -52,6 +53,13 @@ class User < ActiveRecord::Base
     else
       github_orgs(oauth_token).any? { |org| org["login"] == organization }
     end
+  end
+
+  def latest_announcements(count)
+    announcements.
+      joins("LEFT JOIN announcement_receipts ON announcements.id = announcement_receipts.announcement_id AND announcement_receipts.user_id = #{id}").
+      where("announcement_receipts.id IS NULL").
+      order(created_at: :desc).limit(count)
   end
 
   private
