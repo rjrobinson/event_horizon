@@ -12,7 +12,7 @@ class Assignment < ActiveRecord::Base
   end
 
   def late?
-    DateTime.now > due_on
+    Time.zone.now > due_on
   end
 
   def core

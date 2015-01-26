@@ -86,7 +86,6 @@ feature "assignment status is displayed on dashboard", %q{
     visit dashboard_path
 
     within(".core-assignments") do
-      save_and_open_page
       expect(page).to have_css(".submitted-assignment")
     end
   end
