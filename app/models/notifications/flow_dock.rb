@@ -1,6 +1,6 @@
 module Notifications
   class FlowDock
-    FROM_SOURCE = 'Launch Pass'
+    FROM_SOURCE = 'Launch-Staff'
     EMAIL = 'hello@launchacademy.com'
 
     def initialize(*args)
@@ -15,11 +15,10 @@ module Notifications
       )
     end
 
-    def push_to_team_inbox
-      @flow.push_to_team_inbox(
-        subject: @message_args[:subject],
-        content: @message_args[:message],
-        link: @message_args[:link]
+    def push_to_chat
+      @flow.push_to_chat(
+        content:  @message_args[:content],
+        external_user_name: @message_args[:external_user_name]
       )
     end
 

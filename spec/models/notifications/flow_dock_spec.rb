@@ -15,24 +15,22 @@ describe Notifications::FlowDock do
     end
   end
 
-  describe '#push_to_inbox' do
-    it 'call the push_to_team_inbox on the FlowDock::Flow' do
+  describe '#push_to_chat' do
+    it 'call the push_to_chat on the FlowDock::Flow' do
       flow = mock
       Flowdock::Flow.stubs(:new).returns(flow)
 
       flow_dock = Notifications::FlowDock.new(
-        message: 'hi there',
-        subject: 'dan',
-        link: 'some/url'
+        content: 'Make sure to read this reading!',
+        external_user_name: 'SpencerCDixon'
       )
 
-      flow.expects(:push_to_team_inbox).with(
-        subject: 'dan',
-        content: 'hi there',
-        link: 'some/url'
+      flow.expects(:push_to_chat).with(
+        content: 'Make sure to read this reading!',
+        external_user_name: 'SpencerCDixon'
       )
 
-      flow_dock.push_to_team_inbox
+      flow_dock.push_to_chat
     end
   end
 end
