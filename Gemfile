@@ -20,18 +20,21 @@ gem "carrierwave"
 gem "fog"
 gem "sidekiq"
 gem "newrelic_rpm"
+gem "flowdock"
 
 group :development do
   gem "spring"
   gem "quiet_assets"
-  gem "dotenv-rails"
 end
 
 group :development, :test do
+  gem "dotenv-rails"
   gem "rspec-rails"
   gem "capybara"
   gem "factory_girl_rails"
   gem "pry-rails"
+  gem "webmock"
+  gem "vcr"
 end
 
 group :test do
