@@ -40,6 +40,7 @@ end
 group :test do
   gem "coveralls", require: false
   gem "launchy", require: false
+  gem 'mocha', require: false
 end
 
 group :production do
