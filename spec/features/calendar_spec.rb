@@ -11,7 +11,7 @@ feature "calendar", %(
     visual priority
   - [] I can click on an event and it links to the event in
     the calendar
-), focus: true do
+) do
 
   let(:user) { FactoryGirl.create(:user) }
 

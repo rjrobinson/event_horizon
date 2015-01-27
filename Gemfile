@@ -33,6 +33,7 @@ group :development, :test do
   gem "capybara"
   gem "factory_girl_rails"
   gem "pry-rails"
+  gem "shoulda-matchers"
 end
 
 group :test do

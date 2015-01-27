@@ -107,6 +107,7 @@ CREATE TABLE calendar_events (
     "to" timestamp without time zone NOT NULL,
     url text,
     eid character varying(255),
+    calendar_id integer,
     created_at timestamp without time zone,
     updated_at timestamp without time zone
 );

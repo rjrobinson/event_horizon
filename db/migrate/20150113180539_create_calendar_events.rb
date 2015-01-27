@@ -6,6 +6,7 @@ class CreateCalendarEvents < ActiveRecord::Migration
       t.datetime :to, null: false
       t.text :url
       t.string :eid
+      t.integer :calendar_id
 
       t.timestamps
     end

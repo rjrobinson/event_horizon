@@ -1,4 +1,6 @@
 class CalendarEvent < ActiveRecord::Base
+  belongs_to :calendar
+
   validates :title, presence: true
   validates :from, presence: true
   validates :to, presence: true
