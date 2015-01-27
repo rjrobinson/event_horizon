@@ -33,14 +33,14 @@ group :development, :test do
   gem "capybara"
   gem "factory_girl_rails"
   gem "pry-rails"
-  gem "webmock"
   gem "vcr"
 end
 
 group :test do
   gem "coveralls", require: false
   gem "launchy", require: false
-  gem 'mocha', require: false
+  gem "mocha", require: false
+  gem "webmock"
 end
 
 group :production do
