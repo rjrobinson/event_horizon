@@ -105,6 +105,8 @@ CREATE TABLE calendar_events (
     title character varying(255) NOT NULL,
     "from" timestamp without time zone NOT NULL,
     "to" timestamp without time zone NOT NULL,
+    url text,
+    eid character varying(255),
     created_at timestamp without time zone,
     updated_at timestamp without time zone
 );
@@ -127,6 +129,38 @@ CREATE SEQUENCE calendar_events_id_seq
 --
 
 ALTER SEQUENCE calendar_events_id_seq OWNED BY calendar_events.id;
+
+
+--
+-- Name: calendars; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE calendars (
+    id integer NOT NULL,
+    name character varying(255) NOT NULL,
+    cid character varying(255) NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: calendars_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE calendars_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: calendars_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE calendars_id_seq OWNED BY calendars.id;
 
 
 --
@@ -356,7 +390,8 @@ CREATE TABLE teams (
     id integer NOT NULL,
     name character varying(255) NOT NULL,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    calendar_url text
 );
 
 
@@ -441,6 +476,13 @@ ALTER TABLE ONLY calendar_events ALTER COLUMN id SET DEFAULT nextval('calendar_e
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY calendars ALTER COLUMN id SET DEFAULT nextval('calendars_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY comments ALTER COLUMN id SET DEFAULT nextval('comments_id_seq'::regclass);
 
 
@@ -515,6 +557,14 @@ ALTER TABLE ONLY assignments
 
 ALTER TABLE ONLY calendar_events
     ADD CONSTRAINT calendar_events_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: calendars_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY calendars
+    ADD CONSTRAINT calendars_pkey PRIMARY KEY (id);
 
 
 --
@@ -836,4 +886,8 @@ INSERT INTO schema_migrations (version) VALUES ('20141126230346');
 INSERT INTO schema_migrations (version) VALUES ('20141204203947');
 
 INSERT INTO schema_migrations (version) VALUES ('20150113180539');
+
+INSERT INTO schema_migrations (version) VALUES ('20150122160334');
+
+INSERT INTO schema_migrations (version) VALUES ('20150123203729');
 

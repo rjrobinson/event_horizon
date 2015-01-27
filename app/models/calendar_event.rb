@@ -4,6 +4,8 @@ class CalendarEvent < ActiveRecord::Base
   validates :to, presence: true
 
   def self.recent
-    where(from: 1.day.ago..1.day.from_now)
+    today = Time.now.beginning_of_day
+    tomorrow = (today + 1.day).end_of_day
+    where(from: today..tomorrow)
   end
 end

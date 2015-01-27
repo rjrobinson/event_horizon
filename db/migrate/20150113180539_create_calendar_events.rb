@@ -4,6 +4,8 @@ class CreateCalendarEvents < ActiveRecord::Migration
       t.string :title, null: false
       t.datetime :from, null: false
       t.datetime :to, null: false
+      t.text :url
+      t.string :eid
 
       t.timestamps
     end

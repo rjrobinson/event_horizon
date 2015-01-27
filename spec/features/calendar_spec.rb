@@ -28,7 +28,7 @@ feature "calendar", %(
 
   scenario "user sees today's and tomorrow's events" do
     event_today = FactoryGirl.create(:calendar_event, from: 1.hour.from_now)
-    event_tomorrow = FactoryGirl.create(:calendar_event, from: 2.days.from_now)
+    event_tomorrow = FactoryGirl.create(:calendar_event, from: 1.day.from_now)
 
     sign_in_as(user)
     visit dashboard_path

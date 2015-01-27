@@ -30,3 +30,6 @@
 
 # Ignore database dumps
 /db/dumps/*
+
+# Ignore .p12 files
+/*.p12
