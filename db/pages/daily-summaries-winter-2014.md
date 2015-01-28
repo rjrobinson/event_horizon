@@ -3,7 +3,7 @@
 ## Week 1: Ruby Fundamentals
 
 * Monday
-  * 10 AM - introductions, administrivia, key fobs, mentor group assignments
+  * 10 AM - Introductions, administrivia, key fobs, mentor group assignments
   * 11 AM - Mentor Group presentations
   * 12:15 PM - LUNCH
   * 1:30 PM -
@@ -335,7 +335,11 @@
 * Thursday
   * 9:24: Career Day Presentation Prep with Screencasts
   * Breakable Toy Open Work Day
-  * [Link](https://www.dropbox.com/sh/xvahmwiaw31lkim/AAA8k_MS0tG_TqcUwMl4A0M4a?dl=0) to Dropbox for Student Career Day Screencasts
+
+#
+* Friday
+  * 9:24: Career Day Presentation Prep with Screencasts
+  * Breakable Toy Open Work Day / Due date (styled, deployed & feature complete)
 
 ## General Resources
 
