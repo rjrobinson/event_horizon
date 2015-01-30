@@ -386,6 +386,7 @@
 
 #### Career
 - [What a Web Developer Should Know](https://gist.github.com/atsheehan/5673edcd03fadb4e9108)
+- [Launch's Collection of Interview Questions](https://gist.github.com/vikram7/363d7944b4f483125599)
 - [Front-end Job Interview Questions](https://github.com/h5bp/Front-end-Developer-Interview-Questions)
 
 #### Other
