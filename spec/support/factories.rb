@@ -136,7 +136,13 @@ FactoryGirl.define do
     team
   end
 
+  factory :calendar do
+    sequence(:name) { |n| "Calendar #{n}" }
+    sequence(:cid) { |n| "calendar-reference-email#{n}@gmail.com" }
+  end
+
   factory :calendar_event do
+    calendar
     title "Lecture on factory_girl"
     from { DateTime.now }
     to { from + 1.hour }

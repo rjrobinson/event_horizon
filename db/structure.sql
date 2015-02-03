@@ -391,8 +391,7 @@ CREATE TABLE teams (
     id integer NOT NULL,
     name character varying(255) NOT NULL,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone,
-    calendar_url text
+    updated_at timestamp without time zone
 );
 
 
@@ -887,8 +886,6 @@ INSERT INTO schema_migrations (version) VALUES ('20141126230346');
 INSERT INTO schema_migrations (version) VALUES ('20141204203947');
 
 INSERT INTO schema_migrations (version) VALUES ('20150113180539');
-
-INSERT INTO schema_migrations (version) VALUES ('20150122160334');
 
 INSERT INTO schema_migrations (version) VALUES ('20150123203729');
 

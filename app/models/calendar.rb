@@ -2,6 +2,7 @@ require "google/api_client"
 
 class Calendar < ActiveRecord::Base
   has_many :calendar_events
+  has_many :events, class_name: CalendarEvent
 
   validates :name, presence: true
   validates :cid, presence: true
