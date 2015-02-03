@@ -34,5 +34,11 @@ module EventHorizon
     # Preserves the trigger for updating the assignments searchable column
     # as well as any other PostgreSQL-specific settings.
     config.active_record.schema_format = :sql
+
+    # Disable factory_girl generators, since we are using
+    # 'spec/support/factories.rb' to define our factories.
+    config.generators do |g|
+      g.factory_girl false
+    end
   end
 end
