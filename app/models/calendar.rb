@@ -51,7 +51,7 @@ class Calendar < ActiveRecord::Base
       event.save
 
       if event.errors.any?
-        puts event_json
+        logger.error "Error Saving event: #{event_json}"
       end
     end
   end
