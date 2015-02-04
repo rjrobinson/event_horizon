@@ -24,15 +24,21 @@ feature "calendar", %(
 
     visit dashboard_path
 
-    expect(page).to have_content(calendar_event.from.to_formatted_s(:day_and_month))
-    expect(page).to have_content(calendar_event.from.to_formatted_s(:hour_and_minute))
-    expect(page).to have_content(calendar_event.to.to_formatted_s(:hour_and_minute))
+    start_date = calendar_event.from.to_formatted_s(:day_and_month)
+    start_time = calendar_event.from.to_formatted_s(:hour_and_minute)
+    end_time = calendar_event.to.to_formatted_s(:hour_and_minute)
+
+    expect(page).to have_content(start_date)
+    expect(page).to have_content(start_time)
+    expect(page).to have_content(end_time)
     expect(page).to have_content(calendar_event.title)
   end
 
   scenario "user sees today's and tomorrow's events" do
-    event_today = FactoryGirl.create(:calendar_event, from: 1.hour.from_now)
-    event_tomorrow = FactoryGirl.create(:calendar_event, from: 1.day.from_now)
+    event_today = FactoryGirl.create(:calendar_event,
+      from: 1.hour.from_now)
+    event_tomorrow = FactoryGirl.create(:calendar_event,
+      from: 1.day.from_now)
 
     visit dashboard_path
 
@@ -41,7 +47,8 @@ feature "calendar", %(
   end
 
   scenario "user should not see old events" do
-    past_event = FactoryGirl.create(:calendar_event, from: 25.hours.ago)
+    past_event = FactoryGirl.create(:calendar_event,
+      from: 25.hours.ago)
 
     visit dashboard_path
 
@@ -49,7 +56,8 @@ feature "calendar", %(
   end
 
   scenario "user should not see events far into the future" do
-    future_event = FactoryGirl.create(:calendar_event, from: 2.days.from_now)
+    future_event = FactoryGirl.create(:calendar_event,
+      from: 2.days.from_now)
 
     visit dashboard_path
 
@@ -57,7 +65,8 @@ feature "calendar", %(
   end
 
   scenario "events that have already started have a class of '.past-event'" do
-    past_event = FactoryGirl.create(:calendar_event, from: 1.hour.ago, to: 1.hour.from_now)
+    past_event = FactoryGirl.create(:calendar_event,
+      from: 1.hour.ago, to: 1.hour.from_now)
 
     visit dashboard_path
 
@@ -65,7 +74,8 @@ feature "calendar", %(
   end
 
   scenario "events link to google calendar events" do
-    event = FactoryGirl.create(:calendar_event, url: "http://www.google.com/calendar")
+    event = FactoryGirl.create(:calendar_event,
+      url: "http://www.google.com/calendar")
 
     visit dashboard_path
 
