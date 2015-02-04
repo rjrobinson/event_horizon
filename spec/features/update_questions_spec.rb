@@ -29,7 +29,7 @@ feature "modifying questions" do
       expect(page).to_not have_content("Delete question")
     end
 
-    scenario "un-accept an answer", focus: true do
+    scenario "un-accept an answer" do
       question = FactoryGirl.create(:question, user: user)
       FactoryGirl.create(:answer, question: question)
       visit question_path(question)
