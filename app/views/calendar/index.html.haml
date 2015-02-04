@@ -1,6 +1,6 @@
 %h3 Calendar
 
-%table
+%table.calendar
   %thead
     %tr
       %th From
@@ -9,7 +9,7 @@
 
   %tbody
     - @calendar_events.each do |calendar_event|
-      %tr
-        %td= calendar_event.from
-        %td= calendar_event.to
+      %tr{ class: ("past-event" if calendar_event.from < DateTime.now)}
+        %td= calendar_event.from.to_formatted_s(:short)
+        %td= calendar_event.to.to_formatted_s(:short)
         %td= calendar_event.title

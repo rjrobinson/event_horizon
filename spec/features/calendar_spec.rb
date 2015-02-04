@@ -7,7 +7,7 @@ feature "calendar", %(
 
   Acceptance Criteria:
   - [x] I can see today and tomorrow's events
-  - [] Events that have already started are shown in a lesser
+  - [x] Events that have already started are shown in a lesser
     visual priority
   - [] I can click on an event and it links to the event in
     the calendar
@@ -21,8 +21,8 @@ feature "calendar", %(
     sign_in_as(user)
     visit dashboard_path
 
-    expect(page).to have_content(calendar_event.from)
-    expect(page).to have_content(calendar_event.to)
+    expect(page).to have_content(calendar_event.from.to_formatted_s(:short))
+    expect(page).to have_content(calendar_event.to.to_formatted_s(:short))
     expect(page).to have_content(calendar_event.title)
   end
 
@@ -53,6 +53,15 @@ feature "calendar", %(
     visit dashboard_path
 
     expect(page).to_not have_content(future_event.title)
+  end
+
+  scenario "events that have already started have a class of '.past-event'" do
+    past_event = FactoryGirl.create(:calendar_event, from: 1.hour.ago, to: 1.hour.from_now)
+
+    sign_in_as(user)
+    visit dashboard_path
+
+    expect(page).to have_css("table.calendar tr.past-event")
   end
 
 end
