@@ -65,8 +65,7 @@ feature "calendar", %(
   end
 
   scenario "events that have already started have a class of '.past-event'" do
-    past_event = FactoryGirl.create(:calendar_event,
-      from: 1.hour.ago, to: 1.hour.from_now)
+    FactoryGirl.create(:calendar_event, from: 1.hour.ago, to: 1.hour.from_now)
 
     visit dashboard_path
 

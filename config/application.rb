@@ -36,7 +36,7 @@ module EventHorizon
     config.active_record.schema_format = :sql
 
     # Disable factory_girl generators, since we are using
-    # 'spec/support/factories.rb' to define our factories.
+    # 'spec/support/factories.rb' for our factory definitions.
     config.generators do |g|
       g.factory_girl false
     end
