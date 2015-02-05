@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   resources :teams, only: [:index, :show] do
     resources :assignments, only: [:index, :create]
     resources :announcements, only: [:index, :create]
+    resources :question_queues, only: [:index]
   end
 
   resources :questions do
