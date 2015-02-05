@@ -107,3 +107,17 @@ $ pg_restore --verbose --clean --no-acl --no-owner -d event_horizon_development 
 [personal-github-apps]: https://github.com/settings/applications
 [carrierwave-config]: https://github.com/LaunchAcademy/event_horizon/blob/master/config/initializers/carrierwave.rb
 [localhost]: http://localhost:3000
+
+## Inserting a Goolge P12 Keyfile into the Environment
+```
+require "google/api_client"
+
+key = Google::APIClient::KeyUtils.load_from_pkcs12(
+  "./HorizonDashboard-xxxxxxx.p12",
+  "notasecret"
+)
+
+key.to_pem => ""-----BEGIN RSA PRIVATE KEY-----\nMIICXQIB..."
+```
+
+Save the return value of `key.to_pem` to the ENV as `GOOGLE_P12_PEM`.

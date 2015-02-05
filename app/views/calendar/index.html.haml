@@ -3,15 +3,13 @@
 %table.calendar
   %thead
     %tr
-      %th Date
       %th Start Time
       %th End Time
       %th Title
 
   %tbody
     - @calendar_events.each do |event|
-      %tr{ class: ("past-event" if event.from < DateTime.now)}
-        %td= event.from.to_formatted_s(:day_and_month)
-        %td= event.from.to_formatted_s(:hour_and_minute)
-        %td= event.to.to_formatted_s(:hour_and_minute)
-        %td= link_to(event.title, event.url)
+      %tr
+        %td= event.start_time.to_formatted_s(:agenda)
+        %td= event.end_time.to_formatted_s(:agenda)
+        %td= link_to(event.summary, event.url)
