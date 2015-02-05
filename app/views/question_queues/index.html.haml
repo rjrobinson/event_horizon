@@ -1,1 +1,15 @@
+- content_for(:title) do
+  Question Queue for #{@team.name.capitalize}
+
 %h1 Question Queue for #{@team.name.capitalize}
+
+%ul.breadcrumbs
+  %li= link_to "Teams", teams_path
+  %li= link_to @team.name, @team
+  %li.current Question Queue
+
+%ul.questions
+  - @question_queues.each do |question_queue|
+    %li
+      %h3= question_queue.question.user.name
+      = link_to question_queue.question.title, question_path(question_queue.question)

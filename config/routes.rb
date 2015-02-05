@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     resources :announcements, only: [:index, :create]
     resources :question_queues, only: [:index]
   end
+  resources :question_queues, only: [:create]
 
   resources :questions do
     resources :answers, only: [:edit, :update, :create]

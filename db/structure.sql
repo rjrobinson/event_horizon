@@ -236,6 +236,38 @@ ALTER SEQUENCE lessons_id_seq OWNED BY lessons.id;
 
 
 --
+-- Name: question_queues; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE question_queues (
+    id integer NOT NULL,
+    question_id integer NOT NULL,
+    team_id integer NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: question_queues_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE question_queues_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: question_queues_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE question_queues_id_seq OWNED BY question_queues.id;
+
+
+--
 -- Name: questions; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -529,6 +561,13 @@ ALTER TABLE ONLY lessons ALTER COLUMN id SET DEFAULT nextval('lessons_id_seq'::r
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY question_queues ALTER COLUMN id SET DEFAULT nextval('question_queues_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY questions ALTER COLUMN id SET DEFAULT nextval('questions_id_seq'::regclass);
 
 
@@ -620,6 +659,14 @@ ALTER TABLE ONLY comments
 
 ALTER TABLE ONLY lessons
     ADD CONSTRAINT lessons_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: question_queues_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY question_queues
+    ADD CONSTRAINT question_queues_pkey PRIMARY KEY (id);
 
 
 --
@@ -962,4 +1009,6 @@ INSERT INTO schema_migrations (version) VALUES ('20141217191055');
 INSERT INTO schema_migrations (version) VALUES ('20150102202537');
 
 INSERT INTO schema_migrations (version) VALUES ('20150123164500');
+
+INSERT INTO schema_migrations (version) VALUES ('20150205180710');
 

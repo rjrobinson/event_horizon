@@ -18,6 +18,20 @@ feature 'Queue Index' do
       end
       expect(page).to have_content('Question Queue for Spring 2015')
     end
+
+    scenario "I can add a student to the Queue" do
+      student = FactoryGirl.create(:user)
+      FactoryGirl.create(:team_membership, user: student, team: team)
+      question = FactoryGirl.create(:question, user: student, title: 'What is the meaning to life?')
+
+      visit questions_path
+      click_on question.title
+      click_on "Let's Talk!"
+
+      visit team_question_queues_path(team)
+      expect(page).to have_content(student.name)
+      expect(page).to have_content('What is the meaning to life?')
+    end
   end
 
   context 'As an Student' do

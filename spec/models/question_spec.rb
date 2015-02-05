@@ -27,4 +27,33 @@ describe Question do
       expect(question.sorted_answers).to eq([accepted_answer, unaccepted_answer])
     end
   end
+
+  describe "#queue" do
+    let(:question) { FactoryGirl.create(:question, user: user) }
+    let(:team) { FactoryGirl.create(:team) }
+    let(:user) { FactoryGirl.create(:user) }
+
+    before do
+      FactoryGirl.create(:team_membership, team: team, user: user)
+    end
+
+    context '#question queued for a user in one team' do
+      it 'creates a single question_queue' do
+        expect{
+          question.queue
+        }.to change{QuestionQueue.count}.by(1)
+      end
+    end
+
+    context '#question queued for a user in more than one team' do
+      it 'creates a question_queue for each team' do
+        team2 = FactoryGirl.create(:team)
+        FactoryGirl.create(:team_membership, team: team2, user: user)
+
+        expect{
+          question.queue
+        }.to change{QuestionQueue.count}.by(2)
+      end
+    end
+  end
 end

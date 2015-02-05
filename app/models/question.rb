@@ -4,6 +4,7 @@ class Question < ActiveRecord::Base
     class_name: "Answer"
   has_many :answers,
     dependent: :destroy
+  has_many :question_queue
 
   validates :title, presence: true, length: { in: 10..200 }
   validates :body, presence: true, length: { in: 15..10000 }
@@ -23,5 +24,11 @@ class Question < ActiveRecord::Base
 
   def self.unanswered
     where(answers_count: 0)
+  end
+
+  def queue
+    user.teams.each do |team|
+      QuestionQueue.create(question: self, team: team)
+    end
   end
 end
