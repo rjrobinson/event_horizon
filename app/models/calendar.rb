@@ -6,7 +6,7 @@ class Calendar < ActiveRecord::Base
   validates :name, presence: true
   validates :cid, presence: true
 
-  def events_json(
+  def fetch_events(
     start_time = DateTime.now.beginning_of_day,
     end_time = DateTime.now.end_of_day + 1.day
   )
@@ -38,6 +38,19 @@ class Calendar < ActiveRecord::Base
 
     json_data = JSON.parse(response.body)
     json_data["items"]
+  end
+
+  def events_json
+    redis = Redis.new
+    result = redis.get(cid)
+    if result
+      result = JSON.parse(result)
+    else
+      result = fetch_events
+      redis.set(cid, result.to_json)
+      redis.expire(cid, 15.minutes)
+    end
+    result
   end
 
   def events

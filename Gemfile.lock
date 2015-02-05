@@ -330,6 +330,7 @@ DEPENDENCIES
   rails (= 4.1.4)
   rails_12factor
   redcarpet
+  redis
   rouge
   rspec-rails
   sanitize

@@ -21,6 +21,7 @@ gem "fog"
 gem "sidekiq"
 gem "newrelic_rpm"
 gem "google-api-client"
+gem "redis"
 
 group :development do
   gem "spring"
