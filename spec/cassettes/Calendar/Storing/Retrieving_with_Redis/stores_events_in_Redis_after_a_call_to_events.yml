@@ -5,7 +5,7 @@ http_interactions:
     uri: https://accounts.google.com/o/oauth2/token
     body:
       encoding: ASCII-8BIT
-      string: grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer&assertion=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiIzNDEyNDQ4NTg1NjktbWs3bDNpZWhzMnZqYmdqNXRjdmYyajNnYWhnbmMycHJAZGV2ZWxvcGVyLmdzZXJ2aWNlYWNjb3VudC5jb20iLCJzY29wZSI6Imh0dHBzOi8vd3d3Lmdvb2dsZWFwaXMuY29tL2F1dGgvY2FsZW5kYXIucmVhZG9ubHkiLCJhdWQiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20vby9vYXV0aDIvdG9rZW4iLCJleHAiOjE0MjMxNzI4OTcsImlhdCI6MTQyMzE3Mjc3N30.Qq-Rcs6dB9peZzTaWUIXv0vbRbWH7N8z0utJsU7z5lbRcnHRIRmFBuSSQfIAaJoooUzdXYeEflSBxlM-EennRpdQSscgVv6Hhq7mWMgJ2Kq-GwG6VilI0sg5h3UFNCR0lgI6Sl8YqkPZdt90nMrbnN6Pr2x6aC_tn0nJ9VlBMw8
+      string: grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer&assertion=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiIzNDEyNDQ4NTg1NjktbWs3bDNpZWhzMnZqYmdqNXRjdmYyajNnYWhnbmMycHJAZGV2ZWxvcGVyLmdzZXJ2aWNlYWNjb3VudC5jb20iLCJzY29wZSI6Imh0dHBzOi8vd3d3Lmdvb2dsZWFwaXMuY29tL2F1dGgvY2FsZW5kYXIucmVhZG9ubHkiLCJhdWQiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20vby9vYXV0aDIvdG9rZW4iLCJleHAiOjE0MjMxNzMwNDcsImlhdCI6MTQyMzE3MjkyN30.TVDhGDXKQB_xsZKdjnm4GyJZpQ5vTn1K3Q2XRJdaBzy8iMv4S4P4xg4PY49rpw6A5273MbWTAXE6FPe8Prz4hojz38qVko4ackkTPEEemuAos89-dqrrW4jBqr8Xs13XnK3upwPBZiqjnwdx2K4vmO5jcoyf-5-KGuxbBv1RVOM
     headers:
       Cache-Control:
       - no-store
@@ -31,7 +31,7 @@ http_interactions:
       Expires:
       - Fri, 01 Jan 1990 00:00:00 GMT
       Date:
-      - Thu, 05 Feb 2015 21:47:18 GMT
+      - Thu, 05 Feb 2015 21:49:49 GMT
       Content-Disposition:
       - attachment; filename="json.txt"; filename*=UTF-8''json.txt
       X-Content-Type-Options:
@@ -54,12 +54,12 @@ http_interactions:
       encoding: UTF-8
       string: |-
         {
-          "access_token" : "ya29.EQHBdKhuY1T64MmwWFlEee9YA9kKqMBK9scYlShqZhVg7dhqM_dHSH8sZuEyv5DFFk9PQZ5h8Wnulg",
+          "access_token" : "ya29.EQEvngIkUStxwuUBvEvcQEGzPBZLWbZb1ZFe21Njsh6V1ekS0lbAH4L-9MalGroHr8jE9tpGwuqASA",
           "token_type" : "Bearer",
           "expires_in" : 3600
         }
     http_version: 
-  recorded_at: Thu, 05 Feb 2015 21:47:17 GMT
+  recorded_at: Thu, 05 Feb 2015 21:49:48 GMT
 - request:
     method: get
     uri: https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest
@@ -83,9 +83,9 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Thu, 05 Feb 2015 21:48:20 GMT
+      - Thu, 05 Feb 2015 21:53:06 GMT
       Date:
-      - Thu, 05 Feb 2015 21:43:20 GMT
+      - Thu, 05 Feb 2015 21:48:06 GMT
       Etag:
       - '"ye6orv2F-1npMW3u9suM3a7C5Bo/OJfjBJ7SEMZFwh2sfCfJ4xHG4Zo"'
       Vary:
@@ -106,7 +106,7 @@ http_interactions:
       Server:
       - GSE
       Age:
-      - '239'
+      - '104'
       Cache-Control:
       - public, max-age=300, must-revalidate, no-transform
       Alternate-Protocol:
@@ -369,10 +369,10 @@ http_interactions:
         9NguMMkQeHdoUlVwOGg4kt7h9gFJA20faPtA2wfa3o62D9aGHtaGJ/D/vz35
         /247tZ9obgEA
     http_version: 
-  recorded_at: Thu, 05 Feb 2015 21:47:17 GMT
+  recorded_at: Thu, 05 Feb 2015 21:49:48 GMT
 - request:
     method: get
-    uri: https://www.googleapis.com/calendar/v3/calendars/calendar-reference-email1@gmail.com/events?timeMax=2015-02-06T23:59:59-05:00&timeMin=2015-02-05T00:00:00-05:00
+    uri: https://www.googleapis.com/calendar/v3/calendars/<DEFAULT_CALENDAR_ID>/events?timeMax=2015-02-06T23:59:59-05:00&timeMin=2015-02-05T00:00:00-05:00
     body:
       encoding: UTF-8
       string: ''
@@ -386,16 +386,22 @@ http_interactions:
       Content-Type:
       - ''
       Authorization:
-      - Bearer ya29.EQHBdKhuY1T64MmwWFlEee9YA9kKqMBK9scYlShqZhVg7dhqM_dHSH8sZuEyv5DFFk9PQZ5h8Wnulg
+      - Bearer ya29.EQEvngIkUStxwuUBvEvcQEGzPBZLWbZb1ZFe21Njsh6V1ekS0lbAH4L-9MalGroHr8jE9tpGwuqASA
       Cache-Control:
       - no-store
       Accept:
       - "*/*"
   response:
     status:
-      code: 404
-      message: Not Found
+      code: 200
+      message: OK
     headers:
+      Expires:
+      - Thu, 05 Feb 2015 21:49:50 GMT
+      Date:
+      - Thu, 05 Feb 2015 21:49:50 GMT
+      Cache-Control:
+      - private, max-age=0, must-revalidate, no-transform
       Vary:
       - Origin
       - X-Origin
@@ -403,12 +409,6 @@ http_interactions:
       - application/json; charset=UTF-8
       Content-Encoding:
       - gzip
-      Date:
-      - Thu, 05 Feb 2015 21:47:19 GMT
-      Expires:
-      - Thu, 05 Feb 2015 21:47:19 GMT
-      Cache-Control:
-      - private, max-age=0
       X-Content-Type-Options:
       - nosniff
       X-Frame-Options:
@@ -424,9 +424,59 @@ http_interactions:
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        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
+        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
+        i/sPSc8W+3nr161/ATN+I9fqGAAA
     http_version: 
-  recorded_at: Thu, 05 Feb 2015 21:47:17 GMT
+  recorded_at: Thu, 05 Feb 2015 21:49:49 GMT
 recorded_with: VCR 2.9.3

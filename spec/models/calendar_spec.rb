@@ -9,7 +9,7 @@ RSpec.describe Calendar, type: :model do
   context "Storing/Retrieving with Redis", vcr: true  do
 
     let(:redis) { Redis.new }
-    let(:calendar) { FactoryGirl.build(:calendar) }
+    let(:calendar) { FactoryGirl.create(:calendar, cid: ENV["DEFAULT_CALENDAR_ID"]) }
 
     after(:each) do
       redis.flushdb
