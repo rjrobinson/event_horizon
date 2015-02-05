@@ -6,6 +6,7 @@ FactoryGirl.define do
     description "Describes the article."
     body "# Article Foo\n\nThis is an article."
     sequence(:position) { |n| n }
+    visibility "public"
 
     factory :article do
       type "article"
