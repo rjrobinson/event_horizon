@@ -54,6 +54,14 @@ class User < ActiveRecord::Base
     end
   end
 
+  def calendars
+    result = []
+    teams.each do |team|
+      result << team.calendar if team.calendar
+    end
+    result.uniq
+  end
+
   private
 
   def github_orgs(token)

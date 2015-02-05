@@ -8,8 +8,9 @@
       %th Title
 
   %tbody
-    - @calendar_events.each do |event|
-      %tr
-        %td= event.start_time.to_formatted_s(:agenda)
-        %td= event.end_time.to_formatted_s(:agenda)
-        %td= link_to(event.summary, event.url)
+    - @calendars.each do |calendar|
+      - calendar.events.each do |event|
+        %tr{ class: ("past-event" if event.start_time < DateTime.now) }
+          %td= event.start_time.to_formatted_s(:agenda)
+          %td= event.end_time.to_formatted_s(:agenda)
+          %td= link_to(event.summary, event.url)

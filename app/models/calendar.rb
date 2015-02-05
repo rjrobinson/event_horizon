@@ -1,13 +1,16 @@
 require "google/api_client"
 
 class Calendar < ActiveRecord::Base
-  #has_many :calendar_events
-  #has_many :events, class_name: CalendarEvent
+  has_many :teams
 
   validates :name, presence: true
   validates :cid, presence: true
 
-  def events_json
+  def events_json(
+    start_time = DateTime.now.beginning_of_day,
+    end_time = DateTime.now.end_of_day + 1.day
+  )
+
     key = OpenSSL::PKey::RSA.new(ENV["GOOGLE_P12_PEM"], 'notasecret')
 
     client = Google::APIClient.new(
@@ -28,8 +31,8 @@ class Calendar < ActiveRecord::Base
       api_method: client.discovered_api("calendar", "v3").events.list,
       parameters: {
         calendarId: cid,
-        timeMin: DateTime.now.beginning_of_day,
-        timeMax: DateTime.now.beginning_of_day + 1.week
+        timeMin: start_time,
+        timeMax: end_time
       }
     )
 

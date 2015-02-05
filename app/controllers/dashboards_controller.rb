@@ -4,6 +4,6 @@ class DashboardsController < ApplicationController
   def show
     @announcements = current_user.announcements.order(created_at: :desc).limit(5)
     @upcoming_assignments = current_user.assignments.order(due_on: :asc)
-    @calendar_events = Calendar.first.events
+    @calendars = current_user.calendars
   end
 end
