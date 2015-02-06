@@ -10,7 +10,7 @@
 
 %ul.questions
   - @question_queues.each_with_index do |question_queue, index|
-    %li.question-queue
+    %li{id: "queue_#{question_queue.id}", class: "question-queue" }
       %div.row
         %div.large-2.columns
           %div.queue-number= index + 1
@@ -22,3 +22,5 @@
           = link_to question_queue.question.title, question_path(question_queue.question)
           %div.queue-buttons
             = question_queue_update_button(question_queue)
+            - if question_queue.status == 'open'
+              = link_to "No Show", question_queue_path(id: question_queue, question_queue: { status: "no-show"}), method: :patch, class: "ee-button no-show"

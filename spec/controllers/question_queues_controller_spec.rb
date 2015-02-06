@@ -31,7 +31,7 @@ describe QuestionQueuesController do
     let(:question_queue) { FactoryGirl.create(:question_queue, question: question, team: team) }
     let(:experience_engineer) { FactoryGirl.create(:admin) }
 
-    before do
+    before(:each) do
       FactoryGirl.create(:team_membership, user: user, team: team)
       session[:user_id] = experience_engineer.id
     end
@@ -41,16 +41,12 @@ describe QuestionQueuesController do
       expect(response).to redirect_to(team_question_queues_path(team))
     end
 
-    context "i'm on it" do
-      it 'updates the question_queue with the current status' do
-        patch :update, id: question_queue.id, question_queue: { status: 'in progress' }
-        expect(question_queue.reload.status).to eq 'in progress'
-      end
+    it 'calls update_in_queue with proper args' do
+      question_queue = double(id: 1, team: team)
+      allow(QuestionQueue).to receive(:find).and_return(question_queue)
+      expect(question_queue).to receive(:update_in_queue).with('no-show', experience_engineer)
 
-      it 'sets the user id of the answering ee' do
-        patch :update, id: question_queue.id, question_queue: { status: 'in progress' }
-        expect(question_queue.reload.user).to eq experience_engineer
-      end
+      patch :update, id: question_queue.id, question_queue: { status: 'no-show' }
     end
   end
 end
