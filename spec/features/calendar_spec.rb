@@ -13,14 +13,15 @@ feature "calendar", %(
   # - [x] I can click on an event and it links to the event in
   #   the calendar
 
-  let(:user) { FactoryGirl.create(:user) }
+  let(:user) { FactoryGirl.create(
+                 :user_with_calendar,
+                 calendar_args: { cid: ENV["DEFAULT_CALENDAR_ID"] }
+               ) }
 
   before(:each) do
-    membership = FactoryGirl.create(:team_membership, user: user)
-    team = membership.team
-    calendar = FactoryGirl.create(:calendar, cid: ENV["DEFAULT_CALENDAR_ID"])
-    team.calendar = calendar
-    team.save
+    t = Time.new(2015, 02, 05, 19, 43)
+    Timecop.travel(t)
+
     sign_in_as(user)
   end
 
@@ -39,5 +40,4 @@ feature "calendar", %(
       expect(page).to have_content("Past Event For Testing")
     end
   end
-
 end

@@ -112,6 +112,18 @@ FactoryGirl.define do
         create(:submission, lesson: assignment.lesson, user: user)
       end
     end
+
+    ignore do
+      calendar_args nil
+    end
+
+    factory :user_with_calendar do
+      after(:create) do |user, evaluator|
+        calendar = build(:calendar, evaluator.calendar_args)
+        team = create(:team, calendar: calendar)
+        create(:team_membership, team: team, user: user)
+      end
+    end
   end
 
   factory :team do

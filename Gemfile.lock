@@ -283,6 +283,7 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.4)
     tilt (1.4.1)
+    timecop (0.7.1)
     timers (1.1.0)
     tins (1.3.0)
     treetop (1.4.15)
@@ -338,6 +339,7 @@ DEPENDENCIES
   shoulda-matchers
   sidekiq
   spring
+  timecop
   uglifier (>= 1.3.0)
   unicorn
   vcr

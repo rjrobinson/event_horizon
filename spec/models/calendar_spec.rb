@@ -11,6 +11,11 @@ RSpec.describe Calendar, type: :model do
     let(:redis) { Redis.new }
     let(:calendar) { FactoryGirl.create(:calendar, cid: ENV["DEFAULT_CALENDAR_ID"]) }
 
+    before(:each) do
+      t = Time.new(2015, 02, 05, 19, 43)
+      Timecop.travel(t)
+    end
+
     after(:each) do
       redis.flushdb
     end
