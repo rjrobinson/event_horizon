@@ -2,7 +2,6 @@ language: ruby
 rvm:
 - 2.1.3
 before_script:
-- mv .env.sample .env
 - psql -c 'CREATE DATABASE event_horizon_test;' -U postgres
 services:
 - redis-server
