@@ -13,9 +13,15 @@ class QuestionQueuesController < ApplicationController
 
   def update
     @question_queue = QuestionQueue.find(params[:id])
-    @question_queue.update_attributes(status: params[:status], user: current_user)
+    @question_queue.update_attributes(status: question_queue_params[:status], user: current_user)
     @question_queue.save!
 
     redirect_to team_question_queues_path(@question_queue.team)
+  end
+
+  private
+
+  def question_queue_params
+    params.require(:question_queue).permit(:status)
   end
 end

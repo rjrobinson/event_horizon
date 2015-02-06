@@ -37,18 +37,18 @@ describe QuestionQueuesController do
     end
 
     it 'redirects to the queue index' do
-      patch :update, id: question_queue.id, status: 'in progress'
+      patch :update, id: question_queue.id, question_queue: { status: 'in progress' }
       expect(response).to redirect_to(team_question_queues_path(team))
     end
 
     context "i'm on it" do
       it 'updates the question_queue with the current status' do
-        patch :update, id: question_queue.id, status: 'in progress'
+        patch :update, id: question_queue.id, question_queue: { status: 'in progress' }
         expect(question_queue.reload.status).to eq 'in progress'
       end
 
       it 'sets the user id of the answering ee' do
-        patch :update, id: question_queue.id, status: 'in progress'
+        patch :update, id: question_queue.id, question_queue: { status: 'in progress' }
         expect(question_queue.reload.user).to eq experience_engineer
       end
     end
