@@ -2,9 +2,11 @@ language: ruby
 rvm:
 - 2.1.3
 before_script:
+- mv .env.sample .env
 - psql -c 'CREATE DATABASE event_horizon_test;' -U postgres
 services:
-  - redis-server
+- redis-server
 env:
   global:
-    secure: cj6cl/COLE75K95uMClFGb6Y4+UGr0RHUKaI9o7za7SrQgBFQ9beyo8HogHeHU92BeHmPuU1hBfyH45hCOECrp5bKiRaVo7k7SrFmTgtT7B+PCOf3VjVx5bcYwSgxmSiBQGK6SLpH0N16e8mUMAecSGZ00O112pQ8EBEsJ7f4QM=
+  - secure: cj6cl/COLE75K95uMClFGb6Y4+UGr0RHUKaI9o7za7SrQgBFQ9beyo8HogHeHU92BeHmPuU1hBfyH45hCOECrp5bKiRaVo7k7SrFmTgtT7B+PCOf3VjVx5bcYwSgxmSiBQGK6SLpH0N16e8mUMAecSGZ00O112pQ8EBEsJ7f4QM=
+  - secure: K6myYO6D1iZWffmfdjmCQ5bSm638DVC8GjXIUnswNCs4MvV1OJy9IZLWe13BKtT5LhetyRReGA/OMzbu2t8sI8WV28aB+HvpMzAGJtV4DgjYXmePy0CQakkC6qBCDWttoJhBJtr+a85OfQm/h/6TsHYtgVu3aUpCtPcTTm8CbhU=
