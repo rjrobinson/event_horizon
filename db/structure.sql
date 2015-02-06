@@ -654,6 +654,13 @@ CREATE INDEX index_assignments_on_team_id ON assignments USING btree (team_id);
 
 
 --
+-- Name: index_calendars_on_cid; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_calendars_on_cid ON calendars USING btree (cid);
+
+
+--
 -- Name: index_comments_on_delivered; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -891,4 +898,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150113180539');
 INSERT INTO schema_migrations (version) VALUES ('20150123203729');
 
 INSERT INTO schema_migrations (version) VALUES ('20150205184909');
+
+INSERT INTO schema_migrations (version) VALUES ('20150206184403');
 

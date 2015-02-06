@@ -4,7 +4,7 @@ class Calendar < ActiveRecord::Base
   has_many :teams
 
   validates :name, presence: true
-  validates :cid, presence: true
+  validates :cid, presence: true, uniqueness: true
 
   def fetch_events(
     start_time = DateTime.now.beginning_of_day,
