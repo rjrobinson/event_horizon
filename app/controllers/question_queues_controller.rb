@@ -1,7 +1,7 @@
 class QuestionQueuesController < ApplicationController
   def index
     @team = Team.find(params[:team_id])
-    @question_queues = QuestionQueue.where(team: @team)
+    @question_queues = QuestionQueue.where(team: @team).where.not(status: 'done')
   end
 
   def create

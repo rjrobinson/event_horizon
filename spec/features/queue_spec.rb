@@ -37,17 +37,28 @@ feature 'Queue Index' do
       student = FactoryGirl.create(:user)
       FactoryGirl.create(:team_membership, user: student, team: team)
       question = FactoryGirl.create(:question, user: student, title: 'What is the meaning to life?')
+      FactoryGirl.create(:question_queue, question: question, team: team)
 
       sign_in_as ee
-      visit questions_path
-      click_on question.title
-      click_on "Let's Talk!"
-
       visit team_question_queues_path(team)
       click_on "I'm on it!"
 
       expect(page).to have_content(ee.name)
       expect(page).to have_content("We Solved It!")
+    end
+
+    scenario "I can complete a question I've finished talking to a Student about" do
+      student = FactoryGirl.create(:user)
+      question = FactoryGirl.create(:question, user: student, title: 'What is the meaning to life?')
+      FactoryGirl.create(:team_membership, user: student, team: team)
+      FactoryGirl.create(:question_queue, question: question, team: team, status: 'in progress', user: ee)
+
+      sign_in_as ee
+      visit team_question_queues_path(team)
+      click_on "We Solved It!"
+
+      expect(page).not_to have_content("We Solved It!")
+      expect(page).not_to have_content(question.title)
     end
   end
 
