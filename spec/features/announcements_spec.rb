@@ -43,10 +43,10 @@ feature "announcements" do
 
     scenario "there is a link to announcements page from dashboard" do
       announcement1 = FactoryGirl.create(:announcement, team: team)
-      announcement2 = FactoryGirl.create(:announcement, team: team, title: "This is an announcement") 
+      announcement2 = FactoryGirl.create(:announcement, team: team, title: "This is an announcement")
 
       visit dashboard_path
-      button = "Read all announcements for " + team.name 
+      button = "Read all announcements for " + team.name
 
       click_on button
 

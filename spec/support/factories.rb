@@ -151,6 +151,11 @@ FactoryGirl.define do
     user
   end
 
+  factory :question_queue do
+    team
+    question
+  end
+
   factory :answer do
     question
     user

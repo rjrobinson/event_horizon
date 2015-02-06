@@ -1,0 +1,336 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+AddAcceptedAnswerIdToQuestions	db/migrate/20141217191055_add_accepted_answer_id_to_questions.rb	/^class AddAcceptedAnswerIdToQuestions < ActiveRecord::Migration$/;"	c
+AddAnswerCountToQuestions	db/migrate/20150102202537_add_answer_count_to_questions.rb	/^class AddAnswerCountToQuestions < ActiveRecord::Migration$/;"	c
+AddArchiveToChallenges	db/migrate/20140810001317_add_archive_to_challenges.rb	/^class AddArchiveToChallenges < ActiveRecord::Migration$/;"	c
+AddArchiveToSubmissions	db/migrate/20140802123039_add_archive_to_submissions.rb	/^class AddArchiveToSubmissions < ActiveRecord::Migration$/;"	c
+AddArticlesToSearch	db/migrate/20140901191402_add_articles_to_search.rb	/^class AddArticlesToSearch < ActiveRecord::Migration$/;"	c
+AddCommentCounterCacheToSubmissions	db/migrate/20141030203942_add_comment_counter_cache_to_submissions.rb	/^class AddCommentCounterCacheToSubmissions < ActiveRecord::Migration$/;"	c
+AddDeliveredToComments	db/migrate/20141113200644_add_delivered_to_comments.rb	/^class AddDeliveredToComments < ActiveRecord::Migration$/;"	c
+AddDescriptionToChallenges	db/migrate/20140819174653_add_description_to_challenges.rb	/^class AddDescriptionToChallenges < ActiveRecord::Migration$/;"	c
+AddFeaturedToSubmissions	db/migrate/20141021185401_add_featured_to_submissions.rb	/^class AddFeaturedToSubmissions < ActiveRecord::Migration$/;"	c
+AddLineNumberToComments	db/migrate/20140707014614_add_line_number_to_comments.rb	/^class AddLineNumberToComments < ActiveRecord::Migration$/;"	c
+AddPositionToLessons	db/migrate/20140930132041_add_position_to_lessons.rb	/^class AddPositionToLessons < ActiveRecord::Migration$/;"	c
+AddPublicFieldToSubmissions	db/migrate/20140826152921_add_public_field_to_submissions.rb	/^class AddPublicFieldToSubmissions < ActiveRecord::Migration$/;"	c
+AddRoleToUsers	db/migrate/20140706174616_add_role_to_users.rb	/^class AddRoleToUsers < ActiveRecord::Migration$/;"	c
+AddSearchableColumnToAssignments	db/migrate/20140712155618_add_searchable_column_to_assignments.rb	/^class AddSearchableColumnToAssignments < ActiveRecord::Migration$/;"	c
+AddSearchableColumnToChallenges	db/migrate/20140720040146_add_searchable_column_to_challenges.rb	/^class AddSearchableColumnToChallenges < ActiveRecord::Migration$/;"	c
+AddSearchableToArticles	db/migrate/20140901191401_add_searchable_to_articles.rb	/^class AddSearchableToArticles < ActiveRecord::Migration$/;"	c
+AddSlugToAssignments	db/migrate/20140711194907_add_slug_to_assignments.rb	/^class AddSlugToAssignments < ActiveRecord::Migration$/;"	c
+AddSourceFileIdToComments	db/migrate/20140807181006_add_source_file_id_to_comments.rb	/^class AddSourceFileIdToComments < ActiveRecord::Migration$/;"	c
+AddTeamIndexToAnnouncements	db/migrate/20141204203947_add_team_index_to_announcements.rb	/^class AddTeamIndexToAnnouncements < ActiveRecord::Migration$/;"	c
+AddTokenToUsers	db/migrate/20140720185457_add_token_to_users.rb	/^class AddTokenToUsers < ActiveRecord::Migration$/;"	c
+AddUniqueIndexToLowercaseUsernamesOnUsers	db/migrate/20141013190514_add_unique_index_to_lowercase_usernames_on_users.rb	/^class AddUniqueIndexToLowercaseUsernamesOnUsers < ActiveRecord::Migration$/;"	c
+Announcement	app/models/announcement.rb	/^class Announcement < ActiveRecord::Base$/;"	c
+AnnouncementReceipt	app/models/announcement_receipt.rb	/^class AnnouncementReceipt < ActiveRecord::Base$/;"	c
+AnnouncementReceiptsController	app/controllers/announcement_receipts_controller.rb	/^class AnnouncementReceiptsController < ApplicationController$/;"	c
+AnnouncementsController	app/controllers/announcements_controller.rb	/^class AnnouncementsController < ApplicationController$/;"	c
+Answer	app/models/answer.rb	/^class Answer < ActiveRecord::Base$/;"	c
+Answer	db/migrate/20150102202537_add_answer_count_to_questions.rb	/^  class Answer < ActiveRecord::Base$/;"	c	class:AddAnswerCountToQuestions
+AnswersController	app/controllers/answers_controller.rb	/^class AnswersController < ApplicationController$/;"	c
+Application	config/application.rb	/^  class Application < Rails::Application$/;"	c	class:EventHorizon
+ApplicationController	app/controllers/application_controller.rb	/^class ApplicationController < ActionController::Base$/;"	c
+ApplicationHelper	app/helpers/application_helper.rb	/^module ApplicationHelper$/;"	m
+ArchiveHelper	spec/support/helpers/archive_helper.rb	/^module ArchiveHelper$/;"	m
+ArchiveUploader	app/uploaders/archive_uploader.rb	/^class ArchiveUploader < CarrierWave::Uploader::Base$/;"	c
+Assignment	app/models/assignment.rb	/^class Assignment < ActiveRecord::Base$/;"	c
+Assignment	db/migrate/20140711194907_add_slug_to_assignments.rb	/^  class Assignment < ActiveRecord::Base; end$/;"	c	class:AddSlugToAssignments
+AssignmentsController	app/controllers/assignments_controller.rb	/^class AssignmentsController < ApplicationController$/;"	c
+AuthenticationHelper	spec/support/helpers/authentication_helper.rb	/^module AuthenticationHelper$/;"	m
+Comment	app/models/comment.rb	/^class Comment < ActiveRecord::Base$/;"	c
+Comment	db/migrate/20141030203942_add_comment_counter_cache_to_submissions.rb	/^  class Comment < ActiveRecord::Base$/;"	c	class:AddCommentCounterCacheToSubmissions
+CommentMailer	app/mailers/comment_mailer.rb	/^class CommentMailer < ActionMailer::Base$/;"	c
+CommentNotifier	app/workers/comment_notifier.rb	/^class CommentNotifier$/;"	c
+CommentsController	app/controllers/comments_controller.rb	/^class CommentsController < ApplicationController$/;"	c
+CreateAnnouncementReceipts	db/migrate/20150123164500_create_announcement_receipts.rb	/^class CreateAnnouncementReceipts < ActiveRecord::Migration$/;"	c
+CreateAnnouncements	db/migrate/20141126230346_create_announcements.rb	/^class CreateAnnouncements < ActiveRecord::Migration$/;"	c
+CreateAnswers	db/migrate/20141216212826_create_answers.rb	/^class CreateAnswers < ActiveRecord::Migration$/;"	c
+CreateArticles	db/migrate/20140901185227_create_articles.rb	/^class CreateArticles < ActiveRecord::Migration$/;"	c
+CreateAssignments	db/migrate/20140704220243_create_assignments.rb	/^class CreateAssignments < ActiveRecord::Migration$/;"	c
+CreateAssignmentsAgain	db/migrate/20141102184011_create_assignments_again.rb	/^class CreateAssignmentsAgain < ActiveRecord::Migration$/;"	c
+CreateChallenges	db/migrate/20140720030415_create_challenges.rb	/^class CreateChallenges < ActiveRecord::Migration$/;"	c
+CreateComments	db/migrate/20140706183730_create_comments.rb	/^class CreateComments < ActiveRecord::Migration$/;"	c
+CreateCourses	db/migrate/20140713160257_create_courses.rb	/^class CreateCourses < ActiveRecord::Migration$/;"	c
+CreateEnrollments	db/migrate/20140714010254_create_enrollments.rb	/^class CreateEnrollments < ActiveRecord::Migration$/;"	c
+CreateLessons	db/migrate/20140928165428_create_lessons.rb	/^class CreateLessons < ActiveRecord::Migration$/;"	c
+CreateQuestionQueue	db/migrate/20150205180710_create_question_queue.rb	/^class CreateQuestionQueue < ActiveRecord::Migration$/;"	c
+CreateQuestions	db/migrate/20141216173739_create_questions.rb	/^class CreateQuestions < ActiveRecord::Migration$/;"	c
+CreateRatings	db/migrate/20140712191638_create_ratings.rb	/^class CreateRatings < ActiveRecord::Migration$/;"	c
+CreateRatingsAgain	db/migrate/20141003154749_create_ratings_again.rb	/^class CreateRatingsAgain < ActiveRecord::Migration$/;"	c
+CreateSearchableView	db/migrate/20140720040402_create_searchable_view.rb	/^class CreateSearchableView < ActiveRecord::Migration$/;"	c
+CreateSourceFiles	db/migrate/20140708222017_create_source_files.rb	/^class CreateSourceFiles < ActiveRecord::Migration$/;"	c
+CreateSubmissions	db/migrate/20140705060613_create_submissions.rb	/^class CreateSubmissions < ActiveRecord::Migration$/;"	c
+CreateTeamMemberships	db/migrate/20141019150403_create_team_memberships.rb	/^class CreateTeamMemberships < ActiveRecord::Migration$/;"	c
+CreateTeams	db/migrate/20141019150156_create_teams.rb	/^class CreateTeams < ActiveRecord::Migration$/;"	c
+CreateUsers	db/migrate/20140705025620_create_users.rb	/^class CreateUsers < ActiveRecord::Migration$/;"	c
+DashboardHelper	app/helpers/dashboard_helper.rb	/^module DashboardHelper$/;"	m
+DashboardsController	app/controllers/dashboards_controller.rb	/^class DashboardsController < ApplicationController$/;"	c
+EventHorizon	config/application.rb	/^module EventHorizon$/;"	m
+HighlightingRenderer	lib/markdown_renderer.rb	/^  class HighlightingRenderer < Redcarpet::Render::HTML$/;"	c	class:Markdown
+Lesson	app/models/lesson.rb	/^class Lesson < ActiveRecord::Base$/;"	c
+Lesson	db/migrate/20140930132041_add_position_to_lessons.rb	/^  class Lesson < ActiveRecord::Base; end$/;"	c	class:AddPositionToLessons
+LessonUploader	app/uploaders/lesson_uploader.rb	/^class LessonUploader < CarrierWave::Uploader::Base$/;"	c
+LessonsController	app/controllers/lessons_controller.rb	/^class LessonsController < ApplicationController$/;"	c
+Markdown	lib/markdown_renderer.rb	/^class Markdown$/;"	c
+Question	app/models/question.rb	/^class Question < ActiveRecord::Base$/;"	c
+Question	db/migrate/20150102202537_add_answer_count_to_questions.rb	/^  class Question < ActiveRecord::Base$/;"	c	class:AddAnswerCountToQuestions
+QuestionQueue	app/models/question_queue.rb	/^class QuestionQueue < ActiveRecord::Base$/;"	c
+QuestionQueuesController	app/controllers/question_queues_controller.rb	/^class QuestionQueuesController < ApplicationController$/;"	c
+QuestionsController	app/controllers/questions_controller.rb	/^class QuestionsController < ApplicationController$/;"	c
+QuestionsHelper	app/helpers/questions_helper.rb	/^module QuestionsHelper$/;"	m
+Rating	app/models/rating.rb	/^class Rating < ActiveRecord::Base$/;"	c
+RatingsController	app/controllers/ratings_controller.rb	/^class RatingsController < ApplicationController$/;"	c
+RemoveArticles	db/migrate/20140928175407_remove_articles.rb	/^class RemoveArticles < ActiveRecord::Migration$/;"	c
+RemoveAssignments	db/migrate/20140814012512_remove_assignments.rb	/^class RemoveAssignments < ActiveRecord::Migration$/;"	c
+RemoveBodyFromSubmission	db/migrate/20140708222338_remove_body_from_submission.rb	/^class RemoveBodyFromSubmission < ActiveRecord::Migration$/;"	c
+RemoveCourses	db/migrate/20140814011852_remove_courses.rb	/^class RemoveCourses < ActiveRecord::Migration$/;"	c
+RemoveEnrollments	db/migrate/20140814011639_remove_enrollments.rb	/^class RemoveEnrollments < ActiveRecord::Migration$/;"	c
+RemoveRatings	db/migrate/20140814011324_remove_ratings.rb	/^class RemoveRatings < ActiveRecord::Migration$/;"	c
+RemoveRoleFromEnrollments	db/migrate/20140715190942_remove_role_from_enrollments.rb	/^class RemoveRoleFromEnrollments < ActiveRecord::Migration$/;"	c
+RenameSubmissionAssignmentIdToChallengeId	db/migrate/20140720030640_rename_submission_assignment_id_to_challenge_id.rb	/^class RenameSubmissionAssignmentIdToChallengeId < ActiveRecord::Migration$/;"	c
+RenameSubmissionChallengeIdToLessonId	db/migrate/20140928170912_rename_submission_challenge_id_to_lesson_id.rb	/^class RenameSubmissionChallengeIdToLessonId < ActiveRecord::Migration$/;"	c
+SessionHelper	app/helpers/session_helper.rb	/^module SessionHelper$/;"	m
+SessionsController	app/controllers/sessions_controller.rb	/^class SessionsController < ApplicationController$/;"	c
+SourceFile	app/models/source_file.rb	/^class SourceFile < ActiveRecord::Base$/;"	c
+SourceFile	db/migrate/20140708222338_remove_body_from_submission.rb	/^  class SourceFile < ActiveRecord::Base; end$/;"	c	class:RemoveBodyFromSubmission
+SourceFileHelper	app/helpers/source_file_helper.rb	/^module SourceFileHelper$/;"	m
+SourceRenderer	app/view_objects/source_renderer.rb	/^class SourceRenderer$/;"	c
+SpecifyTypeInSearchesView	db/migrate/20140818203653_specify_type_in_searches_view.rb	/^class SpecifyTypeInSearchesView < ActiveRecord::Migration$/;"	c
+StaticPagesController	app/controllers/static_pages_controller.rb	/^class StaticPagesController < ApplicationController$/;"	c
+Submission	app/models/submission.rb	/^class Submission < ActiveRecord::Base$/;"	c
+Submission	db/migrate/20140708222338_remove_body_from_submission.rb	/^  class Submission < ActiveRecord::Base; end$/;"	c	class:RemoveBodyFromSubmission
+Submission	db/migrate/20141030203942_add_comment_counter_cache_to_submissions.rb	/^  class Submission < ActiveRecord::Base$/;"	c	class:AddCommentCounterCacheToSubmissions
+SubmissionExtractor	app/workers/submission_extractor.rb	/^class SubmissionExtractor$/;"	c
+SubmissionsController	app/controllers/submissions_controller.rb	/^class SubmissionsController < ApplicationController$/;"	c
+Team	app/models/team.rb	/^class Team < ActiveRecord::Base$/;"	c
+TeamMembership	app/models/team_membership.rb	/^class TeamMembership < ActiveRecord::Base$/;"	c
+TeamsController	app/controllers/teams_controller.rb	/^class TeamsController < ApplicationController$/;"	c
+UpdateSearchesView	db/migrate/20140814010454_update_searches_view.rb	/^class UpdateSearchesView < ActiveRecord::Migration$/;"	c
+User	app/models/user.rb	/^class User < ActiveRecord::Base$/;"	c
+User	db/migrate/20140720185457_add_token_to_users.rb	/^  class User < ActiveRecord::Base; end$/;"	c	class:AddTokenToUsers
+UsersController	app/controllers/users_controller.rb	/^class UsersController < ApplicationController$/;"	c
+accepted?	app/models/answer.rb	/^  def accepted?$/;"	f	class:Answer
+accepted_answer_belongs_to_question	app/models/question.rb	/^  def accepted_answer_belongs_to_question$/;"	f	class:Question
+accepts_submissions?	app/models/lesson.rb	/^  def accepts_submissions?$/;"	f	class:Lesson
+admin?	app/models/user.rb	/^  def admin?$/;"	f	class:User
+announcement_params	app/controllers/announcements_controller.rb	/^  def announcement_params$/;"	f	class:AnnouncementsController
+answer_params	app/controllers/answers_controller.rb	/^  def answer_params$/;"	f	class:AnswersController
+assignment_params	app/controllers/assignments_controller.rb	/^  def assignment_params$/;"	f	class:AssignmentsController
+assignment_state	app/helpers/dashboard_helper.rb	/^  def assignment_state(assignment, user)$/;"	f	class:DashboardHelper
+auth_hash	app/controllers/sessions_controller.rb	/^  def auth_hash$/;"	f	class:SessionsController
+authenticate_user!	app/controllers/application_controller.rb	/^  def authenticate_user!$/;"	f	class:ApplicationController
+authenticate_via_headers	app/controllers/application_controller.rb	/^  def authenticate_via_headers$/;"	f	class:ApplicationController
+authenticate_via_session	app/controllers/application_controller.rb	/^  def authenticate_via_session$/;"	f	class:ApplicationController
+authorize_admin!	app/controllers/application_controller.rb	/^  def authorize_admin!$/;"	f	class:ApplicationController
+authorized_find	app/models/submission.rb	/^  def self.authorized_find(user, id)$/;"	F	class:Submission
+belongs_to_org?	app/models/user.rb	/^  def belongs_to_org?(organization, oauth_token)$/;"	f	class:User
+binary?	app/workers/submission_extractor.rb	/^  def binary?(filepath)$/;"	f	class:SubmissionExtractor
+challenges	app/models/lesson.rb	/^  def self.challenges$/;"	F	class:Lesson
+change	db/migrate/20140704220243_create_assignments.rb	/^  def change$/;"	f	class:CreateAssignments
+change	db/migrate/20140705025620_create_users.rb	/^  def change$/;"	f	class:CreateUsers
+change	db/migrate/20140705060613_create_submissions.rb	/^  def change$/;"	f	class:CreateSubmissions
+change	db/migrate/20140706174616_add_role_to_users.rb	/^  def change$/;"	f	class:AddRoleToUsers
+change	db/migrate/20140706183730_create_comments.rb	/^  def change$/;"	f	class:CreateComments
+change	db/migrate/20140707014614_add_line_number_to_comments.rb	/^  def change$/;"	f	class:AddLineNumberToComments
+change	db/migrate/20140708222017_create_source_files.rb	/^  def change$/;"	f	class:CreateSourceFiles
+change	db/migrate/20140712191638_create_ratings.rb	/^  def change$/;"	f	class:CreateRatings
+change	db/migrate/20140713160257_create_courses.rb	/^  def change$/;"	f	class:CreateCourses
+change	db/migrate/20140714010254_create_enrollments.rb	/^  def change$/;"	f	class:CreateEnrollments
+change	db/migrate/20140720030415_create_challenges.rb	/^  def change$/;"	f	class:CreateChallenges
+change	db/migrate/20140720030640_rename_submission_assignment_id_to_challenge_id.rb	/^  def change$/;"	f	class:RenameSubmissionAssignmentIdToChallengeId
+change	db/migrate/20140802123039_add_archive_to_submissions.rb	/^  def change$/;"	f	class:AddArchiveToSubmissions
+change	db/migrate/20140807181006_add_source_file_id_to_comments.rb	/^  def change$/;"	f	class:AddSourceFileIdToComments
+change	db/migrate/20140810001317_add_archive_to_challenges.rb	/^  def change$/;"	f	class:AddArchiveToChallenges
+change	db/migrate/20140819174653_add_description_to_challenges.rb	/^  def change$/;"	f	class:AddDescriptionToChallenges
+change	db/migrate/20140826152921_add_public_field_to_submissions.rb	/^  def change$/;"	f	class:AddPublicFieldToSubmissions
+change	db/migrate/20140901185227_create_articles.rb	/^  def change$/;"	f	class:CreateArticles
+change	db/migrate/20140928170912_rename_submission_challenge_id_to_lesson_id.rb	/^  def change$/;"	f	class:RenameSubmissionChallengeIdToLessonId
+change	db/migrate/20141003154749_create_ratings_again.rb	/^  def change$/;"	f	class:CreateRatingsAgain
+change	db/migrate/20141019150156_create_teams.rb	/^  def change$/;"	f	class:CreateTeams
+change	db/migrate/20141019150403_create_team_memberships.rb	/^  def change$/;"	f	class:CreateTeamMemberships
+change	db/migrate/20141021185401_add_featured_to_submissions.rb	/^  def change$/;"	f	class:AddFeaturedToSubmissions
+change	db/migrate/20141102184011_create_assignments_again.rb	/^  def change$/;"	f	class:CreateAssignmentsAgain
+change	db/migrate/20141113200644_add_delivered_to_comments.rb	/^  def change$/;"	f	class:AddDeliveredToComments
+change	db/migrate/20141126230346_create_announcements.rb	/^  def change$/;"	f	class:CreateAnnouncements
+change	db/migrate/20141204203947_add_team_index_to_announcements.rb	/^  def change$/;"	f	class:AddTeamIndexToAnnouncements
+change	db/migrate/20141216173739_create_questions.rb	/^  def change$/;"	f	class:CreateQuestions
+change	db/migrate/20141216212826_create_answers.rb	/^  def change$/;"	f	class:CreateAnswers
+change	db/migrate/20141217191055_add_accepted_answer_id_to_questions.rb	/^  def change$/;"	f	class:AddAcceptedAnswerIdToQuestions
+change	db/migrate/20150205180710_create_question_queue.rb	/^  def change$/;"	f	class:CreateQuestionQueue
+comment_params	app/controllers/comments_controller.rb	/^  def comment_params$/;"	f	class:CommentsController
+comments	app/view_objects/source_renderer.rb	/^  def comments$/;"	f	class:SourceRenderer
+core	app/models/assignment.rb	/^  def core$/;"	f	class:Assignment
+core_assignments	app/models/user.rb	/^  def core_assignments$/;"	f	class:User
+create	app/controllers/announcement_receipts_controller.rb	/^  def create$/;"	f	class:AnnouncementReceiptsController
+create	app/controllers/announcements_controller.rb	/^  def create$/;"	f	class:AnnouncementsController
+create	app/controllers/answers_controller.rb	/^  def create$/;"	f	class:AnswersController
+create	app/controllers/assignments_controller.rb	/^  def create$/;"	f	class:AssignmentsController
+create	app/controllers/comments_controller.rb	/^  def create$/;"	f	class:CommentsController
+create	app/controllers/question_queues_controller.rb	/^  def create$/;"	f	class:QuestionQueuesController
+create	app/controllers/questions_controller.rb	/^  def create$/;"	f	class:QuestionsController
+create	app/controllers/ratings_controller.rb	/^  def create$/;"	f	class:RatingsController
+create	app/controllers/sessions_controller.rb	/^  def create$/;"	f	class:SessionsController
+create	app/controllers/submissions_controller.rb	/^  def create$/;"	f	class:SubmissionsController
+create_params	app/controllers/questions_controller.rb	/^  def create_params$/;"	f	class:QuestionsController
+create_params	app/controllers/submissions_controller.rb	/^  def create_params$/;"	f	class:SubmissionsController
+current_user	app/helpers/session_helper.rb	/^  def current_user$/;"	f	class:SessionHelper
+dailies	app/controllers/static_pages_controller.rb	/^  def dailies$/;"	f	class:StaticPagesController
+deliver	app/workers/comment_notifier.rb	/^  def deliver(submission, comments)$/;"	f	class:CommentNotifier
+destroy	app/controllers/announcements_controller.rb	/^  def destroy$/;"	f	class:AnnouncementsController
+destroy	app/controllers/questions_controller.rb	/^  def destroy$/;"	f	class:QuestionsController
+destroy	app/controllers/sessions_controller.rb	/^  def destroy$/;"	f	class:SessionsController
+disable_instance_methods	spec/data/sample_lessons/max-number/test/max_number_test.rb	/^  def disable_instance_methods(klass, method_names)$/;"	f
+down	db/migrate/20140708222338_remove_body_from_submission.rb	/^  def down$/;"	f	class:RemoveBodyFromSubmission
+down	db/migrate/20140711194907_add_slug_to_assignments.rb	/^  def down$/;"	f	class:AddSlugToAssignments
+down	db/migrate/20140712155618_add_searchable_column_to_assignments.rb	/^  def down$/;"	f	class:AddSearchableColumnToAssignments
+down	db/migrate/20140715190942_remove_role_from_enrollments.rb	/^  def down$/;"	f	class:RemoveRoleFromEnrollments
+down	db/migrate/20140720040146_add_searchable_column_to_challenges.rb	/^  def down$/;"	f	class:AddSearchableColumnToChallenges
+down	db/migrate/20140720040402_create_searchable_view.rb	/^  def down$/;"	f	class:CreateSearchableView
+down	db/migrate/20140720185457_add_token_to_users.rb	/^  def down$/;"	f	class:AddTokenToUsers
+down	db/migrate/20140814010454_update_searches_view.rb	/^  def down$/;"	f	class:UpdateSearchesView
+down	db/migrate/20140814011324_remove_ratings.rb	/^  def down$/;"	f	class:RemoveRatings
+down	db/migrate/20140814011639_remove_enrollments.rb	/^  def down$/;"	f	class:RemoveEnrollments
+down	db/migrate/20140814011852_remove_courses.rb	/^  def down$/;"	f	class:RemoveCourses
+down	db/migrate/20140814012512_remove_assignments.rb	/^  def down$/;"	f	class:RemoveAssignments
+down	db/migrate/20140818203653_specify_type_in_searches_view.rb	/^  def down$/;"	f	class:SpecifyTypeInSearchesView
+down	db/migrate/20140901191401_add_searchable_to_articles.rb	/^  def down$/;"	f	class:AddSearchableToArticles
+down	db/migrate/20140901191402_add_articles_to_search.rb	/^  def down$/;"	f	class:AddArticlesToSearch
+down	db/migrate/20140928165428_create_lessons.rb	/^  def down$/;"	f	class:CreateLessons
+down	db/migrate/20140928175407_remove_articles.rb	/^  def down$/;"	f	class:RemoveArticles
+down	db/migrate/20140930132041_add_position_to_lessons.rb	/^  def down$/;"	f	class:AddPositionToLessons
+down	db/migrate/20141013190514_add_unique_index_to_lowercase_usernames_on_users.rb	/^  def down$/;"	f	class:AddUniqueIndexToLowercaseUsernamesOnUsers
+down	db/migrate/20141030203942_add_comment_counter_cache_to_submissions.rb	/^  def down$/;"	f	class:AddCommentCounterCacheToSubmissions
+down	db/migrate/20150102202537_add_answer_count_to_questions.rb	/^  def down$/;"	f	class:AddAnswerCountToQuestions
+down	db/migrate/20150123164500_create_announcement_receipts.rb	/^  def down$/;"	f	class:CreateAnnouncementReceipts
+edit	app/controllers/answers_controller.rb	/^  def edit$/;"	f	class:AnswersController
+edit	app/controllers/questions_controller.rb	/^  def edit$/;"	f	class:QuestionsController
+ensure_authentication_token	app/models/user.rb	/^  def ensure_authentication_token$/;"	f	class:User
+failure	app/controllers/sessions_controller.rb	/^  def failure$/;"	f	class:SessionsController
+filename	app/view_objects/source_renderer.rb	/^  def filename$/;"	f	class:SourceRenderer
+filenames	app/workers/submission_extractor.rb	/^  def filenames(dir)$/;"	f	class:SubmissionExtractor
+find_files	app/workers/submission_extractor.rb	/^  def find_files(prefix, dir)$/;"	f	class:SubmissionExtractor
+find_or_create_from_omniauth	app/models/user.rb	/^  def self.find_or_create_from_omniauth(auth)$/;"	F	class:User
+fog_public	app/uploaders/lesson_uploader.rb	/^  def fog_public$/;"	f	class:LessonUploader
+format_comment	app/view_objects/source_renderer.rb	/^  def format_comment(comment)$/;"	f	class:SourceRenderer
+format_datetime	app/helpers/application_helper.rb	/^  def format_datetime(time)$/;"	f	class:ApplicationHelper
+format_line	app/view_objects/source_renderer.rb	/^  def format_line(line_no, line)$/;"	f	class:SourceRenderer
+formatter	app/view_objects/source_renderer.rb	/^  def formatter$/;"	f	class:SourceRenderer
+general_comments	app/models/submission.rb	/^  def general_comments$/;"	f	class:Submission
+github_orgs	app/models/user.rb	/^  def github_orgs(token)$/;"	f	class:User
+github_orgs_url	app/models/user.rb	/^  def github_orgs_url(token)$/;"	f	class:User
+has_completed_lesson?	app/models/user.rb	/^  def has_completed_lesson?(lesson)$/;"	f	class:User
+has_submission_from	app/models/submission.rb	/^  def self.has_submission_from?(user)$/;"	F	class:Submission
+home	app/controllers/static_pages_controller.rb	/^  def home$/;"	f	class:StaticPagesController
+html_body	app/models/comment.rb	/^  def html_body$/;"	f	class:Comment
+html_code_with_comments	app/view_objects/source_renderer.rb	/^  def html_code_with_comments$/;"	f	class:SourceRenderer
+html_source_code	app/view_objects/source_renderer.rb	/^  def html_source_code$/;"	f	class:SourceRenderer
+ignore?	app/workers/submission_extractor.rb	/^  def ignore?(filename)$/;"	f	class:SubmissionExtractor
+ignored_files	app/workers/submission_extractor.rb	/^  def ignored_files$/;"	f	class:SubmissionExtractor
+import	app/models/lesson.rb	/^  def self.import(source_dir)$/;"	F	class:Lesson
+import_all	app/models/lesson.rb	/^  def self.import_all!(lessons_dir)$/;"	F	class:Lesson
+index	app/controllers/announcements_controller.rb	/^  def index$/;"	f	class:AnnouncementsController
+index	app/controllers/assignments_controller.rb	/^  def index$/;"	f	class:AssignmentsController
+index	app/controllers/lessons_controller.rb	/^  def index$/;"	f	class:LessonsController
+index	app/controllers/question_queues_controller.rb	/^  def index$/;"	f	class:QuestionQueuesController
+index	app/controllers/questions_controller.rb	/^  def index$/;"	f	class:QuestionsController
+index	app/controllers/submissions_controller.rb	/^  def index$/;"	f	class:SubmissionsController
+index	app/controllers/teams_controller.rb	/^  def index$/;"	f	class:TeamsController
+index	app/controllers/users_controller.rb	/^  def index$/;"	f	class:UsersController
+initialize	app/view_objects/source_renderer.rb	/^  def initialize(source_file)$/;"	f	class:SourceRenderer
+inline_comments	app/models/submission.rb	/^  def inline_comments$/;"	f	class:Submission
+language	app/view_objects/source_renderer.rb	/^  def language$/;"	f	class:SourceRenderer
+late?	app/models/assignment.rb	/^  def late?$/;"	f	class:Assignment
+latest_announcements	app/models/user.rb	/^  def latest_announcements(count)$/;"	f	class:User
+lexer	app/view_objects/source_renderer.rb	/^  def lexer$/;"	f	class:SourceRenderer
+max_number	spec/data/sample_lessons/max-number/lib/max_number.rb	/^def max_number(numbers)$/;"	f
+new	app/controllers/questions_controller.rb	/^  def new$/;"	f	class:QuestionsController
+new	app/controllers/sessions_controller.rb	/^  def new$/;"	f	class:SessionsController
+new_comments	app/mailers/comment_mailer.rb	/^  def new_comments(submission, comments)$/;"	f	class:CommentMailer
+non_core	app/models/assignment.rb	/^  def non_core$/;"	f	class:Assignment
+non_core_assignments	app/models/user.rb	/^  def non_core_assignments$/;"	f	class:User
+not_found	app/controllers/application_controller.rb	/^  def not_found$/;"	f	class:ApplicationController
+omniauth_token	app/controllers/sessions_controller.rb	/^  def omniauth_token$/;"	f	class:SessionsController
+order_lessons	app/models/lesson.rb	/^  def self.order_lessons(lesson_prereqs)$/;"	F
+organization	app/controllers/sessions_controller.rb	/^  def organization$/;"	f	class:SessionsController
+pending	app/models/comment.rb	/^  def self.pending$/;"	F	class:Comment
+pending_comments_for	app/workers/comment_notifier.rb	/^  def pending_comments_for(submission)$/;"	f	class:CommentNotifier
+perform	app/workers/comment_notifier.rb	/^  def perform(comment_id)$/;"	f	class:CommentNotifier
+perform	app/workers/submission_extractor.rb	/^  def perform(submission_id)$/;"	f	class:SubmissionExtractor
+questions_header	app/helpers/questions_helper.rb	/^  def questions_header(filter)$/;"	f	class:QuestionsHelper
+queue	app/models/question.rb	/^  def queue$/;"	f	class:Question
+rating_params	app/controllers/ratings_controller.rb	/^  def rating_params$/;"	f	class:RatingsController
+read_file_from_gzipped_archive	spec/support/helpers/archive_helper.rb	/^  def read_file_from_gzipped_archive(archive_path, filename)$/;"	f	class:ArchiveHelper
+redirect_to_back_or_root	app/controllers/application_controller.rb	/^  def redirect_to_back_or_root$/;"	f	class:ApplicationController
+render	lib/markdown_renderer.rb	/^  def self.render(content)$/;"	F	class:Markdown
+render_markdown	app/helpers/application_helper.rb	/^  def render_markdown(content)$/;"	f	class:ApplicationHelper
+render_safe	lib/markdown_renderer.rb	/^  def self.render_safe(content)$/;"	F	class:Markdown
+render_safe_markdown	app/helpers/application_helper.rb	/^  def render_safe_markdown(content)$/;"	f	class:ApplicationHelper
+render_safe_markdown	app/view_objects/source_renderer.rb	/^  def render_safe_markdown(content)$/;"	f	class:SourceRenderer
+render_source_file	app/helpers/source_file_helper.rb	/^  def render_source_file(file)$/;"	f	class:SourceFileHelper
+renderer	lib/markdown_renderer.rb	/^  def self.renderer$/;"	F	class:Markdown
+reviewed?	app/models/assignment.rb	/^  def reviewed?(user)$/;"	f	class:Assignment
+save_body	app/models/submission.rb	/^  def save_body$/;"	f	class:Submission
+search	app/models/lesson.rb	/^  def self.search(query)$/;"	F	class:Lesson
+set_auth_headers_for	spec/support/helpers/authentication_helper.rb	/^  def set_auth_headers_for(user)$/;"	f	class:AuthenticationHelper
+set_current_user	app/helpers/session_helper.rb	/^  def set_current_user(user)$/;"	f	class:SessionHelper
+show	app/controllers/announcements_controller.rb	/^  def show$/;"	f	class:AnnouncementsController
+show	app/controllers/assignments_controller.rb	/^  def show$/;"	f	class:AssignmentsController
+show	app/controllers/dashboards_controller.rb	/^  def show$/;"	f	class:DashboardsController
+show	app/controllers/lessons_controller.rb	/^  def show$/;"	f	class:LessonsController
+show	app/controllers/questions_controller.rb	/^  def show$/;"	f	class:QuestionsController
+show	app/controllers/submissions_controller.rb	/^  def show$/;"	f	class:SubmissionsController
+show	app/controllers/teams_controller.rb	/^  def show$/;"	f	class:TeamsController
+show	app/controllers/users_controller.rb	/^  def show$/;"	f	class:UsersController
+sign_in_as	spec/support/helpers/authentication_helper.rb	/^  def sign_in_as(user)$/;"	f	class:AuthenticationHelper
+sorted_answers	app/models/question.rb	/^  def sorted_answers$/;"	f	class:Question
+sorted_comments	app/view_objects/source_renderer.rb	/^  def sorted_comments$/;"	f	class:SourceRenderer
+source_lines	app/view_objects/source_renderer.rb	/^  def source_lines$/;"	f	class:SourceRenderer
+start	app/controllers/static_pages_controller.rb	/^  def start$/;"	f	class:StaticPagesController
+store_dir	app/uploaders/archive_uploader.rb	/^  def store_dir$/;"	f	class:ArchiveUploader
+store_dir	app/uploaders/lesson_uploader.rb	/^  def store_dir$/;"	f	class:LessonUploader
+subject	app/mailers/comment_mailer.rb	/^  def subject(comment_count, lesson)$/;"	f	class:CommentMailer
+submissions_viewable_by	app/models/lesson.rb	/^  def submissions_viewable_by(user)$/;"	f	class:Lesson
+submittable	app/models/lesson.rb	/^  def self.submittable$/;"	F	class:Lesson
+submitted?	app/models/assignment.rb	/^  def submitted?(user)$/;"	f	class:Assignment
+to_html	app/view_objects/source_renderer.rb	/^  def to_html$/;"	f	class:SourceRenderer
+to_param	app/models/lesson.rb	/^  def to_param$/;"	f	class:Lesson
+to_param	app/models/user.rb	/^  def to_param$/;"	f	class:User
+type	app/models/lesson.rb	/^  def self.type(type)$/;"	F	class:Lesson
+unanswered	app/models/question.rb	/^  def self.unanswered$/;"	F	class:Question
+unauthorized!	app/controllers/application_controller.rb	/^  def unauthorized!$/;"	f	class:ApplicationController
+up	db/migrate/20140708222338_remove_body_from_submission.rb	/^  def up$/;"	f	class:RemoveBodyFromSubmission
+up	db/migrate/20140711194907_add_slug_to_assignments.rb	/^  def up$/;"	f	class:AddSlugToAssignments
+up	db/migrate/20140712155618_add_searchable_column_to_assignments.rb	/^  def up$/;"	f	class:AddSearchableColumnToAssignments
+up	db/migrate/20140715190942_remove_role_from_enrollments.rb	/^  def up$/;"	f	class:RemoveRoleFromEnrollments
+up	db/migrate/20140720040146_add_searchable_column_to_challenges.rb	/^  def up$/;"	f	class:AddSearchableColumnToChallenges
+up	db/migrate/20140720040402_create_searchable_view.rb	/^  def up$/;"	f	class:CreateSearchableView
+up	db/migrate/20140720185457_add_token_to_users.rb	/^  def up$/;"	f	class:AddTokenToUsers
+up	db/migrate/20140814010454_update_searches_view.rb	/^  def up$/;"	f	class:UpdateSearchesView
+up	db/migrate/20140814011324_remove_ratings.rb	/^  def up$/;"	f	class:RemoveRatings
+up	db/migrate/20140814011639_remove_enrollments.rb	/^  def up$/;"	f	class:RemoveEnrollments
+up	db/migrate/20140814011852_remove_courses.rb	/^  def up$/;"	f	class:RemoveCourses
+up	db/migrate/20140814012512_remove_assignments.rb	/^  def up$/;"	f	class:RemoveAssignments
+up	db/migrate/20140818203653_specify_type_in_searches_view.rb	/^  def up$/;"	f	class:SpecifyTypeInSearchesView
+up	db/migrate/20140901191401_add_searchable_to_articles.rb	/^  def up$/;"	f	class:AddSearchableToArticles
+up	db/migrate/20140901191402_add_articles_to_search.rb	/^  def up$/;"	f	class:AddArticlesToSearch
+up	db/migrate/20140928165428_create_lessons.rb	/^  def up$/;"	f	class:CreateLessons
+up	db/migrate/20140928175407_remove_articles.rb	/^  def up$/;"	f	class:RemoveArticles
+up	db/migrate/20140930132041_add_position_to_lessons.rb	/^  def up$/;"	f	class:AddPositionToLessons
+up	db/migrate/20141013190514_add_unique_index_to_lowercase_usernames_on_users.rb	/^  def up$/;"	f	class:AddUniqueIndexToLowercaseUsernamesOnUsers
+up	db/migrate/20141030203942_add_comment_counter_cache_to_submissions.rb	/^  def up$/;"	f	class:AddCommentCounterCacheToSubmissions
+up	db/migrate/20150102202537_add_answer_count_to_questions.rb	/^  def up$/;"	f	class:AddAnswerCountToQuestions
+up	db/migrate/20150123164500_create_announcement_receipts.rb	/^  def up$/;"	f	class:CreateAnnouncementReceipts
+update	app/controllers/answers_controller.rb	/^  def update$/;"	f	class:AnswersController
+update	app/controllers/questions_controller.rb	/^  def update$/;"	f	class:QuestionsController
+update	app/controllers/ratings_controller.rb	/^  def update$/;"	f	class:RatingsController
+update	app/controllers/submissions_controller.rb	/^  def update$/;"	f	class:SubmissionsController
+update_params	app/controllers/questions_controller.rb	/^  def update_params$/;"	f	class:QuestionsController
+update_params	app/controllers/submissions_controller.rb	/^  def update_params$/;"	f	class:SubmissionsController
+user_signed_in?	app/helpers/session_helper.rb	/^  def user_signed_in?$/;"	f	class:SessionHelper
+user_submissions	app/models/assignment.rb	/^  def user_submissions$/;"	f	class:Assignment
+valid_source_files	app/workers/submission_extractor.rb	/^  def valid_source_files(dir)$/;"	f	class:SubmissionExtractor
+viewable_by	app/models/submission.rb	/^  def self.viewable_by(user)$/;"	F	class:Submission

@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   has_many :answers,
     through: :questions
   has_many :announcement_receipts
+  has_many :question_queues
 
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
@@ -66,11 +67,11 @@ class User < ActiveRecord::Base
   end
 
   def core_assignments
-     assignments.where(required: true).order(due_on: :asc) 
+     assignments.where(required: true).order(due_on: :asc)
   end
 
   def non_core_assignments
-     assignments.where(required: false).order(due_on: :asc) 
+     assignments.where(required: false).order(due_on: :asc)
   end
 
   private
