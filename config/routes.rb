@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   resources :question_queues, only: [:create, :update]
 
   resources :questions do
-    resources :answers, only: [:edit, :update, :create]
+    resources :answers, only: [:edit, :update, :create, :destroy]
   end
 
   resource :session, only: [:new, :create, :destroy] do

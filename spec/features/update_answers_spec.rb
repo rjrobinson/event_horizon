@@ -25,7 +25,7 @@ feature "answering questions" do
 
     scenario "edit answer" do
       question = FactoryGirl.create(:question, user: user)
-      FactoryGirl.create(:answer, question: question)
+      FactoryGirl.create(:answer, question: question, user: user)
 
       visit question_path(question)
 
@@ -42,6 +42,14 @@ feature "answering questions" do
       expect(page).to have_content(body)
     end
 
-    scenario "delete answer"
+    scenario "delete answer" do
+      question = FactoryGirl.create(:question, user: user)
+      answer = FactoryGirl.create(:answer, question: question, user: user)
+
+      visit question_path(question)
+      click_on "Delete Answer"
+
+      expect(page).to_not have_content(answer.body)
+    end
   end
 end
