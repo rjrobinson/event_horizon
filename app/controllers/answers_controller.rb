@@ -27,6 +27,13 @@ class AnswersController < ApplicationController
       info: "Your answer has been updated."
   end
 
+  def destroy
+    answer = current_user.answers.find(params[:id])
+    answer.destroy
+    redirect_to question_path(answer.question),
+      info: "Your answer has been deleted."
+  end
+
   private
 
   def answer_params
