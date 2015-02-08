@@ -9,10 +9,16 @@
   %li.current Question Queue
 
 %ul.questions
-  - @question_queues.each do |question_queue|
-    %li
-      %h3= question_queue.question.user.name
-      - if question_queue.status == "in progress"
-        %h4= question_queue.user.try(:name)
-      = link_to question_queue.question.title, question_path(question_queue.question)
-      = question_queue_update_button(question_queue)
+  - @question_queues.each_with_index do |question_queue, index|
+    %li.question-queue
+      %div.row
+        %div.large-2.columns
+          %div.queue-number= index + 1
+          %p
+        %div.large-10.columns
+          %h3= question_queue.question.user.name
+          - if question_queue.status == "in progress"
+            %h4= "#{question_queue.user.try(:name)} is assigned to this question."
+          = link_to question_queue.question.title, question_path(question_queue.question)
+          %div.queue-buttons
+            = question_queue_update_button(question_queue)
