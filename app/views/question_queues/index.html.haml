@@ -13,14 +13,15 @@
     %li{id: "queue_#{question_queue.id}", class: "question-queue" }
       %div.row
         %div.large-2.columns
-          %div.queue-number= index + 1
+          %div{ class: 'queue-number' + (question_queue.status == 'in progress' ? ' in-progress' : '' ) }= index + 1
           %p
         %div.large-10.columns
           %h3= question_queue.question.user.name
-          - if question_queue.status == "in progress"
-            %h4= "#{question_queue.user.try(:name)} is assigned to this question."
           = link_to question_queue.question.title, question_path(question_queue.question)
+          - if question_queue.status == "in progress"
+            %h5.assignee= "#{question_queue.user.try(:name)} is assigned to this question."
           %div.queue-buttons
-            = question_queue_update_button(question_queue)
-            - if question_queue.status == 'open'
-              = link_to "No Show", question_queue_path(id: question_queue, question_queue: { status: "no-show"}), method: :patch, class: "ee-button no-show"
+            - if current_user.try(:role) == 'admin'
+              = question_queue_update_button(question_queue)
+              - if question_queue.status == 'open'
+                = link_to "No Show", question_queue_path(id: question_queue, question_queue: { status: "no-show"}), method: :patch, class: "ee-button no-show"

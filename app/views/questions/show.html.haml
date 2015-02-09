@@ -59,4 +59,5 @@
       = f.text_area :body
 
       = f.submit "Submit Answer", class: "button"
-      = link_to "Let's Talk!", question_queues_path(question_id: @question), method: :post, class: "button alert"
+      - if current_user.try(:role) == 'admin'
+        = link_to "Let's Talk!", question_queues_path(question_id: @question), method: :post, class: "button alert"

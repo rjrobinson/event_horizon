@@ -13,7 +13,7 @@
   border: 1px solid $border-color;
   border-radius: 5px;
   background-color: $light-bg-color;
-  h4 {
+  .assignee {
     font-style: italic;
   }
 }
@@ -34,6 +34,11 @@ ul.questions {
   color: black;
   border: 1px solid $border-color;
   font-family: "Arial Black", Gadget, sans-serif;
+}
+
+.queue-number.in-progress {
+  background: $article-color;
+  color: white;
 }
 
 .queue-buttons {

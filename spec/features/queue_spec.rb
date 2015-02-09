@@ -24,6 +24,7 @@ feature 'Queue Index' do
       FactoryGirl.create(:team_membership, user: student, team: team)
       question = FactoryGirl.create(:question, user: student, title: 'What is the meaning to life?')
 
+      sign_in_as ee
       visit questions_path
       click_on question.title
       click_on "Let's Talk!"
