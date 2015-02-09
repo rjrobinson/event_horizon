@@ -1,10 +1,9 @@
 require "rails_helper"
 
-feature "calendar", %(
-  As a user on my dashboard
-  I want to see upcoming events
-  So that I can be informed about the happenings of the cohort.
-), :vcr do
+feature "view dashboard calendar", :vcr do
+  # As a user on my dashboard
+  # I want to see upcoming events
+  # So that I can be informed about the happenings of the cohort.
 
   # Acceptance Criteria:
   # - [x] I can see today and tomorrow's events
@@ -16,30 +15,32 @@ feature "calendar", %(
   let(:user) do
     FactoryGirl.create(
       :user_with_calendar,
-      calendar_args: { cid: ENV["DEFAULT_CALENDAR_ID"] }
+      calendar_args: { cid: ENV["DEFAULT_GOOGLE_CALENDAR_ID"] }
     )
   end
 
   before(:each) do
-    t = Time.new(2015, 02, 05, 19, 43)
-    Timecop.travel(t)
+    time = DateTime.parse("2015/02/09 17:10 -0500")
+    Timecop.travel(time)
+  end
 
-    sign_in_as(user)
+  after(:each) do
+    Timecop.return
   end
 
   scenario "user sees event information" do
+    sign_in_as(user)
     visit dashboard_path
-
-    expect(page).to have_content("Friday, February 6 at 09:30")
-    expect(page).to have_link("Community: MassDigI Game Challenge")
+    expect(page).to have_content("Monday, February 9 at 19:00")
+    expect(page).to have_link("Community: Boston MySQL Monthly Meetup")
   end
 
   scenario "events that have already started have a class of '.past-event'" do
+    sign_in_as(user)
     visit dashboard_path
-
     expect(page).to have_css("table.calendar tr.past-event")
     within("tr.past-event") do
-      expect(page).to have_content("Past Event For Testing")
+      expect(page).to have_content("Past Event")
     end
   end
 end

@@ -12,7 +12,7 @@ class GoogleCalendarAdapter
     request_params[:timeMin] = start_time if start_time
     request_params[:timeMax] = end_time if end_time
 
-    client = api_client
+    client = google_api_client
     response = client.execute(
       api_method: client.discovered_api("calendar", "v3").events.list,
       parameters: request_params
@@ -39,13 +39,13 @@ class GoogleCalendarAdapter
     Signet::OAuth2::Client.new(oauth2_client_params)
   end
 
-  def api_client
+  def google_api_client
     api_client_params = {
       application_name: "HorizonDashboard",
       application_version: "0.0.1"
     }
 
-    client ||= Google::APIClient.new(api_client_params)
+    client = Google::APIClient.new(api_client_params)
     client.authorization = oauth2_client
     client.authorization.fetch_access_token!
     client

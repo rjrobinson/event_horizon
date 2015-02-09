@@ -1,27 +1,31 @@
 require "rails_helper"
 
 RSpec.describe Calendar, type: :model do
+  pending
   it { should have_many(:teams) }
 
   it { should validate_presence_of(:name) }
   it { should validate_presence_of(:cid) }
 
-  it "validates uniqueness of email" do
-    calendar = FactoryGirl.create(:calendar)
+  describe "cid validation" do
+    subject { FactoryGirl.create(:calendar) }
     it { should validate_uniqueness_of(:cid) }
   end
 
-  context "Storing/Retrieving with Redis", vcr: true do
+  context "Storing/Retrieving with Redis", :vcr do
     let(:redis) { Redis.new }
-    let(:calendar) { FactoryGirl.create(:calendar, cid: ENV["DEFAULT_CALENDAR_ID"]) }
+    let(:calendar) do
+      FactoryGirl.create(:calendar, cid: ENV["DEFAULT_GOOGLE_CALENDAR_ID"])
+    end
 
     before(:each) do
-      t = Time.new(2015, 02, 05, 19, 43)
-      Timecop.travel(t)
+      time = DateTime.parse("2015/02/09 17:10 -0500")
+      Timecop.travel(time)
     end
 
     after(:each) do
       redis.flushdb
+      Timecop.return
     end
 
     it "stores events in Redis after a call to events" do
