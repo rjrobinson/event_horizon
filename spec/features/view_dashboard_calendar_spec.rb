@@ -20,7 +20,8 @@ feature "view dashboard calendar", :vcr do
   end
 
   before(:each) do
-    time = DateTime.parse("2015/02/09 17:10 -0500")
+    sign_in_as(user)
+    time = DateTime.parse("2015/02/09 17:55 -0500")
     Timecop.travel(time)
   end
 
@@ -29,14 +30,12 @@ feature "view dashboard calendar", :vcr do
   end
 
   scenario "user sees event information" do
-    sign_in_as(user)
     visit dashboard_path
     expect(page).to have_content("Monday, February 9 at 19:00")
     expect(page).to have_link("Community: Boston MySQL Monthly Meetup")
   end
 
   scenario "events that have already started have a class of '.past-event'" do
-    sign_in_as(user)
     visit dashboard_path
     expect(page).to have_css("table.calendar tr.past-event")
     within("tr.past-event") do
