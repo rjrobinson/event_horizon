@@ -2,10 +2,10 @@ class Calendar < ActiveRecord::Base
   has_many :teams
 
   validates :name, presence: true
-  validates :cid, presence: true, uniqueness: true
+  validates :cid, presence: true
+  validates :cid, uniqueness: true
 
   def events_json
-    redis = Redis.new
     result = redis.get(cid)
     if result
       result = JSON.parse(result)
@@ -33,5 +33,9 @@ class Calendar < ActiveRecord::Base
 
   def default_end_time
     DateTime.now.end_of_day + 1.day
+  end
+
+  def redis
+    Redis.current
   end
 end
