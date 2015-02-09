@@ -5,13 +5,13 @@ RSpec.describe Calendar, type: :model do
 
   it { should validate_presence_of(:name) }
   it { should validate_presence_of(:cid) }
+
   it "validates uniqueness of email" do
-    Calendar.new(name: "Test Calendar", cid: "sample@sample").save!
-    should validate_uniqueness_of(:cid)
+    calendar = FactoryGirl.create(:calendar)
+    it { should validate_uniqueness_of(:cid) }
   end
 
-  context "Storing/Retrieving with Redis", vcr: true  do
-
+  context "Storing/Retrieving with Redis", vcr: true do
     let(:redis) { Redis.new }
     let(:calendar) { FactoryGirl.create(:calendar, cid: ENV["DEFAULT_CALENDAR_ID"]) }
 

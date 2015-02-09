@@ -13,10 +13,12 @@ feature "calendar", %(
   # - [x] I can click on an event and it links to the event in
   #   the calendar
 
-  let(:user) { FactoryGirl.create(
-                 :user_with_calendar,
-                 calendar_args: { cid: ENV["DEFAULT_CALENDAR_ID"] }
-               ) }
+  let(:user) do
+    FactoryGirl.create(
+      :user_with_calendar,
+      calendar_args: { cid: ENV["DEFAULT_CALENDAR_ID"] }
+    )
+  end
 
   before(:each) do
     t = Time.new(2015, 02, 05, 19, 43)
