@@ -5,7 +5,7 @@ http_interactions:
     uri: https://accounts.google.com/o/oauth2/token
     body:
       encoding: ASCII-8BIT
-      string: grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer&assertion=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiIzNDEyNDQ4NTg1NjktbWs3bDNpZWhzMnZqYmdqNXRjdmYyajNnYWhnbmMycHJAZGV2ZWxvcGVyLmdzZXJ2aWNlYWNjb3VudC5jb20iLCJzY29wZSI6Imh0dHBzOi8vd3d3Lmdvb2dsZWFwaXMuY29tL2F1dGgvY2FsZW5kYXIucmVhZG9ubHkiLCJhdWQiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20vby9vYXV0aDIvdG9rZW4iLCJleHAiOjE0MjM1MTk4NjAsImlhdCI6MTQyMzUxOTc0MH0.Zsb_EBacG3jNNyU07hPdEjf8tWDk9eAgWvsemMijlO5wRMKoM-7RGm9IM5tXgu_-43xf_-SBx12juR2NjkNCB6iZKUDSwxQ6UCul-MHaI0JFJzKYIqknher6drNWn9lSR0T5dzzhyu9R5ea4tREUVsq04pgWtj9lQ1I1X4TVIyQ
+      string: grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer&assertion=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiIzNDEyNDQ4NTg1NjktbWs3bDNpZWhzMnZqYmdqNXRjdmYyajNnYWhnbmMycHJAZGV2ZWxvcGVyLmdzZXJ2aWNlYWNjb3VudC5jb20iLCJzY29wZSI6Imh0dHBzOi8vd3d3Lmdvb2dsZWFwaXMuY29tL2F1dGgvY2FsZW5kYXIucmVhZG9ubHkiLCJhdWQiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20vby9vYXV0aDIvdG9rZW4iLCJleHAiOjE0MjM1MjUxMzQsImlhdCI6MTQyMzUyNTAxNH0.CsKAJ4Z--ZtBbgfECTtUMyJ_LXTzI3-FUSIMzjHxHS3OuFWNt-e0xP551xtbwE3pfCboInB4RMHbeBfViTaNA73L4Z-Rf8ntA1DYZiqnfNK6LLwlQRJzJZZ9zILrc14mRZf1RJ2cJZIT_UX3iSMz5mXp6vv0vSdEgvJmww21EkQ
     headers:
       Cache-Control:
       - no-store
@@ -31,7 +31,7 @@ http_interactions:
       Expires:
       - Fri, 01 Jan 1990 00:00:00 GMT
       Date:
-      - Mon, 09 Feb 2015 22:12:49 GMT
+      - Mon, 09 Feb 2015 23:37:54 GMT
       Content-Disposition:
       - attachment; filename="json.txt"; filename*=UTF-8''json.txt
       X-Content-Type-Options:
@@ -54,12 +54,12 @@ http_interactions:
       encoding: UTF-8
       string: |-
         {
-          "access_token" : "ya29.FQHagHe5ldtKTg4JAQ68bUgTzrjE2cldhMTwht-ZorWP1tE1kdj3bSmNUhOpH3epgzUaPayhhOK3sQ",
+          "access_token" : "ya29.FQFvByBX1dnrForev4H8eMWZHunqYp0iivm7m5XgE0ty-yMPI4ywpprIEdYbysHhG30r-fs6kmtc9A",
           "token_type" : "Bearer",
           "expires_in" : 3600
         }
     http_version: 
-  recorded_at: Mon, 09 Feb 2015 22:10:00 GMT
+  recorded_at: Mon, 09 Feb 2015 23:37:54 GMT
 - request:
     method: get
     uri: https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest
@@ -83,9 +83,9 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Mon, 09 Feb 2015 22:16:12 GMT
+      - Mon, 09 Feb 2015 23:42:10 GMT
       Date:
-      - Mon, 09 Feb 2015 22:11:12 GMT
+      - Mon, 09 Feb 2015 23:37:10 GMT
       Etag:
       - '"ye6orv2F-1npMW3u9suM3a7C5Bo/o0MMcsYRceiyCn5lLAv92qEiqHg"'
       Vary:
@@ -106,7 +106,7 @@ http_interactions:
       Server:
       - GSE
       Age:
-      - '97'
+      - '44'
       Cache-Control:
       - public, max-age=300, must-revalidate, no-transform
       Alternate-Protocol:
@@ -369,7 +369,7 @@ http_interactions:
         Q+DdoUlVwWGv4Uh6h9sHJA20faDtA20faHs72j5YG3pYG57B///+7P8D4Boz
         TmhuAQA=
     http_version: 
-  recorded_at: Mon, 09 Feb 2015 22:10:00 GMT
+  recorded_at: Mon, 09 Feb 2015 23:37:54 GMT
 - request:
     method: get
     uri: https://www.googleapis.com/calendar/v3/calendars/<DEFAULT_GOOGLE_CALENDAR_ID>/events?timeMax=2015-02-10T23:59:59-05:00&timeMin=2015-02-09T00:00:00-05:00
@@ -386,7 +386,7 @@ http_interactions:
       Content-Type:
       - ''
       Authorization:
-      - Bearer ya29.FQHagHe5ldtKTg4JAQ68bUgTzrjE2cldhMTwht-ZorWP1tE1kdj3bSmNUhOpH3epgzUaPayhhOK3sQ
+      - Bearer ya29.FQFvByBX1dnrForev4H8eMWZHunqYp0iivm7m5XgE0ty-yMPI4ywpprIEdYbysHhG30r-fs6kmtc9A
       Cache-Control:
       - no-store
       Accept:
@@ -397,9 +397,9 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Mon, 09 Feb 2015 22:12:49 GMT
+      - Mon, 09 Feb 2015 23:37:55 GMT
       Date:
-      - Mon, 09 Feb 2015 22:12:49 GMT
+      - Mon, 09 Feb 2015 23:37:55 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Vary:
@@ -449,5 +449,5 @@ http_interactions:
         +GId6XtP+OIH7B7mpzXCn3cZ9xxNsI6aEd4w870+M9kngZMi6X/qNN5POQ38
         Hqd5frt/k9Nkbk8O98v/G6zmRTH/kNUcgE8HXw7+Bg81Vf5UCwAA
     http_version: 
-  recorded_at: Mon, 09 Feb 2015 22:10:00 GMT
+  recorded_at: Mon, 09 Feb 2015 23:37:55 GMT
 recorded_with: VCR 2.9.3

@@ -1,7 +1,6 @@
 require "rails_helper"
 
 RSpec.describe Calendar, type: :model do
-  pending
   it { should have_many(:teams) }
 
   it { should validate_presence_of(:name) }
@@ -12,14 +11,14 @@ RSpec.describe Calendar, type: :model do
     it { should validate_uniqueness_of(:cid) }
   end
 
-  context "Storing/Retrieving with Redis", :vcr do
-    let(:redis) { Redis.new }
+  context "storing and retrieving with redis", :vcr do
+    let(:redis) { Redis.current }
     let(:calendar) do
       FactoryGirl.create(:calendar, cid: ENV["DEFAULT_GOOGLE_CALENDAR_ID"])
     end
 
     before(:each) do
-      time = DateTime.parse("2015/02/09 17:10 -0500")
+      time = DateTime.parse("2015/02/09 18:10 -0500")
       Timecop.travel(time)
     end
 
@@ -28,7 +27,7 @@ RSpec.describe Calendar, type: :model do
       Timecop.return
     end
 
-    it "stores events in Redis after a call to events" do
+    it "stores events in redis after a call to events" do
       calendar.events_json
       expect(redis.keys).to include(calendar.cid)
     end
