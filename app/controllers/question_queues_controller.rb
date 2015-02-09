@@ -1,7 +1,7 @@
 class QuestionQueuesController < ApplicationController
   def index
     @team = Team.find(params[:team_id])
-    @question_queues = QuestionQueue.where(team: @team).where.not(status: 'done')
+    @question_queues = QuestionQueue.for_team(@team)
   end
 
   def create
@@ -13,8 +13,7 @@ class QuestionQueuesController < ApplicationController
 
   def update
     @question_queue = QuestionQueue.find(params[:id])
-    @question_queue.update_attributes(status: question_queue_params[:status], user: current_user)
-    @question_queue.save!
+    @question_queue.update_in_queue(question_queue_params[:status], current_user)
 
     redirect_to team_question_queues_path(@question_queue.team)
   end

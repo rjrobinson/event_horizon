@@ -246,7 +246,9 @@ CREATE TABLE question_queues (
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     status character varying(255) DEFAULT 'open'::character varying,
-    user_id integer
+    user_id integer,
+    sort_order integer DEFAULT 0,
+    no_show_counter integer DEFAULT 0
 );
 
 
@@ -1015,4 +1017,8 @@ INSERT INTO schema_migrations (version) VALUES ('20150123164500');
 INSERT INTO schema_migrations (version) VALUES ('20150205180710');
 
 INSERT INTO schema_migrations (version) VALUES ('20150206162914');
+
+INSERT INTO schema_migrations (version) VALUES ('20150206211308');
+
+INSERT INTO schema_migrations (version) VALUES ('20150209154829');
 

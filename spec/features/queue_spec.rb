@@ -60,6 +60,41 @@ feature 'Queue Index' do
       expect(page).not_to have_content("We Solved It!")
       expect(page).not_to have_content(question.title)
     end
+
+    scenario "I can tag a question as a No Show to move it to the bottom of the queue" do
+      student = FactoryGirl.create(:user)
+      FactoryGirl.create(:team_membership, user: student, team: team)
+      question = FactoryGirl.create(:question, user: student, title: 'What is the meaning to life?')
+      qq = FactoryGirl.create(:question_queue, question: question, team: team)
+
+      student2 = FactoryGirl.create(:user)
+      FactoryGirl.create(:team_membership, user: student2, team: team)
+      question2 = FactoryGirl.create(:question, user: student2, title: 'Why does my postgresql not work????')
+      FactoryGirl.create(:question_queue, question: question2, team: team)
+
+      sign_in_as ee
+      visit team_question_queues_path(team)
+
+      expect(page.body.index('What is the meaning to life')).to be < page.body.index('Why does my postgresql not work')
+      within("#queue_#{qq.id}") do
+        click_on "No Show"
+      end
+      expect(page.body.index('Why does my postgresql not work')).to be < page.body.index('What is the meaning to life')
+    end
+
+    scenario "3 no shows marks a question as done" do
+      student = FactoryGirl.create(:user)
+      FactoryGirl.create(:team_membership, user: student, team: team)
+      question = FactoryGirl.create(:question, user: student, title: 'What is the meaning to life?')
+      FactoryGirl.create(:question_queue, question: question, team: team)
+
+      sign_in_as ee
+      visit team_question_queues_path(team)
+      click_on "No Show"
+      click_on "No Show"
+      click_on "No Show"
+      expect(page).to_not have_content('What is the meaning to life?')
+    end
   end
 
   context 'As an Student' do
