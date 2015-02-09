@@ -2,7 +2,9 @@ class DashboardsController < ApplicationController
   before_action :authenticate_user!
 
   def show
-    @upcoming_assignments = current_user.assignments.order(due_on: :asc)
-    @announcements = current_user.announcements.order(created_at: :desc).limit(5)
+    @upcoming_core_assignments = current_user.core_assignments
+    @upcoming_noncore_assignments = current_user.non_core_assignments
+    @latest_announcements = current_user.latest_announcements(5)
+    @teams = current_user.teams
   end
 end

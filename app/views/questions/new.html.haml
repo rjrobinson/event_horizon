@@ -1,0 +1,20 @@
+- content_for(:title) do
+  Ask New Question - Launch Academy
+
+%ul.breadcrumbs
+  %li= link_to "Questions", questions_path
+  %li.current= link_to "New Question", new_question_path
+
+%h2 Ask Question
+
+#new-question
+  = form_for @question do |f|
+    = field_set_tag "Ask Question" do
+
+      = f.label :title, "Title"
+      = f.text_field :title
+
+      = f.label :body, "Body"
+      = f.text_area :body
+
+      = f.submit "Ask Question", class: "button"

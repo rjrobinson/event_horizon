@@ -1,0 +1,27 @@
+- content_for(:title) do
+  Question Queue for #{@team.name.capitalize}
+
+%h1 Question Queue for #{@team.name.capitalize}
+
+%ul.breadcrumbs
+  %li= link_to "Teams", teams_path
+  %li= link_to @team.name, @team
+  %li.current Question Queue
+
+%ul.questions
+  - @question_queues.each_with_index do |question_queue, index|
+    %li{id: "queue_#{question_queue.id}", class: "question-queue" }
+      %div.row
+        %div.large-2.columns
+          %div{ class: 'queue-number' + (question_queue.status == 'in progress' ? ' in-progress' : '' ) }= index + 1
+          %p
+        %div.large-10.columns
+          %h3= question_queue.question.user.name
+          = link_to question_queue.question.title, question_path(question_queue.question)
+          - if question_queue.status == "in progress"
+            %h5.assignee= "#{question_queue.user.try(:name)} is assigned to this question."
+          %div.queue-buttons
+            - if current_user.try(:role) == 'admin'
+              = question_queue_update_button(question_queue)
+              - if question_queue.status == 'open'
+                = link_to "No Show", question_queue_path(id: question_queue, question_queue: { status: "no-show"}), method: :patch, class: "ee-button no-show"

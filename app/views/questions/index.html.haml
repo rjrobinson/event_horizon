@@ -1,0 +1,22 @@
+- content_for(:title) do
+  Questions - Launch Academy
+
+%ul.breadcrumbs
+  %li.current= link_to "Questions", questions_path
+
+#new-question
+  = link_to "Ask A Question", new_question_path, class: "button success"
+
+%dl.sub-nav
+  %dt Filter:
+  %dd{ class: ("active" if @filter == "newest") }= link_to "Newest", questions_path
+  %dd{ class: ("active" if @filter == "unanswered") }= link_to "Unanswered", questions_path(query: "unanswered")
+
+%h2= questions_header(@filter)
+
+.questions
+  - @questions.each do |question|
+    .question
+      %h3.title= link_to question.title, question
+      %p.answer_count= pluralize question.answers_count, "answer"
+
