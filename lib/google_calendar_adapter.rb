@@ -24,7 +24,7 @@ class GoogleCalendarAdapter
 
   protected
   def key
-    OpenSSL::PKey::RSA.new(ENV["GOOGLE_P12_PEM"], 'notasecret')
+    OpenSSL::PKey::RSA.new(ENV["GOOGLE_P12_PEM"], "notasecret")
   end
 
   def oauth2_client
