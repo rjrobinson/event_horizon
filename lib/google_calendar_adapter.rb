@@ -24,7 +24,20 @@ class GoogleCalendarAdapter
 
   protected
   def key
-    OpenSSL::PKey::RSA.new(ENV["GOOGLE_P12_PEM"], "notasecret")
+    if ENV["GOOGLE_P12_PEM"]
+      Rails.logger.debug "#{self.class.name}: Using GOOGLE_P12_PEM PKCS12 from environment."
+      return OpenSSL::PKey::RSA.new(ENV["GOOGLE_P12_PEM"], "notasecret")
+    end
+
+    keyfile = Dir["#{Rails.root}/*.p12"].first
+    if keyfile
+      Rails.logger.debug "#{self.class.name}: Using #{keyfile} PKCS12."
+      return Google::APIClient::KeyUtils.load_from_pkcs12(keyfile, "notasecret")
+    else
+      Rails.logger.debug "#{self.class.name}: No PKCS12 found."
+    end
+
+    nil
   end
 
   def oauth2_client
