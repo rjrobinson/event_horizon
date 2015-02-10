@@ -1,4 +1,6 @@
 class QuestionQueuesController < ApplicationController
+  before_action :authorize_admin!, only: [:update, :create]
+
   def index
     @team = Team.find(params[:team_id])
     @question_queues = QuestionQueue.for_team(@team)
