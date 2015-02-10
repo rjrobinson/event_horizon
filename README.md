@@ -98,17 +98,7 @@ To restore the snapshot to your local database, run the following command:
 $ pg_restore --verbose --clean --no-acl --no-owner -d event_horizon_development db/dumps/latest.dump
 ```
 
-[horizon-production]: https://horizon.launchacademy.com/
-[horizon-staging]: http://event-horizon-staging.herokuapp.com/
-[curriculum-repo]: https://github.com/LaunchAcademy/curriculum
-[et-gem]: http://rubygems.org/gems/et
-[et-repo]: https://github.com/LaunchAcademy/extraterrestrial
-[launch-github-apps]: https://github.com/organizations/LaunchAcademy/settings/applications
-[personal-github-apps]: https://github.com/settings/applications
-[carrierwave-config]: https://github.com/LaunchAcademy/event_horizon/blob/master/config/initializers/carrierwave.rb
-[localhost]: http://localhost:3000
-
-## Inserting a Goolge P12 Keyfile into the Environment
+## Inserting a Google PKCS12 Keyfile into the Environment (for Heroku)
 ```
 require "google/api_client"
 
@@ -121,3 +111,17 @@ key.to_pem => ""-----BEGIN RSA PRIVATE KEY-----\nMIICXQIB..."
 ```
 
 Save the return value of `key.to_pem` to the ENV as `GOOGLE_P12_PEM`.
+
+## Encrypting a Google PKCS12 Keyfile (for Travis-CI)
+Travis-CI does not like the method above for storing private keys. Encrypting the private key was the solution. Directions, [here](travis-ci-encrypting-files).
+
+[horizon-production]: https://horizon.launchacademy.com/
+[horizon-staging]: http://event-horizon-staging.herokuapp.com/
+[curriculum-repo]: https://github.com/LaunchAcademy/curriculum
+[et-gem]: http://rubygems.org/gems/et
+[et-repo]: https://github.com/LaunchAcademy/extraterrestrial
+[launch-github-apps]: https://github.com/organizations/LaunchAcademy/settings/applications
+[personal-github-apps]: https://github.com/settings/applications
+[carrierwave-config]: https://github.com/LaunchAcademy/event_horizon/blob/master/config/initializers/carrierwave.rb
+[localhost]: http://localhost:3000
+[travis-ci-encrypting-files]: http://docs.travis-ci.com/user/encrypting-files/#Using-OpenSSL
