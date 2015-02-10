@@ -46,7 +46,7 @@
             %li= link_to "Getting Started", start_path
             %li.has-form
               .row.collapse
-                = form_tag lessons_path, method: :get do
+                = form_tag searches_path, method: :get do
                   .large-8.small-9.columns
                     = text_field_tag :query, params[:query]
                   .large-4.small-3.columns

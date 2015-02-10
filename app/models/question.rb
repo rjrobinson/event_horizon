@@ -36,4 +36,8 @@ class Question < ActiveRecord::Base
       QuestionQueue.create(question: self, team: team)
     end
   end
+
+  def self.search(query)
+    where("searchable @@ plainto_tsquery(?)", query)
+  end
 end

@@ -14,15 +14,7 @@ class LessonsController < ApplicationController
     lessons = visible_filter(current_user, lessons)
     lessons = type_filter(params[:type], lessons)
     lessons = submittable_filter(params[:submittable], lessons)
-    search_filter(params[:query], lessons)
-  end
-
-  def search_filter(query, lessons)
-    if query
-      lessons.search(query)
-    else
-      lessons
-    end
+    lessons
   end
 
   def submittable_filter(flag, lessons)
