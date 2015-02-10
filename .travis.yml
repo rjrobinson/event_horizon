@@ -8,8 +8,6 @@ before_install:
   -d
 before_script:
 - psql -c 'CREATE DATABASE event_horizon_test;' -U postgres
-after_failure:
-- cat $(pwd)/log/test.log
 env:
   global:
   - secure: jJ7V0MVFVU0z4jF9DM0gnpotLhFVG/VDrUaF7nCkw6s7lLwT5Hr10vpPAJ0rwCjqvZFCrLm0nTEqZ3li6oAxi4boBWp6WfFDQ3hAqlK3lnx2xFDk98vUrM2i/ufLsdfxoKsQSdMfE3fCXXuAt0jdR8HAGwdQzmtDXljuMDJtV60=
