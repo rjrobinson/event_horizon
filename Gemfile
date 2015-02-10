@@ -41,9 +41,6 @@ group :test do
   gem "coveralls", require: false
   gem "launchy", require: false
   gem "database_cleaner"
-  gem "vcr"
-  gem "webmock"
-  gem "timecop"
 end
 
 group :production do

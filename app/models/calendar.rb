@@ -6,15 +6,18 @@ class Calendar < ActiveRecord::Base
   validates :cid, uniqueness: true
 
   def events_json
-    result = redis.get(cid)
-    if result
-      result = JSON.parse(result)
-    else
-      result = GoogleCalendarAdapter.new(cid)
-        .fetch_events(default_start_time, default_end_time)
-      redis.set(cid, result.to_json)
-      redis.expire(cid, 15.minutes)
+    # return events if stored in redis
+    if redis.get(cid)
+      events = JSON.parse(redis.get(cid))
+      return events unless events.empty?
     end
+
+    # fetch events and store in redis
+    result = GoogleCalendarAdapter.new(cid)
+      .fetch_events(default_start_time, default_end_time)
+    redis.set(cid, result.to_json)
+    redis.expire(cid, 15.minutes)
+
     result
   end
 

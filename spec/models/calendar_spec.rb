@@ -11,23 +11,18 @@ RSpec.describe Calendar, type: :model do
     it { should validate_uniqueness_of(:cid) }
   end
 
-  context "storing and retrieving with redis", :vcr do
+  context "storing and retrieving with redis" do
     let(:redis) { Redis.current }
     let(:calendar) do
       FactoryGirl.create(:calendar, cid: ENV["DEFAULT_GOOGLE_CALENDAR_ID"])
     end
 
     before(:each) do
-      time = DateTime.parse("2015/02/09 18:10 -0500")
-      Timecop.travel(time)
-    end
-
-    after(:each) do
       redis.flushdb
-      Timecop.return
     end
 
     it "stores events in redis after a call to events" do
+      expect(redis.keys).to_not include(calendar.cid)
       calendar.events_json
       expect(redis.keys).to include(calendar.cid)
     end
