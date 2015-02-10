@@ -3,6 +3,9 @@ class QuestionsController < ApplicationController
     if params[:query] == "unanswered"
       @questions = Question.unanswered
       @filter = "unanswered"
+    elsif params[:query] == "queued"
+      @questions = Question.queued.sort_by{ |q| q.question_queue.first.sort_order }
+      @filter = "queued"
     else
       @questions = Question.order(created_at: :desc)
       @filter = "newest"

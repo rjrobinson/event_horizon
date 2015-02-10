@@ -11,12 +11,16 @@
   %dt Filter:
   %dd{ class: ("active" if @filter == "newest") }= link_to "Newest", questions_path
   %dd{ class: ("active" if @filter == "unanswered") }= link_to "Unanswered", questions_path(query: "unanswered")
+  %dd{ class: ("active" if @filter == "queued") }= link_to "Question Queue", questions_path(query: "queued")
 
 %h2= questions_header(@filter)
 
 .questions
   - @questions.each do |question|
-    .question
-      %h3.title= link_to question.title, question
+    .question.box
+      %span
+        %h3.title
+          = link_to question.title, question
+          = queue_status(question)
       %p.answer_count= pluralize question.answers_count, "answer"
 

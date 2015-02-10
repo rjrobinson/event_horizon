@@ -1,6 +1,21 @@
 require "rails_helper"
 
 describe Question do
+  describe 'scopes' do
+    describe 'queued' do
+      it 'returns questions that are in the question_queue and not done' do
+        question1 = FactoryGirl.create(:question)
+        question2 = FactoryGirl.create(:question)
+        question3 = FactoryGirl.create(:question)
+        FactoryGirl.create(:question_queue, question: question1, status: 'done')
+        FactoryGirl.create(:question_queue, question: question2, status: 'open')
+        FactoryGirl.create(:question_queue, question: question3, status: 'in-progress')
+
+        expect(Question.queued).to match_array([question2, question3])
+      end
+    end
+  end
+
   describe "validations" do
     it "can only accept answers belonging to this question" do
       question = FactoryGirl.create(:question)

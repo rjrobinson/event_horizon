@@ -37,7 +37,7 @@ describe QuestionQueuesController do
     end
 
     it 'redirects to the queue index' do
-      patch :update, id: question_queue.id, question_queue: { status: 'in progress' }
+      patch :update, id: question_queue.id, question_queue: { status: 'in-progress' }
       expect(response).to redirect_to(team_question_queues_path(team))
     end
 

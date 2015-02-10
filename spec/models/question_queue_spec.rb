@@ -1,6 +1,30 @@
 require 'rails_helper'
 
 describe QuestionQueue do
+  describe '#status_text' do
+    context 'status is open' do
+      it "returns 'Queued'" do
+        question_queue = FactoryGirl.create(:question_queue, status: 'open')
+        expect(question_queue.status_text).to eq 'Queued'
+      end
+    end
+
+    context 'status is in-progress' do
+      it "returns 'Assigned to <user name>'" do
+        user = FactoryGirl.create(:user, name: 'David Tengdin')
+        question_queue = FactoryGirl.create(:question_queue, user: user, status: 'in-progress')
+        expect(question_queue.status_text).to eq 'Assigned to David Tengdin'
+      end
+    end
+
+    context 'status is done' do
+      it "returns 'Done'" do
+        question_queue = FactoryGirl.create(:question_queue, status: 'done')
+        expect(question_queue.status_text).to eq 'Done'
+      end
+    end
+  end
+
   describe '#callbacks' do
     describe 'set_sort_order' do
       it 'sets the sort_order one higher than the highest' do

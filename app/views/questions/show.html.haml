@@ -6,7 +6,9 @@
   %li.current= link_to @question.title, question_path(@question)
 
 #question
-  %h2.title= @question.title
+  %h2.title
+    = @question.title
+    = queue_status(@question)
   .row
     .small-8.columns
       %p.body~ render_markdown(@question.body)
