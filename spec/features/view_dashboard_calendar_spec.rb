@@ -19,8 +19,19 @@ feature "view dashboard calendar" do
     )
   end
 
+  before(:each) do
+    datetime = DateTime.parse("2015/02/09")
+    start_time = datetime.beginning_of_day
+    end_time = datetime.end_of_day + 1.day
+
+    allow_any_instance_of(Calendar).to receive(:default_start_time)
+      .and_return(start_time)
+
+    allow_any_instance_of(Calendar).to receive(:default_end_time)
+      .and_return(end_time)
+  end
+
   scenario "user sees event information" do
-    pending "override Calendar default_start_time default_end_time methods"
     sign_in_as(user)
     visit dashboard_path
     expect(page).to have_content("Monday, February 9 at 19:00")
