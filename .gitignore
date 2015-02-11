@@ -33,3 +33,4 @@
 
 # Ignore tags
 /tag
+*.swo

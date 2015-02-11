@@ -104,7 +104,8 @@ CREATE TABLE answers (
     user_id integer NOT NULL,
     body text NOT NULL,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    searchable tsvector
 );
 
 
@@ -284,7 +285,8 @@ CREATE TABLE questions (
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     accepted_answer_id integer,
-    answers_count integer DEFAULT 0 NOT NULL
+    answers_count integer DEFAULT 0 NOT NULL,
+    searchable tsvector
 );
 
 
@@ -745,6 +747,13 @@ CREATE INDEX index_answers_on_question_id ON answers USING btree (question_id);
 
 
 --
+-- Name: index_answers_on_searchable; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_answers_on_searchable ON answers USING gin (searchable);
+
+
+--
 -- Name: index_answers_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -812,6 +821,13 @@ CREATE UNIQUE INDEX index_lessons_on_slug ON lessons USING btree (slug);
 --
 
 CREATE INDEX index_lessons_on_visibility ON lessons USING btree (visibility);
+
+
+--
+-- Name: index_questions_on_searchable; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_questions_on_searchable ON questions USING gin (searchable);
 
 
 --
@@ -906,10 +922,24 @@ CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (v
 
 
 --
+-- Name: answers_searchable_update; Type: TRIGGER; Schema: public; Owner: -
+--
+
+CREATE TRIGGER answers_searchable_update BEFORE INSERT OR UPDATE ON answers FOR EACH ROW EXECUTE PROCEDURE tsvector_update_trigger('searchable', 'pg_catalog.english', 'body');
+
+
+--
 -- Name: lessons_searchable_update; Type: TRIGGER; Schema: public; Owner: -
 --
 
 CREATE TRIGGER lessons_searchable_update BEFORE INSERT OR UPDATE ON lessons FOR EACH ROW EXECUTE PROCEDURE tsvector_update_trigger('searchable', 'pg_catalog.english', 'title', 'body', 'description');
+
+
+--
+-- Name: questions_searchable_update; Type: TRIGGER; Schema: public; Owner: -
+--
+
+CREATE TRIGGER questions_searchable_update BEFORE INSERT OR UPDATE ON questions FOR EACH ROW EXECUTE PROCEDURE tsvector_update_trigger('searchable', 'pg_catalog.english', 'title', 'body');
 
 
 --
@@ -1031,4 +1061,8 @@ INSERT INTO schema_migrations (version) VALUES ('20150206162914');
 INSERT INTO schema_migrations (version) VALUES ('20150206211308');
 
 INSERT INTO schema_migrations (version) VALUES ('20150209154829');
+
+INSERT INTO schema_migrations (version) VALUES ('20150210202615');
+
+INSERT INTO schema_migrations (version) VALUES ('20150210203036');
 

@@ -6,10 +6,12 @@
   %li.current= link_to @question.title, question_path(@question)
 
 #question
-  %h2.title= @question.title
+  %h2.title
+    = @question.title
+    = queue_status(@question)
   .row
     .small-8.columns
-      %p.body~ render_markdown(@question.body)
+      %p.body~ render_safe_markdown(@question.body)
     .small-4.columns
       .user
         = link_to @question.user.username, user_path(@question.user)
@@ -27,7 +29,7 @@
     - if answer.persisted?
       .row.answer{ class: @question.accepted_answer_id == answer.id ? 'accepted-answer' : ''  }
         .small-8.columns
-          %p.body~ render_markdown(answer.body)
+          %p.body~ render_safe_markdown(answer.body)
           - if answer.user == current_user
             = link_to "Edit Answer", edit_question_answer_path(@question, answer), class: "button tiny success"
             = link_to "Delete Answer", question_answer_path(@question, answer), method: :delete, class: "button tiny alert"

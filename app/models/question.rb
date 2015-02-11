@@ -12,6 +12,11 @@ class Question < ActiveRecord::Base
 
   validate :accepted_answer_belongs_to_question
 
+  scope :queued, ->() {
+    joins(:question_queue).
+    where("question_queues.question_id IS NOT NULL AND question_queues.status NOT LIKE '%done%'")
+  }
+
   def accepted_answer_belongs_to_question
     if accepted_answer && !answers.include?(accepted_answer)
       errors.add(:accepted_answer_id, "must belong to this question")
@@ -30,5 +35,9 @@ class Question < ActiveRecord::Base
     user.teams.each do |team|
       QuestionQueue.create(question: self, team: team)
     end
+  end
+
+  def self.search(query)
+    where("searchable @@ plainto_tsquery(?)", query)
   end
 end
