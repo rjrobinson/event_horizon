@@ -24,4 +24,14 @@ class QuestionQueue < ActiveRecord::Base
       update_attributes(status: update_status)
     end
   end
+
+  def status_text
+    if status == 'open'
+      "Queued"
+    elsif status == 'in-progress'
+      "Assigned to #{self.user.name}"
+    elsif status == 'done'
+      "Done"
+    end
+  end
 end

@@ -9,4 +9,8 @@ class Answer < ActiveRecord::Base
   def accepted?
     question.accepted_answer == self
   end
+
+  def self.search(query)
+    where("searchable @@ plainto_tsquery(?)", query)
+  end
 end

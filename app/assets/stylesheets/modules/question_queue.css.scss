@@ -18,6 +18,26 @@
   }
 }
 
+.queue-status {
+  border: 1px solid $border-color;
+  padding: 0.25em 0.5em;
+  border-radius: 5px;
+}
+
+.queue-status.in-progress {
+  background: $article-color;
+  color: white;
+}
+
+.queue-status.open {
+  background: $challenge-color;
+  color: white;
+}
+
+.queue-status.done {
+  background: $light-bg-color;
+}
+
 ul.questions {
   list-style: none;
   margin: 0;

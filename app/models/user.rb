@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   has_many :assignments, through: :teams
   has_many :announcements, through: :teams
   has_many :assigned_lessons, through: :assignments, source: :lesson
-  has_many :answers, through: :questions
+  has_many :answers
   has_many :questions
   has_many :announcement_receipts
   has_many :question_queues
