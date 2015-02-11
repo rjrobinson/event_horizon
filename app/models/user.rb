@@ -11,10 +11,11 @@ class User < ActiveRecord::Base
   has_many :announcement_receipts
   has_many :question_queues
 
+  has_many :identities,
+    dependent: :destroy
+
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
-  validates :uid, presence: true, uniqueness: { scope: :provider }
-  validates :provider, presence: true
   validates :token, presence: true
   validates :role, presence: true, inclusion: { in: ["member", "admin"] }
 
@@ -22,17 +23,6 @@ class User < ActiveRecord::Base
 
   def to_param
     username
-  end
-
-  def self.find_or_create_from_omniauth(auth)
-    account_keys = { uid: auth["uid"], provider: auth["provider"] }
-
-    user = User.find_or_initialize_by(account_keys)
-    user.email = auth["info"]["email"]
-    user.username = auth["info"]["nickname"]
-    user.name = auth["info"]["name"]
-    user.save!
-    user
   end
 
   def ensure_authentication_token

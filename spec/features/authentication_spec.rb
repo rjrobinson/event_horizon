@@ -42,11 +42,12 @@ feature "guest creates account" do
 
   context "existing user" do
     let(:user) { FactoryGirl.create(:user) }
+    let(:identity) { user.identities.first }
 
     before :each do
       OmniAuth.config.mock_auth[:github] = {
-        "provider" => user.provider,
-        "uid" => user.uid,
+        "provider" => identity.provider,
+        "uid" => identity.uid,
         "info" => {
           "nickname" => user.username,
           "email" => user.email,

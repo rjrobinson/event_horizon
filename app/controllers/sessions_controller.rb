@@ -4,7 +4,8 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_or_create_from_omniauth(auth_hash)
+    identity = Identity.find_or_create_from_omniauth(auth_hash)
+    user = identity.user
 
     if user.persisted? && user.belongs_to_org?(organization, omniauth_token)
       session[:user_id] = user.id

@@ -94,35 +94,51 @@ FactoryGirl.define do
     body "2 + 2 == 5\n"
   end
 
-  factory :user do
-    provider "github"
-    sequence(:uid) { |n| n.to_s }
+  factory :identity do
+    association :user,
+      factory: :user_without_identity
+
+    factory :github_identity do
+      provider 'github'
+      sequence(:uid) { |n| n.to_s }
+    end
+  end
+
+  factory :user_without_identity, class: User do
     sequence(:username) { |n| "george_michael_#{n}" }
     sequence(:email) { |n| "gm#{n}@example.com" }
     sequence(:name) { |n| "George Michael #{n}" }
     role "member"
 
-    factory :admin do
-      role "admin"
-    end
+    factory :user do
 
-    factory :user_with_assignment_submission do
       after(:create) do |user|
-        team_membership = create(:team_membership , user: user)
-        assignment = create(:assignment, team: team_membership.team)
-        create(:submission, lesson: assignment.lesson, user: user)
+        create(:github_identity, user: user)
+      end
+
+      factory :admin do
+        role "admin"
+      end
+
+      factory :user_with_assignment_submission do
+        after(:create) do |user|
+          team_membership = create(:team_membership , user: user)
+          assignment = create(:assignment, team: team_membership.team)
+          create(:submission, lesson: assignment.lesson, user: user)
+        end
+      end
+
+      factory :user_with_multiple_assignment_submissions do
+        after(:create) do |user|
+          team_membership = create(:team_membership , user: user)
+          core = create(:assignment, team: team_membership.team)
+          create(:assignment, required: false, team: team_membership.team)
+          variable = create(:submission, lesson: core.lesson, user: user)
+        end
       end
     end
 
-    factory :user_with_multiple_assignment_submissions do
-      after(:create) do |user|
-        team_membership = create(:team_membership , user: user)
-        core = create(:assignment, team: team_membership.team)
-        create(:assignment, required: false, team: team_membership.team)
-        variable = create(:submission, lesson: core.lesson, user: user)
-      end
-    end
-  end
+end
 
   factory :team do
     sequence(:name) { |n| "Team #{n}" }

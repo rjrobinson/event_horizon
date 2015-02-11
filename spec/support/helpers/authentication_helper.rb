@@ -2,9 +2,10 @@ require "base64"
 
 module AuthenticationHelper
   def sign_in_as(user)
+    identity = user.identities.first
     OmniAuth.config.mock_auth[:github] = {
-      "provider" => user.provider,
-      "uid" => user.uid,
+      "provider" => identity.provider,
+      "uid" => identity.uid,
       "info" => {
         "nickname" => user.username,
         "email" => user.email,

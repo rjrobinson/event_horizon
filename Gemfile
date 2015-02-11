@@ -30,11 +30,13 @@ end
 group :development, :test do
   gem "rspec-rails"
   gem "capybara"
-  gem "factory_girl_rails"
+  gem "factory_girl"
   gem "pry-rails"
 end
 
 group :test do
+  gem "shoulda-matchers"
+  gem "valid_attribute"
   gem "coveralls", require: false
   gem "launchy", require: false
 end
