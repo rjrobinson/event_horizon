@@ -30,3 +30,6 @@
 
 # Ignore database dumps
 /db/dumps/*
+
+# Ignore tags
+/tag

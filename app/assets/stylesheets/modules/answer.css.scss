@@ -1,7 +1,13 @@
+@import 'globals/colors';
+
 .row.answer {
   border: 2px solid #eee;
   border-radius: 7px;
   margin: 2% 0;
+}
+
+.row.answer.accepted-answer {
+  border: 2px solid $article-color;
 }
 
 .answer {
