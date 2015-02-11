@@ -30,3 +30,5 @@
 
 # Ignore database dumps
 /db/dumps/*
+
+*.swo
