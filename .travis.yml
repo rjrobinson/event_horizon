@@ -4,8 +4,7 @@ rvm:
 services:
 - redis-server
 before_install:
-- openssl aes-256-cbc -k "$google_api_p12_password" -in google_api.p12.enc -out google_api.p12
-  -d
+- openssl aes-256-cbc -k "$GOOGLE_P12_PEM_PASSWORD" -in google_api.p12.enc -out google_api.p12 -d
 before_script:
 - psql -c 'CREATE DATABASE event_horizon_test;' -U postgres
 env:
