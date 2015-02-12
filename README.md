@@ -105,6 +105,8 @@ $ pg_restore --verbose --clean --no-acl --no-owner -d event_horizon_development 
 
 ## Calendar
 
+The Calendar feature makes use of redis to cache data. `brew install redis` and follow the instructions to start redis on system start.
+
 A `rake horizon:create_calendar` rake task exists to create a default calendar, and populate the calendar_id field for each team if it is nil. Set the DEFAULT_GOOGLE_CALENDAR_ID in the environment before running.
 
 ## Inserting a Google PKCS12 Keyfile into the Environment (for Heroku)
