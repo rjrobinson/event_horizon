@@ -16,7 +16,7 @@ RSpec.describe GoogleCalendarAdapter do
       start_time = DateTime.parse("2015/01/26").beginning_of_day
       end_time = DateTime.parse("2015/01/30").end_of_day
       events = calendar.fetch_events(start_time, end_time)
-      event_time = DateTime.parse events.first["start"]["dateTime"]
+      event_time = DateTime.parse(events.first["start"]["dateTime"])
 
       expect(event_time).to be_between(start_time, end_time)
     end

@@ -53,7 +53,7 @@ feature "view dashboard calendar" do
       stub_calendar_start_and_end_time("2015/01/31")
     end
 
-    scenario "'no upcoming events' is displayed", focus: true do
+    scenario "'no upcoming events' is displayed" do
       sign_in_as(user)
       visit dashboard_path
       save_and_open_page

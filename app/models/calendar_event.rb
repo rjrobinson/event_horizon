@@ -16,6 +16,7 @@ class CalendarEvent
   end
 
   protected
+
   def parse_date_string(key)
     return unless @json_data[key]
     if @json_data[key]["date"]

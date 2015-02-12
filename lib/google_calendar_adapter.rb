@@ -23,9 +23,11 @@ class GoogleCalendarAdapter
   end
 
   protected
+
   def key
     if ENV["GOOGLE_P12_PEM"]
-      Rails.logger.debug "#{self.class.name}: Using GOOGLE_P12_PEM PKCS12 from environment."
+      Rails.logger.debug "#{self.class.name}: Using GOOGLE_P12_PEM PKCS12 " \
+        "from the environment."
       return OpenSSL::PKey::RSA.new(ENV["GOOGLE_P12_PEM"], "notasecret")
     end
 
