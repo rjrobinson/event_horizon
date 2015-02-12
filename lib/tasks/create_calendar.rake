@@ -3,10 +3,10 @@ namespace :horizon do
   task create_calendar: :environment do
     cid = ENV["DEFAULT_GOOGLE_CALENDAR_ID"]
 
-    unless cid
+    if cid.nil? || cid.empty?
       puts "Please set the DEFAULT_GOOGLE_CALENDAR_ID environment variable."
     else
-      calendar = Calendar.find_or_create_by(cid: cid, name: "Default Calendar")
+      calendar = Calendar.find_or_create_by!(cid: cid, name: "Default Calendar")
       Team.all.each do |team|
         if team.calendar.nil?
           puts "Set #{team.name} Team to the default calendar."
