@@ -5,15 +5,18 @@ class User < ActiveRecord::Base
   has_many :teams, through: :team_memberships
   has_many :assignments, through: :teams
   has_many :announcements, through: :teams
+  has_many :assigned_lessons, through: :assignments, source: :lesson
+  has_many :answers
+  has_many :questions
+  has_many :announcement_receipts
+  has_many :question_queues
 
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
   validates :uid, presence: true, uniqueness: { scope: :provider }
   validates :provider, presence: true
   validates :token, presence: true
-  validates :role, presence: true, inclusion: {
-    in: ["member", "admin"]
-  }
+  validates :role, presence: true, inclusion: { in: ["member", "admin"] }
 
   before_validation :ensure_authentication_token
 
@@ -60,6 +63,21 @@ class User < ActiveRecord::Base
       result << team.calendar if team.calendar
     end
     result.uniq
+  end
+
+  def latest_announcements(count)
+    announcements.
+      joins("LEFT JOIN announcement_receipts ON announcements.id = announcement_receipts.announcement_id AND announcement_receipts.user_id = #{id}").
+      where("announcement_receipts.id IS NULL").
+      order(created_at: :desc).limit(count)
+  end
+
+  def core_assignments
+     assignments.where(required: true).order(due_on: :asc)
+  end
+
+  def non_core_assignments
+     assignments.where(required: false).order(due_on: :asc)
   end
 
   private

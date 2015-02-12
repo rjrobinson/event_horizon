@@ -30,6 +30,38 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
+-- Name: announcement_receipts; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE announcement_receipts (
+    id integer NOT NULL,
+    user_id integer NOT NULL,
+    announcement_id integer NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: announcement_receipts_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE announcement_receipts_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: announcement_receipts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE announcement_receipts_id_seq OWNED BY announcement_receipts.id;
+
+
+--
 -- Name: announcements; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -60,6 +92,40 @@ CREATE SEQUENCE announcements_id_seq
 --
 
 ALTER SEQUENCE announcements_id_seq OWNED BY announcements.id;
+
+
+--
+-- Name: answers; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE answers (
+    id integer NOT NULL,
+    question_id integer NOT NULL,
+    user_id integer NOT NULL,
+    body text NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    searchable tsvector
+);
+
+
+--
+-- Name: answers_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE answers_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: answers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE answers_id_seq OWNED BY answers.id;
 
 
 --
@@ -179,7 +245,8 @@ CREATE TABLE lessons (
     archive character varying(255),
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    "position" integer NOT NULL
+    "position" integer NOT NULL,
+    visibility character varying(255) DEFAULT 'public'::character varying NOT NULL
 );
 
 
@@ -200,6 +267,77 @@ CREATE SEQUENCE lessons_id_seq
 --
 
 ALTER SEQUENCE lessons_id_seq OWNED BY lessons.id;
+
+
+--
+-- Name: question_queues; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE question_queues (
+    id integer NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    status character varying(255) DEFAULT 'open'::character varying,
+    user_id integer,
+    sort_order integer DEFAULT 0,
+    no_show_counter integer DEFAULT 0
+);
+
+
+--
+-- Name: question_queues_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE question_queues_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: question_queues_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE question_queues_id_seq OWNED BY question_queues.id;
+
+
+--
+-- Name: questions; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE questions (
+    id integer NOT NULL,
+    user_id integer NOT NULL,
+    title character varying(255) NOT NULL,
+    body text NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    accepted_answer_id integer,
+    answers_count integer DEFAULT 0 NOT NULL,
+    searchable tsvector,
+    question_queue_id integer
+);
+
+
+--
+-- Name: questions_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE questions_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: questions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE questions_id_seq OWNED BY questions.id;
 
 
 --
@@ -420,7 +558,21 @@ ALTER SEQUENCE users_id_seq OWNED BY users.id;
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY announcement_receipts ALTER COLUMN id SET DEFAULT nextval('announcement_receipts_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY announcements ALTER COLUMN id SET DEFAULT nextval('announcements_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY answers ALTER COLUMN id SET DEFAULT nextval('answers_id_seq'::regclass);
 
 
 --
@@ -449,6 +601,20 @@ ALTER TABLE ONLY comments ALTER COLUMN id SET DEFAULT nextval('comments_id_seq':
 --
 
 ALTER TABLE ONLY lessons ALTER COLUMN id SET DEFAULT nextval('lessons_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY question_queues ALTER COLUMN id SET DEFAULT nextval('question_queues_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY questions ALTER COLUMN id SET DEFAULT nextval('questions_id_seq'::regclass);
 
 
 --
@@ -494,11 +660,27 @@ ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regcl
 
 
 --
+-- Name: announcement_receipts_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY announcement_receipts
+    ADD CONSTRAINT announcement_receipts_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: announcements_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY announcements
     ADD CONSTRAINT announcements_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: answers_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY answers
+    ADD CONSTRAINT answers_pkey PRIMARY KEY (id);
 
 
 --
@@ -531,6 +713,22 @@ ALTER TABLE ONLY comments
 
 ALTER TABLE ONLY lessons
     ADD CONSTRAINT lessons_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: question_queues_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY question_queues
+    ADD CONSTRAINT question_queues_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: questions_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY questions
+    ADD CONSTRAINT questions_pkey PRIMARY KEY (id);
 
 
 --
@@ -586,6 +784,27 @@ ALTER TABLE ONLY users
 --
 
 CREATE INDEX index_announcements_on_team_id ON announcements USING btree (team_id);
+
+
+--
+-- Name: index_answers_on_question_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_answers_on_question_id ON answers USING btree (question_id);
+
+
+--
+-- Name: index_answers_on_searchable; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_answers_on_searchable ON answers USING gin (searchable);
+
+
+--
+-- Name: index_answers_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_answers_on_user_id ON answers USING btree (user_id);
 
 
 --
@@ -649,6 +868,27 @@ CREATE INDEX index_lessons_on_searchable ON lessons USING gin (searchable);
 --
 
 CREATE UNIQUE INDEX index_lessons_on_slug ON lessons USING btree (slug);
+
+
+--
+-- Name: index_lessons_on_visibility; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_lessons_on_visibility ON lessons USING btree (visibility);
+
+
+--
+-- Name: index_questions_on_searchable; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_questions_on_searchable ON questions USING gin (searchable);
+
+
+--
+-- Name: index_questions_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_questions_on_user_id ON questions USING btree (user_id);
 
 
 --
@@ -736,10 +976,24 @@ CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (v
 
 
 --
+-- Name: answers_searchable_update; Type: TRIGGER; Schema: public; Owner: -
+--
+
+CREATE TRIGGER answers_searchable_update BEFORE INSERT OR UPDATE ON answers FOR EACH ROW EXECUTE PROCEDURE tsvector_update_trigger('searchable', 'pg_catalog.english', 'body');
+
+
+--
 -- Name: lessons_searchable_update; Type: TRIGGER; Schema: public; Owner: -
 --
 
 CREATE TRIGGER lessons_searchable_update BEFORE INSERT OR UPDATE ON lessons FOR EACH ROW EXECUTE PROCEDURE tsvector_update_trigger('searchable', 'pg_catalog.english', 'title', 'body', 'description');
+
+
+--
+-- Name: questions_searchable_update; Type: TRIGGER; Schema: public; Owner: -
+--
+
+CREATE TRIGGER questions_searchable_update BEFORE INSERT OR UPDATE ON questions FOR EACH ROW EXECUTE PROCEDURE tsvector_update_trigger('searchable', 'pg_catalog.english', 'title', 'body');
 
 
 --
@@ -842,9 +1096,39 @@ INSERT INTO schema_migrations (version) VALUES ('20141126230346');
 
 INSERT INTO schema_migrations (version) VALUES ('20141204203947');
 
+INSERT INTO schema_migrations (version) VALUES ('20141216173739');
+
+INSERT INTO schema_migrations (version) VALUES ('20141216212826');
+
+INSERT INTO schema_migrations (version) VALUES ('20141217191055');
+
+INSERT INTO schema_migrations (version) VALUES ('20150102202537');
+
+INSERT INTO schema_migrations (version) VALUES ('20150122213444');
+
+INSERT INTO schema_migrations (version) VALUES ('20150123164500');
+
 INSERT INTO schema_migrations (version) VALUES ('20150123203729');
+
+INSERT INTO schema_migrations (version) VALUES ('20150205180710');
 
 INSERT INTO schema_migrations (version) VALUES ('20150205184909');
 
+INSERT INTO schema_migrations (version) VALUES ('20150206162914');
+
 INSERT INTO schema_migrations (version) VALUES ('20150206184403');
+
+INSERT INTO schema_migrations (version) VALUES ('20150206211308');
+
+INSERT INTO schema_migrations (version) VALUES ('20150209154829');
+
+INSERT INTO schema_migrations (version) VALUES ('20150210202615');
+
+INSERT INTO schema_migrations (version) VALUES ('20150210203036');
+
+INSERT INTO schema_migrations (version) VALUES ('20150212144048');
+
+INSERT INTO schema_migrations (version) VALUES ('20150212145515');
+
+INSERT INTO schema_migrations (version) VALUES ('20150212145738');
 
