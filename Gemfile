@@ -20,6 +20,7 @@ gem "carrierwave"
 gem "fog"
 gem "sidekiq"
 gem "newrelic_rpm"
+gem 'draper', '~> 1.3'
 
 group :development do
   gem "spring"

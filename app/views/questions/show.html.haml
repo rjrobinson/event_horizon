@@ -8,7 +8,7 @@
 #question
   %h2.title
     = @question.title
-    = queue_status(@question)
+    = @question.queue_status
   .row
     .small-8.columns
       %p.body~ render_safe_markdown(@question.body)
