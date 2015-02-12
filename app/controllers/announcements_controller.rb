@@ -12,7 +12,8 @@ class AnnouncementsController < ApplicationController
     @announcement = @team.announcements.build(announcement_params)
 
     if @announcement.save
-      Notifications::AnnouncementNotification.new(@announcement).dispatch
+      @announcement.dispatch
+      # Notifications::AnnouncementNotification.new(@announcement).dispatch
       flash[:info] = "Added announcement."
       redirect_to team_announcements_path(@team)
     else

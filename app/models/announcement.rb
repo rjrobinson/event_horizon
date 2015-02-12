@@ -5,4 +5,8 @@ class Announcement < ActiveRecord::Base
   validates :team, presence: true
   validates :title, presence: true
   validates :description, presence: true
+
+  def dispatch
+    Notifications::AnnouncementNotification.new(self).dispatch
+  end
 end
