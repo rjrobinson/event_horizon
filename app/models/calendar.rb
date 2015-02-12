@@ -26,8 +26,7 @@ class Calendar < ActiveRecord::Base
     events_json.each do |event_json|
       results << CalendarEvent.new(event_json)
     end
-
-    results.sort_by { |event| event.start_time }
+    results
   end
 
   def default_start_time
@@ -40,5 +39,13 @@ class Calendar < ActiveRecord::Base
 
   def redis
     Redis.current
+  end
+
+  def self.events(calendar_ids)
+    results = []
+    calendar_ids.each do |calendar_id|
+      results.concat(Calendar.find(calendar_id).events)
+    end
+    results.sort_by { |event| event.start_time }
   end
 end

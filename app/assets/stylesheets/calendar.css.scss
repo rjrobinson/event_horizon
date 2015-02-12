@@ -1,3 +1,8 @@
 tr.past-event * {
   color: lightgrey;
 }
+
+tr.no-events td {
+  text-align: center;
+  colspan: 2;
+}

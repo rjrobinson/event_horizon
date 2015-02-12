@@ -17,7 +17,7 @@ RSpec.describe Calendar, type: :model do
       FactoryGirl.create(:calendar, cid: ENV["DEFAULT_GOOGLE_CALENDAR_ID"])
     end
 
-    before(:each) do
+    around(:each) do
       redis.flushdb
     end
 
