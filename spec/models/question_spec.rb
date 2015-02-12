@@ -4,14 +4,15 @@ describe Question do
   describe 'scopes' do
     describe 'queued' do
       it 'returns questions that are in the question_queue and not done' do
-        question1 = FactoryGirl.create(:question)
-        question2 = FactoryGirl.create(:question)
-        question3 = FactoryGirl.create(:question)
-        FactoryGirl.create(:question_queue, question: question1, status: 'done')
-        FactoryGirl.create(:question_queue, question: question2, status: 'open')
-        FactoryGirl.create(:question_queue, question: question3, status: 'in-progress')
+        qq1 = FactoryGirl.create(:question_queue, status: 'done')
+        qq2 = FactoryGirl.create(:question_queue, status: 'open')
+        qq3 = FactoryGirl.create(:question_queue, status: 'in-progress')
+        q1 = FactoryGirl.create(:question, question_queue: qq1)
+        q2 = FactoryGirl.create(:question, question_queue: qq2)
+        q3 = FactoryGirl.create(:question, question_queue: qq3)
+        FactoryGirl.create(:question)
 
-        expect(Question.queued).to match_array([question2, question3])
+        expect(Question.queued).to match_array([q2, q3])
       end
     end
   end
@@ -52,7 +53,7 @@ describe Question do
       FactoryGirl.create(:team_membership, team: team, user: user)
     end
 
-    context '#question queued for a user in one team' do
+    context '#question_queue does not already exist for the question' do
       it 'creates a single question_queue' do
         expect{
           question.queue
@@ -60,14 +61,15 @@ describe Question do
       end
     end
 
-    context '#question queued for a user in more than one team' do
-      it 'creates a question_queue for each team' do
-        team2 = FactoryGirl.create(:team)
-        FactoryGirl.create(:team_membership, team: team2, user: user)
-
+    context '#question_queue already exists for the question' do
+      it 'updates that question_queue' do
+        question.queue
+        question.question_queue.update_attributes(status: 'done', no_show_counter: 3)
         expect{
           question.queue
-        }.to change{QuestionQueue.count}.by(2)
+        }.to change{QuestionQueue.count}.by(0)
+        expect(question.question_queue.status).to eq 'open'
+        expect(question.question_queue.no_show_counter).to eq 0
       end
     end
   end

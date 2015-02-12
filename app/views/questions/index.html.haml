@@ -16,11 +16,28 @@
 %h2= questions_header(@filter)
 
 .questions
-  - @questions.each do |question|
-    .question.box
-      %span
-        %h3.title
-          = link_to question.title, question
-          = queue_status(question)
-      %p.answer_count= pluralize question.answers_count, "answer"
+  - @questions.each_with_index do |question, index|
+    - if question.question_queue.present? && @filter == 'queued'
+      .question-queue{id: "queue_#{question.question_queue.id}"}
+        %div.row
+          %div.large-2.columns
+            %div{ class: 'queue-number' + (question.question_queue.status == 'in-progress' ? ' in-progress' : '' ) }= index + 1
+            %p
+          %div.large-10.columns
+            %h3= question.user.name
+            = link_to question.title, question_path(question)
+            - if question.question_queue.status == "in-progress"
+              %h5.assignee= "#{question.question_queue.user.try(:name)} is assigned to this question."
+            %div.queue-buttons
+              - if current_user.try(:role) == 'admin'
+                = question_queue_update_button(question.question_queue)
+                - if question.question_queue.status == 'open'
+                  = link_to "No Show", question_queue_path(id: question.question_queue, question_queue: { status: "no-show"}), method: :patch, class: "ee-button no-show"
+    - elsif @filter != 'queued'
+      .question.box
+        %span
+          %h3.title
+            = link_to question.title, question
+            = queue_status(question)
+        %p.answer_count= pluralize question.answers_count, "answer"
 

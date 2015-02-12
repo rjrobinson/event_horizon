@@ -42,14 +42,16 @@ describe QuestionQueue do
   describe '#update_in_queue' do
     let(:user) { FactoryGirl.create(:user) }
     let(:experience_engineer) { FactoryGirl.create(:admin) }
-    let(:team) { FactoryGirl.create(:team) }
-
     let(:question) { FactoryGirl.create(:question, user: user) }
-    let!(:question_queue) { FactoryGirl.create(:question_queue, question: question, team: team) }
+    let(:question_queue) { question.question_queue }
+
+    before(:each) do
+      question.queue
+    end
 
     it 'updates the user assigned to the current_user' do
       question_queue.update_in_queue('in-progress', experience_engineer)
-      expect(question_queue.reload.user).to eq experience_engineer
+      expect(question.question_queue.reload.user).to eq experience_engineer
     end
 
     context 'status in-progress' do

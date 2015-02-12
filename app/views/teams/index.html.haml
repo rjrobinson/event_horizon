@@ -10,4 +10,3 @@
   - @teams.each do |team|
     %li{ id: "team_#{team.id}"}
       = link_to(team.name, team)
-      = link_to "Question Queue", team_question_queues_path(team)

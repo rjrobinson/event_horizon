@@ -243,8 +243,6 @@ ALTER SEQUENCE lessons_id_seq OWNED BY lessons.id;
 
 CREATE TABLE question_queues (
     id integer NOT NULL,
-    question_id integer NOT NULL,
-    team_id integer NOT NULL,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     status character varying(255) DEFAULT 'open'::character varying,
@@ -286,7 +284,8 @@ CREATE TABLE questions (
     updated_at timestamp without time zone,
     accepted_answer_id integer,
     answers_count integer DEFAULT 0 NOT NULL,
-    searchable tsvector
+    searchable tsvector,
+    question_queue_id integer
 );
 
 
@@ -1065,4 +1064,10 @@ INSERT INTO schema_migrations (version) VALUES ('20150209154829');
 INSERT INTO schema_migrations (version) VALUES ('20150210202615');
 
 INSERT INTO schema_migrations (version) VALUES ('20150210203036');
+
+INSERT INTO schema_migrations (version) VALUES ('20150212144048');
+
+INSERT INTO schema_migrations (version) VALUES ('20150212145515');
+
+INSERT INTO schema_migrations (version) VALUES ('20150212145738');
 

@@ -8,11 +8,11 @@ module QuestionQueueHelper
   end
 
   def queue_status(question)
-    if question.question_queue.any?
+    if question.question_queue.present?
       content_tag(
         :small,
-        question.question_queue.first.status_text,
-        class: "queue-status #{question.question_queue.first.status}"
+        question.question_queue.status_text,
+        class: "queue-status #{question.question_queue.status}"
       )
     end
   end
