@@ -31,6 +31,9 @@
 # Ignore database dumps
 /db/dumps/*
 
+# Ignore .p12 files
+/*.p12
+
 # Ignore tags
 /tag
 *.swo
