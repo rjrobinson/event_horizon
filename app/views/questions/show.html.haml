@@ -81,7 +81,7 @@
             = link_to answer.user.username, user_path(answer.user)
             answered on
             .answered_at= format_datetime(answer.created_at)
-          - if answer.accepted?
+          - if answer.accepted? && @question.user == current_user
             .accepted
               %i.fi-check.large
               accepted answer
