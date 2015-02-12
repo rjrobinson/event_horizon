@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "Factories" do
+describe "Factories" do
   FactoryGirl.factories.map(&:name).each do |factory_name|
     it "#{factory_name} is valid" do
       expect(FactoryGirl.build(factory_name)).to be_valid

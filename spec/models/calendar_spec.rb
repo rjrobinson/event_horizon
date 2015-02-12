@@ -10,7 +10,7 @@ describe Calendar do
     it 'returns an array of CalendarEvents' do
       ce1 = double
       redis_db = double
-      allow(Redis).to receive(:current).and_return(redis_db)
+      allow(Redis).to receive(:new).and_return(redis_db)
       allow(redis_db).to receive(:get).and_return(
         [
           {

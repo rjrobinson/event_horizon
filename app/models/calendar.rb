@@ -34,7 +34,8 @@ class Calendar < ActiveRecord::Base
   end
 
   def redis
-    Redis.current
+    uri = URI.parse(Rails.application.config.redis_url)
+    Redis.new(host: uri.host, port: uri.port, password: uri.password)
   end
 
   def self.events(calendar_ids)
