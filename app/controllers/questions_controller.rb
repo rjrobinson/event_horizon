@@ -10,10 +10,11 @@ class QuestionsController < ApplicationController
       @questions = Question.order(created_at: :desc)
       @filter = "newest"
     end
+    @questions = QuestionDecorator.decorate_collection(@questions)
   end
 
   def show
-    @question = Question.find(params[:id])
+    @question = Question.find(params[:id]).decorate
     @answer = Answer.new
   end
 
