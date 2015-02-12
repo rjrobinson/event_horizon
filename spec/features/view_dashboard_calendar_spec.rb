@@ -19,7 +19,11 @@ feature "view dashboard calendar" do
     )
   end
 
-  around(:each) do
+  before(:each) do
+    Redis.current.flushdb
+  end
+
+  after(:each) do
     Redis.current.flushdb
   end
 
@@ -56,8 +60,7 @@ feature "view dashboard calendar" do
     scenario "'no upcoming events' is displayed" do
       sign_in_as(user)
       visit dashboard_path
-      save_and_open_page
-      expect(page).to have_content("no upcoming events")
+      expect(page).to have_content("No upcoming events")
     end
 
   end

@@ -1,10 +1,35 @@
 require "rails_helper"
 
-RSpec.describe Calendar, type: :model do
+describe Calendar do
   it { should have_many(:teams) }
 
   it { should validate_presence_of(:name) }
   it { should validate_presence_of(:cid) }
+
+  describe "events" do
+    it 'returns an array of CalendarEvents' do
+      ce1 = double
+      redis_db = double
+      allow(Redis).to receive(:current).and_return(redis_db)
+      allow(redis_db).to receive(:get).and_return(
+        [
+          {
+            "summary" => "some summary",
+            "htmlLink" => "some link",
+            "start" => {"date" => Date.today},
+            "end" => {"date" => Date.today}
+          }
+        ].to_json
+      )
+      allow(CalendarEvent).to receive(:new).with({
+            url: "some link",
+            summary: "some summary",
+            end_time: Date.today,
+            start_time: Date.today,
+      }).and_return(ce1)
+      expect(Calendar.new(cid: 'cid', name: 'name').events).to match_array([ce1])
+    end
+  end
 
   describe "cid validation" do
     subject { FactoryGirl.create(:calendar) }

@@ -8,8 +8,8 @@ class Calendar < ActiveRecord::Base
   def events_json
     # return events if stored in redis
     if redis.get(cid)
-      events = JSON.parse(redis.get(cid))
-      return events unless events.empty?
+      api_calendar_data = JSON.parse(redis.get(cid))
+      return api_calendar_data unless api_calendar_data.empty?
     end
 
     # fetch events and store in redis
@@ -22,11 +22,7 @@ class Calendar < ActiveRecord::Base
   end
 
   def events
-    results = []
-    events_json.each do |event_json|
-      results << CalendarEvent.new(event_json)
-    end
-    results
+    events_json.map { |json| CalendarEvent.new(event_json(json)) }
   end
 
   def default_start_time
@@ -47,5 +43,26 @@ class Calendar < ActiveRecord::Base
       results.concat(Calendar.find(calendar_id).events)
     end
     results.sort_by { |event| event.start_time }
+  end
+
+  private
+
+  def event_json(json)
+    {
+      start_time: parse_date_string(json, "start"),
+      end_time: parse_date_string(json, "end"),
+      summary: json["summary"],
+      url: json["htmlLink"]
+    }
+  end
+
+  def parse_date_string(json, key)
+    if json[key]["date"]
+      Date.parse(json[key]["date"])
+    elsif json[key]["dateTime"]
+      DateTime.parse(json[key]["dateTime"])
+    else
+      nil
+    end
   end
 end
