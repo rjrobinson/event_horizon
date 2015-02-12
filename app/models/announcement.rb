@@ -7,6 +7,11 @@ class Announcement < ActiveRecord::Base
   validates :description, presence: true
 
   def dispatch
-    Notifications::AnnouncementNotification.new(self).dispatch
+    if save
+      Notifications::AnnouncementNotification.new(self).dispatch
+      true
+    else
+      false
+    end
   end
 end
