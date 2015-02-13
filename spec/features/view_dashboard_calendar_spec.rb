@@ -38,6 +38,7 @@ feature "view dashboard calendar" do
       visit dashboard_path
       expect(page).to have_content("Monday, February 9 at 19:00")
       expect(page).to have_link("Community: Boston MySQL Monthly Meetup")
+      expect(page.all("table.calendar tr a").first[:href]).to include 'www.google.com/calendar'
     end
 
     scenario "events that have already started have a class of '.past-event'" do
