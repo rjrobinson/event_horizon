@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "2.1.3"
+ruby "2.1.5"
 
 gem "rails", "4.1.4"
 
@@ -20,11 +20,13 @@ gem "carrierwave"
 gem "fog"
 gem "sidekiq"
 gem "newrelic_rpm"
+gem "google-api-client"
+gem "redis"
+gem 'draper', '~> 1.3'
 
 group :development do
   gem "spring"
   gem "quiet_assets"
-  gem "dotenv-rails"
 end
 
 group :development, :test do
@@ -32,11 +34,14 @@ group :development, :test do
   gem "capybara"
   gem "factory_girl_rails"
   gem "pry-rails"
+  gem "shoulda-matchers"
+  gem "dotenv-rails"
 end
 
 group :test do
   gem "coveralls", require: false
   gem "launchy", require: false
+  gem "database_cleaner"
 end
 
 group :production do
