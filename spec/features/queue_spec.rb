@@ -39,7 +39,6 @@ feature 'Queue Index' do
     expect(page).not_to have_content(question.title)
   end
 
-
   scenario "I can tag a question as a No Show to move it to the bottom of the queue" do
     student = FactoryGirl.create(:user)
     FactoryGirl.create(:team_membership, user: student, team: team)
