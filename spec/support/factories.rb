@@ -137,8 +137,7 @@ FactoryGirl.define do
         end
       end
     end
-
-end
+  end
 
   factory :team do
     sequence(:name) { |n| "Team #{n}" }

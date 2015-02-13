@@ -11,6 +11,8 @@ gem "jquery-rails"
 gem "haml-rails"
 gem "foundation-rails"
 gem "omniauth-github"
+gem "omniauth-launch-pass",
+  github: 'launchacademy/omniauth-launch-pass'
 gem "redcarpet"
 gem "rouge"
 gem "sanitize"
@@ -40,6 +42,9 @@ group :test do
   gem "coveralls", require: false
   gem "launchy", require: false
 end
+
+gem 'launchcop',
+  path: '../launchcop'
 
 group :production do
   gem "rails_12factor"
