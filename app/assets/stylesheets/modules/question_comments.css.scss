@@ -25,7 +25,10 @@
 p#add-question-comment {
   margin-left: 10px;
   a {
-    color: white;
+    color: gray;
+    &:hover {
+      color: $link-blue;
+    }
   }
 }
 
