@@ -13,6 +13,13 @@ class QuestionCommentsController < ApplicationController
     end
   end
 
+  def destroy
+    comment = current_user.question_comments.find(params[:id])
+    comment.destroy
+    redirect_to question_path(comment.question),
+      info: "Your comment has been deleted"
+  end
+
   private
 
   def comment_params
