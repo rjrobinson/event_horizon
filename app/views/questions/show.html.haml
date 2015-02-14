@@ -12,6 +12,18 @@
   .row
     .small-8.columns
       %p.body~ render_safe_markdown(@question.body)
+      %ul.question-comments
+        - @question_comments.each do |comment|
+          %li= comment.body
+
+      %p.add-comment= link_to "add comment"
+      #question-comment
+        = form_for [@question, @question_comment] do |f|
+          = f.label :body
+          = f.text_area :body
+
+          = f.submit "create comment", class: "button tiny success"
+
     .small-4.columns
       .user
         = link_to @question.user.username, user_path(@question.user)
