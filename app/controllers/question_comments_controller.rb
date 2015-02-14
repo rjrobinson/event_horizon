@@ -8,8 +8,7 @@ class QuestionCommentsController < ApplicationController
     if @comment.save!
       redirect_to question_path(@question), info: "Comment saved."
     else
-      flash[:alert] = "Failed to save comment"
-      redirect_to question_path(@question)
+      redirect_to question_path(@question), alert: "Failed to save comment"
     end
   end
 
