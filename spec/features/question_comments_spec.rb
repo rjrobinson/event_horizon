@@ -31,10 +31,7 @@ feature 'question comments' do
     scenario 'I cannot create a comment for a question' do
       visit question_path(question)
 
-      click_on 'add comment'
-
-      fill_in 'Body', with: 'Please provide more details'
-      click_on 'create comment'
+      create_comment('Please provide more details')
 
       expect(page).to_not have_content('Please provide more details')
       expect(page).to have_content('You need to sign in before continuing.')
