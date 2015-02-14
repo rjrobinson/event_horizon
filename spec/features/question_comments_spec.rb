@@ -10,12 +10,18 @@ feature 'question comments' do
       sign_in_as user
       visit question_path(question)
 
-      click_on 'add comment'
-
-      fill_in 'Body', with: 'Please provide more details'
-      click_on 'create comment'
-
+      create_comment('Please provide more details')
       expect(page).to have_content('Please provide more details')
+    end
+
+    scenario 'I can delete a comment I own' do
+      sign_in_as user
+      visit question_path(question)
+
+      create_comment('Please provide more details')
+      find('a.delete-question-comment').click
+
+      expect(page).to_not have_content('Please provide more details')
     end
   end
 
@@ -34,4 +40,11 @@ feature 'question comments' do
       expect(page).to have_content('You need to sign in before continuing.')
     end
   end
+end
+
+def create_comment(body)
+  click_on 'add comment'
+
+  fill_in 'Body', with: body
+  click_on 'create comment'
 end
