@@ -1,0 +1,30 @@
+@import 'globals/colors';
+
+.question-comments {
+  list-style: none;
+}
+
+.qa-comment {
+  border-bottom: 2px solid $border-color;
+  margin: .5em 0;
+  padding: 1em 0;
+  padding-left: 2em;
+  font-size: .75em
+}
+
+.qa-comment:first-child {
+  border-top: 2px solid $border-color;
+}
+
+.comment-user {
+  font-weight: bold;
+  font-style: italic;
+  font-size: .6em;
+}
+
+p#add-question-comment {
+  margin-left: 10px;
+  a {
+    color: white;
+  }
+}
