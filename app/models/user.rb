@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_many :questions
   has_many :announcement_receipts
   has_many :question_queues
+  has_many :question_comments
 
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true

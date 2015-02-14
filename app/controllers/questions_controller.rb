@@ -16,6 +16,8 @@ class QuestionsController < ApplicationController
   def show
     @question = Question.find(params[:id]).decorate
     @answer = Answer.new
+    @question_comment = QuestionComment.new
+    @question_comments = @question.question_comments
   end
 
   def new
