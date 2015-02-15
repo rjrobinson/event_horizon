@@ -4,10 +4,6 @@ $(function() {
 
   $addCommentButton.on('click', function(e) {
     e.preventDefault();
-    if ($addCommentForm.hasClass('hidden')) {
-      $addCommentForm.removeClass('hidden');
-    } else {
-      $addCommentForm.addClass('hidden');
-    }
+    $addCommentForm.toggleClass('hidden');
   });
 });
