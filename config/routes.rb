@@ -31,6 +31,10 @@ Rails.application.routes.draw do
     resources :question_comments, only: [:create, :destroy]
   end
 
+  resources :answers, only: [] do
+    resources :answer_comments, only: [:create, :destroy]
+  end
+
   resource :session, only: [:new, :create, :destroy] do
     get "failure", on: :member
   end
