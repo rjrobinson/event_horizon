@@ -1,13 +1,16 @@
 $(function() {
-  var $addCommentButton = $('#add-answer-comment');
-  var $addCommentForm = $('#answer-comment');
+  var $addCommentButton = $('.add-answer-comment a');
+  var $addCommentForm = $('.answer-comment');
 
   $addCommentButton.on('click', function(e) {
     e.preventDefault();
-    if ($addCommentForm.hasClass('hidden')) {
-      $addCommentForm.removeClass('hidden');
+    var $target = $(e.target);
+    var $commentDiv = $target.parent().parent().find('div.answer-comment');
+
+    if ($commentDiv.hasClass('hidden')) {
+      $commentDiv.removeClass('hidden');
     } else {
-      $addCommentForm.addClass('hidden');
+      $commentDiv.addClass('hidden');
     }
   });
 });
