@@ -3,7 +3,7 @@ class Question < ActiveRecord::Base
   belongs_to :question_queue
   belongs_to :accepted_answer, class_name: "Answer"
   has_many :answers, dependent: :destroy
-  has_many :question_comments
+  has_many :question_comments, dependent: :destroy
 
   validates :title, presence: true, length: { in: 10..200 }
   validates :body, presence: true, length: { in: 15..10000 }
