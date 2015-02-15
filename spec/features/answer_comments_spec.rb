@@ -4,25 +4,22 @@ feature 'answer comments' do
 
   context 'as an authorized user' do
     let(:user) { FactoryGirl.create(:user) }
-    let(:question) { FactoryGirl.create(:question, user: user) }
+    let(:question) { FactoryGirl.create(:question) }
+    let!(:answer) { FactoryGirl.create(:answer, question: question) }
+
 
     scenario 'I can create a comment on an answer' do
       sign_in_as user
       visit question_path(question)
 
-      fill_in 'answer_body', with: 'Here is the answer to your question'
-      click_on 'Submit Answer'
-
       create_answer_comment('Wow this was a great answer!')
+
       expect(page).to have_content('Wow this was a great answer!')
     end
 
     scenario 'I can delete a comment I own' do
       sign_in_as user
       visit question_path(question)
-
-      fill_in 'answer_body', with: 'Here is the answer to your question'
-      click_on 'Submit Answer'
 
       create_answer_comment('Wow this was a great answer!')
       find('a.delete-answer-comment').click
@@ -33,16 +30,16 @@ feature 'answer comments' do
 
   context 'as a visitor' do
     let(:question) { FactoryGirl.create(:question) }
-    let(:answer) { FactoryGirl.create(:answer, question: question) }
+    let!(:answer) { FactoryGirl.create(:answer, question: question) }
 
-    # scenario 'I cannot create a comment for an answer' do
-      # visit question_path(question)
+    scenario 'I cannot create a comment for an answer' do
+      visit question_path(question)
 
-      # create_answer_comment('Wow this was a great answer!')
+      create_answer_comment('Wow this was a great answer!')
 
-      # expect(page).to_not have_content('Wow this was a great answer!')
-      # expect(page).to have_content('You need to sign in before continuing.')
-    # end
+      expect(page).to_not have_content('Wow this was a great answer!')
+      expect(page).to have_content('You need to sign in before continuing.')
+    end
   end
 end
 
