@@ -57,6 +57,8 @@ class Calendar < ActiveRecord::Base
   end
 
   def parse_date_string(json, key)
+    return nil unless json[key]
+
     if json[key]["date"]
       Date.parse(json[key]["date"])
     elsif json[key]["dateTime"]
