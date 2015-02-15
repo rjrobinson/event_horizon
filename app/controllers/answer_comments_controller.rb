@@ -2,14 +2,16 @@ class AnswerCommentsController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    @question = Question.find(question_id)
-    @answer = @question.answers.find(params[:answer_id])
+    @answer = Answer.find(params[:answer_id])
+    @question = @answer.question
     @comment = @answer.answer_comments.new(answer_params)
     @comment.user = current_user
-    if @comment.save!
+    if @comment.save
       redirect_to question_path(@question), info: "Comment saved."
     else
-      redirect_to question_path(@question), alert: "Failed to save comment"
+      errors = @comment.errors.full_messages.join
+      redirect_to question_path(@question),
+        alert: "Failed to save comment. #{errors}"
     end
   end
 
@@ -23,7 +25,7 @@ class AnswerCommentsController < ApplicationController
   private
 
   def question_id
-    params[:answer_comment][:question_id]
+    params[:answer_comment].try(:[],:question_id)
   end
 
   def answer_params

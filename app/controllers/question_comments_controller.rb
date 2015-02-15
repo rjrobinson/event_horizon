@@ -5,10 +5,12 @@ class QuestionCommentsController < ApplicationController
     @question = Question.find(params[:question_id]).decorate
     @comment = @question.question_comments.new(comment_params)
     @comment.user = current_user
-    if @comment.save!
+    if @comment.save
       redirect_to question_path(@question), info: "Comment saved."
     else
-      redirect_to question_path(@question), alert: "Failed to save comment"
+      errors = @comment.errors.full_messages.join
+      redirect_to question_path(@question),
+        alert: "Failed to save comment. #{errors}"
     end
   end
 
