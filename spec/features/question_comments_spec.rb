@@ -10,7 +10,7 @@ feature 'question comments' do
       sign_in_as user
       visit question_path(question)
 
-      create_comment('Please provide more details')
+      create_question_comment('Please provide more details')
       expect(page).to have_content('Please provide more details')
     end
 
@@ -18,7 +18,7 @@ feature 'question comments' do
       sign_in_as user
       visit question_path(question)
 
-      create_comment('Please provide more details')
+      create_question_comment('Please provide more details')
       find('a.delete-question-comment').click
 
       expect(page).to_not have_content('Please provide more details')
@@ -31,7 +31,7 @@ feature 'question comments' do
     scenario 'I cannot create a comment for a question' do
       visit question_path(question)
 
-      create_comment('Please provide more details')
+      create_question_comment('Please provide more details')
 
       expect(page).to_not have_content('Please provide more details')
       expect(page).to have_content('You need to sign in before continuing.')
@@ -39,9 +39,9 @@ feature 'question comments' do
   end
 end
 
-def create_comment(body)
-  click_on 'add comment'
+def create_question_comment(body)
+  find('#add-question-comment a').click
 
-  fill_in 'Body', with: body
-  click_on 'create comment'
+  fill_in 'question_comment_body', with: body
+  click_on 'create-question-comment'
 end

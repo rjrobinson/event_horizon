@@ -1,6 +1,6 @@
 @import 'globals/colors';
 
-.question-comments {
+.question-comments, .answer-comments {
   list-style: none;
 }
 
@@ -22,7 +22,7 @@
   font-size: .6em;
 }
 
-p#add-question-comment {
+p#add-question-comment, p#add-answer-comment {
   margin-left: 10px;
   a {
     color: gray;
