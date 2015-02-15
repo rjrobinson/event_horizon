@@ -9,6 +9,7 @@
   %h2.title
     = @question.title
     = @question.queue_status
+  %hr
   .row
     .small-8.columns
       %p.body~ render_safe_markdown(@question.body)
@@ -27,10 +28,9 @@
       %p#add-question-comment= link_to "add comment"
       #question-comment.hidden
         = form_for [@question, @question_comment] do |f|
-          = f.label :body
           = f.text_area :body
 
-          = f.submit "create comment", class: "button tiny success"
+          = f.submit "create comment", class: "button tiny success", id: "create-question-comment"
 
     .small-4.columns
       .user
@@ -53,6 +53,27 @@
           - if answer.user == current_user
             = link_to "Edit Answer", edit_question_answer_path(@question, answer), class: "button tiny success"
             = link_to "Delete Answer", question_answer_path(@question, answer), method: :delete, class: "button tiny alert"
+
+          %ul.answer-comments
+            - if answer.answer_comments.present?
+              - answer.answer_comments.each do |comment|
+                %li.qa-comment
+                  = comment.body
+                  %span.comment-user= " - #{comment.user.name}, #{format_time(comment.created_at)} "
+                  - if comment.user == current_user
+                    = link_to answer_answer_comment_path(answer, comment),
+                      method: :delete,
+                      class: 'delete-answer-comment',
+                      data: { confirm: "Are you sure you want to delete comment?" } do
+                      %i.fi-x.delete-comment
+
+          %p#add-answer-comment= link_to "add comment"
+          #answer-comment.hidden
+            = form_for [answer, @answer_comment] do |f|
+              = f.hidden_field :question_id, value: @question.id
+              = f.text_area :body
+
+              = f.submit "create comment", class: "button tiny success", id: 'create-answer-comment'
 
         .small-4.columns
           .user

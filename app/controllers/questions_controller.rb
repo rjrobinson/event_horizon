@@ -18,6 +18,7 @@ class QuestionsController < ApplicationController
     @answer = Answer.new
     @question_comment = QuestionComment.new
     @question_comments = @question.question_comments
+    @answer_comment = AnswerComment.new
   end
 
   def new

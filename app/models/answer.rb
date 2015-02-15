@@ -1,4 +1,5 @@
 class Answer < ActiveRecord::Base
+  has_many :answer_comments
   belongs_to :user
   belongs_to :question, counter_cache: true
 
