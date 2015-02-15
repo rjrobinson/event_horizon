@@ -22,11 +22,13 @@ gem "carrierwave"
 gem "fog"
 gem "sidekiq"
 gem "newrelic_rpm"
+gem "google-api-client"
+gem "redis"
+gem 'draper', '~> 1.3'
 
 group :development do
   gem "spring"
   gem "quiet_assets"
-  gem "dotenv-rails"
 end
 
 group :development, :test do
@@ -34,6 +36,8 @@ group :development, :test do
   gem "capybara"
   gem "factory_girl"
   gem "pry-rails"
+  gem "shoulda-matchers"
+  gem "dotenv-rails"
 end
 
 group :test do
@@ -41,6 +45,7 @@ group :test do
   gem "valid_attribute"
   gem "coveralls", require: false
   gem "launchy", require: false
+  gem "database_cleaner"
 end
 
 gem 'launchcop',

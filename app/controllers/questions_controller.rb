@@ -4,16 +4,17 @@ class QuestionsController < ApplicationController
       @questions = Question.unanswered
       @filter = "unanswered"
     elsif params[:query] == "queued"
-      @questions = Question.queued.sort_by{ |q| q.question_queue.first.sort_order }
+      @questions = Question.queued.sort_by{ |q| q.question_queue.sort_order }
       @filter = "queued"
     else
       @questions = Question.order(created_at: :desc)
       @filter = "newest"
     end
+    @questions = QuestionDecorator.decorate_collection(@questions)
   end
 
   def show
-    @question = Question.find(params[:id])
+    @question = Question.find(params[:id]).decorate
     @answer = Answer.new
   end
 

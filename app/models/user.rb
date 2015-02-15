@@ -47,6 +47,14 @@ class User < ActiveRecord::Base
     end
   end
 
+  def calendars
+    result = []
+    teams.each do |team|
+      result << team.calendar if team.calendar
+    end
+    result.uniq
+  end
+
   def latest_announcements(count)
     announcements.
       joins("LEFT JOIN announcement_receipts ON announcements.id = announcement_receipts.announcement_id AND announcement_receipts.user_id = #{id}").

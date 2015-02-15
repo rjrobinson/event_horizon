@@ -5,5 +5,7 @@ class Team < ActiveRecord::Base
   has_many :announcements, dependent: :destroy
   has_many :question_queues
 
+  belongs_to :calendar
+
   validates :name, presence: true, uniqueness: true
 end
