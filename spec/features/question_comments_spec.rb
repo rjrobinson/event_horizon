@@ -40,7 +40,7 @@ feature 'question comments' do
 end
 
 def create_question_comment(body)
-  find('#add-question-comment a').click
+  find('.add-question-comment a').click
 
   fill_in 'question_comment_body', with: body
   click_on 'create-question-comment'

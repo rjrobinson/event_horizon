@@ -44,7 +44,7 @@ feature 'answer comments' do
 end
 
 def create_answer_comment(body)
-  find('#add-answer-comment a').click
+  find('.add-answer-comment a').click
 
   fill_in 'answer_comment_body', with: body
   click_on 'create-answer-comment'

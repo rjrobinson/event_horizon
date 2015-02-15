@@ -1,5 +1,5 @@
 $(function() {
-  var $addCommentButton = $('#add-question-comment a');
+  var $addCommentButton = $('.add-question-comment a');
   var $addCommentForm = $('#question-comment');
 
   $addCommentButton.on('click', function(e) {
