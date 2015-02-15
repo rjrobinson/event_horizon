@@ -163,6 +163,38 @@ ALTER SEQUENCE assignments_id_seq OWNED BY assignments.id;
 
 
 --
+-- Name: calendars; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE calendars (
+    id integer NOT NULL,
+    name character varying(255) NOT NULL,
+    cid character varying(255) NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: calendars_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE calendars_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: calendars_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE calendars_id_seq OWNED BY calendars.id;
+
+
+--
 -- Name: comments; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -243,8 +275,6 @@ ALTER SEQUENCE lessons_id_seq OWNED BY lessons.id;
 
 CREATE TABLE question_queues (
     id integer NOT NULL,
-    question_id integer NOT NULL,
-    team_id integer NOT NULL,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     status character varying(255) DEFAULT 'open'::character varying,
@@ -286,7 +316,8 @@ CREATE TABLE questions (
     updated_at timestamp without time zone,
     accepted_answer_id integer,
     answers_count integer DEFAULT 0 NOT NULL,
-    searchable tsvector
+    searchable tsvector,
+    question_queue_id integer
 );
 
 
@@ -462,7 +493,8 @@ CREATE TABLE teams (
     id integer NOT NULL,
     name character varying(255) NOT NULL,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    calendar_id integer
 );
 
 
@@ -548,6 +580,13 @@ ALTER TABLE ONLY answers ALTER COLUMN id SET DEFAULT nextval('answers_id_seq'::r
 --
 
 ALTER TABLE ONLY assignments ALTER COLUMN id SET DEFAULT nextval('assignments_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY calendars ALTER COLUMN id SET DEFAULT nextval('calendars_id_seq'::regclass);
 
 
 --
@@ -650,6 +689,14 @@ ALTER TABLE ONLY answers
 
 ALTER TABLE ONLY assignments
     ADD CONSTRAINT assignments_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: calendars_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY calendars
+    ADD CONSTRAINT calendars_pkey PRIMARY KEY (id);
 
 
 --
@@ -772,6 +819,13 @@ CREATE INDEX index_assignments_on_lesson_id ON assignments USING btree (lesson_i
 --
 
 CREATE INDEX index_assignments_on_team_id ON assignments USING btree (team_id);
+
+
+--
+-- Name: index_calendars_on_cid; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_calendars_on_cid ON calendars USING btree (cid);
 
 
 --
@@ -1054,9 +1108,15 @@ INSERT INTO schema_migrations (version) VALUES ('20150122213444');
 
 INSERT INTO schema_migrations (version) VALUES ('20150123164500');
 
+INSERT INTO schema_migrations (version) VALUES ('20150123203729');
+
 INSERT INTO schema_migrations (version) VALUES ('20150205180710');
 
+INSERT INTO schema_migrations (version) VALUES ('20150205184909');
+
 INSERT INTO schema_migrations (version) VALUES ('20150206162914');
+
+INSERT INTO schema_migrations (version) VALUES ('20150206184403');
 
 INSERT INTO schema_migrations (version) VALUES ('20150206211308');
 
@@ -1065,4 +1125,10 @@ INSERT INTO schema_migrations (version) VALUES ('20150209154829');
 INSERT INTO schema_migrations (version) VALUES ('20150210202615');
 
 INSERT INTO schema_migrations (version) VALUES ('20150210203036');
+
+INSERT INTO schema_migrations (version) VALUES ('20150212144048');
+
+INSERT INTO schema_migrations (version) VALUES ('20150212145515');
+
+INSERT INTO schema_migrations (version) VALUES ('20150212145738');
 

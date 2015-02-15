@@ -8,7 +8,7 @@
 #question
   %h2.title
     = @question.title
-    = queue_status(@question)
+    = @question.queue_status
   .row
     .small-8.columns
       %p.body~ render_safe_markdown(@question.body)
@@ -27,7 +27,7 @@
 
   - @question.sorted_answers.each do |answer|
     - if answer.persisted?
-      .row.answer
+      .row.answer{ class: @question.accepted_answer_id == answer.id ? 'accepted-answer' : ''  }
         .small-8.columns
           %p.body~ render_safe_markdown(answer.body)
           - if answer.user == current_user

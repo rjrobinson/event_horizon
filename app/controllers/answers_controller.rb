@@ -2,7 +2,7 @@ class AnswersController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    @question = Question.find(params[:question_id])
+    @question = Question.find(params[:question_id]).decorate
     @answer = @question.answers.build(answer_params)
     @answer.user = current_user
 

@@ -114,12 +114,24 @@ FactoryGirl.define do
       end
     end
 
+    ignore do
+      calendar_args nil
+    end
+
+    factory :user_with_calendar do
+      after(:create) do |user, evaluator|
+        calendar = build(:calendar, evaluator.calendar_args)
+        team = create(:team, calendar: calendar)
+        create(:team_membership, team: team, user: user)
+      end
+    end
+
     factory :user_with_multiple_assignment_submissions do
       after(:create) do |user|
         team_membership = create(:team_membership , user: user)
         core = create(:assignment, team: team_membership.team)
         create(:assignment, required: false, team: team_membership.team)
-        variable = create(:submission, lesson: core.lesson, user: user)
+        create(:submission, lesson: core.lesson, user: user)
       end
     end
   end
@@ -146,6 +158,11 @@ FactoryGirl.define do
     team
   end
 
+  factory :calendar do
+    sequence(:name) { |n| "Calendar #{n}" }
+    sequence(:cid) { |n| "calendar-reference-email#{n}@gmail.com" }
+  end
+
   factory :question do
     sequence(:title) { |n| "Question #{n}" }
     body "This is definitely a question."
@@ -153,8 +170,6 @@ FactoryGirl.define do
   end
 
   factory :question_queue do
-    team
-    question
   end
 
   factory :answer do
