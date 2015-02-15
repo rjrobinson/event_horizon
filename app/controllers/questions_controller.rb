@@ -17,7 +17,7 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id]).decorate
     @answer = Answer.new
     @question_comment = QuestionComment.new
-    @question_comments = @question.question_comments
+    @question_comments = @question.question_comments.limit(30)
     @answer_comment = AnswerComment.new
   end
 
