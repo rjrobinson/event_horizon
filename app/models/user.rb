@@ -6,12 +6,12 @@ class User < ActiveRecord::Base
   has_many :assignments, through: :teams
   has_many :announcements, through: :teams
   has_many :assigned_lessons, through: :assignments, source: :lesson
-  has_many :answers
-  has_many :questions
-  has_many :announcement_receipts
-  has_many :question_queues
-  has_many :question_comments
-  has_many :answer_comments
+  has_many :answers, dependent: :destroy
+  has_many :questions, dependent: :destroy
+  has_many :announcement_receipts, dependent: :destroy
+  has_many :question_queues, dependent: :destroy
+  has_many :question_comments, dependent: :destroy
+  has_many :answer_comments, dependent: :destroy
 
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true
