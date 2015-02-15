@@ -22,7 +22,8 @@ class Calendar < ActiveRecord::Base
   end
 
   def events
-    events_json.map { |json| CalendarEvent.new(event_json(json)) }
+    results = events_json.map { |json| CalendarEvent.new(event_json(json)) }
+    results.reject { |event| event.start_time.nil? || event.end_time.nil? }
   end
 
   def default_start_time
@@ -42,6 +43,7 @@ class Calendar < ActiveRecord::Base
     calendar_ids.each do |calendar_id|
       results.concat(Calendar.find(calendar_id).events)
     end
+
     results.sort_by { |event| event.start_time }
   end
 
