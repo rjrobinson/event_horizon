@@ -17,7 +17,8 @@
         - @question_comments.each do |comment|
           %li.qa-comment
             = comment.body
-            %span.comment-user= " - #{comment.user.name}, #{format_time(comment.created_at)} "
+            %span.comment-user
+              = " - #{comment.user.name}, #{comment.created_at.to_s(:comment_time)} "
             - if comment.user == current_user
               = link_to question_question_comment_path(@question, comment),
                 method: :delete,
@@ -59,7 +60,8 @@
               - answer.answer_comments.each do |comment|
                 %li.qa-comment
                   = comment.body
-                  %span.comment-user= " - #{comment.user.name}, #{format_time(comment.created_at)} "
+                  %span.comment-user
+                    = " - #{comment.user.name}, #{comment.created_at.to_s(:comment_time)} "
                   - if comment.user == current_user
                     = link_to answer_answer_comment_path(answer, comment),
                       method: :delete,
