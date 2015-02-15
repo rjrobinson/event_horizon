@@ -1,5 +1,5 @@
 class Answer < ActiveRecord::Base
-  has_many :answer_comments
+  has_many :answer_comments, dependent: :destroy
   belongs_to :user
   belongs_to :question, counter_cache: true
 

@@ -70,7 +70,6 @@
           %p.add-answer-comment= link_to "add comment"
           .answer-comment.hidden
             = form_for [answer, @answer_comment] do |f|
-              = f.hidden_field :question_id, value: @question.id
               = f.text_area :body
 
               = f.submit "create comment", class: "button tiny success", id: 'create-answer-comment'
