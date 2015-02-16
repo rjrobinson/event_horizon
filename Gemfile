@@ -23,6 +23,7 @@ gem "newrelic_rpm"
 gem "google-api-client"
 gem "redis"
 gem 'draper', '~> 1.3'
+gem 'airbrake'
 
 group :development do
   gem "spring"
@@ -46,5 +47,4 @@ end
 
 group :production do
   gem "rails_12factor"
-  gem "bugsnag"
 end
