@@ -28,6 +28,11 @@ Rails.application.routes.draw do
 
   resources :questions do
     resources :answers, only: [:edit, :update, :create, :destroy]
+    resources :question_comments, only: [:create, :destroy]
+  end
+
+  resources :answers, only: [] do
+    resources :answer_comments, only: [:create, :destroy]
   end
 
   resource :session, only: [:new, :create, :destroy] do

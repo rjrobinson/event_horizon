@@ -8,7 +8,7 @@ describe Calendar do
 
   describe "events" do
     it 'returns an array of CalendarEvents' do
-      ce1 = double
+      ce1 = double(start_time: Time.now, end_time: Time.now + 1.hour)
       redis_db = double
       allow(Redis).to receive(:current).and_return(redis_db)
       allow(redis_db).to receive(:get).and_return(

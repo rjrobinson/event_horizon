@@ -95,6 +95,39 @@ ALTER SEQUENCE announcements_id_seq OWNED BY announcements.id;
 
 
 --
+-- Name: answer_comments; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE answer_comments (
+    id integer NOT NULL,
+    body text NOT NULL,
+    answer_id integer NOT NULL,
+    user_id integer NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: answer_comments_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE answer_comments_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: answer_comments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE answer_comments_id_seq OWNED BY answer_comments.id;
+
+
+--
 -- Name: answers; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -267,6 +300,39 @@ CREATE SEQUENCE lessons_id_seq
 --
 
 ALTER SEQUENCE lessons_id_seq OWNED BY lessons.id;
+
+
+--
+-- Name: question_comments; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE question_comments (
+    id integer NOT NULL,
+    body text NOT NULL,
+    question_id integer NOT NULL,
+    user_id integer NOT NULL,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+--
+-- Name: question_comments_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE question_comments_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: question_comments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE question_comments_id_seq OWNED BY question_comments.id;
 
 
 --
@@ -572,6 +638,13 @@ ALTER TABLE ONLY announcements ALTER COLUMN id SET DEFAULT nextval('announcement
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY answer_comments ALTER COLUMN id SET DEFAULT nextval('answer_comments_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY answers ALTER COLUMN id SET DEFAULT nextval('answers_id_seq'::regclass);
 
 
@@ -601,6 +674,13 @@ ALTER TABLE ONLY comments ALTER COLUMN id SET DEFAULT nextval('comments_id_seq':
 --
 
 ALTER TABLE ONLY lessons ALTER COLUMN id SET DEFAULT nextval('lessons_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY question_comments ALTER COLUMN id SET DEFAULT nextval('question_comments_id_seq'::regclass);
 
 
 --
@@ -676,6 +756,14 @@ ALTER TABLE ONLY announcements
 
 
 --
+-- Name: answer_comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY answer_comments
+    ADD CONSTRAINT answer_comments_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: answers_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -713,6 +801,14 @@ ALTER TABLE ONLY comments
 
 ALTER TABLE ONLY lessons
     ADD CONSTRAINT lessons_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: question_comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY question_comments
+    ADD CONSTRAINT question_comments_pkey PRIMARY KEY (id);
 
 
 --
@@ -1131,4 +1227,8 @@ INSERT INTO schema_migrations (version) VALUES ('20150212144048');
 INSERT INTO schema_migrations (version) VALUES ('20150212145515');
 
 INSERT INTO schema_migrations (version) VALUES ('20150212145738');
+
+INSERT INTO schema_migrations (version) VALUES ('20150214174452');
+
+INSERT INTO schema_migrations (version) VALUES ('20150215023727');
 

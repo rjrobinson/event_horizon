@@ -5,7 +5,10 @@
   %li.current= link_to "Questions", questions_path
 
 #new-question
-  = link_to "Ask A Question", new_question_path, class: "button success"
+  = link_to new_question_path, class: "button success" do
+    %i.fi-plus
+    Ask A Question
+
 
 %dl.sub-nav
   %dt Filter:
