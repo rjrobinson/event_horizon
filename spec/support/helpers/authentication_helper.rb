@@ -16,7 +16,7 @@ module AuthenticationHelper
       }
     }
 
-    visit root_path
+    visit new_session_path
     click_link "Sign In With GitHub"
   end
 

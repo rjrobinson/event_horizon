@@ -98,8 +98,14 @@ FactoryGirl.define do
     association :user,
       factory: :user_without_identity
 
-    factory :github_identity do
-      provider 'github'
+    provider 'github'
+    sequence(:uid) { |n| n.to_s }
+
+
+    factory :github_identity
+
+    factory :launch_pass_identity do
+      provider 'launch_pass'
       sequence(:uid) { |n| n.to_s }
     end
   end
@@ -107,7 +113,8 @@ FactoryGirl.define do
   factory :user_without_identity, class: User do
     sequence(:username) { |n| "george_michael_#{n}" }
     sequence(:email) { |n| "gm#{n}@example.com" }
-    sequence(:name) { |n| "George Michael #{n}" }
+    first_name "George"
+    sequence(:last_name) { |n| "Michael #{n}" }
     role "member"
 
     factory :user do

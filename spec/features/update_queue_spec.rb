@@ -1,11 +1,17 @@
 require 'rails_helper'
 
 feature 'Queue Index' do
-  let(:ee) { FactoryGirl.create(:admin, name: 'Joe Shoe') }
+  let(:ee) do
+    FactoryGirl.create(:admin,
+      first_name: 'Joe',
+      last_name: 'Shoe')
+  end
 
   scenario "I can add a student to the Queue" do
     student = FactoryGirl.create(:user)
-    question = FactoryGirl.create(:question, user: student, title: 'What is the meaning to life?')
+    question = FactoryGirl.create(:question,
+      user: student,
+      title: 'What is the meaning to life?')
 
     sign_in_as ee
     visit questions_path
