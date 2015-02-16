@@ -21,6 +21,10 @@ class User < ActiveRecord::Base
 
   before_validation :ensure_authentication_token
 
+  def name
+    [first_name, last_name].join(" ").strip
+  end
+
   def to_param
     username
   end

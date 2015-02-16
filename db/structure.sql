@@ -593,11 +593,12 @@ CREATE TABLE users (
     id integer NOT NULL,
     email character varying(255) NOT NULL,
     username character varying(255) NOT NULL,
-    name character varying(255),
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     role character varying(255) DEFAULT 'member'::character varying NOT NULL,
-    token character varying(255) NOT NULL
+    token character varying(255) NOT NULL,
+    first_name character varying(255) NOT NULL,
+    last_name character varying(255) NOT NULL
 );
 
 
@@ -1259,4 +1260,6 @@ INSERT INTO schema_migrations (version) VALUES ('20150212144048');
 INSERT INTO schema_migrations (version) VALUES ('20150212145515');
 
 INSERT INTO schema_migrations (version) VALUES ('20150212145738');
+
+INSERT INTO schema_migrations (version) VALUES ('20150216154949');
 
