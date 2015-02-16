@@ -12,8 +12,8 @@ gem "haml-rails"
 gem "foundation-rails"
 gem "omniauth-github"
 gem "omniauth-launch-pass",
-  #github: 'launchacademy/omniauth-launch-pass'
-  path: '../omniauth-launch-pass'
+  github: 'launchacademy/omniauth-launch-pass'
+  #path: '../omniauth-launch-pass'
 
 gem "redcarpet"
 gem "rouge"
