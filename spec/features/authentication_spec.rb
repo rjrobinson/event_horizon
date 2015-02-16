@@ -97,8 +97,8 @@ feature "guest creates account" do
           "first_name" => "Bob",
           "last_name" => "Loblaw",
           "teams" => [
-            {"id"=>1, "name"=>"Admins"},
-            {"id"=>2, "name"=>"Launchers"}
+            { "id" => 1, "name" => "Admins" },
+            { "id" => 2, "name" => "Launchers" }
           ]
         },
         "credentials" => {
@@ -181,7 +181,7 @@ feature "guest creates account" do
           "last_name" => "Loblaw",
           "teams" => [],
           "product_offerings" => [
-            {"id" => "12342", "name" => "On Premises"}
+            { "id" => "12342", "name" => "On Premises" }
           ]
         },
         "credentials" => {
