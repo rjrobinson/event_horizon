@@ -62,6 +62,10 @@
     .row
       .small-12.columns
         #content
+          - if requires_launch_pass?
+            .panel.alert-box.warning
+              Please associate your Launch Pass account!
+              = link_to 'Sign In With Launch Pass', '/auth/launch_pass'
           ~ yield
 
     = javascript_include_tag "application"

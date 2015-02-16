@@ -12,7 +12,9 @@ gem "haml-rails"
 gem "foundation-rails"
 gem "omniauth-github"
 gem "omniauth-launch-pass",
-  github: 'launchacademy/omniauth-launch-pass'
+  #github: 'launchacademy/omniauth-launch-pass'
+  path: '../omniauth-launch-pass'
+
 gem "redcarpet"
 gem "rouge"
 gem "sanitize"
@@ -42,7 +44,6 @@ group :development, :test do
 end
 
 group :test do
-  gem "shoulda-matchers"
   gem "valid_attribute"
   gem "coveralls", require: false
   gem "launchy", require: false

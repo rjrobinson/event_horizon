@@ -1,6 +1,5 @@
-GIT
-  remote: git://github.com/launchacademy/omniauth-launch-pass.git
-  revision: f4ebaa9a803a8329bbfc852f55bde4ca0e66d625
+PATH
+  remote: ../omniauth-launch-pass
   specs:
     omniauth-launch-pass (0.0.1)
       omniauth-oauth2 (~> 1.2)

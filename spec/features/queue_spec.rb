@@ -1,11 +1,17 @@
 require 'rails_helper'
 
 feature 'Queue Index' do
-  let(:ee) { FactoryGirl.create(:admin, name: 'Joe Shoe') }
+  let(:ee) do
+    FactoryGirl.create(:admin,
+      first_name: 'Joe',
+      last_name: 'Shoe')
+  end
 
   scenario "I can take a Question through the Question Queue" do
     student = FactoryGirl.create(:user)
-    question = FactoryGirl.create(:question, user: student, title: 'What is the meaning to life?')
+    question = FactoryGirl.create(:question,
+      user: student,
+      title: 'What is the meaning to life?')
 
     sign_in_as ee
     visit question_path(question)
@@ -27,11 +33,17 @@ feature 'Queue Index' do
   scenario "I can tag a question as a No Show to move it to the bottom of the queue" do
     student = FactoryGirl.create(:user)
     qq = FactoryGirl.create(:question_queue)
-    question = FactoryGirl.create(:question, question_queue: qq, user: student, title: 'What is the meaning to life?')
+    question = FactoryGirl.create(:question,
+      question_queue: qq,
+      user: student,
+      title: 'What is the meaning to life?')
 
     student2 = FactoryGirl.create(:user)
     qq2 = FactoryGirl.create(:question_queue)
-    question2 = FactoryGirl.create(:question, question_queue: qq2, user: student2, title: 'Why does my postgresql not work????')
+    question2 = FactoryGirl.create(:question,
+     question_queue: qq2,
+     user: student2,
+     title: 'Why does my postgresql not work????')
 
     sign_in_as ee
     visit questions_path(query: 'queued')

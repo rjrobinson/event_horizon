@@ -43,6 +43,25 @@ class User < ActiveRecord::Base
     lesson.submissions.has_submission_from?(self)
   end
 
+  def authorized_member?(auth_hash)
+    if auth_hash["provider"] == 'github'
+      belongs_to_org?(github_organization, auth_hash["credentials"]["token"])
+    else
+      if auth_hash["info"] && teams = auth_hash["info"]["teams"]
+        offerings = auth_hash["info"]["product_offerings"]
+        teams.any? { |team| team["name"] == 'Admins' } ||
+          !offerings.empty?
+      else
+        false
+      end
+    end
+  end
+
+  def require_launch_pass?(auth_hash)
+    auth_hash['provider'] == 'github' &&
+      identities.where(provider: 'launch_pass').count > 0
+  end
+
   def belongs_to_org?(organization, oauth_token)
     if organization.nil? || organization.empty?
       true
@@ -82,5 +101,9 @@ class User < ActiveRecord::Base
 
   def github_orgs_url(token)
     URI("https://api.github.com/users/#{username}/orgs?access_token=#{token}")
+  end
+
+  def github_organization
+    ENV["GITHUB_ORG"]
   end
 end
