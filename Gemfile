@@ -38,6 +38,7 @@ group :development, :test do
   gem "pry-rails"
   gem "shoulda-matchers"
   gem "dotenv-rails"
+  gem 'launchcop'
 end
 
 group :test do
@@ -47,9 +48,6 @@ group :test do
   gem "launchy", require: false
   gem "database_cleaner"
 end
-
-gem 'launchcop',
-  path: '../launchcop'
 
 group :production do
   gem "rails_12factor"
