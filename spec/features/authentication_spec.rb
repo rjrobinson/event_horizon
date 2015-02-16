@@ -96,7 +96,7 @@ feature "guest creates account" do
           "email" => "bob@example.com",
           "first_name" => "Bob",
           "last_name" => "Loblaw",
-          "teams"=> [
+          "teams" => [
             {"id"=>1, "name"=>"Admins"},
             {"id"=>2, "name"=>"Launchers"}
           ]
@@ -144,8 +144,6 @@ feature "guest creates account" do
       click_link "Sign In With Launch Pass"
       expect(page).to have_content "Successfully signed in"
     end
-
-
   end
 
   context "first time launch pass user" do
@@ -193,7 +191,7 @@ feature "guest creates account" do
 
       visit new_session_path
       click_link "Sign In With Launch Pass"
-      expect(page).to have_content  "Successfully signed in"
+      expect(page).to have_content "Successfully signed in"
     end
   end
 

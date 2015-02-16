@@ -46,11 +46,13 @@ class SessionsController < ApplicationController
   private
   def find_or_build_user
     if current_user
-      current_user.identities.find_or_create_by!({
+      current_user.identities.find_or_create_by!(
         provider: auth_hash['provider'],
         uid: auth_hash['uid']
-      })
-      flash[:success] = "Thanks! Please sign in with Launch Pass moving forward!"
+      )
+      flash[:success] = "Thanks! " +
+        "Please sign in with Launch Pass moving forward!"
+
       current_user
     else
       identity = Identity.find_or_create_from_omniauth(auth_hash)

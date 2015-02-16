@@ -1,5 +1,5 @@
 class NormalizeName < ActiveRecord::Migration
-  class User < ActiveRecord::Base; end;
+  class User < ActiveRecord::Base; end
   def up
     add_column :users, :first_name, :string
     add_column :users, :last_name, :string

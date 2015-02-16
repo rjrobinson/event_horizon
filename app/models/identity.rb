@@ -33,5 +33,4 @@ class Identity < ActiveRecord::Base
     end
     identity
   end
-
 end
